@@ -1,0 +1,225 @@
+{
+  "component": "jsonld_vocabularies",
+  "timestamp": "2026-03-16T12:34:32.173036",
+  "status": "completed",
+  "summary": {
+    "total_successes": 18,
+    "total_warnings": 0,
+    "total_errors": 0,
+    "files_processed_count": 4,
+    "files_expected_count": 1,
+    "files_missing_count": 1,
+    "vocabularies_generated_count": 4,
+    "completion_timestamp": "2026-03-16T12:34:32.175956"
+  },
+  "details": {
+    "successes": [
+      {
+        "message": "Script started",
+        "timestamp": "2026-03-16T12:34:32.173080",
+        "details": {
+          "expansions_path": "output/expansions.json",
+          "output_directory": "output"
+        }
+      },
+      {
+        "message": "Used fallback method: loaded ValueSet/CodeSystem files directly",
+        "timestamp": "2026-03-16T12:34:32.173990"
+      },
+      {
+        "message": "Found FHIR Bundle",
+        "timestamp": "2026-03-16T12:34:32.174002",
+        "details": {
+          "resourceType": "Bundle"
+        }
+      },
+      {
+        "message": "Found 4 entries in Bundle",
+        "timestamp": "2026-03-16T12:34:32.174004",
+        "details": {
+          "entry_count": 4
+        }
+      },
+      {
+        "message": "Processing ValueSet MINSAVaccineVS",
+        "timestamp": "2026-03-16T12:34:32.174014",
+        "details": {
+          "valueset_id": "MINSAVaccineVS",
+          "entry_index": 0
+        }
+      },
+      {
+        "message": "Extracted 58 codes for ValueSet MINSAVaccineVS",
+        "timestamp": "2026-03-16T12:34:32.174035",
+        "details": {
+          "valueset_id": "MINSAVaccineVS",
+          "codes_count": 58
+        }
+      },
+      {
+        "message": "Generated JSON-LD vocabulary for ValueSet MINSAVaccineVS",
+        "timestamp": "2026-03-16T12:34:32.174201"
+      },
+      {
+        "message": "Processing ValueSet MINSAIdentifierTypeVS",
+        "timestamp": "2026-03-16T12:34:32.174854",
+        "details": {
+          "valueset_id": "MINSAIdentifierTypeVS",
+          "entry_index": 1
+        }
+      },
+      {
+        "message": "Extracted 5 codes for ValueSet MINSAIdentifierTypeVS",
+        "timestamp": "2026-03-16T12:34:32.174871",
+        "details": {
+          "valueset_id": "MINSAIdentifierTypeVS",
+          "codes_count": 5
+        }
+      },
+      {
+        "message": "Generated JSON-LD vocabulary for ValueSet MINSAIdentifierTypeVS",
+        "timestamp": "2026-03-16T12:34:32.174880"
+      },
+      {
+        "message": "Processing ValueSet MINSAImmunizationReasonNotGivenVS",
+        "timestamp": "2026-03-16T12:34:32.175045",
+        "details": {
+          "valueset_id": "MINSAImmunizationReasonNotGivenVS",
+          "entry_index": 2
+        }
+      },
+      {
+        "message": "Extracted 46 codes for ValueSet MINSAImmunizationReasonNotGivenVS",
+        "timestamp": "2026-03-16T12:34:32.175063",
+        "details": {
+          "valueset_id": "MINSAImmunizationReasonNotGivenVS",
+          "codes_count": 46
+        }
+      },
+      {
+        "message": "Generated JSON-LD vocabulary for ValueSet MINSAImmunizationReasonNotGivenVS",
+        "timestamp": "2026-03-16T12:34:32.175086"
+      },
+      {
+        "message": "Processing ValueSet MINSADoseNumberVS",
+        "timestamp": "2026-03-16T12:34:32.175418",
+        "details": {
+          "valueset_id": "MINSADoseNumberVS",
+          "entry_index": 3
+        }
+      },
+      {
+        "message": "Extracted 40 codes for ValueSet MINSADoseNumberVS",
+        "timestamp": "2026-03-16T12:34:32.175437",
+        "details": {
+          "valueset_id": "MINSADoseNumberVS",
+          "codes_count": 40
+        }
+      },
+      {
+        "message": "Generated JSON-LD vocabulary for ValueSet MINSADoseNumberVS",
+        "timestamp": "2026-03-16T12:34:32.175458"
+      },
+      {
+        "message": "Generated 4 JSON-LD vocabularies",
+        "timestamp": "2026-03-16T12:34:32.175723",
+        "details": {
+          "vocabularies_generated": 4
+        }
+      },
+      {
+        "message": "Successfully generated 4 JSON-LD vocabularies in output",
+        "timestamp": "2026-03-16T12:34:32.175745",
+        "details": {
+          "vocabularies_count": 4,
+          "output_directory": "output",
+          "used_fallback": true
+        }
+      }
+    ],
+    "warnings": [],
+    "errors": [],
+    "files_processed": [
+      {
+        "file": "output/vocabulary/ValueSet-MINSAVaccineVS.jsonld",
+        "status": "success",
+        "timestamp": "2026-03-16T12:34:32.174833",
+        "details": {
+          "valueset_id": "MINSAVaccineVS",
+          "codes_count": 58,
+          "vocab_size": 12708
+        }
+      },
+      {
+        "file": "output/vocabulary/ValueSet-MINSAIdentifierTypeVS.jsonld",
+        "status": "success",
+        "timestamp": "2026-03-16T12:34:32.175032",
+        "details": {
+          "valueset_id": "MINSAIdentifierTypeVS",
+          "codes_count": 5,
+          "vocab_size": 1509
+        }
+      },
+      {
+        "file": "output/vocabulary/ValueSet-MINSAImmunizationReasonNotGivenVS.jsonld",
+        "status": "success",
+        "timestamp": "2026-03-16T12:34:32.175404",
+        "details": {
+          "valueset_id": "MINSAImmunizationReasonNotGivenVS",
+          "codes_count": 46,
+          "vocab_size": 11309
+        }
+      },
+      {
+        "file": "output/vocabulary/ValueSet-MINSADoseNumberVS.jsonld",
+        "status": "success",
+        "timestamp": "2026-03-16T12:34:32.175720",
+        "details": {
+          "valueset_id": "MINSADoseNumberVS",
+          "codes_count": 40,
+          "vocab_size": 9063
+        }
+      }
+    ],
+    "files_expected": [
+      "output/expansions.json"
+    ],
+    "files_missing": [
+      "output/expansions.json"
+    ],
+    "vocabularies_generated": [
+      {
+        "valueset_id": "MINSAVaccineVS",
+        "jsonld_file": "output/vocabulary/ValueSet-MINSAVaccineVS.jsonld",
+        "codes_count": 58,
+        "has_context": true,
+        "has_graph": true,
+        "timestamp": "2026-03-16T12:34:32.174836"
+      },
+      {
+        "valueset_id": "MINSAIdentifierTypeVS",
+        "jsonld_file": "output/vocabulary/ValueSet-MINSAIdentifierTypeVS.jsonld",
+        "codes_count": 5,
+        "has_context": true,
+        "has_graph": true,
+        "timestamp": "2026-03-16T12:34:32.175034"
+      },
+      {
+        "valueset_id": "MINSAImmunizationReasonNotGivenVS",
+        "jsonld_file": "output/vocabulary/ValueSet-MINSAImmunizationReasonNotGivenVS.jsonld",
+        "codes_count": 46,
+        "has_context": true,
+        "has_graph": true,
+        "timestamp": "2026-03-16T12:34:32.175405"
+      },
+      {
+        "valueset_id": "MINSADoseNumberVS",
+        "jsonld_file": "output/vocabulary/ValueSet-MINSADoseNumberVS.jsonld",
+        "codes_count": 40,
+        "has_context": true,
+        "has_graph": true,
+        "timestamp": "2026-03-16T12:34:32.175721"
+      }
+    ]
+  }
+}

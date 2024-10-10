@@ -1,0 +1,39 @@
+{
+  "codeSystems" : [{
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSADoseNumberVS",
+    "title" : "Números de Dosis del Esquema de Vacunación - MINSA",
+    "description" : "Conjunto de valores para los números de dosis utilizados en el esquema nacional de vacunación del Perú",
+    "systems" : ["http://minsa.gob.pe/immunizations/CodeSystem/MINSA"]
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAIdentifierTypeVS",
+    "title" : "Tipos de Documento de Identidad - MINSA",
+    "description" : "Conjunto de valores para los tipos de documento de identidad utilizados en el sistema de inmunizaciones del Perú",
+    "systems" : ["http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"]
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAImmunizationReasonNotGivenVS",
+    "title" : "Razones de No Administración de Vacuna - MINSA",
+    "description" : "Conjunto de valores para las razones por las cuales una vacuna no fue administrada, según el Registro Electrónico de Inmunizaciones de MINSA",
+    "systems" : ["http://minsa.gob.pe/immunizations/CodeSystem/MINSA"]
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAVaccineVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAVaccineVS",
+    "title" : "Vacunas del Esquema Nacional de Vacunación MINSA",
+    "description" : "Conjunto de valores para las vacunas utilizadas en el esquema nacional de vacunación del Perú, incluyendo códigos MINSA y referencias a códigos WHO",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.Z",
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA"]
+  }]
+}

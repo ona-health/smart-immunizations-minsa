@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.schema.json",
+  "title": "Tipos de Documento de Identidad - MINSA Schema",
+  "description": "JSON Schema for Tipos de Documento de Identidad - MINSA ValueSet codes. Generated from FHIR expansions using IRI format.",
+  "type": "string",
+  "enum": [
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes#DNI",
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes#CE",
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes#SIS",
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes#CNV",
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes#PTP"
+  ],
+  "narrative": "This schema validates IRI-formatted codes for the Tipos de Documento de Identidad - MINSA ValueSet. Each enum value includes the system URI in the format {systemuri}#{code} to match JSON-LD enumeration IRIs. Display values are available at http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.displays.json. For a complete listing of all ValueSets, see artifacts.html#terminology-value-sets.",
+  "fhir:displays": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.displays.json",
+  "fhir:valueSet": "http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS",
+  "fhir:version": "1.0.0",
+  "fhir:expansionTimestamp": "2026-03-16T12:34:32.084046"
+}

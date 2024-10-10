@@ -1,0 +1,108 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>StructureMap-MINSA.EventoAdverso.QRToObservation-html</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<div data-fhir="generated"><p class="res-header-id"/><a name="MINSA.EventoAdverso.QRToObservation"> </a><a name="hcMINSA.EventoAdverso.QRToObservation"> </a><pre class="fml">
+<b>map</b><span style="color: navy"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation<span style="color: navy">&quot; = &quot;</span>MINSA.EventoAdverso.QRToObservation<span style="color: navy">&quot;
+
+</span><b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> &quot;</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">&quot;
+</span>
+<b>group </b>EventoAdverso<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>&quot;BundleStatic&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">encEntry</span><span style="color: navy">, </span> encEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">encounter</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractEncounter<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;ExtractEncounter&quot;</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractObservation<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>&quot;ExtractObservation&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;BundleEntries&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el Encounter de la consulta por evento adverso</span>
+<b>group </b>ExtractEncounter<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> encounter.status = <span style="color: blue">'finished'</span><span style="color: navy">, </span> encounter.class = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style="color: navy">, </span><span style="color: blue">'AMB'</span><span style="color: navy">, </span><span style="color: blue">'ambulatory'</span><span style="color: navy">)</span> <i>&quot;EncounterStatic&quot;</i><span style="color: navy">;</span>
+  src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>encounter.subject = <span style="color: maroon">subject</span> <i>&quot;EncounterSubject&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'886921000000105'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Allergies and adverse reactions'</span> <i>&quot;TypeCoding&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;TypeCC&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: blue">'Evento adverso post-vacunal'</span> <i>&quot;TypeText&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterType&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.period = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Period'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">period</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>period.start = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;PeriodStart&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>period.end = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;PeriodEnd&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterPeriod&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae la Observation que representa el evento adverso</span>
+<b>group </b>ExtractObservation<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">obs</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span> obs.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> obs.status = <span style="color: blue">'final'</span><span style="color: navy">, </span> obs.encounter = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;ObsStatic&quot;</i><span style="color: navy">;</span>
+    src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>obs.subject = <span style="color: maroon">subject</span> <i>&quot;ObsSubject&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Categoria: reaccion adversa</span>
+    src<span style="color: navy"><b> -&gt; </b></span>obs.category = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cat</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span>cat.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/observation-category'</span><span style="color: navy">, </span><span style="color: blue">'survey'</span><span style="color: navy">, </span><span style="color: blue">'Survey'</span><span style="color: navy">)</span> <i>&quot;CatCoding&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;ObsCategory&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Codigo de la observacion: evento adverso post-vacunal (ESAVI)</span>
+    src<span style="color: navy"><b> -&gt; </b></span>obs.code = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">code</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span>code.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>        src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'293104008'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Adverse reaction to vaccine (disorder)'</span> <i>&quot;CodeCoding&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CodeCC&quot;</i><span style="color: navy">;</span>
+      src<span style="color: navy"><b> -&gt; </b></span>code.text = <span style="color: blue">'Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)'</span> <i>&quot;CodeText&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;ObsCode&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Fecha del evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-date'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>obs.effective = <span style="color: maroon">val</span> <i>&quot;SetEffective&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;DateAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventDate&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Tipo de reaccion adversa</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-type'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>obs.value = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>&quot;SetTypeCoding&quot;</i><span style="color: navy">;</span>
+          coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>&quot;SetTypeText&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateTypeCC&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;TypeAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventType&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Severidad del evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-severity'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>obs.component = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation_Component'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">comp</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>comp.code = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compCode</span><b> then</b><span style="color: navy"> {
+</span>            coding<span style="color: navy"><b> -&gt; </b></span>compCode.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compCoding</span><b> then</b><span style="color: navy"> {
+</span>              coding<span style="color: navy"><b> -&gt; </b></span> compCoding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> compCoding.code = <span style="color: blue">'246112005'</span><span style="color: navy">, </span> compCoding.display = <span style="color: blue">'Severity (attribute)'</span> <i>&quot;SeverityCodeCoding&quot;</i><span style="color: navy">;</span>
+            <span style="color: navy">}</span> <i>&quot;SeverityCodeCC&quot;</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>&quot;SeverityCode&quot;</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>comp.value = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compVal</span><b> then</b><span style="color: navy"> {
+</span>            coding<span style="color: navy"><b> -&gt; </b></span>compVal.coding = <span style="color: maroon">coding</span> <i>&quot;SetSeverityCoding&quot;</i><span style="color: navy">;</span>
+            coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>compVal.text = <span style="color: maroon">display</span> <i>&quot;SetSeverityText&quot;</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>&quot;SeverityValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateSeverityComp&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;SeverityAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventSeverity&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Referencia a la inmunizacion que causo el evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'causing-immunization') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">immRef</span><span style="color: navy"><b> -&gt; </b></span>obs.focus = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          immRef<span style="color: navy"><b> -&gt; </b></span>ref.reference = <span style="color: maroon">immRef</span> <i>&quot;SetImmReference&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateImmRef&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;ImmAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;CausingImmunization&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Notas adicionales del profesional de salud</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'adverse-event-notes') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>obs.note = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Annotation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">note</span><b> then</b><span style="color: navy"> {
+</span>          val<span style="color: navy"><b> -&gt; </b></span>note.text = <span style="color: maroon">val</span> <i>&quot;SetNoteText&quot;</i><span style="color: navy">;</span>
+          val<span style="color: navy"><b> -&gt; </b></span>note.time = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;SetNoteTime&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateNote&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;NotesAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventNotes&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;ObservationEntry&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre></div></body>
+</html>

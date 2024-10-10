@@ -1,0 +1,891 @@
+{
+  "ImplementationGuide/minsa.gob.pe.immunizations" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 0,
+    "source" : "/Volumes/Biliba/github/smart-immunizations-minsa/fsh-generated/resources/ImplementationGuide-minsa.gob.pe.immunizations.json",
+    "sourceTail" : "ImplementationGuide-minsa.gob.pe.immunizations.json",
+    "path" : "index.html",
+    "url" : "http://minsa.gob.pe/immunizations/ImplementationGuide/minsa.gob.pe.immunizations",
+    "version" : "1.0.0",
+    "name" : "InmunizacionesMINSA",
+    "title" : "Guía de Implementación de Inmunizaciones MINSA Perú",
+    "titlelang" : {
+    },
+    "date" : "2024-10-10",
+    "description" : "Guía de Implementación de Inmunizaciones para el Ministerio de Salud del Perú (MINSA), adaptada de las Directrices SMART de la OMS.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "CodeSystem/MINSA" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 1,
+    "source" : "fsh-generated/resources/CodeSystem-MINSA.json",
+    "sourceTail" : "CodeSystem-MINSA.json",
+    "content" : "complete",
+    "path" : "CodeSystem-MINSA.html",
+    "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSA",
+    "version" : "1.0.0",
+    "name" : "MINSA",
+    "title" : "Sistema de Códigos MINSA para Inmunizaciones",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "CodeSystem/MINSAIdentifierTypes" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 2,
+    "source" : "fsh-generated/resources/CodeSystem-MINSAIdentifierTypes.json",
+    "sourceTail" : "CodeSystem-MINSAIdentifierTypes.json",
+    "content" : "complete",
+    "path" : "CodeSystem-MINSAIdentifierTypes.html",
+    "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes",
+    "version" : "1.0.0",
+    "name" : "MINSAIdentifierTypes",
+    "title" : "Tipos de Documento de Identidad - Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Tipos de documento de identidad utilizados en el sistema de salud del Perú",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSABCGVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 3,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSABCGVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSABCGVacunacion.json",
+    "path" : "PlanDefinition-MINSABCGVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSABCGVacunacion",
+    "title" : "MINSA - Vacunacion BCG",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion BCG segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna BCG se administra en dosis unica al recien nacido, preferiblemente dentro de las\nprimeras 24 horas de vida.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSAEsquemaVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 4,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSAEsquemaVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSAEsquemaVacunacion.json",
+    "path" : "PlanDefinition-MINSAEsquemaVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAEsquemaVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSAEsquemaVacunacion",
+    "title" : "Esquema Nacional de Vacunacion - MINSA Peru",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Esquema Nacional de Vacunacion del Peru para ninos desde el nacimiento hasta los 13 anos.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSAHPVVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 5,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSAHPVVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSAHPVVacunacion.json",
+    "path" : "PlanDefinition-MINSAHPVVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAHPVVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSAHPVVacunacion",
+    "title" : "MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion contra el Virus del Papiloma Humano (VPH) segun el\nEsquema Nacional de Vacunacion del Peru. Se administran 2 dosis a ninas de 9 a 13 anos\nde edad, con un intervalo de 6 meses entre dosis.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSANeumococoVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 6,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSANeumococoVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSANeumococoVacunacion.json",
+    "path" : "PlanDefinition-MINSANeumococoVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSANeumococoVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSANeumococoVacunacion",
+    "title" : "MINSA - Vacunacion contra Neumococo (PCV)",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion antineumococica conjugada segun el Esquema Nacional de\nVacunacion del Peru. Esquema 2+1: dos dosis primarias a los 2 y 4 meses de edad, con una\ndosis de refuerzo a los 12 meses.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSAPentavalenteVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 7,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSAPentavalenteVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSAPentavalenteVacunacion.json",
+    "path" : "PlanDefinition-MINSAPentavalenteVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAPentavalenteVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSAPentavalenteVacunacion",
+    "title" : "MINSA - Vacunacion Pentavalente (DPT-HepB-Hib)",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion Pentavalente segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna Pentavalente (DPT-HepB-Hib) se administra en 3 dosis a los 2, 4 y 6 meses de edad,\ncon un intervalo minimo de 8 semanas entre dosis.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSAPolioVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 8,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSAPolioVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSAPolioVacunacion.json",
+    "path" : "PlanDefinition-MINSAPolioVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAPolioVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSAPolioVacunacion",
+    "title" : "MINSA - Vacunacion contra Poliomielitis (IPV/APO)",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion contra Poliomielitis segun el Esquema Nacional de Vacunacion\ndel Peru. Esquema secuencial: IPV (inyectable) a los 2 y 4 meses, APO (oral) a los 6 y 18 meses,\ny refuerzo con APO a los 4 anos de edad.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSARotavirusVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 9,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSARotavirusVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSARotavirusVacunacion.json",
+    "path" : "PlanDefinition-MINSARotavirusVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSARotavirusVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSARotavirusVacunacion",
+    "title" : "MINSA - Vacunacion contra Rotavirus",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion contra Rotavirus segun el Esquema Nacional de Vacunacion\ndel Peru. Se administran 2 dosis a los 2 y 4 meses de edad. La primera dosis no debe\nadministrarse despues de las 15 semanas de vida.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "PlanDefinition/MINSASPRVacunacion" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 10,
+    "source" : "fsh-generated/resources/PlanDefinition-MINSASPRVacunacion.json",
+    "sourceTail" : "PlanDefinition-MINSASPRVacunacion.json",
+    "path" : "PlanDefinition-MINSASPRVacunacion.html",
+    "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSASPRVacunacion",
+    "version" : "1.0.0",
+    "name" : "MINSASPRVacunacion",
+    "title" : "MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Logica de decision para la vacunacion SPR (Sarampion, Paperas, Rubeola) segun el Esquema\nNacional de Vacunacion del Peru. Se administra la primera dosis a los 12 meses de edad\ny una dosis de refuerzo a los 18 meses.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "Questionnaire/MINSAQEliminarPaciente" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 11,
+    "source" : "fsh-generated/resources/Questionnaire-MINSAQEliminarPaciente.json",
+    "sourceTail" : "Questionnaire-MINSAQEliminarPaciente.json",
+    "path" : "Questionnaire-MINSAQEliminarPaciente.html",
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQEliminarPaciente",
+    "version" : "1.0.0",
+    "title" : "MINSA - Eliminar Paciente",
+    "titlelang" : {
+    },
+    "date" : "2024-10-10",
+    "description" : "Cuestionario para eliminar (dar de baja) a un paciente del registro de inmunizaciones. Se utiliza cuando el paciente se ha mudado, ha fallecido, tiene registro duplicado u otra razón.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "Questionnaire/MINSAQRegistroEventoAdverso" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 12,
+    "source" : "fsh-generated/resources/Questionnaire-MINSAQRegistroEventoAdverso.json",
+    "sourceTail" : "Questionnaire-MINSAQRegistroEventoAdverso.json",
+    "path" : "Questionnaire-MINSAQRegistroEventoAdverso.html",
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso",
+    "version" : "1.0.0",
+    "title" : "MINSA - Registro de Evento Adverso",
+    "titlelang" : {
+    },
+    "date" : "2024-10-10",
+    "description" : "Cuestionario para registrar un evento adverso supuestamente atribuible a la vacunación o inmunización (ESAVI). Adaptado del cuestionario MINSA EIR record_adverse_event.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "Questionnaire/MINSAQRegistroPaciente" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 13,
+    "source" : "fsh-generated/resources/Questionnaire-MINSAQRegistroPaciente.json",
+    "sourceTail" : "Questionnaire-MINSAQRegistroPaciente.json",
+    "path" : "Questionnaire-MINSAQRegistroPaciente.html",
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroPaciente",
+    "version" : "1.0.0",
+    "title" : "MINSA - Registro de Paciente",
+    "titlelang" : {
+    },
+    "date" : "2024-10-10",
+    "description" : "Cuestionario para el registro de pacientes (niños) en el programa de inmunizaciones del MINSA Perú. Incluye datos del cuidador, datos del niño, ubicación geográfica y seguro SIS.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "Questionnaire/MINSAQRegistroVacuna" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 14,
+    "source" : "fsh-generated/resources/Questionnaire-MINSAQRegistroVacuna.json",
+    "sourceTail" : "Questionnaire-MINSAQRegistroVacuna.json",
+    "path" : "Questionnaire-MINSAQRegistroVacuna.html",
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroVacuna",
+    "version" : "1.0.0",
+    "title" : "MINSA - Registro de Vacunación",
+    "titlelang" : {
+    },
+    "date" : "2024-10-10",
+    "description" : "Cuestionario para registrar la administración de una vacuna individual. Adaptado del cuestionario MINSA EIR record_child_immunization.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "Questionnaire/MINSAQSilenciarPaciente" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 15,
+    "source" : "fsh-generated/resources/Questionnaire-MINSAQSilenciarPaciente.json",
+    "sourceTail" : "Questionnaire-MINSAQSilenciarPaciente.json",
+    "path" : "Questionnaire-MINSAQSilenciarPaciente.html",
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQSilenciarPaciente",
+    "version" : "1.0.0",
+    "title" : "MINSA - Silenciar Paciente",
+    "titlelang" : {
+    },
+    "date" : "2024-10-10",
+    "description" : "Cuestionario para silenciar un paciente, desactivando los recordatorios de vacunación. Se utiliza cuando el paciente se ha mudado, fue transferido o se perdió el seguimiento.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureDefinition/MINSA.Immunization" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 16,
+    "source" : "fsh-generated/resources/StructureDefinition-MINSA.Immunization.json",
+    "sourceTail" : "StructureDefinition-MINSA.Immunization.json",
+    "path" : "StructureDefinition-MINSA.Immunization.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.Immunization",
+    "version" : "1.0.0",
+    "name" : "MINSAImmunization",
+    "title" : "Inmunización MINSA Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Perfil de Inmunización para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZImmunization de las Directrices SMART de la OMS con el esquema nacional de vacunación.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureDefinition/MINSA.Patient" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 17,
+    "source" : "fsh-generated/resources/StructureDefinition-MINSA.Patient.json",
+    "sourceTail" : "StructureDefinition-MINSA.Patient.json",
+    "path" : "StructureDefinition-MINSA.Patient.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.Patient",
+    "version" : "1.0.0",
+    "name" : "MINSAPatient",
+    "title" : "Paciente MINSA Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Perfil de Paciente para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZPatient de las Directrices SMART de la OMS con identificadores y divisiones administrativas peruanas.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureDefinition/MINSA.RelatedPerson" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 18,
+    "source" : "fsh-generated/resources/StructureDefinition-MINSA.RelatedPerson.json",
+    "sourceTail" : "StructureDefinition-MINSA.RelatedPerson.json",
+    "path" : "StructureDefinition-MINSA.RelatedPerson.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.RelatedPerson",
+    "version" : "1.0.0",
+    "name" : "MINSARelatedPerson",
+    "title" : "Cuidador MINSA Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Perfil de Persona Relacionada (cuidador) para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZCaregiver de las Directrices SMART de la OMS con identificación peruana.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureDefinition/MINSADepartamento" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 19,
+    "source" : "fsh-generated/resources/StructureDefinition-MINSADepartamento.json",
+    "sourceTail" : "StructureDefinition-MINSADepartamento.json",
+    "path" : "StructureDefinition-MINSADepartamento.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento",
+    "version" : "1.0.0",
+    "name" : "MINSADepartamento",
+    "title" : "Departamento del Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "División administrativa de primer nivel del Perú (Departamento) donde reside el paciente.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureDefinition/MINSADistrito" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 20,
+    "source" : "fsh-generated/resources/StructureDefinition-MINSADistrito.json",
+    "sourceTail" : "StructureDefinition-MINSADistrito.json",
+    "path" : "StructureDefinition-MINSADistrito.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito",
+    "version" : "1.0.0",
+    "name" : "MINSADistrito",
+    "title" : "Distrito del Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "División administrativa de tercer nivel del Perú (Distrito) donde reside el paciente.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureDefinition/MINSAProvincia" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 21,
+    "source" : "fsh-generated/resources/StructureDefinition-MINSAProvincia.json",
+    "sourceTail" : "StructureDefinition-MINSAProvincia.json",
+    "path" : "StructureDefinition-MINSAProvincia.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia",
+    "version" : "1.0.0",
+    "name" : "MINSAProvincia",
+    "title" : "Provincia del Perú",
+    "titlelang" : {
+    },
+    "experimental" : false,
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "División administrativa de segundo nivel del Perú (Provincia) donde reside el paciente.",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "ValueSet/MINSADoseNumberVS" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 22,
+    "source" : "fsh-generated/resources/ValueSet-MINSADoseNumberVS.json",
+    "sourceTail" : "ValueSet-MINSADoseNumberVS.json",
+    "path" : "ValueSet-MINSADoseNumberVS.html",
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS",
+    "version" : "1.0.0",
+    "name" : "MINSADoseNumberVS",
+    "title" : "Números de Dosis del Esquema de Vacunación - MINSA",
+    "titlelang" : {
+    },
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Conjunto de valores para los números de dosis utilizados en el esquema nacional de vacunación del Perú",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "ValueSet/MINSAIdentifierTypeVS" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 23,
+    "source" : "fsh-generated/resources/ValueSet-MINSAIdentifierTypeVS.json",
+    "sourceTail" : "ValueSet-MINSAIdentifierTypeVS.json",
+    "path" : "ValueSet-MINSAIdentifierTypeVS.html",
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS",
+    "version" : "1.0.0",
+    "name" : "MINSAIdentifierTypeVS",
+    "title" : "Tipos de Documento de Identidad - MINSA",
+    "titlelang" : {
+    },
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Conjunto de valores para los tipos de documento de identidad utilizados en el sistema de inmunizaciones del Perú",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "ValueSet/MINSAImmunizationReasonNotGivenVS" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 24,
+    "source" : "fsh-generated/resources/ValueSet-MINSAImmunizationReasonNotGivenVS.json",
+    "sourceTail" : "ValueSet-MINSAImmunizationReasonNotGivenVS.json",
+    "path" : "ValueSet-MINSAImmunizationReasonNotGivenVS.html",
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS",
+    "version" : "1.0.0",
+    "name" : "MINSAImmunizationReasonNotGivenVS",
+    "title" : "Razones de No Administración de Vacuna - MINSA",
+    "titlelang" : {
+    },
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Conjunto de valores para las razones por las cuales una vacuna no fue administrada, según el Registro Electrónico de Inmunizaciones de MINSA",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "ValueSet/MINSAVaccineVS" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 25,
+    "source" : "fsh-generated/resources/ValueSet-MINSAVaccineVS.json",
+    "sourceTail" : "ValueSet-MINSAVaccineVS.json",
+    "path" : "ValueSet-MINSAVaccineVS.html",
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAVaccineVS",
+    "version" : "1.0.0",
+    "name" : "MINSAVaccineVS",
+    "title" : "Vacunas del Esquema Nacional de Vacunación MINSA",
+    "titlelang" : {
+    },
+    "date" : "2026-03-16T12:33:41-04:00",
+    "description" : "Conjunto de valores para las vacunas utilizadas en el esquema nacional de vacunación del Perú, incluyendo códigos MINSA y referencias a códigos WHO",
+    "descriptionlang" : {
+    },
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsi",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Active"
+    }
+  },
+  "StructureMap/MINSA.EventoAdverso.QRToObservation" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 26,
+    "source" : "input/maps/MINSA.EventoAdverso.QRToObservation.fml",
+    "sourceTail" : "MINSA.EventoAdverso.QRToObservation.fml",
+    "path" : "StructureMap-MINSA.EventoAdverso.QRToObservation.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation",
+    "version" : "1.0.0",
+    "name" : "MINSA.EventoAdverso.QRToObservation",
+    "date" : "2026-03-16T12:33:41-04:00",
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureMap/MINSA.Helpers" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 27,
+    "source" : "input/maps/MINSA.Helpers.fml",
+    "sourceTail" : "MINSA.Helpers.fml",
+    "path" : "StructureMap-MINSA.Helpers.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers",
+    "version" : "1.0.0",
+    "name" : "MINSA.Helpers",
+    "date" : "2026-03-16T12:33:41-04:00",
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureMap/MINSA.RegistroPaciente.QRToPatient" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 28,
+    "source" : "input/maps/MINSA.RegistroPaciente.QRToPatient.fml",
+    "sourceTail" : "MINSA.RegistroPaciente.QRToPatient.fml",
+    "path" : "StructureMap-MINSA.RegistroPaciente.QRToPatient.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroPaciente.QRToPatient",
+    "version" : "1.0.0",
+    "name" : "MINSA.RegistroPaciente.QRToPatient",
+    "date" : "2026-03-16T12:33:41-04:00",
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  },
+  "StructureMap/MINSA.RegistroVacuna.QRToImmunization" : {
+    "history" : false,
+    "testplan" : false,
+    "testscript" : false,
+    "index" : 29,
+    "source" : "input/maps/MINSA.RegistroVacuna.QRToImmunization.fml",
+    "sourceTail" : "MINSA.RegistroVacuna.QRToImmunization.fml",
+    "path" : "StructureMap-MINSA.RegistroVacuna.QRToImmunization.html",
+    "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization",
+    "version" : "1.0.0",
+    "name" : "MINSA.RegistroVacuna.QRToImmunization",
+    "date" : "2026-03-16T12:33:41-04:00",
+    "jurisdictions" : [{
+      "code" : "PE",
+      "name" : "Peru",
+      "flag" : "per"
+    }],
+    "status" : {
+      "class" : "colsd",
+      "owner" : "MINSA - Ministerio de Salud del Perú",
+      "link" : "https://www.gob.pe/minsa",
+      "status" : "Draft"
+    }
+  }
+}

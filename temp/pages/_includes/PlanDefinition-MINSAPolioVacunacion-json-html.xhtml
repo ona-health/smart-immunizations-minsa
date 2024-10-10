@@ -1,0 +1,254 @@
+{% raw %}<pre class="json" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code style="white-space: pre; text-wrap: nowrap;">{
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition">resourceType</a>" : "PlanDefinition",
+  "<a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.id">id</a>" : "MINSAPolioVacunacion",
+  "<a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.meta">meta</a>" : {
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">profile</a>" : [
+      <a href="https://build.fhir.org/ig/HL7/cqf-recommendations/StructureDefinition-cpg-recommendationdefinition.html" style="color: Maroon">&#x1F517;</a> "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"<a href="http://hl7.org/fhir/uv/crmi/STU1/StructureDefinition-crmi-shareableplandefinition.html" style="color: Maroon">&#x1F517;</a> ,
+      "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition"<a href="http://hl7.org/fhir/uv/crmi/STU1/StructureDefinition-crmi-publishableplandefinition.html" style="color: Maroon">&#x1F517;</a> ,
+      "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition"
+    ]
+  },
+  "<a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.text">text</a>" : {
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a>" : "extensions",
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;div&gt;\n    &lt;table class=\&quot;grid dict\&quot;&gt;\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Id: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;MINSAPolioVacunacion&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Url: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;&lt;a href=\&quot;PlanDefinition-MINSAPolioVacunacion.html\&quot;&gt;MINSA - Vacunacion contra Poliomielitis (IPV/APO)&lt;/a&gt;&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Version: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;1.0.0&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Title: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;MINSA - Vacunacion contra Poliomielitis (IPV/APO)&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Type: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                \n                    \n                        \n                        &lt;p style=\&quot;margin-bottom: 5px;\&quot;&gt;\n                            &lt;b&gt;system: &lt;/b&gt; &lt;span&gt;&lt;a href=\&quot;http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html\&quot;&gt;http://terminology.hl7.org/CodeSystem/plan-definition-type&lt;/a&gt;&lt;/span&gt;\n                        &lt;/p&gt;\n                        \n                        \n                        &lt;p style=\&quot;margin-bottom: 5px;\&quot;&gt;\n                            &lt;b&gt;code: &lt;/b&gt; &lt;span&gt;eca-rule&lt;/span&gt;\n                        &lt;/p&gt;\n                        \n                        \n                    \n                \n                \n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Date: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;2026-03-16 12:33:41-0400&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Publisher: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;MINSA - Ministerio de Salud del Perú&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Description: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;&lt;div&gt;&lt;p&gt;Logica de decision para la vacunacion contra Poliomielitis segun el Esquema Nacional de Vacunacion\ndel Peru. Esquema secuencial: IPV (inyectable) a los 2 y 4 meses, APO (oral) a los 6 y 18 meses,\ny refuerzo con APO a los 4 anos de edad.&lt;/p&gt;\n&lt;/div&gt;&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Knowledge Capability: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                \n                computable \n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Jurisdiction: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;PE&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Related Artifacts: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                \n                \n                &lt;p&gt;&lt;b&gt;References&lt;/b&gt;&lt;/p&gt;\n                &lt;ul&gt;\n                    \n                    &lt;li&gt;&lt;div&gt;&lt;p&gt;NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion&lt;/p&gt;\n&lt;/div&gt;&lt;br/&gt;&lt;a href=\&quot;null\&quot;/&gt;&lt;/li&gt;\n                    \n                &lt;/ul&gt;\n                \n                \n                &lt;p&gt;&lt;b&gt;Dependencies&lt;/b&gt;&lt;/p&gt;\n                &lt;ul&gt;\n                    \n                    &lt;li&gt;&lt;a href=\&quot;https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTPolioBOPVPlusIPV.html\&quot;&gt;http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTPolioBOPVPlusIPV&lt;/a&gt;&lt;/li&gt;\n                    \n                &lt;/ul&gt;\n                \n                \n                \n                \n                \n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Actions: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                &lt;table class=\&quot;grid-dict\&quot;&gt;\n                    \n                    &lt;tr&gt;\n                        &lt;td&gt;\n                            \n                            &lt;b&gt; Determinar si el nino necesita la 1ra dosis de IPV:&lt;/b&gt; Evaluar si el nino de 2 meses cumple las condiciones para recibir la primera\n    dosis de vacuna IPV (inactivada) contra Poliomielitis.\n                            \n                            &lt;br/&gt;\n                            \n                            \n                            &lt;b&gt;If:&lt;/b&gt;\n                            \n                            &lt;i&gt;Applicability:&lt;/i&gt;\n                            \n                            El paciente tiene 2 meses o mas y no ha recibido la 1ra dosis de IPV\n                            \n                            &lt;i&gt;(Paciente necesita 1ra dosis de IPV)&lt;/i&gt;\n                            &lt;br/&gt;\n                            \n                            \n                            \n                            \n                            \n                        &lt;/td&gt;\n                    &lt;/tr&gt;\n                    \n                    &lt;tr&gt;\n                        &lt;td&gt;\n                            \n                            &lt;b&gt; Determinar si el nino necesita la 2da dosis de IPV:&lt;/b&gt; Evaluar si el nino de 4 meses cumple las condiciones para recibir la segunda\n    dosis de vacuna IPV (inactivada) contra Poliomielitis.\n                            \n                            &lt;br/&gt;\n                            \n                            \n                            &lt;b&gt;If:&lt;/b&gt;\n                            \n                            &lt;i&gt;Applicability:&lt;/i&gt;\n                            \n                            El paciente tiene 4 meses o mas, ha recibido la 1ra dosis de IPV y no ha recibido la 2da dosis\n                            \n                            &lt;i&gt;(Paciente necesita 2da dosis de IPV)&lt;/i&gt;\n                            &lt;br/&gt;\n                            \n                            \n                            \n                            \n                            \n                        &lt;/td&gt;\n                    &lt;/tr&gt;\n                    \n                    &lt;tr&gt;\n                        &lt;td&gt;\n                            \n                            &lt;b&gt; Determinar si el nino necesita la 3ra dosis de Polio (APO):&lt;/b&gt; Evaluar si el nino de 6 meses cumple las condiciones para recibir la tercera\n    dosis de vacuna contra Poliomielitis (APO oral).\n                            \n                            &lt;br/&gt;\n                            \n                            \n                            &lt;b&gt;If:&lt;/b&gt;\n                            \n                            &lt;i&gt;Applicability:&lt;/i&gt;\n                            \n                            El paciente tiene 6 meses o mas, ha recibido 2 dosis de IPV y no ha recibido la 3ra dosis (APO)\n                            \n                            &lt;i&gt;(Paciente necesita 3ra dosis de Polio APO)&lt;/i&gt;\n                            &lt;br/&gt;\n                            \n                            \n                            \n                            \n                            \n                        &lt;/td&gt;\n                    &lt;/tr&gt;\n                    \n                    &lt;tr&gt;\n                        &lt;td&gt;\n                            \n                            &lt;b&gt; Determinar si el nino necesita el 1er refuerzo de Polio (APO):&lt;/b&gt; Evaluar si el nino de 18 meses cumple las condiciones para recibir el primer\n    refuerzo de vacuna APO contra Poliomielitis.\n                            \n                            &lt;br/&gt;\n                            \n                            \n                            &lt;b&gt;If:&lt;/b&gt;\n                            \n                            &lt;i&gt;Applicability:&lt;/i&gt;\n                            \n                            El paciente tiene 18 meses o mas, ha completado la serie primaria y no ha recibido el 1er refuerzo\n                            \n                            &lt;i&gt;(Paciente necesita 1er refuerzo de Polio APO)&lt;/i&gt;\n                            &lt;br/&gt;\n                            \n                            \n                            \n                            \n                            \n                        &lt;/td&gt;\n                    &lt;/tr&gt;\n                    \n                    &lt;tr&gt;\n                        &lt;td&gt;\n                            \n                            &lt;b&gt; Determinar si el nino necesita el 2do refuerzo de Polio (APO):&lt;/b&gt; Evaluar si el nino de 4 anos cumple las condiciones para recibir el segundo\n    refuerzo de vacuna APO contra Poliomielitis.\n                            \n                            &lt;br/&gt;\n                            \n                            \n                            &lt;b&gt;If:&lt;/b&gt;\n                            \n                            &lt;i&gt;Applicability:&lt;/i&gt;\n                            \n                            El paciente tiene 4 anos o mas, ha recibido el 1er refuerzo y no ha recibido el 2do refuerzo\n                            \n                            &lt;i&gt;(Paciente necesita 2do refuerzo de Polio APO)&lt;/i&gt;\n                            &lt;br/&gt;\n                            \n                            \n                            \n                            \n                            \n                        &lt;/td&gt;\n                    &lt;/tr&gt;\n                    \n                &lt;/table&gt;\n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n    &lt;/table&gt;\n&lt;/div&gt;\n&lt;/div&gt;"
+  },
+  "<a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.extension">extension</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCode</a>" : "computable"
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.url">url</a>" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAPolioVacunacion",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.version">version</a>" : "1.0.0",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.name">name</a>" : "MINSAPolioVacunacion",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.title">title</a>" : "MINSA - Vacunacion contra Poliomielitis (IPV/APO)",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.type">type</a>" : {
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+      {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/plan-definition-type",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "eca-rule"
+      }
+    ]
+  },
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.status">status</a>" : "active",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.experimental">experimental</a>" : false,
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.date">date</a>" : "2026-03-16T12:33:41-04:00",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">publisher</a>" : "MINSA - Ministerio de Salud del Perú",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "MINSA - Ministerio de Salud del Perú",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://www.gob.pe/minsa"
+        }
+      ]
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.description">description</a>" : "Logica de decision para la vacunacion contra Poliomielitis segun el Esquema Nacional de Vacunacion\ndel Peru. Esquema secuencial: IPV (inyectable) a los 2 y 4 meses, APO (oral) a los 6 y 18 meses,\ny refuerzo con APO a los 4 anos de edad.",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.jurisdiction">jurisdiction</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "urn:iso:std:iso:3166",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "PE",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Peru"
+        }
+      ]
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a>" : "citation",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.citation">citation</a>" : "NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion"
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a>" : "depends-on",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>" : "WHO SMART Guidelines - Polio bOPV plus IPV Decision Table",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.resource">resource</a>" : "http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTPolioBOPVPlusIPV"
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action">action</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueMarkdown</a>" : "Peru utiliza un esquema secuencial de vacunacion contra Poliomielitis.\n      Las dos primeras dosis se administran con vacuna inactivada (IPV) por via intramuscular\n      para minimizar el riesgo de poliomielitis asociada a la vacuna."
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Determinar si el nino necesita la 1ra dosis de IPV",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Evaluar si el nino de 2 meses cumple las condiciones para recibir la primera\n    dosis de vacuna IPV (inactivada) contra Poliomielitis.",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.description">description</a>" : "El paciente tiene 2 meses o mas y no ha recibido la 1ra dosis de IPV",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Paciente necesita 1ra dosis de IPV"
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "status",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'draft'"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "intent",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'proposal'"
+          }
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueMarkdown</a>" : "Segunda dosis de IPV a los 4 meses. Con esta dosis se completa la serie\n      de vacuna inactivada antes de continuar con APO oral."
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Determinar si el nino necesita la 2da dosis de IPV",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Evaluar si el nino de 4 meses cumple las condiciones para recibir la segunda\n    dosis de vacuna IPV (inactivada) contra Poliomielitis.",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.description">description</a>" : "El paciente tiene 4 meses o mas, ha recibido la 1ra dosis de IPV y no ha recibido la 2da dosis",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Paciente necesita 2da dosis de IPV"
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "status",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'draft'"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "intent",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'proposal'"
+          }
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueMarkdown</a>" : "A partir de la tercera dosis se utiliza la vacuna oral (APO/bOPV)\n      que contribuye a la inmunidad de mucosas y a la proteccion comunitaria."
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Determinar si el nino necesita la 3ra dosis de Polio (APO)",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Evaluar si el nino de 6 meses cumple las condiciones para recibir la tercera\n    dosis de vacuna contra Poliomielitis (APO oral).",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.description">description</a>" : "El paciente tiene 6 meses o mas, ha recibido 2 dosis de IPV y no ha recibido la 3ra dosis (APO)",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Paciente necesita 3ra dosis de Polio APO"
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "status",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'draft'"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "intent",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'proposal'"
+          }
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueMarkdown</a>" : "Primer refuerzo con APO oral a los 18 meses de edad para\n      fortalecer la inmunidad contra Poliomielitis."
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Determinar si el nino necesita el 1er refuerzo de Polio (APO)",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Evaluar si el nino de 18 meses cumple las condiciones para recibir el primer\n    refuerzo de vacuna APO contra Poliomielitis.",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.description">description</a>" : "El paciente tiene 18 meses o mas, ha completado la serie primaria y no ha recibido el 1er refuerzo",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Paciente necesita 1er refuerzo de Polio APO"
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "status",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'draft'"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "intent",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'proposal'"
+          }
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueMarkdown</a>" : "Segundo refuerzo con APO oral a los 4 anos de edad, completando\n      el esquema de vacunacion contra Poliomielitis."
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Determinar si el nino necesita el 2do refuerzo de Polio (APO)",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Evaluar si el nino de 4 anos cumple las condiciones para recibir el segundo\n    refuerzo de vacuna APO contra Poliomielitis.",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.description">description</a>" : "El paciente tiene 4 anos o mas, ha recibido el 1er refuerzo y no ha recibido el 2do refuerzo",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Paciente necesita 2do refuerzo de Polio APO"
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "status",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'draft'"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "intent",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-expression",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "'proposal'"
+          }
+        }
+      ]
+    }
+  ]
+}</code></pre>
+{% endraw %}

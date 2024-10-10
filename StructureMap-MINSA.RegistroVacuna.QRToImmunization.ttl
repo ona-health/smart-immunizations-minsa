@@ -1,0 +1,1410 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization> a fhir:StructureMap ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSA.RegistroVacuna.QRToImmunization"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MapaDeEstructura MINSA.RegistroVacuna.QRToImmunization</b></p><a name=\"MINSA.RegistroVacuna.QRToImmunization\"> </a><a name=\"hcMINSA.RegistroVacuna.QRToImmunization\"> </a><pre class=\"fml\">#xD;\n<b>map</b><span style=\"color: navy\"> \"</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization<span style=\"color: navy\">\" = \"</span>MINSA.RegistroVacuna.QRToImmunization<span style=\"color: navy\">\"#xD;\n#xD;\n</span><b>uses</b><span style=\"color: navy\"> \"</span><a href=\"http://hl7.org/fhir/R4/questionnaireresponse.html\" title=\"QuestionnaireResponse\">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style=\"color: navy\">\" </span><b>alias </b>QResp <b>as </b><b>source</b>#xD;\n<b>uses</b><span style=\"color: navy\"> \"</span><a href=\"http://hl7.org/fhir/R4/bundle.html\" title=\"Bundle\">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style=\"color: navy\">\" </span><b>alias </b>Bundle <b>as </b><b>target</b>#xD;\n#xD;\n<b>imports</b><span style=\"color: navy\"> \"</span><a href=\"StructureMap-MINSA.Helpers.html\" title=\"MINSA.Helpers\">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style=\"color: navy\">\"#xD;\n</span>#xD;\n<b>group </b>RegistroVacuna<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> bundle.type = <span style=\"color: blue\">'collection'</span> <i>\"BundleStatic\"</i><span style=\"color: navy\">;</span>#xD;\n  src<span style=\"color: navy\"><b> -&gt; </b></span><b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Encounter'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">encounter</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<b> then </b>ExtractEncounter<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>\"ExtractEncounter\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Solo crear Immunization si la vacuna fue administrada</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Immunization'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">immunization</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        src<b> then </b>ExtractImmunization<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">immunization</span><span style=\"color: navy\">)</span> <i>\"ExtractImmunization\"</i><span style=\"color: navy\">;</span>#xD;\n        src<b> then </b>ExtractTaskCompleted<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">immunization</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">bundle</span><span style=\"color: navy\">)</span> <i>\"ExtractTask\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"ImmunizationEntry\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"VaccineGiven\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Si la vacuna no fue administrada, marcar tarea como fallida</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'no'))<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      src<b> then </b>ExtractTaskFailed<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">bundle</span><span style=\"color: navy\">)</span> <i>\"ExtractTaskFailed\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"VaccineNotGiven\"</i><span style=\"color: navy\">;</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <span style=\"color: maroon\">encounter</span> <i>\"EncounterEntry\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"CreateEncounter\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el recurso Encounter para la visita de vacunacion</span>#xD;\n<b>group </b>ExtractEncounter<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> encounter.status = <span style=\"color: blue\">'finished'</span><span style=\"color: navy\">, </span> encounter.class = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'AMB'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'ambulatory'</span><span style=\"color: navy\">)</span> <i>\"EncounterStatic\"</i><span style=\"color: navy\">;</span>#xD;\n  src.subject<b> as </b><span style=\"color: maroon\">subject</span><span style=\"color: navy\"><b> -&gt; </b></span>encounter.subject = <span style=\"color: maroon\">subject</span> <i>\"EncounterSubject\"</i><span style=\"color: navy\">;</span>#xD;\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span> coding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> coding.code = <span style=\"color: blue\">'33879002'</span><span style=\"color: navy\">, </span> coding.display = <span style=\"color: blue\">'Administration of vaccine to produce active immunity (procedure)'</span> <i>\"TypeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"TypeCC\"</i><span style=\"color: navy\">;</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: blue\">'Vacunacion'</span> <i>\"TypeText\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"EncounterType\"</i><span style=\"color: navy\">;</span>#xD;\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.period = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Period'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">period</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>period.start = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>\"PeriodStart\"</i><span style=\"color: navy\">;</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span>period.end = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>\"PeriodEnd\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"EncounterPeriod\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Ubicacion del encuentro (establecimiento de salud)</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'location-id') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">locId</span><span style=\"color: navy\"><b> -&gt; </b></span>encounter.location = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Encounter_Location'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">loc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        locId<span style=\"color: navy\"><b> -&gt; </b></span>loc.location = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Reference'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">ref</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          locId<span style=\"color: navy\"><b> -&gt; </b></span>ref.reference = evaluate<span style=\"color: navy\">(</span>locId<span style=\"color: navy\">, </span>'Location/' + $this<span style=\"color: navy\">)</span> <i>\"LocReference\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"LocRef\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreateLoc\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"LocAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"EncounterLocation\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el recurso Immunization con datos de la vacuna administrada</span>#xD;\n<b>group </b>ExtractImmunization<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>source</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter, <b>target</b> <span style=\"color: maroon\">immunization</span><span style=\"color: navy\"> : </span>Immunization<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> immunization.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> immunization.status = <span style=\"color: blue\">'completed'</span><span style=\"color: navy\">, </span> immunization.recorded = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> immunization.patient = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>subject<span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> immunization.encounter = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>\"ImmunizationStatic\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Codigo de vacuna (del esquema nacional MINSA)</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'vaccine-code'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.vaccineCode = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        coding<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <span style=\"color: maroon\">coding</span> <i>\"SetVaccineCoding\"</i><span style=\"color: navy\">;</span>#xD;\n        coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: maroon\">display</span> <i>\"SetVaccineText\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreateVaccineCC\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"VaccineCodeAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"VaccineCode\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Fecha de administracion</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'vaccination-date'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span> <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'dateTime'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">dt</span><span style=\"color: navy\">, </span> dt.value = <span style=\"color: maroon\">val</span><span style=\"color: navy\">, </span> immunization.occurrence = <span style=\"color: maroon\">dt</span> <i>\"SetOccurrence\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"VaccineDateAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"VaccinationDate\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Numero de lote</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'lot-number'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.lotNumber = <span style=\"color: maroon\">val</span> <i>\"SetLotNumber\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"LotAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"LotNumber\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Fecha de vencimiento del lote</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'expiration-date'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.expirationDate = <span style=\"color: maroon\">val</span> <i>\"SetExpirationDate\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"ExpirationAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"ExpirationDate\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Numero de dosis y protocolo aplicado</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'dose-number'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.protocolApplied = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Immunization_AppliedProtocol'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">protocol</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        val<span style=\"color: navy\"><b> -&gt; </b></span>protocol.doseNumber = <span style=\"color: maroon\">val</span> <i>\"SetDoseNumber\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreateProtocol\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"DoseAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"DoseNumber\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Via de administracion</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'route'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.route = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        coding<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <span style=\"color: maroon\">coding</span> <i>\"SetRouteCoding\"</i><span style=\"color: navy\">;</span>#xD;\n        coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: maroon\">display</span> <i>\"SetRouteText\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreateRouteCC\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"RouteAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"Route\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Establecimiento de salud (como performer)</span>#xD;\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'performer-organization') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">orgRef</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.performer = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Immunization_Performer'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">performer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        orgRef<span style=\"color: navy\"><b> -&gt; </b></span>performer.actor = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Reference'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">ref</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          orgRef<span style=\"color: navy\"><b> -&gt; </b></span>ref.reference = evaluate<span style=\"color: navy\">(</span>orgRef<span style=\"color: navy\">, </span>'Organization/' + $this<span style=\"color: navy\">)</span> <i>\"SetOrgRef\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"CreateOrgRef\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreatePerformer\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"OrgAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"PerformerOrg\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea un Task con estado completado, vinculado al Encounter e Immunization</span>#xD;\n<b>group </b>ExtractTaskCompleted<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>source</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter, <b>source</b> <span style=\"color: maroon\">immunization</span><span style=\"color: navy\"> : </span>Immunization, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">taskId</span><span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">task</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        taskId<span style=\"color: navy\"><b> -&gt; </b></span> task.id = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'id'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">id</span><span style=\"color: navy\">, </span> id.value = <span style=\"color: maroon\">taskId</span> <i>\"SetTaskId\"</i><span style=\"color: navy\">;</span>#xD;\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.status = <span style=\"color: blue\">'completed'</span> <i>\"TaskCompleted\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">// </span><span style=\"color: green\">Referencia al Encounter</span>#xD;\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.output = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task_Output'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">outputEnc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          taskId<span style=\"color: navy\"><b> -&gt; </b></span>outputEnc.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>            taskId<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'41000179103'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'Immunization record (record artifact)'</span><span style=\"color: navy\">)</span> <i>\"OutputEncTypeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n          <span style=\"color: navy\">}</span> <i>\"OutputEncType\"</i><span style=\"color: navy\">;</span>#xD;\n          encounter<span style=\"color: navy\"><b> -&gt; </b></span>outputEnc.value = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>\"OutputEncValue\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"TaskOutputEnc\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">// </span><span style=\"color: green\">Referencia al Immunization</span>#xD;\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.output = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task_Output'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">outputImm</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          taskId<span style=\"color: navy\"><b> -&gt; </b></span>outputImm.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>            taskId<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'41000179103'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'Immunization record (record artifact)'</span><span style=\"color: navy\">)</span> <i>\"OutputImmTypeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n          <span style=\"color: navy\">}</span> <i>\"OutputImmType\"</i><span style=\"color: navy\">;</span>#xD;\n          immunization<span style=\"color: navy\"><b> -&gt; </b></span>outputImm.value = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">immunization</span><span style=\"color: navy\">)</span> <i>\"OutputImmValue\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"TaskOutputImm\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreateTask\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"TaskIdAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"TaskCompleted\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea un Task con estado fallido cuando la vacuna no fue administrada</span>#xD;\n<b>group </b>ExtractTaskFailed<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {#xD;\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      answer.value<b> as </b><span style=\"color: maroon\">taskId</span><span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">task</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        taskId<span style=\"color: navy\"><b> -&gt; </b></span> task.id = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'id'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">id</span><span style=\"color: navy\">, </span> id.value = <span style=\"color: maroon\">taskId</span> <i>\"SetFailedTaskId\"</i><span style=\"color: navy\">;</span>#xD;\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.status = <span style=\"color: blue\">'failed'</span> <i>\"TaskFailed\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CreateFailedTask\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"FailedTaskIdAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"TaskFailed\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span></pre></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSA.RegistroVacuna.QRToImmunization"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:structure ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse>
+     ] ;
+     fhir:mode [ fhir:v "source" ] ;
+     fhir:alias [ fhir:v "QResp" ]
+  ] [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/Bundle"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/Bundle>
+     ] ;
+     fhir:mode [ fhir:v "target" ] ;
+     fhir:alias [ fhir:v "Bundle" ]
+  ] ) ; # 
+  fhir:import ( [
+     fhir:v "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers>
+  ] ) ; # 
+  fhir:group ( [
+     fhir:name [ fhir:v "RegistroVacuna" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "bundle" ] ;
+       fhir:type [ fhir:v "Bundle" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "BundleStatic" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "id" ] ;
+         fhir:transform [ fhir:v "uuid" ]
+       ] [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "type" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "collection"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "CreateEncounter" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:variable [ fhir:v "encounter" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Encounter"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "ExtractEncounter" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:dependent ( [
+           fhir:name [ fhir:v "ExtractEncounter" ] ;
+           fhir:variable ( [ fhir:v "src" ] [ fhir:v "encounter" ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "VaccineGiven" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "ImmunizationEntry" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "bundle" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "entry" ] ;
+             fhir:variable [ fhir:v "entry" ]
+           ] [
+             fhir:context [ fhir:v "entry" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "resource" ] ;
+             fhir:variable [ fhir:v "immunization" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Immunization"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "ExtractImmunization" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "src" ]
+             ] ) ;
+             fhir:dependent ( [
+               fhir:name [ fhir:v "ExtractImmunization" ] ;
+               fhir:variable ( [ fhir:v "src" ] [ fhir:v "encounter" ] [ fhir:v "immunization" ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "ExtractTask" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "src" ]
+             ] ) ;
+             fhir:dependent ( [
+               fhir:name [ fhir:v "ExtractTaskCompleted" ] ;
+               fhir:variable ( [ fhir:v "src" ] [ fhir:v "encounter" ] [ fhir:v "immunization" ] [ fhir:v "bundle" ] )
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "VaccineNotGiven" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "((linkId = 'vaccine-administered') and (answer.value.code = 'no'))" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "ExtractTaskFailed" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:dependent ( [
+             fhir:name [ fhir:v "ExtractTaskFailed" ] ;
+             fhir:variable ( [ fhir:v "src" ] [ fhir:v "bundle" ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "EncounterEntry" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "bundle" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "entry" ] ;
+           fhir:variable [ fhir:v "entry" ]
+         ] [
+           fhir:context [ fhir:v "entry" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "resource" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "encounter"
+             ]
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ExtractEncounter" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae el recurso Encounter para la visita de vacunacion" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "encounter" ] ;
+       fhir:type [ fhir:v "Encounter" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "EncounterStatic" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "id" ] ;
+         fhir:transform [ fhir:v "uuid" ]
+       ] [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "status" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "finished"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "class" ] ;
+         fhir:transform [ fhir:v "c" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+           ]
+         ] [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "AMB"
+           ]
+         ] [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "ambulatory"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterSubject" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "subject" ] ;
+         fhir:variable [ fhir:v "subject" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "subject" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "subject"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterType" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "type" ] ;
+         fhir:variable [ fhir:v "cc" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "CodeableConcept"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "TypeCC" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "cc" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "coding" ] ;
+           fhir:variable [ fhir:v "coding" ] ;
+           fhir:transform [ fhir:v "create" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "Coding"
+             ]
+           ] )
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "TypeCoding" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "system" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "http://snomed.info/sct"
+               ]
+             ] )
+           ] [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "code" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "33879002"
+               ]
+             ] )
+           ] [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "display" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Administration of vaccine to produce active immunity (procedure)"
+               ]
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "TypeText" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "cc" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "text" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "Vacunacion"
+             ]
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterPeriod" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "period" ] ;
+         fhir:variable [ fhir:v "period" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Period"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "PeriodStart" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "period" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "start" ] ;
+           fhir:transform [ fhir:v "evaluate" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "src"
+             ]
+           ] [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "now()"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "PeriodEnd" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "period" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "end" ] ;
+           fhir:transform [ fhir:v "evaluate" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "src"
+             ]
+           ] [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "now()"
+             ]
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterLocation" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "((linkId = 'location-id') and answer.value.exists())" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "LocAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreateLoc" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "locId" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "encounter" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "location" ] ;
+             fhir:variable [ fhir:v "loc" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Encounter_Location"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "LocRef" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "locId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "loc" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "location" ] ;
+               fhir:variable [ fhir:v "ref" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Reference"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "LocReference" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "locId" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "ref" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "reference" ] ;
+                 fhir:transform [ fhir:v "evaluate" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "locId"
+                   ]
+                 ] [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "'Location/' + $this"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ExtractImmunization" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae el recurso Immunization con datos de la vacuna administrada" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "encounter" ] ;
+       fhir:type [ fhir:v "Encounter" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "immunization" ] ;
+       fhir:type [ fhir:v "Immunization" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "ImmunizationStatic" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "immunization" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "id" ] ;
+         fhir:transform [ fhir:v "uuid" ]
+       ] [
+         fhir:context [ fhir:v "immunization" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "status" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "completed"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "immunization" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "recorded" ] ;
+         fhir:transform [ fhir:v "evaluate" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "src"
+           ]
+         ] [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "now()"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "immunization" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "patient" ] ;
+         fhir:transform [ fhir:v "evaluate" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "src"
+           ]
+         ] [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "subject"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "immunization" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "encounter" ] ;
+         fhir:transform [ fhir:v "reference" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "encounter"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "VaccineCode" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "linkId = 'vaccine-code'" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "VaccineCodeAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreateVaccineCC" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "coding" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "vaccineCode" ] ;
+             fhir:variable [ fhir:v "cc" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "CodeableConcept"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "SetVaccineCoding" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "coding" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "cc" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "coding" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "coding"
+                 ]
+               ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "SetVaccineText" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "coding" ] ;
+               fhir:element [ fhir:v "display" ] ;
+               fhir:variable [ fhir:v "display" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "cc" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "text" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "display"
+                 ]
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "VaccinationDate" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "linkId = 'vaccination-date'" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "VaccineDateAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "SetOccurrence" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "val" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:variable [ fhir:v "dt" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "dateTime"
+               ]
+             ] )
+           ] [
+             fhir:context [ fhir:v "dt" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "val"
+               ]
+             ] )
+           ] [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "occurrence" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "dt"
+               ]
+             ] )
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "LotNumber" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "linkId = 'lot-number'" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "LotAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "SetLotNumber" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "val" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "lotNumber" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "val"
+               ]
+             ] )
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "ExpirationDate" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "linkId = 'expiration-date'" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "ExpirationAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "SetExpirationDate" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "val" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "expirationDate" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "val"
+               ]
+             ] )
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "DoseNumber" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "linkId = 'dose-number'" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "DoseAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreateProtocol" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "val" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "protocolApplied" ] ;
+             fhir:variable [ fhir:v "protocol" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Immunization_AppliedProtocol"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "SetDoseNumber" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "val" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "protocol" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "doseNumber" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "val"
+                 ]
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "Route" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "linkId = 'route'" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "RouteAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreateRouteCC" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "coding" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "route" ] ;
+             fhir:variable [ fhir:v "cc" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "CodeableConcept"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "SetRouteCoding" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "coding" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "cc" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "coding" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "coding"
+                 ]
+               ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "SetRouteText" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "coding" ] ;
+               fhir:element [ fhir:v "display" ] ;
+               fhir:variable [ fhir:v "display" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "cc" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "text" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "display"
+                 ]
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "PerformerOrg" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "((linkId = 'performer-organization') and answer.value.exists())" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "OrgAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreatePerformer" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "orgRef" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "immunization" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "performer" ] ;
+             fhir:variable [ fhir:v "performer" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Immunization_Performer"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "CreateOrgRef" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "orgRef" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "performer" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "actor" ] ;
+               fhir:variable [ fhir:v "ref" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Reference"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "SetOrgRef" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "orgRef" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "ref" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "reference" ] ;
+                 fhir:transform [ fhir:v "evaluate" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "orgRef"
+                   ]
+                 ] [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "'Organization/' + $this"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ExtractTaskCompleted" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Crea un Task con estado completado, vinculado al Encounter e Immunization" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "encounter" ] ;
+       fhir:type [ fhir:v "Encounter" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "immunization" ] ;
+       fhir:type [ fhir:v "Immunization" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "bundle" ] ;
+       fhir:type [ fhir:v "Bundle" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "TaskCompleted" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "((linkId = 'task-id') and answer.value.exists())" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "TaskIdAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreateTask" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "taskId" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "bundle" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "entry" ] ;
+             fhir:variable [ fhir:v "entry" ]
+           ] [
+             fhir:context [ fhir:v "entry" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "resource" ] ;
+             fhir:variable [ fhir:v "task" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Task"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "SetTaskId" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "taskId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "task" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "id" ] ;
+               fhir:variable [ fhir:v "id" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "id"
+                 ]
+               ] )
+             ] [
+               fhir:context [ fhir:v "id" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "taskId"
+                 ]
+               ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "TaskCompleted" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "taskId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "task" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "status" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "completed"
+                 ]
+               ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "TaskOutputEnc" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "taskId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "task" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "output" ] ;
+               fhir:variable [ fhir:v "outputEnc" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Task_Output"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "OutputEncType" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "taskId" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "outputEnc" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "type" ] ;
+                 fhir:variable [ fhir:v "cc" ] ;
+                 fhir:transform [ fhir:v "create" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "CodeableConcept"
+                   ]
+                 ] )
+               ] ) ;
+               fhir:rule ( [
+                 fhir:name [ fhir:v "OutputEncTypeCoding" ] ;
+                 fhir:source ( [
+                   fhir:context [ fhir:v "taskId" ]
+                 ] ) ;
+                 fhir:target ( [
+                   fhir:context [ fhir:v "cc" ] ;
+                   fhir:contextType [ fhir:v "variable" ] ;
+                   fhir:element [ fhir:v "coding" ] ;
+                   fhir:transform [ fhir:v "c" ] ;
+                   fhir:parameter ( [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "http://snomed.info/sct"
+                     ]
+                   ] [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "41000179103"
+                     ]
+                   ] [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "Immunization record (record artifact)"
+                     ]
+                   ] )
+                 ] )
+               ] )
+             ] [
+               fhir:name [ fhir:v "OutputEncValue" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "encounter" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "outputEnc" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "value" ] ;
+                 fhir:transform [ fhir:v "reference" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "encounter"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "TaskOutputImm" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "taskId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "task" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "output" ] ;
+               fhir:variable [ fhir:v "outputImm" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Task_Output"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "OutputImmType" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "taskId" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "outputImm" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "type" ] ;
+                 fhir:variable [ fhir:v "cc" ] ;
+                 fhir:transform [ fhir:v "create" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "CodeableConcept"
+                   ]
+                 ] )
+               ] ) ;
+               fhir:rule ( [
+                 fhir:name [ fhir:v "OutputImmTypeCoding" ] ;
+                 fhir:source ( [
+                   fhir:context [ fhir:v "taskId" ]
+                 ] ) ;
+                 fhir:target ( [
+                   fhir:context [ fhir:v "cc" ] ;
+                   fhir:contextType [ fhir:v "variable" ] ;
+                   fhir:element [ fhir:v "coding" ] ;
+                   fhir:transform [ fhir:v "c" ] ;
+                   fhir:parameter ( [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "http://snomed.info/sct"
+                     ]
+                   ] [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "41000179103"
+                     ]
+                   ] [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "Immunization record (record artifact)"
+                     ]
+                   ] )
+                 ] )
+               ] )
+             ] [
+               fhir:name [ fhir:v "OutputImmValue" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "immunization" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "outputImm" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "value" ] ;
+                 fhir:transform [ fhir:v "reference" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "immunization"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ExtractTaskFailed" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Crea un Task con estado fallido cuando la vacuna no fue administrada" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "bundle" ] ;
+       fhir:type [ fhir:v "Bundle" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "TaskFailed" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "item" ] ;
+         fhir:variable [ fhir:v "item" ] ;
+         fhir:condition [ fhir:v "((linkId = 'task-id') and answer.value.exists())" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "FailedTaskIdAnswer" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "item" ] ;
+           fhir:element [ fhir:v "answer" ] ;
+           fhir:listMode [ fhir:v "first" ] ;
+           fhir:variable [ fhir:v "answer" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CreateFailedTask" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "answer" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:variable [ fhir:v "taskId" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "bundle" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "entry" ] ;
+             fhir:variable [ fhir:v "entry" ]
+           ] [
+             fhir:context [ fhir:v "entry" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "resource" ] ;
+             fhir:variable [ fhir:v "task" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Task"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "SetFailedTaskId" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "taskId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "task" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "id" ] ;
+               fhir:variable [ fhir:v "id" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "id"
+                 ]
+               ] )
+             ] [
+               fhir:context [ fhir:v "id" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "taskId"
+                 ]
+               ] )
+             ] )
+           ] [
+             fhir:name [ fhir:v "TaskFailed" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "taskId" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "task" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "status" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "failed"
+                 ]
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

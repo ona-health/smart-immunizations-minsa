@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="MINSAIdentifierTypes"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: SistemaDeCodigos MINSAIdentifierTypes</b></p><a name="MINSAIdentifierTypes"> </a><a name="hcMINSAIdentifierTypes"> </a><p>This case-insensitive code system <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">DNI<a name="MINSAIdentifierTypes-DNI"> </a></td><td>Documento Nacional de Identidad</td></tr><tr><td style="white-space:nowrap">CE<a name="MINSAIdentifierTypes-CE"> </a></td><td>Carnet de Extranjería</td></tr><tr><td style="white-space:nowrap">SIS<a name="MINSAIdentifierTypes-SIS"> </a></td><td>Código del Seguro Integral de Salud</td></tr><tr><td style="white-space:nowrap">CNV<a name="MINSAIdentifierTypes-CNV"> </a></td><td>Certificado de Nacido Vivo</td></tr><tr><td style="white-space:nowrap">PTP<a name="MINSAIdentifierTypes-PTP"> </a></td><td>Permiso Temporal de Permanencia</td></tr></table></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+  <version value="1.0.0"/>
+  <name value="MINSAIdentifierTypes"/>
+  <title value="Tipos de Documento de Identidad - Perú"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <description value="Tipos de documento de identidad utilizados en el sistema de salud del Perú"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="false"/>
+  <content value="complete"/>
+  <count value="5"/>
+  <concept>
+    <code value="DNI"/>
+    <display value="DNI"/>
+    <definition value="Documento Nacional de Identidad"/>
+  </concept>
+  <concept>
+    <code value="CE"/>
+    <display value="CE"/>
+    <definition value="Carnet de Extranjería"/>
+  </concept>
+  <concept>
+    <code value="SIS"/>
+    <display value="SIS"/>
+    <definition value="Código del Seguro Integral de Salud"/>
+  </concept>
+  <concept>
+    <code value="CNV"/>
+    <display value="CNV"/>
+    <definition value="Certificado de Nacido Vivo"/>
+  </concept>
+  <concept>
+    <code value="PTP"/>
+    <display value="PTP"/>
+    <definition value="Permiso Temporal de Permanencia"/>
+  </concept>
+</CodeSystem>

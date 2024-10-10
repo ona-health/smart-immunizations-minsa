@@ -1,0 +1,158 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/PlanDefinition/MINSAHPVVacunacion> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSAHPVVacunacion"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition>
+     ] [
+       fhir:v "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition>
+     ] [
+       fhir:v "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<div>\n    <table class=\"grid dict\">\n        \n        <tr>\n            <th scope=\"row\"><b>Id: </b></th>\n            <td style=\"padding-left: 4px;\">MINSAHPVVacunacion</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Url: </b></th>\n            <td style=\"padding-left: 4px;\"><a href=\"PlanDefinition-MINSAHPVVacunacion.html\">MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)</a></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Version: </b></th>\n            <td style=\"padding-left: 4px;\">1.0.0</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Title: </b></th>\n            <td style=\"padding-left: 4px;\">MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Type: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                    \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>system: </b> <span><a href=\"http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html\">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>\n                        </p>\n                        \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>code: </b> <span>eca-rule</span>\n                        </p>\n                        \n                        \n                    \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Date: </b></th>\n            <td style=\"padding-left: 4px;\">2026-03-16 12:33:41-0400</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Publisher: </b></th>\n            <td style=\"padding-left: 4px;\">MINSA - Ministerio de Salud del Perú</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Description: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>Logica de decision para la vacunacion contra el Virus del Papiloma Humano (VPH) segun el\nEsquema Nacional de Vacunacion del Peru. Se administran 2 dosis a ninas de 9 a 13 anos\nde edad, con un intervalo de 6 meses entre dosis.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Capability: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                computable \n            </td>\n        </tr>\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Jurisdiction: </b></th>\n            <td style=\"padding-left: 4px;\">PE</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Related Artifacts: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                \n                <p><b>References</b></p>\n                <ul>\n                    \n                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>\n</div><br/><a href=\"null\"/></li>\n                    \n                </ul>\n                \n                \n                <p><b>Dependencies</b></p>\n                <ul>\n                    \n                    <li><a href=\"https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTHPV2Doses.html\">http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTHPV2Doses</a></li>\n                    \n                </ul>\n                \n                \n                \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Actions: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Determinar si la paciente necesita la 1ra dosis de VPH:</b> Evaluar si la paciente (sexo femenino, 9-13 anos) cumple las condiciones\n    para recibir la primera dosis de vacuna contra VPH segun el protocolo nacional.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            La paciente es de sexo femenino, tiene entre 9 y 13 anos, y no ha recibido la 1ra dosis de VPH\n                            \n                            <i>(Paciente necesita 1ra dosis de VPH)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Determinar si la paciente necesita la 2da dosis de VPH:</b> Evaluar si la paciente cumple las condiciones para recibir la segunda dosis\n    de vacuna contra VPH, con al menos 6 meses desde la primera dosis.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            La paciente ha recibido la 1ra dosis de VPH, han pasado al menos 6 meses, y no ha recibido la 2da dosis\n                            \n                            <i>(Paciente necesita 2da dosis de VPH)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n    </table>\n</div>\n</div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability>
+     ] ;
+     fhir:value [
+       a fhir:Code ;
+       fhir:v "computable"
+     ]
+  ] ) ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAHPVVacunacion"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/PlanDefinition/MINSAHPVVacunacion>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSAHPVVacunacion"] ; # 
+  fhir:title [ fhir:v "MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Logica de decision para la vacunacion contra el Virus del Papiloma Humano (VPH) segun el\nEsquema Nacional de Vacunacion del Peru. Se administran 2 dosis a ninas de 9 a 13 anos\nde edad, con un intervalo de 6 meses entre dosis."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:citation [ fhir:v "NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion" ]
+  ] [
+     fhir:type [ fhir:v "depends-on" ] ;
+     fhir:display [ fhir:v "WHO SMART Guidelines - HPV 2 Doses Decision Table" ] ;
+     fhir:resource [
+       fhir:v "http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTHPV2Doses"^^xsd:anyURI ;
+       fhir:l <http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTHPV2Doses>
+     ]
+  ] ) ; # 
+  fhir:action ( [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale>
+       ] ;
+       fhir:value [
+         a fhir:Markdown ;
+         fhir:v "La vacuna contra el VPH previene la infeccion por los tipos de VPH\n      que causan cancer de cuello uterino. En Peru se aplica a ninas de 9 a 13 anos con un\n      esquema de 2 dosis. La vacunacion antes del inicio de la actividad sexual proporciona\n      la maxima proteccion."
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Determinar si la paciente necesita la 1ra dosis de VPH" ] ;
+     fhir:description [ fhir:v "Evaluar si la paciente (sexo femenino, 9-13 anos) cumple las condiciones\n    para recibir la primera dosis de vacuna contra VPH segun el protocolo nacional." ] ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:description [ fhir:v "La paciente es de sexo femenino, tiene entre 9 y 13 anos, y no ha recibido la 1ra dosis de VPH" ] ;
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Paciente necesita 1ra dosis de VPH" ]
+       ]
+     ] ) ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "status" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'draft'" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "intent" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'proposal'" ]
+       ]
+     ] )
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale>
+       ] ;
+       fhir:value [
+         a fhir:Markdown ;
+         fhir:v "Segunda dosis de VPH con un intervalo minimo de 6 meses desde la\n      primera dosis. Con 2 dosis se logra una respuesta inmune robusta y duradera en\n      la poblacion objetivo de 9 a 13 anos."
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Determinar si la paciente necesita la 2da dosis de VPH" ] ;
+     fhir:description [ fhir:v "Evaluar si la paciente cumple las condiciones para recibir la segunda dosis\n    de vacuna contra VPH, con al menos 6 meses desde la primera dosis." ] ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:description [ fhir:v "La paciente ha recibido la 1ra dosis de VPH, han pasado al menos 6 meses, y no ha recibido la 2da dosis" ] ;
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Paciente necesita 2da dosis de VPH" ]
+       ]
+     ] ) ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "status" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'draft'" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "intent" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'proposal'" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,21 @@
+---
+---
+<!-- layouts\layout-changehistory.html -->
+<!-- get modelType -->
+
+
+{% include fragment-pagebegin.html %}
+
+<div style="counter-reset: section 10" class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Publish Box goes here</p><!--EndReleaseHeader-->
+  {% include fragment-base-navtabs.html type='ValueSet' id='MINSAIdentifierTypeVS' active='history' %}
+
+  <a name="root"> </a>
+  <h2 id="root">{{type}}: MINSAIdentifierTypeVS - Change History</h2>
+  <p>History of changes for MINSAIdentifierTypeVS {{type | downcase}}.</p>
+
+  {%include ValueSet-MINSAIdentifierTypeVS-history.xhtml%}
+
+</div>
+{% assign includetabscripts = 'true' %}
+{% include fragment-pageend.html %}

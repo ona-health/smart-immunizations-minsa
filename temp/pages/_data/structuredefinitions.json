@@ -1,0 +1,197 @@
+{
+  "MINSA.Immunization" : {
+    "index" : 0,
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.Immunization",
+    "name" : "MINSAImmunization",
+    "title" : "Inmunización MINSA Perú",
+    "uml" : false,
+    "titlelang" : {
+    },
+    "path" : "StructureDefinition-MINSA.Immunization.html",
+    "kind" : "resource",
+    "type" : "Immunization",
+    "base" : "http://smart.who.int/immunizations/StructureDefinition/IMMZ.Immunization",
+    "basename" : "IMMZImmunization",
+    "basepath" : "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/StructureDefinition-IMMZ.Immunization.html",
+    "adl" : false,
+    "status" : "draft",
+    "date" : "Mon Mar 16 12:33:41 EDT 2026",
+    "abstract" : false,
+    "derivation" : "constraint",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Perfil de Inmunización para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZImmunization de las Directrices SMART de la OMS con el esquema nacional de vacunación.",
+    "descriptionlang" : {
+    },
+    "obligations" : false
+  },
+  "MINSA.Patient" : {
+    "index" : 1,
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.Patient",
+    "name" : "MINSAPatient",
+    "title" : "Paciente MINSA Perú",
+    "uml" : false,
+    "titlelang" : {
+    },
+    "path" : "StructureDefinition-MINSA.Patient.html",
+    "kind" : "resource",
+    "type" : "Patient",
+    "base" : "http://smart.who.int/immunizations/StructureDefinition/IMMZ.Patient",
+    "basename" : "IMMZPatient",
+    "basepath" : "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/StructureDefinition-IMMZ.Patient.html",
+    "adl" : false,
+    "status" : "draft",
+    "date" : "Mon Mar 16 12:33:41 EDT 2026",
+    "abstract" : false,
+    "derivation" : "constraint",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Perfil de Paciente para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZPatient de las Directrices SMART de la OMS con identificadores y divisiones administrativas peruanas.",
+    "descriptionlang" : {
+    },
+    "obligations" : false
+  },
+  "MINSA.RelatedPerson" : {
+    "index" : 2,
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.RelatedPerson",
+    "name" : "MINSARelatedPerson",
+    "title" : "Cuidador MINSA Perú",
+    "uml" : false,
+    "titlelang" : {
+    },
+    "path" : "StructureDefinition-MINSA.RelatedPerson.html",
+    "kind" : "resource",
+    "type" : "RelatedPerson",
+    "base" : "http://smart.who.int/immunizations/StructureDefinition/IMMZ.Caregiver",
+    "basename" : "IMMZCaregiver",
+    "basepath" : "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/StructureDefinition-IMMZ.Caregiver.html",
+    "adl" : false,
+    "status" : "draft",
+    "date" : "Mon Mar 16 12:33:41 EDT 2026",
+    "abstract" : false,
+    "derivation" : "constraint",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Perfil de Persona Relacionada (cuidador) para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZCaregiver de las Directrices SMART de la OMS con identificación peruana.",
+    "descriptionlang" : {
+    },
+    "obligations" : false
+  },
+  "MINSADepartamento" : {
+    "index" : 3,
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento",
+    "name" : "MINSADepartamento",
+    "title" : "Departamento del Perú",
+    "uml" : false,
+    "titlelang" : {
+    },
+    "path" : "StructureDefinition-MINSADepartamento.html",
+    "kind" : "complex-type",
+    "type" : "Extension",
+    "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+    "basename" : "Extension",
+    "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+    "adl" : false,
+    "status" : "draft",
+    "date" : "Mon Mar 16 12:33:41 EDT 2026",
+    "abstract" : false,
+    "derivation" : "constraint",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "División administrativa de primer nivel del Perú (Departamento) donde reside el paciente.",
+    "descriptionlang" : {
+    },
+    "obligations" : false,
+    "contexts" : [{
+      "type" : "Element ID",
+      "expression" : "Address"
+    }],
+    "extension-contexts" : ["Address", "datatypes", "multiple"]
+  },
+  "MINSADistrito" : {
+    "index" : 4,
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito",
+    "name" : "MINSADistrito",
+    "title" : "Distrito del Perú",
+    "uml" : false,
+    "titlelang" : {
+    },
+    "path" : "StructureDefinition-MINSADistrito.html",
+    "kind" : "complex-type",
+    "type" : "Extension",
+    "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+    "basename" : "Extension",
+    "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+    "adl" : false,
+    "status" : "draft",
+    "date" : "Mon Mar 16 12:33:41 EDT 2026",
+    "abstract" : false,
+    "derivation" : "constraint",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "División administrativa de tercer nivel del Perú (Distrito) donde reside el paciente.",
+    "descriptionlang" : {
+    },
+    "obligations" : false,
+    "contexts" : [{
+      "type" : "Element ID",
+      "expression" : "Address"
+    }],
+    "extension-contexts" : ["Address", "datatypes", "multiple"]
+  },
+  "MINSAProvincia" : {
+    "index" : 5,
+    "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia",
+    "name" : "MINSAProvincia",
+    "title" : "Provincia del Perú",
+    "uml" : false,
+    "titlelang" : {
+    },
+    "path" : "StructureDefinition-MINSAProvincia.html",
+    "kind" : "complex-type",
+    "type" : "Extension",
+    "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+    "basename" : "Extension",
+    "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+    "adl" : false,
+    "status" : "draft",
+    "date" : "Mon Mar 16 12:33:41 EDT 2026",
+    "abstract" : false,
+    "derivation" : "constraint",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "División administrativa de segundo nivel del Perú (Provincia) donde reside el paciente.",
+    "descriptionlang" : {
+    },
+    "obligations" : false,
+    "contexts" : [{
+      "type" : "Element ID",
+      "expression" : "Address"
+    }],
+    "extension-contexts" : ["Address", "datatypes", "multiple"]
+  }
+}

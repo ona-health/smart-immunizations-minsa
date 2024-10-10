@@ -1,0 +1,451 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>PlanDefinition-MINSAEsquemaVacunacion-html</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">MINSAEsquemaVacunacion</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-MINSAEsquemaVacunacion.html">Esquema Nacional de Vacunacion - MINSA Peru</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">1.0.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Esquema Nacional de Vacunacion - MINSA Peru</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-03-16 12:33:41-0400</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MINSA - Ministerio de Salud del Perú</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Esquema Nacional de Vacunacion del Peru para ninos desde el nacimiento hasta los 13 anos.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                computable 
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">PE</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                <p><b>References</b></p>
+                <ul>
+                    
+                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>
+</div><br/><a href="null"/></li>
+                    
+                </ul>
+                
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion BCG:</b> Administrar vacuna BCG al recien nacido.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente es recien nacido y no tiene registro de vacunacion BCG
+                            
+                            <i>(Paciente necesita vacuna BCG)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSABCGVacunacion.html">MINSA - Vacunacion BCG</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion Hepatitis B - Dosis de nacimiento:</b> Administrar vacuna contra Hepatitis B al recien nacido dentro de las primeras 24 horas de vida.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente es recien nacido y no tiene registro de dosis de nacimiento de Hepatitis B
+                            
+                            <i>(Paciente necesita dosis de nacimiento de Hepatitis B)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion Pentavalente (DPT-HepB-Hib):</b> Administrar vacuna Pentavalente a los 2, 4 y 6 meses de edad.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita dosis de vacuna Pentavalente
+                            
+                            <i>(Paciente necesita vacuna Pentavalente)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSAPentavalenteVacunacion.html">MINSA - Vacunacion Pentavalente (DPT-HepB-Hib)</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion contra Poliomielitis (IPV/APO):</b> Administrar vacunas contra Poliomielitis: IPV a los 2 y 4 meses, APO a los 6 y 18 meses, refuerzo APO a los 4 anos.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita dosis de vacuna contra Poliomielitis
+                            
+                            <i>(Paciente necesita vacuna Polio)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSAPolioVacunacion.html">MINSA - Vacunacion contra Poliomielitis (IPV/APO)</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion contra Rotavirus:</b> Administrar vacuna contra Rotavirus a los 2 y 4 meses de edad.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita dosis de vacuna contra Rotavirus
+                            
+                            <i>(Paciente necesita vacuna Rotavirus)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSARotavirusVacunacion.html">MINSA - Vacunacion contra Rotavirus</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion contra Neumococo:</b> Administrar vacuna antineumococica conjugada a los 2 y 4 meses, con refuerzo a los 12 meses de edad.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita dosis de vacuna contra Neumococo
+                            
+                            <i>(Paciente necesita vacuna Neumococo)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSANeumococoVacunacion.html">MINSA - Vacunacion contra Neumococo (PCV)</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion contra Influenza:</b> Administrar vacuna contra Influenza: primera dosis a los 7 meses, segunda dosis a los 8 meses, luego dosis anual hasta los 5 anos.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita dosis de vacuna contra Influenza
+                            
+                            <i>(Paciente necesita vacuna Influenza)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion SPR (Sarampion-Paperas-Rubeola):</b> Administrar vacuna SPR a los 12 meses con refuerzo a los 18 meses de edad.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita dosis de vacuna SPR
+                            
+                            <i>(Paciente necesita vacuna SPR)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSASPRVacunacion.html">MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion Antiamarilica (Fiebre Amarilla):</b> Administrar vacuna contra Fiebre Amarilla a los 15 meses de edad.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita vacuna contra Fiebre Amarilla
+                            
+                            <i>(Paciente necesita vacuna Antiamarilica)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion DPT - Refuerzos:</b> Administrar refuerzos de DPT a los 18 meses y 4 anos de edad.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente necesita refuerzo de DPT
+                            
+                            <i>(Paciente necesita refuerzo DPT)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Vacunacion contra VPH (Virus del Papiloma Humano):</b> Administrar vacuna contra VPH a ninas de 9 a 13 anos, esquema de 2 dosis con intervalo de 6 meses.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            La paciente es nina de 9 a 13 anos y necesita vacuna VPH
+                            
+                            <i>(Paciente necesita vacuna VPH)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <a href="PlanDefinition-MINSAHPVVacunacion.html">MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)</a><br/>
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div></body>
+</html>

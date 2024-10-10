@@ -1,0 +1,774 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>StructureMap-MINSA.EventoAdverso.QRToObservation-ttl-html</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<pre class="rdf" data-fhir="generated" style="white-space: pre; overflow: hidden">
+@prefix fhir: &lt;http://hl7.org/fhir/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# - resource -------------------------------------------------------------------
+
+ a fhir:StructureMap ;
+  <a href="http://hl7.org/fhir/R4/rdf.html#tree-root">fhir:nodeRole</a> fhir:treeRoot ;
+  <a href="http://hl7.org/fhir/R4/resource.html#StructureMap.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA.EventoAdverso.QRToObservation&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/domainresource.html#StructureMap.text">fhir:text</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;generated&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">fhir:div</a> [ <a href="http://hl7.org/fhir/R4/narrative.html#xhtml">fhir:v</a> &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: MapaDeEstructura MINSA.EventoAdverso.QRToObservation&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MINSA.EventoAdverso.QRToObservation\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMINSA.EventoAdverso.QRToObservation\&quot;&gt; &lt;/a&gt;&lt;pre class=\&quot;fml\&quot;&gt;#xD;\n&lt;b&gt;map&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; \&quot;&lt;/span&gt;http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation&lt;span style=\&quot;color: navy\&quot;&gt;\&quot; = \&quot;&lt;/span&gt;MINSA.EventoAdverso.QRToObservation&lt;span style=\&quot;color: navy\&quot;&gt;\&quot;#xD;\n#xD;\n&lt;/span&gt;&lt;b&gt;uses&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; \&quot;&lt;/span&gt;&lt;a href=\&quot;http://hl7.org/fhir/R4/questionnaireresponse.html\&quot; title=\&quot;QuestionnaireResponse\&quot;&gt;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&lt;/a&gt;&lt;span style=\&quot;color: navy\&quot;&gt;\&quot; &lt;/span&gt;&lt;b&gt;alias &lt;/b&gt;QResp &lt;b&gt;as &lt;/b&gt;&lt;b&gt;source&lt;/b&gt;#xD;\n&lt;b&gt;uses&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; \&quot;&lt;/span&gt;&lt;a href=\&quot;http://hl7.org/fhir/R4/bundle.html\&quot; title=\&quot;Bundle\&quot;&gt;http://hl7.org/fhir/StructureDefinition/Bundle&lt;/a&gt;&lt;span style=\&quot;color: navy\&quot;&gt;\&quot; &lt;/span&gt;&lt;b&gt;alias &lt;/b&gt;Bundle &lt;b&gt;as &lt;/b&gt;&lt;b&gt;target&lt;/b&gt;#xD;\n#xD;\n&lt;b&gt;imports&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; \&quot;&lt;/span&gt;&lt;a href=\&quot;StructureMap-MINSA.Helpers.html\&quot; title=\&quot;MINSA.Helpers\&quot;&gt;http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers&lt;/a&gt;&lt;span style=\&quot;color: navy\&quot;&gt;\&quot;#xD;\n&lt;/span&gt;#xD;\n&lt;b&gt;group &lt;/b&gt;EventoAdverso&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;src&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;QResp, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;bundle&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Bundle&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;  src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; bundle.id = &lt;b&gt;uuid&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; bundle.type = &lt;span style=\&quot;color: blue\&quot;&gt;'collection'&lt;/span&gt; &lt;i&gt;\&quot;BundleStatic\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; bundle.entry&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;encEntry&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; encEntry.resource = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Encounter'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;encounter&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;    src&lt;b&gt; then &lt;/b&gt;ExtractEncounter&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;src&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;encounter&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;ExtractEncounter\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    src&lt;b&gt; then &lt;/b&gt;ExtractObservation&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;src&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;encounter&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;bundle&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;ExtractObservation\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;BundleEntries\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n&lt;span style=\&quot;color: navy\&quot;&gt;}#xD;\n#xD;\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Extrae el Encounter de la consulta por evento adverso&lt;/span&gt;#xD;\n&lt;b&gt;group &lt;/b&gt;ExtractEncounter&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;src&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;QResp, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;encounter&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Encounter&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;  src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; encounter.id = &lt;b&gt;uuid&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; encounter.status = &lt;span style=\&quot;color: blue\&quot;&gt;'finished'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; encounter.class = &lt;b&gt;c&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'http://terminology.hl7.org/CodeSystem/v3-ActCode'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'AMB'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'ambulatory'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;EncounterStatic\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  src.subject&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;subject&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;encounter.subject = &lt;span style=\&quot;color: maroon\&quot;&gt;subject&lt;/span&gt; &lt;i&gt;\&quot;EncounterSubject\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;encounter.type = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'CodeableConcept'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;cc&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;cc.coding = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Coding'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; coding.system = &lt;span style=\&quot;color: blue\&quot;&gt;'http://snomed.info/sct'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; coding.code = &lt;span style=\&quot;color: blue\&quot;&gt;'886921000000105'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; coding.display = &lt;span style=\&quot;color: blue\&quot;&gt;'Allergies and adverse reactions'&lt;/span&gt; &lt;i&gt;\&quot;TypeCoding\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;TypeCC\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;cc.text = &lt;span style=\&quot;color: blue\&quot;&gt;'Evento adverso post-vacunal'&lt;/span&gt; &lt;i&gt;\&quot;TypeText\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;EncounterType\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;encounter.period = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Period'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;period&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;period.start = evaluate&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;src&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;now()&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;PeriodStart\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;period.end = evaluate&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;src&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;now()&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;PeriodEnd\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;EncounterPeriod\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n&lt;span style=\&quot;color: navy\&quot;&gt;}#xD;\n#xD;\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Extrae la Observation que representa el evento adverso&lt;/span&gt;#xD;\n&lt;b&gt;group &lt;/b&gt;ExtractObservation&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;src&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;QResp, &lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;encounter&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Encounter, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;bundle&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Bundle&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;  src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; bundle.entry&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;entry&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; entry.resource = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Observation'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;obs&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; obs.id = &lt;b&gt;uuid&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; obs.status = &lt;span style=\&quot;color: blue\&quot;&gt;'final'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; obs.encounter = &lt;b&gt;reference&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;encounter&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;ObsStatic\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    src.subject&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;subject&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.subject = &lt;span style=\&quot;color: maroon\&quot;&gt;subject&lt;/span&gt; &lt;i&gt;\&quot;ObsSubject\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Categoria: reaccion adversa&lt;/span&gt;#xD;\n    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.category = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'CodeableConcept'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;cat&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;cat.coding = &lt;b&gt;c&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'http://terminology.hl7.org/CodeSystem/observation-category'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'survey'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Survey'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;CatCoding\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;ObsCategory\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Codigo de la observacion: evento adverso post-vacunal (ESAVI)&lt;/span&gt;#xD;\n    src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.code = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'CodeableConcept'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;code&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;code.coding = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Coding'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;        src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; coding.system = &lt;span style=\&quot;color: blue\&quot;&gt;'http://snomed.info/sct'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; coding.code = &lt;span style=\&quot;color: blue\&quot;&gt;'293104008'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; coding.display = &lt;span style=\&quot;color: blue\&quot;&gt;'Adverse reaction to vaccine (disorder)'&lt;/span&gt; &lt;i&gt;\&quot;CodeCoding\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;CodeCC\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      src&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;code.text = &lt;span style=\&quot;color: blue\&quot;&gt;'Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)'&lt;/span&gt; &lt;i&gt;\&quot;CodeText\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;ObsCode\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Fecha del evento adverso&lt;/span&gt;#xD;\n    src.item&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;&lt;b&gt; where &lt;/b&gt;linkId = 'adverse-event-date'&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;        answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.effective = &lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt; &lt;i&gt;\&quot;SetEffective\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;DateAnswer\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;AdverseEventDate\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Tipo de reaccion adversa&lt;/span&gt;#xD;\n    src.item&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;&lt;b&gt; where &lt;/b&gt;linkId = 'adverse-event-type'&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;        answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.value = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'CodeableConcept'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;cc&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;          coding&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;cc.coding = &lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt; &lt;i&gt;\&quot;SetTypeCoding\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n          coding.display&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;display&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;cc.text = &lt;span style=\&quot;color: maroon\&quot;&gt;display&lt;/span&gt; &lt;i&gt;\&quot;SetTypeText\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n        &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;CreateTypeCC\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;TypeAnswer\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;AdverseEventType\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Severidad del evento adverso&lt;/span&gt;#xD;\n    src.item&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;&lt;b&gt; where &lt;/b&gt;linkId = 'adverse-event-severity'&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;        answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.component = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Observation_Component'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;comp&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;          coding&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;comp.code = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'CodeableConcept'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;compCode&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;            coding&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;compCode.coding = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Coding'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;compCoding&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;              coding&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; compCoding.system = &lt;span style=\&quot;color: blue\&quot;&gt;'http://snomed.info/sct'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; compCoding.code = &lt;span style=\&quot;color: blue\&quot;&gt;'246112005'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; compCoding.display = &lt;span style=\&quot;color: blue\&quot;&gt;'Severity (attribute)'&lt;/span&gt; &lt;i&gt;\&quot;SeverityCodeCoding\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n            &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;SeverityCodeCC\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n          &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;SeverityCode\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n          coding&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;comp.value = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'CodeableConcept'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;compVal&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;            coding&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;compVal.coding = &lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt; &lt;i&gt;\&quot;SetSeverityCoding\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n            coding.display&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;display&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;compVal.text = &lt;span style=\&quot;color: maroon\&quot;&gt;display&lt;/span&gt; &lt;i&gt;\&quot;SetSeverityText\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n          &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;SeverityValue\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n        &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;CreateSeverityComp\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;SeverityAnswer\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;AdverseEventSeverity\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Referencia a la inmunizacion que causo el evento adverso&lt;/span&gt;#xD;\n    src.item&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;&lt;b&gt; where &lt;/b&gt;((linkId = 'causing-immunization') and answer.value.exists())&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;        answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;immRef&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.focus = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Reference'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;ref&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;          immRef&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;ref.reference = &lt;span style=\&quot;color: maroon\&quot;&gt;immRef&lt;/span&gt; &lt;i&gt;\&quot;SetImmReference\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n        &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;CreateImmRef\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;ImmAnswer\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;CausingImmunization\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Notas adicionales del profesional de salud&lt;/span&gt;#xD;\n    src.item&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;&lt;b&gt; where &lt;/b&gt;((linkId = 'adverse-event-notes') and answer.value.exists())&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;      item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;        answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.note = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Annotation'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;note&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {#xD;\n&lt;/span&gt;          val&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;note.text = &lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt; &lt;i&gt;\&quot;SetNoteText\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n          val&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;note.time = evaluate&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;src&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;now()&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt; &lt;i&gt;\&quot;SetNoteTime\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n        &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;CreateNote\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n      &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;NotesAnswer\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;AdverseEventNotes\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;\&quot;ObservationEntry\&quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;#xD;\n&lt;span style=\&quot;color: navy\&quot;&gt;}#xD;\n#xD;\n&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&quot;^^rdf:XMLLiteral ]
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation&gt;
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.version">fhir:version</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;1.0.0&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA.EventoAdverso.QRToObservation&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;draft&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.date">fhir:date</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">fhir:v</a> &quot;2026-03-16T12:33:41-04:00&quot;^^xsd:dateTime] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.publisher">fhir:publisher</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA - Ministerio de Salud del Perú&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.contact">fhir:contact</a> ( [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA - Ministerio de Salud del Perú&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">fhir:telecom</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;url&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;https://www.gob.pe/minsa&quot; ]     ] )
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.jurisdiction">fhir:jurisdiction</a> ( [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:iso:std:iso:3166&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:iso:std:iso:3166&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;PE&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Peru&quot; ]     ] )
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure">fhir:structure</a> ( [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;source&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.alias">fhir:alias</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;QResp&quot; ]
+  ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://hl7.org/fhir/StructureDefinition/Bundle&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;target&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.alias">fhir:alias</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Bundle&quot; ]
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.import">fhir:import</a> ( [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers&gt;
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group">fhir:group</a> ( [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;EventoAdverso&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">fhir:typeMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;none&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">fhir:input</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;QResp&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;source&quot; ]     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;target&quot; ]     ] ) ;
+    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;BundleStatic&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;id&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;uuid&quot; ]       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;type&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;collection&quot;           ]         ] )       ] )     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;BundleEntries&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;entry&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encEntry&quot; ]       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encEntry&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;resource&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Encounter&quot;           ]         ] )       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ExtractEncounter&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.dependent">fhir:dependent</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.dependent.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ExtractEncounter&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.dependent.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;src&quot; ] [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;encounter&quot; ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ExtractObservation&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.dependent">fhir:dependent</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.dependent.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ExtractObservation&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.dependent.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;src&quot; ] [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;encounter&quot; ] [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;bundle&quot; ] )         ] )       ] )     ] )
+  ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ExtractEncounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">fhir:typeMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;none&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">fhir:documentation</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Extrae el Encounter de la consulta por evento adverso&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">fhir:input</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;QResp&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;source&quot; ]     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;target&quot; ]     ] ) ;
+    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;EncounterStatic&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;id&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;uuid&quot; ]       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;status&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;finished&quot;           ]         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;class&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;c&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/v3-ActCode&quot;           ]         ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;AMB&quot;           ]         ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;ambulatory&quot;           ]         ] )       ] )     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;EncounterSubject&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;subject&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;subject&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;subject&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;subject&quot;           ]         ] )       ] )     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;EncounterType&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;type&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cc&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CodeableConcept&quot;           ]         ] )       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;TypeCC&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cc&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Coding&quot;             ]           ] )         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;TypeCoding&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;system&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;http://snomed.info/sct&quot;               ]             ] )           ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;886921000000105&quot;               ]             ] )           ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;display&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Allergies and adverse reactions&quot;               ]             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;TypeText&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cc&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;text&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Evento adverso post-vacunal&quot;             ]           ] )         ] )       ] )     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;EncounterPeriod&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;period&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;period&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Period&quot;           ]         ] )       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;PeriodStart&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;period&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;start&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;evaluate&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot;             ]           ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;now()&quot;             ]           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;PeriodEnd&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;period&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;end&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;evaluate&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot;             ]           ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;now()&quot;             ]           ] )         ] )       ] )     ] )
+  ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ExtractObservation&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">fhir:typeMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;none&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">fhir:documentation</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Extrae la Observation que representa el evento adverso&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">fhir:input</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;QResp&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;source&quot; ]     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;source&quot; ]     ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">fhir:mode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;target&quot; ]     ] ) ;
+    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ObservationEntry&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;bundle&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;entry&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;entry&quot; ]       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;entry&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;resource&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Observation&quot;           ]         ] )       ] ) ;
+      ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ObsStatic&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;id&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;uuid&quot; ]         ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;status&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;final&quot;             ]           ] )         ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;encounter&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;reference&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;encounter&quot;             ]           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ObsSubject&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;subject&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;subject&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;subject&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;subject&quot;             ]           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ObsCategory&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;category&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cat&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CodeableConcept&quot;             ]           ] )         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CatCoding&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cat&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;c&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/observation-category&quot;               ]             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;survey&quot;               ]             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Survey&quot;               ]             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ObsCode&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CodeableConcept&quot;             ]           ] )         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CodeCC&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Coding&quot;               ]             ] )           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CodeCoding&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;system&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;http://snomed.info/sct&quot;                 ]               ] )             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;293104008&quot;                 ]               ] )             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;display&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Adverse reaction to vaccine (disorder)&quot;                 ]               ] )             ] )           ] )         ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CodeText&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;text&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)&quot;               ]             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;AdverseEventDate&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.condition">fhir:condition</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;linkId = 'adverse-event-date'&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;DateAnswer&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">fhir:listMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;first&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetEffective&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;val&quot; ]             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;effective&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;val&quot;                 ]               ] )             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;AdverseEventType&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.condition">fhir:condition</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;linkId = 'adverse-event-type'&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;TypeAnswer&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">fhir:listMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;first&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CreateTypeCC&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cc&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CodeableConcept&quot;                 ]               ] )             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetTypeCoding&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cc&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot;                   ]                 ] )               ] )             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetTypeText&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;display&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;display&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;cc&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;text&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;display&quot;                   ]                 ] )               ] )             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;AdverseEventSeverity&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.condition">fhir:condition</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;linkId = 'adverse-event-severity'&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SeverityAnswer&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">fhir:listMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;first&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CreateSeverityComp&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;component&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;comp&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Observation_Component&quot;                 ]               ] )             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SeverityCode&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;comp&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compCode&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CodeableConcept&quot;                   ]                 ] )               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SeverityCodeCC&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]                 ] ) ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compCode&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compCoding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+                  ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Coding&quot;                     ]                   ] )                 ] ) ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SeverityCodeCoding&quot; ] ;
+                  ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]                   ] ) ;
+                  ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compCoding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;system&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;http://snomed.info/sct&quot;                       ]                     ] )                   ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compCoding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;code&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;246112005&quot;                       ]                     ] )                   ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compCoding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;display&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                    ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Severity (attribute)&quot;                       ]                     ] )                   ] )                 ] )               ] )             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SeverityValue&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;comp&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compVal&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CodeableConcept&quot;                   ]                 ] )               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetSeverityCoding&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ]                 ] ) ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compVal&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                  ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot;                     ]                   ] )                 ] )               ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetSeverityText&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;coding&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;display&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;display&quot; ]                 ] ) ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;compVal&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;text&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                  ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;display&quot;                     ]                   ] )                 ] )               ] )             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CausingImmunization&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.condition">fhir:condition</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;((linkId = 'causing-immunization') and answer.value.exists())&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ImmAnswer&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">fhir:listMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;first&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CreateImmRef&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;immRef&quot; ]             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;focus&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ref&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Reference&quot;                 ]               ] )             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetImmReference&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;immRef&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;ref&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;reference&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;immRef&quot;                   ]                 ] )               ] )             ] )           ] )         ] )       ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;AdverseEventNotes&quot; ] ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.condition">fhir:condition</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;((linkId = 'adverse-event-notes') and answer.value.exists())&quot; ]         ] ) ;
+        ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;NotesAnswer&quot; ] ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;item&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">fhir:listMode</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;first&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ]           ] ) ;
+          ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;CreateNote&quot; ] ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;answer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;value&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;val&quot; ]             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;obs&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;note&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">fhir:variable</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;note&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Annotation&quot;                 ]               ] )             ] ) ;
+            ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">fhir:rule</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetNoteText&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;val&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;note&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;text&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;copy&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;val&quot;                   ]                 ] )               ] )             ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;SetNoteTime&quot; ] ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">fhir:source</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;val&quot; ]               ] ) ;
+              ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">fhir:target</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">fhir:context</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;note&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">fhir:contextType</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;variable&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">fhir:element</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;time&quot; ] ;
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">fhir:transform</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;evaluate&quot; ] ;
+                ( <a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">fhir:parameter</a> [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">a</a> fhir:Id ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> &quot;src&quot;                   ]                 ] [
+<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;now()&quot;                   ]                 ] )               ] )             ] )           ] )         ] )       ] )     ] )
+  ] ) . # 
+
+</pre>
+
+</body>
+</html>

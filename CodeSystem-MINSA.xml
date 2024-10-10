@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="MINSA"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: SistemaDeCodigos MINSA</b></p><a name="MINSA"> </a><a name="hcMINSA"> </a><p>This case-insensitive code system <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">VAC-BCG<a name="MINSA-VAC-BCG"> </a></td><td>BCG</td><td>Vacuna Bacilo de Calmette-Guérin contra la tuberculosis</td></tr><tr><td style="white-space:nowrap">VAC-OPV<a name="MINSA-VAC-OPV"> </a></td><td>APO - Antipolio Oral</td><td>Vacuna Antipolio Oral (tipo Sabin)</td></tr><tr><td style="white-space:nowrap">VAC-IPV<a name="MINSA-VAC-IPV"> </a></td><td>APV - Antipolio Inactivada</td><td>Vacuna Antipolio Inactivada (tipo Salk)</td></tr><tr><td style="white-space:nowrap">VAC-PENTA<a name="MINSA-VAC-PENTA"> </a></td><td>Pentavalente</td><td>Vacuna Pentavalente (DPT-HepB-Hib)</td></tr><tr><td style="white-space:nowrap">VAC-ROTA<a name="MINSA-VAC-ROTA"> </a></td><td>Rotavirus</td><td>Vacuna contra Rotavirus</td></tr><tr><td style="white-space:nowrap">VAC-PCV<a name="MINSA-VAC-PCV"> </a></td><td>Neumococo</td><td>Vacuna Antineumocócica Conjugada</td></tr><tr><td style="white-space:nowrap">VAC-SPR<a name="MINSA-VAC-SPR"> </a></td><td>SPR</td><td>Vacuna contra Sarampión, Paperas y Rubéola</td></tr><tr><td style="white-space:nowrap">VAC-HPV<a name="MINSA-VAC-HPV"> </a></td><td>VPH</td><td>Vacuna contra el Virus del Papiloma Humano</td></tr><tr><td style="white-space:nowrap">VAC-DT<a name="MINSA-VAC-DT"> </a></td><td>DT Pediátrico</td><td>Vacuna contra Difteria y Tétanos (refuerzo pediátrico)</td></tr><tr><td style="white-space:nowrap">VAC-INF<a name="MINSA-VAC-INF"> </a></td><td>Influenza</td><td>Vacuna contra la Influenza</td></tr><tr><td style="white-space:nowrap">VAC-HEPB<a name="MINSA-VAC-HEPB"> </a></td><td>Hepatitis B</td><td>Vacuna contra la Hepatitis B (dosis de recién nacido)</td></tr><tr><td style="white-space:nowrap">VAC-AMA<a name="MINSA-VAC-AMA"> </a></td><td>Antiamarílica</td><td>Vacuna Antiamarílica (Fiebre Amarilla)</td></tr><tr><td style="white-space:nowrap">DOSE-BIRTH<a name="MINSA-DOSE-BIRTH"> </a></td><td>Dosis de recién nacido</td><td>Dosis administrada dentro de las 24 horas de nacimiento</td></tr><tr><td style="white-space:nowrap">DOSE-1<a name="MINSA-DOSE-1"> </a></td><td>1ra dosis</td><td>Primera dosis de la serie</td></tr><tr><td style="white-space:nowrap">DOSE-2<a name="MINSA-DOSE-2"> </a></td><td>2da dosis</td><td>Segunda dosis de la serie</td></tr><tr><td style="white-space:nowrap">DOSE-3<a name="MINSA-DOSE-3"> </a></td><td>3ra dosis</td><td>Tercera dosis de la serie</td></tr><tr><td style="white-space:nowrap">DOSE-R1<a name="MINSA-DOSE-R1"> </a></td><td>1er refuerzo</td><td>Primer refuerzo</td></tr><tr><td style="white-space:nowrap">DOSE-R2<a name="MINSA-DOSE-R2"> </a></td><td>2do refuerzo</td><td>Segundo refuerzo</td></tr><tr><td style="white-space:nowrap">ROUTE-ID<a name="MINSA-ROUTE-ID"> </a></td><td>Intradérmica</td><td>Administración por vía intradérmica</td></tr><tr><td style="white-space:nowrap">ROUTE-SC<a name="MINSA-ROUTE-SC"> </a></td><td>Subcutánea</td><td>Administración por vía subcutánea</td></tr><tr><td style="white-space:nowrap">ROUTE-IM<a name="MINSA-ROUTE-IM"> </a></td><td>Intramuscular</td><td>Administración por vía intramuscular</td></tr><tr><td style="white-space:nowrap">ROUTE-VO<a name="MINSA-ROUTE-VO"> </a></td><td>Vía oral</td><td>Administración por vía oral</td></tr><tr><td style="white-space:nowrap">NOREASON-IMMUNITY<a name="MINSA-NOREASON-IMMUNITY"> </a></td><td>Inmunidad</td><td>El paciente ya tiene inmunidad contra la enfermedad</td></tr><tr><td style="white-space:nowrap">NOREASON-STOCKOUT<a name="MINSA-NOREASON-STOCKOUT"> </a></td><td>Desabastecimiento</td><td>No hay disponibilidad del producto vacunal</td></tr><tr><td style="white-space:nowrap">NOREASON-PRECAUTION<a name="MINSA-NOREASON-PRECAUTION"> </a></td><td>Precaución médica</td><td>El paciente tiene una condición médica que contraindica temporalmente la vacunación</td></tr><tr><td style="white-space:nowrap">NOREASON-EXPIRED<a name="MINSA-NOREASON-EXPIRED"> </a></td><td>Producto vencido</td><td>El producto vacunal está vencido</td></tr><tr><td style="white-space:nowrap">NOREASON-CLIENT<a name="MINSA-NOREASON-CLIENT"> </a></td><td>Rechazo del cliente</td><td>El cliente o su representante rechaza la vacunación</td></tr><tr><td style="white-space:nowrap">NOREASON-CAREGIVER<a name="MINSA-NOREASON-CAREGIVER"> </a></td><td>Rechazo del cuidador</td><td>El cuidador del niño rechaza la vacunación</td></tr><tr><td style="white-space:nowrap">NOREASON-ABSENT<a name="MINSA-NOREASON-ABSENT"> </a></td><td>Niño no presente</td><td>El niño no se presentó a la cita de vacunación</td></tr><tr><td style="white-space:nowrap">NOREASON-SICK<a name="MINSA-NOREASON-SICK"> </a></td><td>Niño enfermo</td><td>El niño presenta enfermedad que posterga la vacunación</td></tr><tr><td style="white-space:nowrap">NOREASON-AGE<a name="MINSA-NOREASON-AGE"> </a></td><td>Fuera de rango de edad</td><td>El paciente está fuera del rango de edad indicado para la vacuna</td></tr><tr><td style="white-space:nowrap">NOREASON-CONTRA<a name="MINSA-NOREASON-CONTRA"> </a></td><td>Contraindicado</td><td>La vacuna está contraindicada para el paciente</td></tr><tr><td style="white-space:nowrap">NOREASON-TIME<a name="MINSA-NOREASON-TIME"> </a></td><td>Sin tiempo</td><td>No hubo tiempo disponible para administrar la vacuna</td></tr><tr><td style="white-space:nowrap">NOREASON-OTHER<a name="MINSA-NOREASON-OTHER"> </a></td><td>Otro</td><td>La vacuna no fue administrada por otra razón</td></tr></table></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+  <version value="1.0.0"/>
+  <name value="MINSA"/>
+  <title value="Sistema de Códigos MINSA para Inmunizaciones"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <description value="Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="false"/>
+  <content value="complete"/>
+  <count value="34"/>
+  <concept>
+    <code value="VAC-BCG"/>
+    <display value="BCG"/>
+    <definition value="Vacuna Bacilo de Calmette-Guérin contra la tuberculosis"/>
+  </concept>
+  <concept>
+    <code value="VAC-OPV"/>
+    <display value="APO - Antipolio Oral"/>
+    <definition value="Vacuna Antipolio Oral (tipo Sabin)"/>
+  </concept>
+  <concept>
+    <code value="VAC-IPV"/>
+    <display value="APV - Antipolio Inactivada"/>
+    <definition value="Vacuna Antipolio Inactivada (tipo Salk)"/>
+  </concept>
+  <concept>
+    <code value="VAC-PENTA"/>
+    <display value="Pentavalente"/>
+    <definition value="Vacuna Pentavalente (DPT-HepB-Hib)"/>
+  </concept>
+  <concept>
+    <code value="VAC-ROTA"/>
+    <display value="Rotavirus"/>
+    <definition value="Vacuna contra Rotavirus"/>
+  </concept>
+  <concept>
+    <code value="VAC-PCV"/>
+    <display value="Neumococo"/>
+    <definition value="Vacuna Antineumocócica Conjugada"/>
+  </concept>
+  <concept>
+    <code value="VAC-SPR"/>
+    <display value="SPR"/>
+    <definition value="Vacuna contra Sarampión, Paperas y Rubéola"/>
+  </concept>
+  <concept>
+    <code value="VAC-HPV"/>
+    <display value="VPH"/>
+    <definition value="Vacuna contra el Virus del Papiloma Humano"/>
+  </concept>
+  <concept>
+    <code value="VAC-DT"/>
+    <display value="DT Pediátrico"/>
+    <definition value="Vacuna contra Difteria y Tétanos (refuerzo pediátrico)"/>
+  </concept>
+  <concept>
+    <code value="VAC-INF"/>
+    <display value="Influenza"/>
+    <definition value="Vacuna contra la Influenza"/>
+  </concept>
+  <concept>
+    <code value="VAC-HEPB"/>
+    <display value="Hepatitis B"/>
+    <definition value="Vacuna contra la Hepatitis B (dosis de recién nacido)"/>
+  </concept>
+  <concept>
+    <code value="VAC-AMA"/>
+    <display value="Antiamarílica"/>
+    <definition value="Vacuna Antiamarílica (Fiebre Amarilla)"/>
+  </concept>
+  <concept>
+    <code value="DOSE-BIRTH"/>
+    <display value="Dosis de recién nacido"/>
+    <definition value="Dosis administrada dentro de las 24 horas de nacimiento"/>
+  </concept>
+  <concept>
+    <code value="DOSE-1"/>
+    <display value="1ra dosis"/>
+    <definition value="Primera dosis de la serie"/>
+  </concept>
+  <concept>
+    <code value="DOSE-2"/>
+    <display value="2da dosis"/>
+    <definition value="Segunda dosis de la serie"/>
+  </concept>
+  <concept>
+    <code value="DOSE-3"/>
+    <display value="3ra dosis"/>
+    <definition value="Tercera dosis de la serie"/>
+  </concept>
+  <concept>
+    <code value="DOSE-R1"/>
+    <display value="1er refuerzo"/>
+    <definition value="Primer refuerzo"/>
+  </concept>
+  <concept>
+    <code value="DOSE-R2"/>
+    <display value="2do refuerzo"/>
+    <definition value="Segundo refuerzo"/>
+  </concept>
+  <concept>
+    <code value="ROUTE-ID"/>
+    <display value="Intradérmica"/>
+    <definition value="Administración por vía intradérmica"/>
+  </concept>
+  <concept>
+    <code value="ROUTE-SC"/>
+    <display value="Subcutánea"/>
+    <definition value="Administración por vía subcutánea"/>
+  </concept>
+  <concept>
+    <code value="ROUTE-IM"/>
+    <display value="Intramuscular"/>
+    <definition value="Administración por vía intramuscular"/>
+  </concept>
+  <concept>
+    <code value="ROUTE-VO"/>
+    <display value="Vía oral"/>
+    <definition value="Administración por vía oral"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-IMMUNITY"/>
+    <display value="Inmunidad"/>
+    <definition value="El paciente ya tiene inmunidad contra la enfermedad"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-STOCKOUT"/>
+    <display value="Desabastecimiento"/>
+    <definition value="No hay disponibilidad del producto vacunal"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-PRECAUTION"/>
+    <display value="Precaución médica"/>
+    <definition value="El paciente tiene una condición médica que contraindica temporalmente la vacunación"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-EXPIRED"/>
+    <display value="Producto vencido"/>
+    <definition value="El producto vacunal está vencido"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-CLIENT"/>
+    <display value="Rechazo del cliente"/>
+    <definition value="El cliente o su representante rechaza la vacunación"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-CAREGIVER"/>
+    <display value="Rechazo del cuidador"/>
+    <definition value="El cuidador del niño rechaza la vacunación"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-ABSENT"/>
+    <display value="Niño no presente"/>
+    <definition value="El niño no se presentó a la cita de vacunación"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-SICK"/>
+    <display value="Niño enfermo"/>
+    <definition value="El niño presenta enfermedad que posterga la vacunación"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-AGE"/>
+    <display value="Fuera de rango de edad"/>
+    <definition value="El paciente está fuera del rango de edad indicado para la vacuna"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-CONTRA"/>
+    <display value="Contraindicado"/>
+    <definition value="La vacuna está contraindicada para el paciente"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-TIME"/>
+    <display value="Sin tiempo"/>
+    <definition value="No hubo tiempo disponible para administrar la vacuna"/>
+  </concept>
+  <concept>
+    <code value="NOREASON-OTHER"/>
+    <display value="Otro"/>
+    <definition value="La vacuna no fue administrada por otra razón"/>
+  </concept>
+</CodeSystem>

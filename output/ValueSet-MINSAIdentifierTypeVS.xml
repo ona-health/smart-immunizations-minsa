@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="MINSAIdentifierTypeVS"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ConjuntoValores / ConjuntoDeValores MINSAIdentifierTypeVS</b></p><a name="MINSAIdentifierTypeVS"> </a><a name="hcMINSAIdentifierTypeVS"> </a><ul><li>Include all codes defined in <a href="CodeSystem-MINSAIdentifierTypes.html"><code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code></a><span title="Version is not explicitly stated, which means it is fixed to the version provided in this specification"> version &#x1F4E6;1.0.0</span></li></ul></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS"/>
+  <version value="1.0.0"/>
+  <name value="MINSAIdentifierTypeVS"/>
+  <title value="Tipos de Documento de Identidad - MINSA"/>
+  <status value="active"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <description value="Conjunto de valores para los tipos de documento de identidad utilizados en el sistema de inmunizaciones del Perú"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+    </include>
+  </compose>
+</ValueSet>

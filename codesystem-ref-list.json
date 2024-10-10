@@ -1,0 +1,61 @@
+{
+  "codeSystems" : [{
+    "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSA",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSA",
+    "title" : "Sistema de Códigos MINSA para Inmunizaciones",
+    "description" : "Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones",
+    "uses" : {
+    },
+    "ValueSet-MINSADoseNumberVS.html" : "Números de Dosis del Esquema de Vacunación - MINSA",
+    "ValueSet-MINSAImmunizationReasonNotGivenVS.html" : "Razones de No Administración de Vacuna - MINSA",
+    "ValueSet-MINSAVaccineVS.html" : "Vacunas del Esquema Nacional de Vacunación MINSA"
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAIdentifierTypes",
+    "title" : "Tipos de Documento de Identidad - Perú",
+    "description" : "Tipos de documento de identidad utilizados en el sistema de salud del Perú",
+    "uses" : {
+    },
+    "ValueSet-MINSAIdentifierTypeVS.html" : "Tipos de Documento de Identidad - MINSA"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/CodeSystem/IMMZ.Z",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_Z",
+    "title" : "IMMZ.Z CodeSystem for Data Elements",
+    "description" : "CodeSystem for IMMZ.Z Data Elements",
+    "uses" : {
+    },
+    "ValueSet-MINSAVaccineVS.html" : "Vacunas del Esquema Nacional de Vacunación MINSA"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v2-0131",
+    "version" : "3.0.0",
+    "status" : "active",
+    "name" : "ContactRole2",
+    "title" : "contactRole2",
+    "description" : "Code system of concepts which specify a relationship role that the next of kin/associated parties plays with regard to the patient. Also used in referrals, for example, it may be necessary to identify the contact representative at the clinic that sent a referral. Used in HL7 Version 2 messaging in the NK1 and CTD segments after 2.5, when it replace 2.16.840.1.113883.18.57.",
+    "oids" : ["2.16.840.1.113883.18.58"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html" : "Patient relationship type"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "RoleCode",
+    "title" : "RoleCode",
+    "description" : "A set of codes further specifying the kind of Role; specific classification codes for further qualifying RoleClass codes.",
+    "oids" : ["2.16.840.1.113883.5.111"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html" : "Patient relationship type"
+  }]
+}

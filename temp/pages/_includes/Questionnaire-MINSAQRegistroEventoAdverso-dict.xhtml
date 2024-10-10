@@ -1,0 +1,155 @@
+{% raw %}<div data-fhir="generated"><p class="res-header-id"></p>
+<div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: es</p><p style="margin-bottom: 0px">Profile: <a href="http://hl7.org/fhir/uv/sdc/STU3/StructureDefinition-sdc-questionnaire-extr-smap.html">Extractable Questionnaire - StructureMap</a></p></div>
+<table class="dict" data-fhir="generated"><tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="MINSAQRegistroEventoAdverso"> </a><img src="icon_q_root.gif" alt="icon"/> Questionnaire <b>MINSAQRegistroEventoAdverso</b></span></td></tr>
+<tr><td>URL</td>
+<td>http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso</td></tr>
+<tr><td>Version</td>
+<td>1.0.0</td></tr>
+<tr><td>Title</td>
+<td>MINSA - Registro de Evento Adverso</td></tr>
+<tr><td>Status</td>
+<td>draft</td></tr>
+<tr><td>Publication Date</td>
+<td>2024-10-10</td></tr>
+<tr><td>Subject Type</td>
+<td>Patient</td></tr>
+<tr><td>Description</td>
+<td>Cuestionario para registrar un evento adverso supuestamente atribuible a la vacunación o inmunización (ESAVI). Adaptado del cuestionario MINSA EIR record_adverse_event.</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.id-paciente"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>id-paciente</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>id-paciente</td></tr>
+<tr><td>Text</td>
+<td>ID del paciente</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Read Only</td>
+<td>true</td></tr>
+<tr><td><a href="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">Hidden Item</a></td>
+<td>This item is a hidden question</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.edad-paciente-anos"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>edad-paciente-anos</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>edad-paciente-anos</td></tr>
+<tr><td>Text</td>
+<td>Edad del paciente en años</td></tr>
+<tr><td>Type</td>
+<td>integer</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Read Only</td>
+<td>true</td></tr>
+<tr><td><a href="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">Hidden Item</a></td>
+<td>This item is a hidden question</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.fecha-nacimiento-paciente"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>fecha-nacimiento-paciente</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>fecha-nacimiento-paciente</td></tr>
+<tr><td>Text</td>
+<td>Fecha de nacimiento del paciente</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Read Only</td>
+<td>true</td></tr>
+<tr><td><a href="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">Hidden Item</a></td>
+<td>This item is a hidden question</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.vacuna-causante"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>vacuna-causante</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>vacuna-causante</td></tr>
+<tr><td>Text</td>
+<td>Vacuna que causó la reacción</td></tr>
+<tr><td>Type</td>
+<td>reference</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.fecha-reaccion"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>fecha-reaccion</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>fecha-reaccion</td></tr>
+<tr><td>Text</td>
+<td>Fecha en que el paciente comenzó a presentar la reacción</td></tr>
+<tr><td>Type</td>
+<td>date</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.tipo-manifestacion"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>tipo-manifestacion</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>tipo-manifestacion</td></tr>
+<tr><td>Text</td>
+<td>Tipo de manifestación</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: reaccion-local-severa (Reacción local severa)</li><li>[not stated]: convulsiones (Convulsiones)</li><li>[not stated]: absceso (Absceso)</li><li>[not stated]: sepsis (Sepsis)</li><li>[not stated]: encefalopatia (Encefalopatía)</li><li>[not stated]: sindrome-shock-toxico (Síndrome de shock tóxico)</li><li>[not stated]: anafilaxia (Anafilaxia)</li><li>[not stated]: fiebre (Fiebre)</li><li>[not stated]: otro (Otro)</li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.otro-tipo-manifestacion"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>otro-tipo-manifestacion</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>otro-tipo-manifestacion</td></tr>
+<tr><td>Text</td>
+<td>Especifique otro tipo de manifestación</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Enable When</td>
+<td><a href="#item.tipo-manifestacion">tipo-manifestacion</a> = </td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.severidad"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>severidad</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>severidad</td></tr>
+<tr><td>Text</td>
+<td>Severidad de la reacción</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: no-grave (No grave)</li><li>[not stated]: muerte (Muerte)</li><li>[not stated]: riesgo-vital (Riesgo vital)</li><li>[not stated]: discapacidad (Discapacidad)</li><li>[not stated]: hospitalizacion (Hospitalización)</li><li>[not stated]: anomalia-congenita (Anomalía congénita)</li><li>[not stated]: otro-evento-medico-importante (Otro evento médico importante (especificar))</li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.especificar-otro-evento"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>especificar-otro-evento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>especificar-otro-evento</td></tr>
+<tr><td>Text</td>
+<td>Especifique otro evento médico importante</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Enable When</td>
+<td><a href="#item.severidad">severidad</a> = </td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.resultado"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>resultado</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>resultado</td></tr>
+<tr><td>Text</td>
+<td>Resultado de la reacción</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: fallecido (Fallecido)</li><li>[not stated]: recuperado (Recuperado)</li><li>[not stated]: recuperado-con-secuelas (Recuperado con secuelas)</li><li>[not stated]: en-recuperacion (En recuperación)</li><li>[not stated]: no-recuperado (No recuperado)</li></ul></td></tr>
+<tr><td>Enable When</td>
+<td><a href="#item.severidad">severidad</a> != </td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.fecha-fallecimiento"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>fecha-fallecimiento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>fecha-fallecimiento</td></tr>
+<tr><td>Text</td>
+<td>Fecha de fallecimiento</td></tr>
+<tr><td>Type</td>
+<td>date</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Enable When</td>
+<td>any are true:
+<ul><li><a href="#item.severidad">severidad</a> = </li>
+<li><a href="#item.resultado">resultado</a> = </li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.fue-referido"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>fue-referido</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>fue-referido</td></tr>
+<tr><td>Text</td>
+<td>¿Fue referido el paciente?</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: si (Sí)</li><li>[not stated]: no (No)</li></ul></td></tr></table></div>{% endraw %}

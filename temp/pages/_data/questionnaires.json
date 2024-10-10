@@ -1,0 +1,97 @@
+{
+  "MINSAQEliminarPaciente" : {
+    "index" : 6,
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQEliminarPaciente",
+    "name" : null,
+    "namelang" : {
+    },
+    "path" : "Questionnaire-MINSAQEliminarPaciente.html",
+    "status" : "draft",
+    "date" : "Thu Oct 10 00:00:00 EDT 2024",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Cuestionario para eliminar (dar de baja) a un paciente del registro de inmunizaciones. Se utiliza cuando el paciente se ha mudado, ha fallecido, tiene registro duplicado u otra razón.",
+    "descriptionlang" : {
+    }
+  },
+  "MINSAQRegistroEventoAdverso" : {
+    "index" : 7,
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso",
+    "name" : null,
+    "namelang" : {
+    },
+    "path" : "Questionnaire-MINSAQRegistroEventoAdverso.html",
+    "status" : "draft",
+    "date" : "Thu Oct 10 00:00:00 EDT 2024",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Cuestionario para registrar un evento adverso supuestamente atribuible a la vacunación o inmunización (ESAVI). Adaptado del cuestionario MINSA EIR record_adverse_event.",
+    "descriptionlang" : {
+    }
+  },
+  "MINSAQRegistroPaciente" : {
+    "index" : 8,
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroPaciente",
+    "name" : null,
+    "namelang" : {
+    },
+    "path" : "Questionnaire-MINSAQRegistroPaciente.html",
+    "status" : "draft",
+    "date" : "Thu Oct 10 00:00:00 EDT 2024",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Cuestionario para el registro de pacientes (niños) en el programa de inmunizaciones del MINSA Perú. Incluye datos del cuidador, datos del niño, ubicación geográfica y seguro SIS.",
+    "descriptionlang" : {
+    }
+  },
+  "MINSAQRegistroVacuna" : {
+    "index" : 9,
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroVacuna",
+    "name" : null,
+    "namelang" : {
+    },
+    "path" : "Questionnaire-MINSAQRegistroVacuna.html",
+    "status" : "draft",
+    "date" : "Thu Oct 10 00:00:00 EDT 2024",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Cuestionario para registrar la administración de una vacuna individual. Adaptado del cuestionario MINSA EIR record_child_immunization.",
+    "descriptionlang" : {
+    }
+  },
+  "MINSAQSilenciarPaciente" : {
+    "index" : 10,
+    "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQSilenciarPaciente",
+    "name" : null,
+    "namelang" : {
+    },
+    "path" : "Questionnaire-MINSAQSilenciarPaciente.html",
+    "status" : "draft",
+    "date" : "Thu Oct 10 00:00:00 EDT 2024",
+    "publisher" : "MINSA - Ministerio de Salud del Perú",
+    "publisherlang" : {
+    },
+    "copyright" : null,
+    "copyrightlang" : {
+    },
+    "description" : "Cuestionario para silenciar un paciente, desactivando los recordatorios de vacunación. Se utiliza cuando el paciente se ha mudado, fue transferido o se perdió el seguimiento.",
+    "descriptionlang" : {
+    }
+  }
+}

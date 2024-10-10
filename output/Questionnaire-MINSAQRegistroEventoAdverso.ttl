@@ -1,0 +1,446 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso> a fhir:Questionnaire ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSAQRegistroEventoAdverso"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "es"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xml:lang=\"es\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"es\"><p class=\"res-header-id\"><b>Generated Narrative: Cuestionario MINSAQRegistroEventoAdverso</b></p><a name=\"MINSAQRegistroEventoAdverso\"> </a><a name=\"hcMINSAQRegistroEventoAdverso\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: es</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/uv/sdc/STU3/StructureDefinition-sdc-questionnaire-extr-smap.html\">Extractable Questionnaire - StructureMap</a></p></div><b>Structure</b><table border=\"1\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 2px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"The linkID for the item\">LinkID</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"Text for the item\">Text</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"Minimum and Maximum # of times the item can appear in the instance\">Cardinality</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"The type of the item\">Type</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"Other attributes of the item\">Flags</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"Additional information about the item\">Description &amp; Constraints</a><span style=\"float: right\"><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_q_root.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"QuestionnaireRoot\" class=\"hierarchy\"/> </td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Cuestionario para registrar un evento adverso supuestamente atribuible a la vacunación o inmunización (ESAVI). Adaptado del cuestionario MINSA EIR record_adverse_event.</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Questionnaire</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso#1.0.0</td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.id-paciente\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-string.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"string\" class=\"hierarchy\"/> id-paciente</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">ID del paciente</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/questionnaire-definitions.html#Questionnaire.item.readOnly\" title=\"Is Read Only\"><img src=\"icon-qi-readonly.png\" alt=\"icon\"/></a><img src=\"icon-qi-readonly.png\" alt=\"icon\"/><a href=\"https://hl7.org/fhir/R4/extension-questionnaire-hidden.html\" title=\"Is a hidden item\"><img src=\"icon-qi-hidden.png\" alt=\"icon\"/></a><img src=\"icon-qi-hidden.png\" alt=\"icon\"/></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.edad-paciente-anos\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-integer.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"integer\" class=\"hierarchy\"/> edad-paciente-anos</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Edad del paciente en años</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-integer\">integer</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/questionnaire-definitions.html#Questionnaire.item.readOnly\" title=\"Is Read Only\"><img src=\"icon-qi-readonly.png\" alt=\"icon\"/></a><img src=\"icon-qi-readonly.png\" alt=\"icon\"/><a href=\"https://hl7.org/fhir/R4/extension-questionnaire-hidden.html\" title=\"Is a hidden item\"><img src=\"icon-qi-hidden.png\" alt=\"icon\"/></a><img src=\"icon-qi-hidden.png\" alt=\"icon\"/></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.fecha-nacimiento-paciente\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-string.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"string\" class=\"hierarchy\"/> fecha-nacimiento-paciente</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Fecha de nacimiento del paciente</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/questionnaire-definitions.html#Questionnaire.item.readOnly\" title=\"Is Read Only\"><img src=\"icon-qi-readonly.png\" alt=\"icon\"/></a><img src=\"icon-qi-readonly.png\" alt=\"icon\"/><a href=\"https://hl7.org/fhir/R4/extension-questionnaire-hidden.html\" title=\"Is a hidden item\"><img src=\"icon-qi-hidden.png\" alt=\"icon\"/></a><img src=\"icon-qi-hidden.png\" alt=\"icon\"/></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.vacuna-causante\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-reference.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"reference\" class=\"hierarchy\"/> vacuna-causante</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Vacuna que causó la reacción</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-reference\">reference</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.fecha-reaccion\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-date.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"date\" class=\"hierarchy\"/> fecha-reaccion</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Fecha en que el paciente comenzó a presentar la reacción</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-date\">date</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.tipo-manifestacion\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-coding.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"coding\" class=\"hierarchy\"/> tipo-manifestacion</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Tipo de manifestación</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-choice\">choice</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Options: <a href=\"#opt-item.tipo-manifestacion\">9 options</a></td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.otro-tipo-manifestacion\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-string.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"string\" class=\"hierarchy\"/> otro-tipo-manifestacion</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Especifique otro tipo de manifestación</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Enable When: <span><a href=\"#item.tipo-manifestacion\">tipo-manifestacion</a> = </span></td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.severidad\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-coding.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"coding\" class=\"hierarchy\"/> severidad</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Severidad de la reacción</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-choice\">choice</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Options: <a href=\"#opt-item.severidad\">7 options</a></td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.especificar-otro-evento\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-string.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"string\" class=\"hierarchy\"/> especificar-otro-evento</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Especifique otro evento médico importante</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Enable When: <span><a href=\"#item.severidad\">severidad</a> = </span></td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.resultado\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-coding.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"coding\" class=\"hierarchy\"/> resultado</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Resultado de la reacción</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-choice\">choice</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Enable When: <span><a href=\"#item.severidad\">severidad</a> != </span><br/>Options: <a href=\"#opt-item.resultado\">5 options</a></td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" id=\"item.fecha-fallecimiento\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-date.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"date\" class=\"hierarchy\"/> fecha-fallecimiento</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Fecha de fallecimiento</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-date\">date</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Enable When: <ul><li><a href=\"#item.severidad\">severidad</a> = </li><li><a href=\"#item.resultado\">resultado</a> = </li></ul></td></tr>#xD;\n<tr style=\"border: 1px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck00.png)\" id=\"item.fue-referido\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon-q-coding.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"coding\" class=\"hierarchy\"/> fue-referido</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">¿Fue referido el paciente?</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..1</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"https://hl7.org/fhir/R4/codesystem-item-type.html#item-type-choice\">choice</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 1px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Options: <a href=\"#opt-item.fue-referido\">2 options</a></td></tr>#xD;\n<tr><td colspan=\"6\" class=\"hierarchy\"><br/><a href=\"https://hl7.org/fhir/R4/formats.html#table\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Documentation for this format</a></td></tr></table><hr/><p><b>Options Sets</b></p><a name=\"opt-item.tipo-manifestacion\"> </a><p><b>Answer options for tipo-manifestacion </b></p><ul><li style=\"font-size: 11px\">null#reaccion-local-severa (\"Reacción local severa\")</li><li style=\"font-size: 11px\">null#convulsiones (\"Convulsiones\")</li><li style=\"font-size: 11px\">null#absceso (\"Absceso\")</li><li style=\"font-size: 11px\">null#sepsis (\"Sepsis\")</li><li style=\"font-size: 11px\">null#encefalopatia (\"Encefalopatía\")</li><li style=\"font-size: 11px\">null#sindrome-shock-toxico (\"Síndrome de shock tóxico\")</li><li style=\"font-size: 11px\">null#anafilaxia (\"Anafilaxia\")</li><li style=\"font-size: 11px\">null#fiebre (\"Fiebre\")</li><li style=\"font-size: 11px\">null#otro (\"Otro\")</li></ul><a name=\"opt-item.severidad\"> </a><p><b>Answer options for severidad </b></p><ul><li style=\"font-size: 11px\">null#no-grave (\"No grave\")</li><li style=\"font-size: 11px\">null#muerte (\"Muerte\")</li><li style=\"font-size: 11px\">null#riesgo-vital (\"Riesgo vital\")</li><li style=\"font-size: 11px\">null#discapacidad (\"Discapacidad\")</li><li style=\"font-size: 11px\">null#hospitalizacion (\"Hospitalización\")</li><li style=\"font-size: 11px\">null#anomalia-congenita (\"Anomalía congénita\")</li><li style=\"font-size: 11px\">null#otro-evento-medico-importante (\"Otro evento médico importante (especificar)\")</li></ul><a name=\"opt-item.resultado\"> </a><p><b>Answer options for resultado </b></p><ul><li style=\"font-size: 11px\">null#fallecido (\"Fallecido\")</li><li style=\"font-size: 11px\">null#recuperado (\"Recuperado\")</li><li style=\"font-size: 11px\">null#recuperado-con-secuelas (\"Recuperado con secuelas\")</li><li style=\"font-size: 11px\">null#en-recuperacion (\"En recuperación\")</li><li style=\"font-size: 11px\">null#no-recuperado (\"No recuperado\")</li></ul><a name=\"opt-item.fue-referido\"> </a><p><b>Answer options for fue-referido </b></p><ul><li style=\"font-size: 11px\">null#si (\"Sí\")</li><li style=\"font-size: 11px\">null#no (\"No\")</li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap>
+     ] ;
+     fhir:value [
+       a fhir:Canonical ;
+       fhir:v "http://minsa.gob.pe/immunizations/StructureMap/MINSARegistroEventoAdversoSM"^^xsd:anyURI ;
+       fhir:l <http://minsa.gob.pe/immunizations/StructureMap/MINSARegistroEventoAdversoSM>
+     ]
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "name"^^xsd:anyURI ;
+         fhir:l fhir:name
+       ] ;
+       fhir:value [
+         a fhir:Coding ;
+         fhir:system [
+           fhir:v "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext>
+         ] ;
+         fhir:code [ fhir:v "patient" ] ;
+         fhir:display [ fhir:v "Patient" ]
+       ]
+     ] [
+       fhir:url [
+         fhir:v "type"^^xsd:anyURI ;
+         fhir:l fhir:type
+       ] ;
+       fhir:value [
+         a fhir:Code ;
+         fhir:v "Patient"
+       ]
+     ] ) ;
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext>
+     ]
+  ] [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/variable"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/variable>
+     ] ;
+     fhir:value [
+       a fhir:Expression ;
+       fhir:name [ fhir:v "vacunas" ] ;
+       fhir:language [ fhir:v "application/x-fhir-query" ] ;
+       fhir:expression [ fhir:v "Immunization?patient={{%patient.id.replaceMatches('/_history/.*', '')}}&_sort=date" ]
+     ]
+  ] ) ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:title [ fhir:v "MINSA - Registro de Evento Adverso"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:subjectType ( [ fhir:v "Patient"] ) ; # 
+  fhir:date [ fhir:v "2024-10-10"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Cuestionario para registrar un evento adverso supuestamente atribuible a la vacunación o inmunización (ESAVI). Adaptado del cuestionario MINSA EIR record_adverse_event."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:item ( [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/StructureDefinition/questionnaire-hidden>
+       ] ;
+       fhir:value [
+         a fhir:Boolean ;
+         fhir:v true
+       ]
+     ] ) ;
+     fhir:linkId [ fhir:v "id-paciente" ] ;
+     fhir:text [ fhir:v "ID del paciente" ] ;
+     fhir:type [ fhir:v "string" ] ;
+     fhir:required [ fhir:v true ] ;
+     fhir:readOnly [ fhir:v true ]
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/StructureDefinition/questionnaire-hidden>
+       ] ;
+       fhir:value [
+         a fhir:Boolean ;
+         fhir:v true
+       ]
+     ] ) ;
+     fhir:linkId [ fhir:v "edad-paciente-anos" ] ;
+     fhir:text [ fhir:v "Edad del paciente en años" ] ;
+     fhir:type [ fhir:v "integer" ] ;
+     fhir:required [ fhir:v false ] ;
+     fhir:readOnly [ fhir:v true ]
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/StructureDefinition/questionnaire-hidden>
+       ] ;
+       fhir:value [
+         a fhir:Boolean ;
+         fhir:v true
+       ]
+     ] ) ;
+     fhir:linkId [ fhir:v "fecha-nacimiento-paciente" ] ;
+     fhir:text [ fhir:v "Fecha de nacimiento del paciente" ] ;
+     fhir:type [ fhir:v "string" ] ;
+     fhir:required [ fhir:v false ] ;
+     fhir:readOnly [ fhir:v true ]
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl>
+       ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://hl7.org/fhir/questionnaire-item-control"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/questionnaire-item-control>
+           ] ;
+           fhir:code [ fhir:v "drop-down" ]
+         ] )
+       ]
+     ] [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression>
+       ] ;
+       fhir:value [
+         a fhir:Expression ;
+         fhir:language [ fhir:v "application/x-fhir-query" ] ;
+         fhir:expression [ fhir:v "Immunization?patient=Patient/{{%patient.id.replaceMatches('/_history/.*', '')}}&_sort=date" ]
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "path"^^xsd:anyURI ;
+           fhir:l fhir:path
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "vaccineCode.text"
+         ]
+       ] [
+         fhir:url [
+           fhir:v "forDisplay"^^xsd:anyURI ;
+           fhir:l fhir:forDisplay
+         ] ;
+         fhir:value [
+           a fhir:Boolean ;
+           fhir:v true
+         ]
+       ] ) ;
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn>
+       ]
+     ] ) ;
+     fhir:linkId [ fhir:v "vacuna-causante" ] ;
+     fhir:text [ fhir:v "Vacuna que causó la reacción" ] ;
+     fhir:type [ fhir:v "reference" ] ;
+     fhir:required [ fhir:v true ]
+  ] [
+     fhir:linkId [ fhir:v "fecha-reaccion" ] ;
+     fhir:text [ fhir:v "Fecha en que el paciente comenzó a presentar la reacción" ] ;
+     fhir:type [ fhir:v "date" ] ;
+     fhir:required [ fhir:v true ]
+  ] [
+     fhir:linkId [ fhir:v "tipo-manifestacion" ] ;
+     fhir:text [ fhir:v "Tipo de manifestación" ] ;
+     fhir:type [ fhir:v "choice" ] ;
+     fhir:required [ fhir:v false ] ;
+     fhir:answerOption ( [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "reaccion-local-severa" ] ;
+         fhir:display [ fhir:v "Reacción local severa" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "convulsiones" ] ;
+         fhir:display [ fhir:v "Convulsiones" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "absceso" ] ;
+         fhir:display [ fhir:v "Absceso" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "sepsis" ] ;
+         fhir:display [ fhir:v "Sepsis" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "encefalopatia" ] ;
+         fhir:display [ fhir:v "Encefalopatía" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "sindrome-shock-toxico" ] ;
+         fhir:display [ fhir:v "Síndrome de shock tóxico" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "anafilaxia" ] ;
+         fhir:display [ fhir:v "Anafilaxia" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "fiebre" ] ;
+         fhir:display [ fhir:v "Fiebre" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "otro" ] ;
+         fhir:display [ fhir:v "Otro" ]
+       ]
+     ] )
+  ] [
+     fhir:linkId [ fhir:v "otro-tipo-manifestacion" ] ;
+     fhir:text [ fhir:v "Especifique otro tipo de manifestación" ] ;
+     fhir:type [ fhir:v "string" ] ;
+     fhir:enableWhen ( [
+       fhir:question [ fhir:v "tipo-manifestacion" ] ;
+       fhir:operator [ fhir:v "=" ] ;
+       fhir:answer [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "otro" ]
+       ]
+     ] ) ;
+     fhir:required [ fhir:v false ]
+  ] [
+     fhir:linkId [ fhir:v "severidad" ] ;
+     fhir:text [ fhir:v "Severidad de la reacción" ] ;
+     fhir:type [ fhir:v "choice" ] ;
+     fhir:required [ fhir:v false ] ;
+     fhir:answerOption ( [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "no-grave" ] ;
+         fhir:display [ fhir:v "No grave" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "muerte" ] ;
+         fhir:display [ fhir:v "Muerte" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "riesgo-vital" ] ;
+         fhir:display [ fhir:v "Riesgo vital" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "discapacidad" ] ;
+         fhir:display [ fhir:v "Discapacidad" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "hospitalizacion" ] ;
+         fhir:display [ fhir:v "Hospitalización" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "anomalia-congenita" ] ;
+         fhir:display [ fhir:v "Anomalía congénita" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "otro-evento-medico-importante" ] ;
+         fhir:display [ fhir:v "Otro evento médico importante (especificar)" ]
+       ]
+     ] )
+  ] [
+     fhir:linkId [ fhir:v "especificar-otro-evento" ] ;
+     fhir:text [ fhir:v "Especifique otro evento médico importante" ] ;
+     fhir:type [ fhir:v "string" ] ;
+     fhir:enableWhen ( [
+       fhir:question [ fhir:v "severidad" ] ;
+       fhir:operator [ fhir:v "=" ] ;
+       fhir:answer [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "otro-evento-medico-importante" ]
+       ]
+     ] ) ;
+     fhir:required [ fhir:v false ]
+  ] [
+     fhir:linkId [ fhir:v "resultado" ] ;
+     fhir:text [ fhir:v "Resultado de la reacción" ] ;
+     fhir:type [ fhir:v "choice" ] ;
+     fhir:enableWhen ( [
+       fhir:question [ fhir:v "severidad" ] ;
+       fhir:operator [ fhir:v "!=" ] ;
+       fhir:answer [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "muerte" ]
+       ]
+     ] ) ;
+     fhir:required [ fhir:v false ] ;
+     fhir:answerOption ( [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "fallecido" ] ;
+         fhir:display [ fhir:v "Fallecido" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "recuperado" ] ;
+         fhir:display [ fhir:v "Recuperado" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "recuperado-con-secuelas" ] ;
+         fhir:display [ fhir:v "Recuperado con secuelas" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "en-recuperacion" ] ;
+         fhir:display [ fhir:v "En recuperación" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "no-recuperado" ] ;
+         fhir:display [ fhir:v "No recuperado" ]
+       ]
+     ] )
+  ] [
+     fhir:linkId [ fhir:v "fecha-fallecimiento" ] ;
+     fhir:text [ fhir:v "Fecha de fallecimiento" ] ;
+     fhir:type [ fhir:v "date" ] ;
+     fhir:enableWhen ( [
+       fhir:question [ fhir:v "severidad" ] ;
+       fhir:operator [ fhir:v "=" ] ;
+       fhir:answer [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "muerte" ]
+       ]
+     ] [
+       fhir:question [ fhir:v "resultado" ] ;
+       fhir:operator [ fhir:v "=" ] ;
+       fhir:answer [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "fallecido" ]
+       ]
+     ] ) ;
+     fhir:enableBehavior [ fhir:v "any" ] ;
+     fhir:required [ fhir:v true ]
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl>
+       ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://hl7.org/fhir/questionnaire-item-control"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/questionnaire-item-control>
+           ] ;
+           fhir:code [ fhir:v "drop-down" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:linkId [ fhir:v "fue-referido" ] ;
+     fhir:text [ fhir:v "¿Fue referido el paciente?" ] ;
+     fhir:type [ fhir:v "choice" ] ;
+     fhir:required [ fhir:v true ] ;
+     fhir:answerOption ( [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "si" ] ;
+         fhir:display [ fhir:v "Sí" ]
+       ]
+     ] [
+       fhir:value [
+         a fhir:Coding ;
+         fhir:code [ fhir:v "no" ] ;
+         fhir:display [ fhir:v "No" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

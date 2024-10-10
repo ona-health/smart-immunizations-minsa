@@ -1,0 +1,161 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>StructureMap-MINSA.RegistroVacuna.QRToImmunization-script-plain</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+/// url = "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization"
+/// name = "MINSA.RegistroVacuna.QRToImmunization"
+/// title = "null"
+/// status = "draft"
+
+uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" alias QResp as source
+uses "http://hl7.org/fhir/StructureDefinition/Bundle" alias Bundle as target
+
+imports "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"
+
+group RegistroVacuna(source src : QResp, target bundle : Bundle) {
+  src ->  bundle.id = uuid(),  bundle.type = 'collection' "BundleStatic";
+  src -> create('Encounter') as encounter then {
+    src then ExtractEncounter(src, encounter) "ExtractEncounter";
+    // Solo crear Immunization si la vacuna fue administrada
+    src.item as item where ((linkId = 'vaccine-administered') and (answer.value.code = 'yes')) then {
+      src ->  bundle.entry as entry,  entry.resource = create('Immunization') as immunization then {
+        src then ExtractImmunization(src, encounter, immunization) "ExtractImmunization";
+        src then ExtractTaskCompleted(src, encounter, immunization, bundle) "ExtractTask";
+      } "ImmunizationEntry";
+    } "VaccineGiven";
+    // Si la vacuna no fue administrada, marcar tarea como fallida
+    src.item as item where ((linkId = 'vaccine-administered') and (answer.value.code = 'no')) then {
+      src then ExtractTaskFailed(src, bundle) "ExtractTaskFailed";
+    } "VaccineNotGiven";
+    src ->  bundle.entry as entry,  entry.resource = encounter "EncounterEntry";
+  } "CreateEncounter";
+}
+
+// Extrae el recurso Encounter para la visita de vacunacion
+group ExtractEncounter(source src : QResp, target encounter : Encounter) {
+  src ->  encounter.id = uuid(),  encounter.status = 'finished',  encounter.class = c('http://terminology.hl7.org/CodeSystem/v3-ActCode', 'AMB', 'ambulatory') "EncounterStatic";
+  src.subject as subject -> encounter.subject = subject "EncounterSubject";
+  src -> encounter.type = create('CodeableConcept') as cc then {
+    src -> cc.coding = create('Coding') as coding then {
+      src ->  coding.system = 'http://snomed.info/sct',  coding.code = '33879002',  coding.display = 'Administration of vaccine to produce active immunity (procedure)' "TypeCoding";
+    } "TypeCC";
+    src -> cc.text = 'Vacunacion' "TypeText";
+  } "EncounterType";
+  src -> encounter.period = create('Period') as period then {
+    src -> period.start = evaluate(src, now()) "PeriodStart";
+    src -> period.end = evaluate(src, now()) "PeriodEnd";
+  } "EncounterPeriod";
+  // Ubicacion del encuentro (establecimiento de salud)
+  src.item as item where ((linkId = 'location-id') and answer.value.exists()) then {
+    item.answer first as answer then {
+      answer.value as locId -> encounter.location = create('Encounter_Location') as loc then {
+        locId -> loc.location = create('Reference') as ref then {
+          locId -> ref.reference = evaluate(locId, 'Location/' + $this) "LocReference";
+        } "LocRef";
+      } "CreateLoc";
+    } "LocAnswer";
+  } "EncounterLocation";
+}
+
+// Extrae el recurso Immunization con datos de la vacuna administrada
+group ExtractImmunization(source src : QResp, source encounter : Encounter, target immunization : Immunization) {
+  src ->  immunization.id = uuid(),  immunization.status = 'completed',  immunization.recorded = evaluate(src, now()),  immunization.patient = evaluate(src, subject),  immunization.encounter = reference(encounter) "ImmunizationStatic";
+  // Codigo de vacuna (del esquema nacional MINSA)
+  src.item as item where linkId = 'vaccine-code' then {
+    item.answer first as answer then {
+      answer.value as coding -> immunization.vaccineCode = create('CodeableConcept') as cc then {
+        coding -> cc.coding = coding "SetVaccineCoding";
+        coding.display as display -> cc.text = display "SetVaccineText";
+      } "CreateVaccineCC";
+    } "VaccineCodeAnswer";
+  } "VaccineCode";
+  // Fecha de administracion
+  src.item as item where linkId = 'vaccination-date' then {
+    item.answer first as answer then {
+      answer.value as val ->  create('dateTime') as dt,  dt.value = val,  immunization.occurrence = dt "SetOccurrence";
+    } "VaccineDateAnswer";
+  } "VaccinationDate";
+  // Numero de lote
+  src.item as item where linkId = 'lot-number' then {
+    item.answer first as answer then {
+      answer.value as val -> immunization.lotNumber = val "SetLotNumber";
+    } "LotAnswer";
+  } "LotNumber";
+  // Fecha de vencimiento del lote
+  src.item as item where linkId = 'expiration-date' then {
+    item.answer first as answer then {
+      answer.value as val -> immunization.expirationDate = val "SetExpirationDate";
+    } "ExpirationAnswer";
+  } "ExpirationDate";
+  // Numero de dosis y protocolo aplicado
+  src.item as item where linkId = 'dose-number' then {
+    item.answer first as answer then {
+      answer.value as val -> immunization.protocolApplied = create('Immunization_AppliedProtocol') as protocol then {
+        val -> protocol.doseNumber = val "SetDoseNumber";
+      } "CreateProtocol";
+    } "DoseAnswer";
+  } "DoseNumber";
+  // Via de administracion
+  src.item as item where linkId = 'route' then {
+    item.answer first as answer then {
+      answer.value as coding -> immunization.route = create('CodeableConcept') as cc then {
+        coding -> cc.coding = coding "SetRouteCoding";
+        coding.display as display -> cc.text = display "SetRouteText";
+      } "CreateRouteCC";
+    } "RouteAnswer";
+  } "Route";
+  // Establecimiento de salud (como performer)
+  src.item as item where ((linkId = 'performer-organization') and answer.value.exists()) then {
+    item.answer first as answer then {
+      answer.value as orgRef -> immunization.performer = create('Immunization_Performer') as performer then {
+        orgRef -> performer.actor = create('Reference') as ref then {
+          orgRef -> ref.reference = evaluate(orgRef, 'Organization/' + $this) "SetOrgRef";
+        } "CreateOrgRef";
+      } "CreatePerformer";
+    } "OrgAnswer";
+  } "PerformerOrg";
+}
+
+// Crea un Task con estado completado, vinculado al Encounter e Immunization
+group ExtractTaskCompleted(source src : QResp, source encounter : Encounter, source immunization : Immunization, target bundle : Bundle) {
+  src.item as item where ((linkId = 'task-id') and answer.value.exists()) then {
+    item.answer first as answer then {
+      answer.value as taskId ->  bundle.entry as entry,  entry.resource = create('Task') as task then {
+        taskId ->  task.id = create('id') as id,  id.value = taskId "SetTaskId";
+        taskId -> task.status = 'completed' "TaskCompleted";
+        // Referencia al Encounter
+        taskId -> task.output = create('Task_Output') as outputEnc then {
+          taskId -> outputEnc.type = create('CodeableConcept') as cc then {
+            taskId -> cc.coding = c('http://snomed.info/sct', '41000179103', 'Immunization record (record artifact)') "OutputEncTypeCoding";
+          } "OutputEncType";
+          encounter -> outputEnc.value = reference(encounter) "OutputEncValue";
+        } "TaskOutputEnc";
+        // Referencia al Immunization
+        taskId -> task.output = create('Task_Output') as outputImm then {
+          taskId -> outputImm.type = create('CodeableConcept') as cc then {
+            taskId -> cc.coding = c('http://snomed.info/sct', '41000179103', 'Immunization record (record artifact)') "OutputImmTypeCoding";
+          } "OutputImmType";
+          immunization -> outputImm.value = reference(immunization) "OutputImmValue";
+        } "TaskOutputImm";
+      } "CreateTask";
+    } "TaskIdAnswer";
+  } "TaskCompleted";
+}
+
+// Crea un Task con estado fallido cuando la vacuna no fue administrada
+group ExtractTaskFailed(source src : QResp, target bundle : Bundle) {
+  src.item as item where ((linkId = 'task-id') and answer.value.exists()) then {
+    item.answer first as answer then {
+      answer.value as taskId ->  bundle.entry as entry,  entry.resource = create('Task') as task then {
+        taskId ->  task.id = create('id') as id,  id.value = taskId "SetFailedTaskId";
+        taskId -> task.status = 'failed' "TaskFailed";
+      } "CreateFailedTask";
+    } "FailedTaskIdAnswer";
+  } "TaskFailed";
+}
+
+</body>
+</html>

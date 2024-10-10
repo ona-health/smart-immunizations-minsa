@@ -1,0 +1,71 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSAIdentifierTypes"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: SistemaDeCodigos MINSAIdentifierTypes</b></p><a name=\"MINSAIdentifierTypes\"> </a><a name=\"hcMINSAIdentifierTypes\"> </a><p>This case-insensitive code system <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">DNI<a name=\"MINSAIdentifierTypes-DNI\"> </a></td><td>Documento Nacional de Identidad</td></tr><tr><td style=\"white-space:nowrap\">CE<a name=\"MINSAIdentifierTypes-CE\"> </a></td><td>Carnet de Extranjería</td></tr><tr><td style=\"white-space:nowrap\">SIS<a name=\"MINSAIdentifierTypes-SIS\"> </a></td><td>Código del Seguro Integral de Salud</td></tr><tr><td style=\"white-space:nowrap\">CNV<a name=\"MINSAIdentifierTypes-CNV\"> </a></td><td>Certificado de Nacido Vivo</td></tr><tr><td style=\"white-space:nowrap\">PTP<a name=\"MINSAIdentifierTypes-PTP\"> </a></td><td>Permiso Temporal de Permanencia</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSAIdentifierTypes"] ; # 
+  fhir:title [ fhir:v "Tipos de Documento de Identidad - Perú"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Tipos de documento de identidad utilizados en el sistema de salud del Perú"] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:caseSensitive [ fhir:v false] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "5"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "DNI" ] ;
+     fhir:display [ fhir:v "DNI" ] ;
+     fhir:definition [ fhir:v "Documento Nacional de Identidad" ]
+  ] [
+     fhir:code [ fhir:v "CE" ] ;
+     fhir:display [ fhir:v "CE" ] ;
+     fhir:definition [ fhir:v "Carnet de Extranjería" ]
+  ] [
+     fhir:code [ fhir:v "SIS" ] ;
+     fhir:display [ fhir:v "SIS" ] ;
+     fhir:definition [ fhir:v "Código del Seguro Integral de Salud" ]
+  ] [
+     fhir:code [ fhir:v "CNV" ] ;
+     fhir:display [ fhir:v "CNV" ] ;
+     fhir:definition [ fhir:v "Certificado de Nacido Vivo" ]
+  ] [
+     fhir:code [ fhir:v "PTP" ] ;
+     fhir:display [ fhir:v "PTP" ] ;
+     fhir:definition [ fhir:v "Permiso Temporal de Permanencia" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

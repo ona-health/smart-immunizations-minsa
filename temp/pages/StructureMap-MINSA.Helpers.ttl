@@ -1,0 +1,546 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers> a fhir:StructureMap ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSA.Helpers"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MapaDeEstructura MINSA.Helpers</b></p><a name=\"MINSA.Helpers\"> </a><a name=\"hcMINSA.Helpers\"> </a><pre class=\"fml\">#xD;\n<b>map</b><span style=\"color: navy\"> \"</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers<span style=\"color: navy\">\" = \"</span>MINSA.Helpers<span style=\"color: navy\">\"#xD;\n#xD;\n</span><b>uses</b><span style=\"color: navy\"> \"</span><a href=\"http://hl7.org/fhir/R4/questionnaireresponse.html\" title=\"QuestionnaireResponse\">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style=\"color: navy\">\" </span><b>alias </b>QResp <b>as </b><b>source</b>#xD;\n<b>uses</b><span style=\"color: navy\"> \"</span><a href=\"http://hl7.org/fhir/R4/bundle.html\" title=\"Bundle\">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style=\"color: navy\">\" </span><b>alias </b>Bundle <b>as </b><b>target</b>#xD;\n#xD;\n<span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el valor de la primera respuesta de un item</span>#xD;\n<b>group </b>ItemToValue<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">item</span>, <b>target</b> <span style=\"color: maroon\">field</span><span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    answer.value<b> as </b><span style=\"color: maroon\">content</span><span style=\"color: navy\"><b> -&gt; </b></span>field.value = <span style=\"color: maroon\">content</span> <i>\"SetValue\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"FirstAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el codigo de una respuesta codificada</span>#xD;\n<b>group </b>ItemToCode<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">item</span>, <b>target</b> <span style=\"color: maroon\">field</span><span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    answer.value<b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      coding.code<b> as </b><span style=\"color: maroon\">content</span><span style=\"color: navy\"><b> -&gt; </b></span>field.value = <span style=\"color: maroon\">content</span> <i>\"SetCode\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"Coding\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"FirstAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae sistema, codigo y display de una respuesta codificada</span>#xD;\n<b>group </b>ItemToCoding<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">item</span>, <b>target</b> <span style=\"color: maroon\">field</span><span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    answer.value<b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      coding.code<b> as </b><span style=\"color: maroon\">code</span><span style=\"color: navy\"><b> -&gt; </b></span>field.code = <span style=\"color: maroon\">code</span> <i>\"SetCode\"</i><span style=\"color: navy\">;</span>#xD;\n      coding.system<b> as </b><span style=\"color: maroon\">system</span><span style=\"color: navy\"><b> -&gt; </b></span>field.system = <span style=\"color: maroon\">system</span> <i>\"SetSystem\"</i><span style=\"color: navy\">;</span>#xD;\n      coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>field.display = <span style=\"color: maroon\">display</span> <i>\"SetDisplay\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"Coding\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"FirstAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea un identificador DNI con sistema MINSA</span>#xD;\n<b>group </b>SetDNI<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">item</span>, <b>target</b> <span style=\"color: maroon\">identifier</span><span style=\"color: navy\"> : </span>Identifier<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span> identifier.use = <span style=\"color: blue\">'official'</span><span style=\"color: navy\">, </span> identifier.system = <span style=\"color: blue\">'http://minsa.gob.pe/sid/dni'</span><span style=\"color: navy\">, </span> identifier.value = <span style=\"color: maroon\">val</span> <i>\"SetDNIValue\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"DNIAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea un ContactPoint de telefono</span>#xD;\n<b>group </b>SetPhone<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">item</span>, <b>target</b> <span style=\"color: maroon\">telecom</span><span style=\"color: navy\"> : </span>ContactPoint<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span> telecom.system = <span style=\"color: blue\">'phone'</span><span style=\"color: navy\">, </span> telecom.use = <span style=\"color: blue\">'mobile'</span><span style=\"color: navy\">, </span> telecom.value = <span style=\"color: maroon\">val</span> <i>\"SetPhoneValue\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"PhoneAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea una Observation vinculada a un paciente y encuentro</span>#xD;\n<b>group </b>MakeObservation<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">patient</span><span style=\"color: navy\"> : </span>Reference, <b>source</b> <span style=\"color: maroon\">code</span><span style=\"color: navy\"> : </span>Coding, <b>source</b> <span style=\"color: maroon\">cat</span><span style=\"color: navy\"> : </span>Coding, <b>source</b> <span style=\"color: maroon\">value</span>, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  value<span style=\"color: navy\"><b> -&gt; </b></span> <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">oid</span><span style=\"color: navy\">, </span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.fullUrl = <b>append</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'urn:uuid:'</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">oid</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> entry.request<b> as </b><span style=\"color: maroon\">request</span><span style=\"color: navy\">, </span> request.method = <span style=\"color: blue\">'PUT'</span><span style=\"color: navy\">, </span> request.url = <b>append</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Observation/'</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">oid</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Observation'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">obs</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    value<span style=\"color: navy\"><b> -&gt; </b></span>obs.id = <span style=\"color: maroon\">oid</span> <i>\"SetId\"</i><span style=\"color: navy\">;</span>#xD;\n    patient<span style=\"color: navy\"><b> -&gt; </b></span>obs.subject = <span style=\"color: maroon\">patient</span> <i>\"SetSubject\"</i><span style=\"color: navy\">;</span>#xD;\n    code<span style=\"color: navy\"><b> -&gt; </b></span>obs.code = <span style=\"color: maroon\">code</span> <i>\"SetCode\"</i><span style=\"color: navy\">;</span>#xD;\n    value<span style=\"color: navy\"><b> -&gt; </b></span>obs.value = <span style=\"color: maroon\">value</span> <i>\"SetValue\"</i><span style=\"color: navy\">;</span>#xD;\n    cat<span style=\"color: navy\"><b> -&gt; </b></span>obs.category = <span style=\"color: maroon\">cat</span> <i>\"SetCategory\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"CreateObservation\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span></pre></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSA.Helpers"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:structure ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse>
+     ] ;
+     fhir:mode [ fhir:v "source" ] ;
+     fhir:alias [ fhir:v "QResp" ]
+  ] [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/Bundle"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/Bundle>
+     ] ;
+     fhir:mode [ fhir:v "target" ] ;
+     fhir:alias [ fhir:v "Bundle" ]
+  ] ) ; # 
+  fhir:group ( [
+     fhir:name [ fhir:v "ItemToValue" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae el valor de la primera respuesta de un item" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "item" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "field" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "FirstAnswer" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "item" ] ;
+         fhir:element [ fhir:v "answer" ] ;
+         fhir:listMode [ fhir:v "first" ] ;
+         fhir:variable [ fhir:v "answer" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "SetValue" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "answer" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:variable [ fhir:v "content" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "field" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "content"
+             ]
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ItemToCode" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae el codigo de una respuesta codificada" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "item" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "field" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "FirstAnswer" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "item" ] ;
+         fhir:element [ fhir:v "answer" ] ;
+         fhir:listMode [ fhir:v "first" ] ;
+         fhir:variable [ fhir:v "answer" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "Coding" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "answer" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:variable [ fhir:v "coding" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "SetCode" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:element [ fhir:v "code" ] ;
+             fhir:variable [ fhir:v "content" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "field" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "value" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "content"
+               ]
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ItemToCoding" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae sistema, codigo y display de una respuesta codificada" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "item" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "field" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "FirstAnswer" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "item" ] ;
+         fhir:element [ fhir:v "answer" ] ;
+         fhir:listMode [ fhir:v "first" ] ;
+         fhir:variable [ fhir:v "answer" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "Coding" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "answer" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:variable [ fhir:v "coding" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "SetCode" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:element [ fhir:v "code" ] ;
+             fhir:variable [ fhir:v "code" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "field" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "code" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "code"
+               ]
+             ] )
+           ] )
+         ] [
+           fhir:name [ fhir:v "SetSystem" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:element [ fhir:v "system" ] ;
+             fhir:variable [ fhir:v "system" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "field" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "system" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "system"
+               ]
+             ] )
+           ] )
+         ] [
+           fhir:name [ fhir:v "SetDisplay" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:element [ fhir:v "display" ] ;
+             fhir:variable [ fhir:v "display" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "field" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "display" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:Id ;
+                 fhir:v "display"
+               ]
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "SetDNI" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Crea un identificador DNI con sistema MINSA" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "item" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "identifier" ] ;
+       fhir:type [ fhir:v "Identifier" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "DNIAnswer" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "item" ] ;
+         fhir:element [ fhir:v "answer" ] ;
+         fhir:listMode [ fhir:v "first" ] ;
+         fhir:variable [ fhir:v "answer" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "SetDNIValue" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "answer" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:variable [ fhir:v "val" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "identifier" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "use" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "official"
+             ]
+           ] )
+         ] [
+           fhir:context [ fhir:v "identifier" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "system" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "http://minsa.gob.pe/sid/dni"
+             ]
+           ] )
+         ] [
+           fhir:context [ fhir:v "identifier" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "val"
+             ]
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "SetPhone" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Crea un ContactPoint de telefono" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "item" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "telecom" ] ;
+       fhir:type [ fhir:v "ContactPoint" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "PhoneAnswer" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "item" ] ;
+         fhir:element [ fhir:v "answer" ] ;
+         fhir:listMode [ fhir:v "first" ] ;
+         fhir:variable [ fhir:v "answer" ]
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "SetPhoneValue" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "answer" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:variable [ fhir:v "val" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "telecom" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "system" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "phone"
+             ]
+           ] )
+         ] [
+           fhir:context [ fhir:v "telecom" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "use" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "mobile"
+             ]
+           ] )
+         ] [
+           fhir:context [ fhir:v "telecom" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "val"
+             ]
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "MakeObservation" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Crea una Observation vinculada a un paciente y encuentro" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "patient" ] ;
+       fhir:type [ fhir:v "Reference" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "code" ] ;
+       fhir:type [ fhir:v "Coding" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "cat" ] ;
+       fhir:type [ fhir:v "Coding" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "value" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "bundle" ] ;
+       fhir:type [ fhir:v "Bundle" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "CreateObservation" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "value" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:variable [ fhir:v "oid" ] ;
+         fhir:transform [ fhir:v "uuid" ]
+       ] [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "entry" ] ;
+         fhir:variable [ fhir:v "entry" ]
+       ] [
+         fhir:context [ fhir:v "entry" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "fullUrl" ] ;
+         fhir:transform [ fhir:v "append" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "urn:uuid:"
+           ]
+         ] [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "oid"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "entry" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "request" ] ;
+         fhir:variable [ fhir:v "request" ]
+       ] [
+         fhir:context [ fhir:v "request" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "method" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "PUT"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "request" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "url" ] ;
+         fhir:transform [ fhir:v "append" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Observation/"
+           ]
+         ] [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "oid"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "entry" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "resource" ] ;
+         fhir:variable [ fhir:v "obs" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Observation"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "SetId" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "value" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "id" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "oid"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "SetSubject" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "patient" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "subject" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "patient"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "SetCode" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "code" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "code" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "code"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "SetValue" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "value" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "value" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "value"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "SetCategory" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "cat" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "category" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "cat"
+             ]
+           ] )
+         ] )
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

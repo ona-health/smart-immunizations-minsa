@@ -1,0 +1,91 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSAImmunizationReasonNotGivenVS"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ConjuntoValores / ConjuntoDeValores MINSAImmunizationReasonNotGivenVS</b></p><a name=\"MINSAImmunizationReasonNotGivenVS\"> </a><a name=\"hcMINSAImmunizationReasonNotGivenVS\"> </a><ul><li>Include these codes as defined in <a href=\"CodeSystem-MINSA.html\"><code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version ?1.0.0</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-IMMUNITY\">NOREASON-IMMUNITY</a></td><td>Inmunidad</td><td>El paciente ya tiene inmunidad contra la enfermedad</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-STOCKOUT\">NOREASON-STOCKOUT</a></td><td>Desabastecimiento</td><td>No hay disponibilidad del producto vacunal</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-PRECAUTION\">NOREASON-PRECAUTION</a></td><td>Precaución médica</td><td>El paciente tiene una condición médica que contraindica temporalmente la vacunación</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-EXPIRED\">NOREASON-EXPIRED</a></td><td>Producto vencido</td><td>El producto vacunal está vencido</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-CLIENT\">NOREASON-CLIENT</a></td><td>Rechazo del cliente</td><td>El cliente o su representante rechaza la vacunación</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-CAREGIVER\">NOREASON-CAREGIVER</a></td><td>Rechazo del cuidador</td><td>El cuidador del niño rechaza la vacunación</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-ABSENT\">NOREASON-ABSENT</a></td><td>Niño no presente</td><td>El niño no se presentó a la cita de vacunación</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-SICK\">NOREASON-SICK</a></td><td>Niño enfermo</td><td>El niño presenta enfermedad que posterga la vacunación</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-AGE\">NOREASON-AGE</a></td><td>Fuera de rango de edad</td><td>El paciente está fuera del rango de edad indicado para la vacuna</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-CONTRA\">NOREASON-CONTRA</a></td><td>Contraindicado</td><td>La vacuna está contraindicada para el paciente</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-TIME\">NOREASON-TIME</a></td><td>Sin tiempo</td><td>No hubo tiempo disponible para administrar la vacuna</td></tr><tr><td><a href=\"CodeSystem-MINSA.html#MINSA-NOREASON-OTHER\">NOREASON-OTHER</a></td><td>Otro</td><td>La vacuna no fue administrada por otra razón</td></tr></table></li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSAImmunizationReasonNotGivenVS"] ; # 
+  fhir:title [ fhir:v "Razones de No Administración de Vacuna - MINSA"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Conjunto de valores para las razones por las cuales una vacuna no fue administrada, según el Registro Electrónico de Inmunizaciones de MINSA"] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:compose [
+     fhir:include ( [
+       fhir:system [
+         fhir:v "http://minsa.gob.pe/immunizations/CodeSystem/MINSA"^^xsd:anyURI ;
+         fhir:l <http://minsa.gob.pe/immunizations/CodeSystem/MINSA>
+       ] ;
+       fhir:concept ( [
+         fhir:code [ fhir:v "NOREASON-IMMUNITY" ] ;
+         fhir:display [ fhir:v "Inmunidad" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-STOCKOUT" ] ;
+         fhir:display [ fhir:v "Desabastecimiento" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-PRECAUTION" ] ;
+         fhir:display [ fhir:v "Precaución médica" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-EXPIRED" ] ;
+         fhir:display [ fhir:v "Producto vencido" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-CLIENT" ] ;
+         fhir:display [ fhir:v "Rechazo del cliente" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-CAREGIVER" ] ;
+         fhir:display [ fhir:v "Rechazo del cuidador" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-ABSENT" ] ;
+         fhir:display [ fhir:v "Niño no presente" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-SICK" ] ;
+         fhir:display [ fhir:v "Niño enfermo" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-AGE" ] ;
+         fhir:display [ fhir:v "Fuera de rango de edad" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-CONTRA" ] ;
+         fhir:display [ fhir:v "Contraindicado" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-TIME" ] ;
+         fhir:display [ fhir:v "Sin tiempo" ]
+       ] [
+         fhir:code [ fhir:v "NOREASON-OTHER" ] ;
+         fhir:display [ fhir:v "Otro" ]
+       ] )
+     ] )
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

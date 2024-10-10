@@ -1,0 +1,1259 @@
+{
+  "resourceType" : "StructureMap",
+  "id" : "MINSA.RegistroVacuna.QRToImmunization",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MapaDeEstructura MINSA.RegistroVacuna.QRToImmunization</b></p><a name=\"MINSA.RegistroVacuna.QRToImmunization\"> </a><a name=\"hcMINSA.RegistroVacuna.QRToImmunization\"> </a><pre class=\"fml\">\r\n<b>map</b><span style=\"color: navy\"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization<span style=\"color: navy\">&quot; = &quot;</span>MINSA.RegistroVacuna.QRToImmunization<span style=\"color: navy\">&quot;\r\n\r\n</span><b>uses</b><span style=\"color: navy\"> &quot;</span><a href=\"http://hl7.org/fhir/R4/questionnaireresponse.html\" title=\"QuestionnaireResponse\">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style=\"color: navy\">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>\r\n<b>uses</b><span style=\"color: navy\"> &quot;</span><a href=\"http://hl7.org/fhir/R4/bundle.html\" title=\"Bundle\">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style=\"color: navy\">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>\r\n\r\n<b>imports</b><span style=\"color: navy\"> &quot;</span><a href=\"StructureMap-MINSA.Helpers.html\" title=\"MINSA.Helpers\">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style=\"color: navy\">&quot;\r\n</span>\r\n<b>group </b>RegistroVacuna<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> bundle.type = <span style=\"color: blue\">'collection'</span> <i>&quot;BundleStatic&quot;</i><span style=\"color: navy\">;</span>\r\n  src<span style=\"color: navy\"><b> -&gt; </b></span><b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Encounter'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">encounter</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<b> then </b>ExtractEncounter<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>&quot;ExtractEncounter&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Solo crear Immunization si la vacuna fue administrada</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))<b> then</b><span style=\"color: navy\"> {\r\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Immunization'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">immunization</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        src<b> then </b>ExtractImmunization<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">immunization</span><span style=\"color: navy\">)</span> <i>&quot;ExtractImmunization&quot;</i><span style=\"color: navy\">;</span>\r\n        src<b> then </b>ExtractTaskCompleted<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">immunization</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">bundle</span><span style=\"color: navy\">)</span> <i>&quot;ExtractTask&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;ImmunizationEntry&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;VaccineGiven&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Si la vacuna no fue administrada, marcar tarea como fallida</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'no'))<b> then</b><span style=\"color: navy\"> {\r\n</span>      src<b> then </b>ExtractTaskFailed<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">bundle</span><span style=\"color: navy\">)</span> <i>&quot;ExtractTaskFailed&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;VaccineNotGiven&quot;</i><span style=\"color: navy\">;</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <span style=\"color: maroon\">encounter</span> <i>&quot;EncounterEntry&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;CreateEncounter&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el recurso Encounter para la visita de vacunacion</span>\r\n<b>group </b>ExtractEncounter<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> encounter.status = <span style=\"color: blue\">'finished'</span><span style=\"color: navy\">, </span> encounter.class = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'AMB'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'ambulatory'</span><span style=\"color: navy\">)</span> <i>&quot;EncounterStatic&quot;</i><span style=\"color: navy\">;</span>\r\n  src.subject<b> as </b><span style=\"color: maroon\">subject</span><span style=\"color: navy\"><b> -&gt; </b></span>encounter.subject = <span style=\"color: maroon\">subject</span> <i>&quot;EncounterSubject&quot;</i><span style=\"color: navy\">;</span>\r\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span> coding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> coding.code = <span style=\"color: blue\">'33879002'</span><span style=\"color: navy\">, </span> coding.display = <span style=\"color: blue\">'Administration of vaccine to produce active immunity (procedure)'</span> <i>&quot;TypeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;TypeCC&quot;</i><span style=\"color: navy\">;</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: blue\">'Vacunacion'</span> <i>&quot;TypeText&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;EncounterType&quot;</i><span style=\"color: navy\">;</span>\r\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.period = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Period'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">period</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>period.start = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>&quot;PeriodStart&quot;</i><span style=\"color: navy\">;</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span>period.end = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>&quot;PeriodEnd&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;EncounterPeriod&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Ubicacion del encuentro (establecimiento de salud)</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'location-id') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">locId</span><span style=\"color: navy\"><b> -&gt; </b></span>encounter.location = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Encounter_Location'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">loc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        locId<span style=\"color: navy\"><b> -&gt; </b></span>loc.location = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Reference'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">ref</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          locId<span style=\"color: navy\"><b> -&gt; </b></span>ref.reference = evaluate<span style=\"color: navy\">(</span>locId<span style=\"color: navy\">, </span>'Location/' + $this<span style=\"color: navy\">)</span> <i>&quot;LocReference&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;LocRef&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreateLoc&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;LocAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;EncounterLocation&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el recurso Immunization con datos de la vacuna administrada</span>\r\n<b>group </b>ExtractImmunization<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>source</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter, <b>target</b> <span style=\"color: maroon\">immunization</span><span style=\"color: navy\"> : </span>Immunization<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> immunization.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> immunization.status = <span style=\"color: blue\">'completed'</span><span style=\"color: navy\">, </span> immunization.recorded = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> immunization.patient = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>subject<span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> immunization.encounter = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>&quot;ImmunizationStatic&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Codigo de vacuna (del esquema nacional MINSA)</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'vaccine-code'<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.vaccineCode = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        coding<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <span style=\"color: maroon\">coding</span> <i>&quot;SetVaccineCoding&quot;</i><span style=\"color: navy\">;</span>\r\n        coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: maroon\">display</span> <i>&quot;SetVaccineText&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreateVaccineCC&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;VaccineCodeAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;VaccineCode&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Fecha de administracion</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'vaccination-date'<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span> <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'dateTime'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">dt</span><span style=\"color: navy\">, </span> dt.value = <span style=\"color: maroon\">val</span><span style=\"color: navy\">, </span> immunization.occurrence = <span style=\"color: maroon\">dt</span> <i>&quot;SetOccurrence&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;VaccineDateAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;VaccinationDate&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Numero de lote</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'lot-number'<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.lotNumber = <span style=\"color: maroon\">val</span> <i>&quot;SetLotNumber&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;LotAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;LotNumber&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Fecha de vencimiento del lote</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'expiration-date'<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.expirationDate = <span style=\"color: maroon\">val</span> <i>&quot;SetExpirationDate&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;ExpirationAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;ExpirationDate&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Numero de dosis y protocolo aplicado</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'dose-number'<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.protocolApplied = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Immunization_AppliedProtocol'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">protocol</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        val<span style=\"color: navy\"><b> -&gt; </b></span>protocol.doseNumber = <span style=\"color: maroon\">val</span> <i>&quot;SetDoseNumber&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreateProtocol&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;DoseAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;DoseNumber&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Via de administracion</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'route'<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.route = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        coding<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <span style=\"color: maroon\">coding</span> <i>&quot;SetRouteCoding&quot;</i><span style=\"color: navy\">;</span>\r\n        coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: maroon\">display</span> <i>&quot;SetRouteText&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreateRouteCC&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;RouteAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;Route&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">// </span><span style=\"color: green\">Establecimiento de salud (como performer)</span>\r\n  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'performer-organization') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">orgRef</span><span style=\"color: navy\"><b> -&gt; </b></span>immunization.performer = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Immunization_Performer'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">performer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        orgRef<span style=\"color: navy\"><b> -&gt; </b></span>performer.actor = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Reference'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">ref</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          orgRef<span style=\"color: navy\"><b> -&gt; </b></span>ref.reference = evaluate<span style=\"color: navy\">(</span>orgRef<span style=\"color: navy\">, </span>'Organization/' + $this<span style=\"color: navy\">)</span> <i>&quot;SetOrgRef&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;CreateOrgRef&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreatePerformer&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;OrgAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;PerformerOrg&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea un Task con estado completado, vinculado al Encounter e Immunization</span>\r\n<b>group </b>ExtractTaskCompleted<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>source</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter, <b>source</b> <span style=\"color: maroon\">immunization</span><span style=\"color: navy\"> : </span>Immunization, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">taskId</span><span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">task</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        taskId<span style=\"color: navy\"><b> -&gt; </b></span> task.id = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'id'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">id</span><span style=\"color: navy\">, </span> id.value = <span style=\"color: maroon\">taskId</span> <i>&quot;SetTaskId&quot;</i><span style=\"color: navy\">;</span>\r\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.status = <span style=\"color: blue\">'completed'</span> <i>&quot;TaskCompleted&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">// </span><span style=\"color: green\">Referencia al Encounter</span>\r\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.output = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task_Output'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">outputEnc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          taskId<span style=\"color: navy\"><b> -&gt; </b></span>outputEnc.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>            taskId<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'41000179103'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'Immunization record (record artifact)'</span><span style=\"color: navy\">)</span> <i>&quot;OutputEncTypeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n          <span style=\"color: navy\">}</span> <i>&quot;OutputEncType&quot;</i><span style=\"color: navy\">;</span>\r\n          encounter<span style=\"color: navy\"><b> -&gt; </b></span>outputEnc.value = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>&quot;OutputEncValue&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;TaskOutputEnc&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">// </span><span style=\"color: green\">Referencia al Immunization</span>\r\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.output = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task_Output'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">outputImm</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          taskId<span style=\"color: navy\"><b> -&gt; </b></span>outputImm.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>            taskId<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'41000179103'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'Immunization record (record artifact)'</span><span style=\"color: navy\">)</span> <i>&quot;OutputImmTypeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n          <span style=\"color: navy\">}</span> <i>&quot;OutputImmType&quot;</i><span style=\"color: navy\">;</span>\r\n          immunization<span style=\"color: navy\"><b> -&gt; </b></span>outputImm.value = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">immunization</span><span style=\"color: navy\">)</span> <i>&quot;OutputImmValue&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;TaskOutputImm&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreateTask&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;TaskIdAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;TaskCompleted&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Crea un Task con estado fallido cuando la vacuna no fue administrada</span>\r\n<b>group </b>ExtractTaskFailed<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {\r\n</span>    item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      answer.value<b> as </b><span style=\"color: maroon\">taskId</span><span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Task'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">task</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        taskId<span style=\"color: navy\"><b> -&gt; </b></span> task.id = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'id'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">id</span><span style=\"color: navy\">, </span> id.value = <span style=\"color: maroon\">taskId</span> <i>&quot;SetFailedTaskId&quot;</i><span style=\"color: navy\">;</span>\r\n        taskId<span style=\"color: navy\"><b> -&gt; </b></span>task.status = <span style=\"color: blue\">'failed'</span> <i>&quot;TaskFailed&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CreateFailedTask&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;FailedTaskIdAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;TaskFailed&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span></pre></div>"
+  },
+  "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization",
+  "version" : "1.0.0",
+  "name" : "MINSA.RegistroVacuna.QRToImmunization",
+  "status" : "draft",
+  "date" : "2026-03-16T12:33:41-04:00",
+  "publisher" : "MINSA - Ministerio de Salud del Perú",
+  "contact" : [{
+    "name" : "MINSA - Ministerio de Salud del Perú",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.gob.pe/minsa"
+    }]
+  }],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "PE",
+      "display" : "Peru"
+    }]
+  }],
+  "structure" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+    "mode" : "source",
+    "alias" : "QResp"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/Bundle",
+    "mode" : "target",
+    "alias" : "Bundle"
+  }],
+  "import" : ["http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"],
+  "group" : [{
+    "name" : "RegistroVacuna",
+    "typeMode" : "none",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "bundle",
+      "type" : "Bundle",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "BundleStatic",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "bundle",
+        "contextType" : "variable",
+        "element" : "id",
+        "transform" : "uuid"
+      },
+      {
+        "context" : "bundle",
+        "contextType" : "variable",
+        "element" : "type",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueString" : "collection"
+        }]
+      }]
+    },
+    {
+      "name" : "CreateEncounter",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "contextType" : "variable",
+        "variable" : "encounter",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "Encounter"
+        }]
+      }],
+      "rule" : [{
+        "name" : "ExtractEncounter",
+        "source" : [{
+          "context" : "src"
+        }],
+        "dependent" : [{
+          "name" : "ExtractEncounter",
+          "variable" : ["src",
+          "encounter"]
+        }]
+      },
+      {
+        "name" : "VaccineGiven",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))"
+        }],
+        "rule" : [{
+          "name" : "ImmunizationEntry",
+          "source" : [{
+            "context" : "src"
+          }],
+          "target" : [{
+            "context" : "bundle",
+            "contextType" : "variable",
+            "element" : "entry",
+            "variable" : "entry"
+          },
+          {
+            "context" : "entry",
+            "contextType" : "variable",
+            "element" : "resource",
+            "variable" : "immunization",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Immunization"
+            }]
+          }],
+          "rule" : [{
+            "name" : "ExtractImmunization",
+            "source" : [{
+              "context" : "src"
+            }],
+            "dependent" : [{
+              "name" : "ExtractImmunization",
+              "variable" : ["src",
+              "encounter",
+              "immunization"]
+            }]
+          },
+          {
+            "name" : "ExtractTask",
+            "source" : [{
+              "context" : "src"
+            }],
+            "dependent" : [{
+              "name" : "ExtractTaskCompleted",
+              "variable" : ["src",
+              "encounter",
+              "immunization",
+              "bundle"]
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "VaccineNotGiven",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "((linkId = 'vaccine-administered') and (answer.value.code = 'no'))"
+        }],
+        "rule" : [{
+          "name" : "ExtractTaskFailed",
+          "source" : [{
+            "context" : "src"
+          }],
+          "dependent" : [{
+            "name" : "ExtractTaskFailed",
+            "variable" : ["src",
+            "bundle"]
+          }]
+        }]
+      },
+      {
+        "name" : "EncounterEntry",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "bundle",
+          "contextType" : "variable",
+          "element" : "entry",
+          "variable" : "entry"
+        },
+        {
+          "context" : "entry",
+          "contextType" : "variable",
+          "element" : "resource",
+          "transform" : "copy",
+          "parameter" : [{
+            "valueId" : "encounter"
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name" : "ExtractEncounter",
+    "typeMode" : "none",
+    "documentation" : "Extrae el recurso Encounter para la visita de vacunacion",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "encounter",
+      "type" : "Encounter",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "EncounterStatic",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "id",
+        "transform" : "uuid"
+      },
+      {
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "status",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueString" : "finished"
+        }]
+      },
+      {
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "class",
+        "transform" : "c",
+        "parameter" : [{
+          "valueString" : "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        },
+        {
+          "valueString" : "AMB"
+        },
+        {
+          "valueString" : "ambulatory"
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterSubject",
+      "source" : [{
+        "context" : "src",
+        "element" : "subject",
+        "variable" : "subject"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "subject",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueId" : "subject"
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterType",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "type",
+        "variable" : "cc",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "CodeableConcept"
+        }]
+      }],
+      "rule" : [{
+        "name" : "TypeCC",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "cc",
+          "contextType" : "variable",
+          "element" : "coding",
+          "variable" : "coding",
+          "transform" : "create",
+          "parameter" : [{
+            "valueString" : "Coding"
+          }]
+        }],
+        "rule" : [{
+          "name" : "TypeCoding",
+          "source" : [{
+            "context" : "src"
+          }],
+          "target" : [{
+            "context" : "coding",
+            "contextType" : "variable",
+            "element" : "system",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "http://snomed.info/sct"
+            }]
+          },
+          {
+            "context" : "coding",
+            "contextType" : "variable",
+            "element" : "code",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "33879002"
+            }]
+          },
+          {
+            "context" : "coding",
+            "contextType" : "variable",
+            "element" : "display",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "Administration of vaccine to produce active immunity (procedure)"
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "TypeText",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "cc",
+          "contextType" : "variable",
+          "element" : "text",
+          "transform" : "copy",
+          "parameter" : [{
+            "valueString" : "Vacunacion"
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterPeriod",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "period",
+        "variable" : "period",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "Period"
+        }]
+      }],
+      "rule" : [{
+        "name" : "PeriodStart",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "period",
+          "contextType" : "variable",
+          "element" : "start",
+          "transform" : "evaluate",
+          "parameter" : [{
+            "valueId" : "src"
+          },
+          {
+            "valueString" : "now()"
+          }]
+        }]
+      },
+      {
+        "name" : "PeriodEnd",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "period",
+          "contextType" : "variable",
+          "element" : "end",
+          "transform" : "evaluate",
+          "parameter" : [{
+            "valueId" : "src"
+          },
+          {
+            "valueString" : "now()"
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterLocation",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "((linkId = 'location-id') and answer.value.exists())"
+      }],
+      "rule" : [{
+        "name" : "LocAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreateLoc",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "locId"
+          }],
+          "target" : [{
+            "context" : "encounter",
+            "contextType" : "variable",
+            "element" : "location",
+            "variable" : "loc",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Encounter_Location"
+            }]
+          }],
+          "rule" : [{
+            "name" : "LocRef",
+            "source" : [{
+              "context" : "locId"
+            }],
+            "target" : [{
+              "context" : "loc",
+              "contextType" : "variable",
+              "element" : "location",
+              "variable" : "ref",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Reference"
+              }]
+            }],
+            "rule" : [{
+              "name" : "LocReference",
+              "source" : [{
+                "context" : "locId"
+              }],
+              "target" : [{
+                "context" : "ref",
+                "contextType" : "variable",
+                "element" : "reference",
+                "transform" : "evaluate",
+                "parameter" : [{
+                  "valueId" : "locId"
+                },
+                {
+                  "valueString" : "'Location/' + $this"
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name" : "ExtractImmunization",
+    "typeMode" : "none",
+    "documentation" : "Extrae el recurso Immunization con datos de la vacuna administrada",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "encounter",
+      "type" : "Encounter",
+      "mode" : "source"
+    },
+    {
+      "name" : "immunization",
+      "type" : "Immunization",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "ImmunizationStatic",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "immunization",
+        "contextType" : "variable",
+        "element" : "id",
+        "transform" : "uuid"
+      },
+      {
+        "context" : "immunization",
+        "contextType" : "variable",
+        "element" : "status",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueString" : "completed"
+        }]
+      },
+      {
+        "context" : "immunization",
+        "contextType" : "variable",
+        "element" : "recorded",
+        "transform" : "evaluate",
+        "parameter" : [{
+          "valueId" : "src"
+        },
+        {
+          "valueString" : "now()"
+        }]
+      },
+      {
+        "context" : "immunization",
+        "contextType" : "variable",
+        "element" : "patient",
+        "transform" : "evaluate",
+        "parameter" : [{
+          "valueId" : "src"
+        },
+        {
+          "valueString" : "subject"
+        }]
+      },
+      {
+        "context" : "immunization",
+        "contextType" : "variable",
+        "element" : "encounter",
+        "transform" : "reference",
+        "parameter" : [{
+          "valueId" : "encounter"
+        }]
+      }]
+    },
+    {
+      "name" : "VaccineCode",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "linkId = 'vaccine-code'"
+      }],
+      "rule" : [{
+        "name" : "VaccineCodeAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreateVaccineCC",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "coding"
+          }],
+          "target" : [{
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "vaccineCode",
+            "variable" : "cc",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "CodeableConcept"
+            }]
+          }],
+          "rule" : [{
+            "name" : "SetVaccineCoding",
+            "source" : [{
+              "context" : "coding"
+            }],
+            "target" : [{
+              "context" : "cc",
+              "contextType" : "variable",
+              "element" : "coding",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "coding"
+              }]
+            }]
+          },
+          {
+            "name" : "SetVaccineText",
+            "source" : [{
+              "context" : "coding",
+              "element" : "display",
+              "variable" : "display"
+            }],
+            "target" : [{
+              "context" : "cc",
+              "contextType" : "variable",
+              "element" : "text",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "display"
+              }]
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "VaccinationDate",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "linkId = 'vaccination-date'"
+      }],
+      "rule" : [{
+        "name" : "VaccineDateAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "SetOccurrence",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "val"
+          }],
+          "target" : [{
+            "contextType" : "variable",
+            "variable" : "dt",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "dateTime"
+            }]
+          },
+          {
+            "context" : "dt",
+            "contextType" : "variable",
+            "element" : "value",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueId" : "val"
+            }]
+          },
+          {
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "occurrence",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueId" : "dt"
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "LotNumber",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "linkId = 'lot-number'"
+      }],
+      "rule" : [{
+        "name" : "LotAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "SetLotNumber",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "val"
+          }],
+          "target" : [{
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "lotNumber",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueId" : "val"
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "ExpirationDate",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "linkId = 'expiration-date'"
+      }],
+      "rule" : [{
+        "name" : "ExpirationAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "SetExpirationDate",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "val"
+          }],
+          "target" : [{
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "expirationDate",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueId" : "val"
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "DoseNumber",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "linkId = 'dose-number'"
+      }],
+      "rule" : [{
+        "name" : "DoseAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreateProtocol",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "val"
+          }],
+          "target" : [{
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "protocolApplied",
+            "variable" : "protocol",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Immunization_AppliedProtocol"
+            }]
+          }],
+          "rule" : [{
+            "name" : "SetDoseNumber",
+            "source" : [{
+              "context" : "val"
+            }],
+            "target" : [{
+              "context" : "protocol",
+              "contextType" : "variable",
+              "element" : "doseNumber",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "val"
+              }]
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "Route",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "linkId = 'route'"
+      }],
+      "rule" : [{
+        "name" : "RouteAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreateRouteCC",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "coding"
+          }],
+          "target" : [{
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "route",
+            "variable" : "cc",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "CodeableConcept"
+            }]
+          }],
+          "rule" : [{
+            "name" : "SetRouteCoding",
+            "source" : [{
+              "context" : "coding"
+            }],
+            "target" : [{
+              "context" : "cc",
+              "contextType" : "variable",
+              "element" : "coding",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "coding"
+              }]
+            }]
+          },
+          {
+            "name" : "SetRouteText",
+            "source" : [{
+              "context" : "coding",
+              "element" : "display",
+              "variable" : "display"
+            }],
+            "target" : [{
+              "context" : "cc",
+              "contextType" : "variable",
+              "element" : "text",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "display"
+              }]
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "PerformerOrg",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "((linkId = 'performer-organization') and answer.value.exists())"
+      }],
+      "rule" : [{
+        "name" : "OrgAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreatePerformer",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "orgRef"
+          }],
+          "target" : [{
+            "context" : "immunization",
+            "contextType" : "variable",
+            "element" : "performer",
+            "variable" : "performer",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Immunization_Performer"
+            }]
+          }],
+          "rule" : [{
+            "name" : "CreateOrgRef",
+            "source" : [{
+              "context" : "orgRef"
+            }],
+            "target" : [{
+              "context" : "performer",
+              "contextType" : "variable",
+              "element" : "actor",
+              "variable" : "ref",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Reference"
+              }]
+            }],
+            "rule" : [{
+              "name" : "SetOrgRef",
+              "source" : [{
+                "context" : "orgRef"
+              }],
+              "target" : [{
+                "context" : "ref",
+                "contextType" : "variable",
+                "element" : "reference",
+                "transform" : "evaluate",
+                "parameter" : [{
+                  "valueId" : "orgRef"
+                },
+                {
+                  "valueString" : "'Organization/' + $this"
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name" : "ExtractTaskCompleted",
+    "typeMode" : "none",
+    "documentation" : "Crea un Task con estado completado, vinculado al Encounter e Immunization",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "encounter",
+      "type" : "Encounter",
+      "mode" : "source"
+    },
+    {
+      "name" : "immunization",
+      "type" : "Immunization",
+      "mode" : "source"
+    },
+    {
+      "name" : "bundle",
+      "type" : "Bundle",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "TaskCompleted",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "((linkId = 'task-id') and answer.value.exists())"
+      }],
+      "rule" : [{
+        "name" : "TaskIdAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreateTask",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "taskId"
+          }],
+          "target" : [{
+            "context" : "bundle",
+            "contextType" : "variable",
+            "element" : "entry",
+            "variable" : "entry"
+          },
+          {
+            "context" : "entry",
+            "contextType" : "variable",
+            "element" : "resource",
+            "variable" : "task",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Task"
+            }]
+          }],
+          "rule" : [{
+            "name" : "SetTaskId",
+            "source" : [{
+              "context" : "taskId"
+            }],
+            "target" : [{
+              "context" : "task",
+              "contextType" : "variable",
+              "element" : "id",
+              "variable" : "id",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "id"
+              }]
+            },
+            {
+              "context" : "id",
+              "contextType" : "variable",
+              "element" : "value",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "taskId"
+              }]
+            }]
+          },
+          {
+            "name" : "TaskCompleted",
+            "source" : [{
+              "context" : "taskId"
+            }],
+            "target" : [{
+              "context" : "task",
+              "contextType" : "variable",
+              "element" : "status",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueString" : "completed"
+              }]
+            }]
+          },
+          {
+            "name" : "TaskOutputEnc",
+            "source" : [{
+              "context" : "taskId"
+            }],
+            "target" : [{
+              "context" : "task",
+              "contextType" : "variable",
+              "element" : "output",
+              "variable" : "outputEnc",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Task_Output"
+              }]
+            }],
+            "rule" : [{
+              "name" : "OutputEncType",
+              "source" : [{
+                "context" : "taskId"
+              }],
+              "target" : [{
+                "context" : "outputEnc",
+                "contextType" : "variable",
+                "element" : "type",
+                "variable" : "cc",
+                "transform" : "create",
+                "parameter" : [{
+                  "valueString" : "CodeableConcept"
+                }]
+              }],
+              "rule" : [{
+                "name" : "OutputEncTypeCoding",
+                "source" : [{
+                  "context" : "taskId"
+                }],
+                "target" : [{
+                  "context" : "cc",
+                  "contextType" : "variable",
+                  "element" : "coding",
+                  "transform" : "c",
+                  "parameter" : [{
+                    "valueString" : "http://snomed.info/sct"
+                  },
+                  {
+                    "valueString" : "41000179103"
+                  },
+                  {
+                    "valueString" : "Immunization record (record artifact)"
+                  }]
+                }]
+              }]
+            },
+            {
+              "name" : "OutputEncValue",
+              "source" : [{
+                "context" : "encounter"
+              }],
+              "target" : [{
+                "context" : "outputEnc",
+                "contextType" : "variable",
+                "element" : "value",
+                "transform" : "reference",
+                "parameter" : [{
+                  "valueId" : "encounter"
+                }]
+              }]
+            }]
+          },
+          {
+            "name" : "TaskOutputImm",
+            "source" : [{
+              "context" : "taskId"
+            }],
+            "target" : [{
+              "context" : "task",
+              "contextType" : "variable",
+              "element" : "output",
+              "variable" : "outputImm",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Task_Output"
+              }]
+            }],
+            "rule" : [{
+              "name" : "OutputImmType",
+              "source" : [{
+                "context" : "taskId"
+              }],
+              "target" : [{
+                "context" : "outputImm",
+                "contextType" : "variable",
+                "element" : "type",
+                "variable" : "cc",
+                "transform" : "create",
+                "parameter" : [{
+                  "valueString" : "CodeableConcept"
+                }]
+              }],
+              "rule" : [{
+                "name" : "OutputImmTypeCoding",
+                "source" : [{
+                  "context" : "taskId"
+                }],
+                "target" : [{
+                  "context" : "cc",
+                  "contextType" : "variable",
+                  "element" : "coding",
+                  "transform" : "c",
+                  "parameter" : [{
+                    "valueString" : "http://snomed.info/sct"
+                  },
+                  {
+                    "valueString" : "41000179103"
+                  },
+                  {
+                    "valueString" : "Immunization record (record artifact)"
+                  }]
+                }]
+              }]
+            },
+            {
+              "name" : "OutputImmValue",
+              "source" : [{
+                "context" : "immunization"
+              }],
+              "target" : [{
+                "context" : "outputImm",
+                "contextType" : "variable",
+                "element" : "value",
+                "transform" : "reference",
+                "parameter" : [{
+                  "valueId" : "immunization"
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name" : "ExtractTaskFailed",
+    "typeMode" : "none",
+    "documentation" : "Crea un Task con estado fallido cuando la vacuna no fue administrada",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "bundle",
+      "type" : "Bundle",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "TaskFailed",
+      "source" : [{
+        "context" : "src",
+        "element" : "item",
+        "variable" : "item",
+        "condition" : "((linkId = 'task-id') and answer.value.exists())"
+      }],
+      "rule" : [{
+        "name" : "FailedTaskIdAnswer",
+        "source" : [{
+          "context" : "item",
+          "element" : "answer",
+          "listMode" : "first",
+          "variable" : "answer"
+        }],
+        "rule" : [{
+          "name" : "CreateFailedTask",
+          "source" : [{
+            "context" : "answer",
+            "element" : "value",
+            "variable" : "taskId"
+          }],
+          "target" : [{
+            "context" : "bundle",
+            "contextType" : "variable",
+            "element" : "entry",
+            "variable" : "entry"
+          },
+          {
+            "context" : "entry",
+            "contextType" : "variable",
+            "element" : "resource",
+            "variable" : "task",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Task"
+            }]
+          }],
+          "rule" : [{
+            "name" : "SetFailedTaskId",
+            "source" : [{
+              "context" : "taskId"
+            }],
+            "target" : [{
+              "context" : "task",
+              "contextType" : "variable",
+              "element" : "id",
+              "variable" : "id",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "id"
+              }]
+            },
+            {
+              "context" : "id",
+              "contextType" : "variable",
+              "element" : "value",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "taskId"
+              }]
+            }]
+          },
+          {
+            "name" : "TaskFailed",
+            "source" : [{
+              "context" : "taskId"
+            }],
+            "target" : [{
+              "context" : "task",
+              "contextType" : "variable",
+              "element" : "status",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueString" : "failed"
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  }]
+}

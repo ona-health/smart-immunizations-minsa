@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>MINSA.EventoAdverso.QRToObservation - Guía de Implementación de Inmunizaciones MINSA Perú v1.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"5.26"}
+    h3,h4,h5,h6{--heading-prefix:"5.26"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Inicio
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="index.html">Resumen</a>
+      </li>
+      <li>
+        <a href="changes.html">Cambios</a>
+      </li>
+      <li>
+        <a href="dependencies.html">Dependencias</a>
+      </li>
+      <li>
+        <a href="references.html">Referencias</a>
+      </li>
+      <li>
+        <a href="adapting.html">Adaptación para Perú</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Requisitos de Negocio
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="concepts.html">Conceptos</a>
+      </li>
+      <li>
+        <a href="personas.html">Personas</a>
+      </li>
+      <li>
+        <a href="scenarios.html">Escenarios de Uso</a>
+      </li>
+      <li>
+        <a href="business-processes.html">Procesos de Negocio</a>
+      </li>
+      <li>
+        <a href="dictionary.html">Diccionario de Datos</a>
+      </li>
+      <li>
+        <a href="decision-logic.html">Lógica de Decisión</a>
+      </li>
+      <li>
+        <a href="indicators.html">Indicadores y Métricas</a>
+      </li>
+      <li>
+        <a href="functional-requirements.html">Requisitos Funcionales</a>
+      </li>
+      <li>
+        <a href="non-functional-requirements.html">Requisitos No Funcionales</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Modelos de Datos
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="system-actors.html">Actores del Sistema</a>
+      </li>
+      <li>
+        <a href="sequence-diagrams.html">Diagramas de Secuencia</a>
+      </li>
+      <li>
+        <a href="transactions.html">Transacciones</a>
+      </li>
+      <li>
+        <a href="indicators-measures.html">Indicadores y Medidas</a>
+      </li>
+      <li>
+        <a href="codings.html">Codificaciones</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Despliegue
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="security-privacy.html">Seguridad y Privacidad</a>
+      </li>
+      <li>
+        <a href="testing.html">Pruebas</a>
+      </li>
+      <li>
+        <a href="test-data.html">Datos de Prueba</a>
+      </li>
+      <li>
+        <a href="downloads.html">Descargas</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Guía de Implementación de Inmunizaciones MINSA Perú</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0 - ci-build
+
+
+
+  <img alt="Peru flag" src="assets/images/per.svg" height="16" title="Peru"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>MINSA.EventoAdverso.QRToObservation</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Guía de Implementación de Inmunizaciones MINSA Perú - Local Development build (v1.0.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://minsa.gob.pe/immunizations/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li class="active">
+    <a href="#">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="StructureMap-MINSA.EventoAdverso.QRToObservation.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="StructureMap-MINSA.EventoAdverso.QRToObservation.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="StructureMap-MINSA.EventoAdverso.QRToObservation.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+  <a name="root"> </a>
+
+  <h2 id="root">StructureMap: MINSA.EventoAdverso.QRToObservation
+
+  </h2>
+
+  <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">1.0.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation|1.0.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="4">
+        
+          Draft
+          
+            as of 2026-03-16
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">MINSA.EventoAdverso.QRToObservation</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+  <!-- insert intro if present -->
+  
+
+
+
+<!--  <p>
+  Formats: <a href="StructureMap-MINSA.EventoAdverso.QRToObservation.xml.html">XML</a>, <a href="StructureMap-MINSA.EventoAdverso.QRToObservation.json.html">JSON</a>, <a href="StructureMap-MINSA.EventoAdverso.QRToObservation.ttl.html">Turtle</a>
+  </p>-->
+
+  
+
+
+  <div data-fhir="generated"><p class="res-header-id"/><a name="MINSA.EventoAdverso.QRToObservation"> </a><a name="hcMINSA.EventoAdverso.QRToObservation"> </a><pre class="fml">
+<b>map</b><span style="color: navy"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation<span style="color: navy">&quot; = &quot;</span>MINSA.EventoAdverso.QRToObservation<span style="color: navy">&quot;
+
+</span><b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> &quot;</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">&quot;
+</span>
+<b>group </b>EventoAdverso<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>&quot;BundleStatic&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">encEntry</span><span style="color: navy">, </span> encEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">encounter</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractEncounter<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;ExtractEncounter&quot;</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractObservation<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>&quot;ExtractObservation&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;BundleEntries&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el Encounter de la consulta por evento adverso</span>
+<b>group </b>ExtractEncounter<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> encounter.status = <span style="color: blue">'finished'</span><span style="color: navy">, </span> encounter.class = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style="color: navy">, </span><span style="color: blue">'AMB'</span><span style="color: navy">, </span><span style="color: blue">'ambulatory'</span><span style="color: navy">)</span> <i>&quot;EncounterStatic&quot;</i><span style="color: navy">;</span>
+  src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>encounter.subject = <span style="color: maroon">subject</span> <i>&quot;EncounterSubject&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'886921000000105'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Allergies and adverse reactions'</span> <i>&quot;TypeCoding&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;TypeCC&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: blue">'Evento adverso post-vacunal'</span> <i>&quot;TypeText&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterType&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.period = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Period'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">period</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>period.start = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;PeriodStart&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>period.end = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;PeriodEnd&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterPeriod&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae la Observation que representa el evento adverso</span>
+<b>group </b>ExtractObservation<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">obs</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span> obs.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> obs.status = <span style="color: blue">'final'</span><span style="color: navy">, </span> obs.encounter = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;ObsStatic&quot;</i><span style="color: navy">;</span>
+    src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>obs.subject = <span style="color: maroon">subject</span> <i>&quot;ObsSubject&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Categoria: reaccion adversa</span>
+    src<span style="color: navy"><b> -&gt; </b></span>obs.category = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cat</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span>cat.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/observation-category'</span><span style="color: navy">, </span><span style="color: blue">'survey'</span><span style="color: navy">, </span><span style="color: blue">'Survey'</span><span style="color: navy">)</span> <i>&quot;CatCoding&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;ObsCategory&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Codigo de la observacion: evento adverso post-vacunal (ESAVI)</span>
+    src<span style="color: navy"><b> -&gt; </b></span>obs.code = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">code</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span>code.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>        src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'293104008'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Adverse reaction to vaccine (disorder)'</span> <i>&quot;CodeCoding&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CodeCC&quot;</i><span style="color: navy">;</span>
+      src<span style="color: navy"><b> -&gt; </b></span>code.text = <span style="color: blue">'Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)'</span> <i>&quot;CodeText&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;ObsCode&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Fecha del evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-date'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>obs.effective = <span style="color: maroon">val</span> <i>&quot;SetEffective&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;DateAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventDate&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Tipo de reaccion adversa</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-type'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>obs.value = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>&quot;SetTypeCoding&quot;</i><span style="color: navy">;</span>
+          coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>&quot;SetTypeText&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateTypeCC&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;TypeAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventType&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Severidad del evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-severity'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>obs.component = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation_Component'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">comp</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>comp.code = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compCode</span><b> then</b><span style="color: navy"> {
+</span>            coding<span style="color: navy"><b> -&gt; </b></span>compCode.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compCoding</span><b> then</b><span style="color: navy"> {
+</span>              coding<span style="color: navy"><b> -&gt; </b></span> compCoding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> compCoding.code = <span style="color: blue">'246112005'</span><span style="color: navy">, </span> compCoding.display = <span style="color: blue">'Severity (attribute)'</span> <i>&quot;SeverityCodeCoding&quot;</i><span style="color: navy">;</span>
+            <span style="color: navy">}</span> <i>&quot;SeverityCodeCC&quot;</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>&quot;SeverityCode&quot;</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>comp.value = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compVal</span><b> then</b><span style="color: navy"> {
+</span>            coding<span style="color: navy"><b> -&gt; </b></span>compVal.coding = <span style="color: maroon">coding</span> <i>&quot;SetSeverityCoding&quot;</i><span style="color: navy">;</span>
+            coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>compVal.text = <span style="color: maroon">display</span> <i>&quot;SetSeverityText&quot;</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>&quot;SeverityValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateSeverityComp&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;SeverityAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventSeverity&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Referencia a la inmunizacion que causo el evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'causing-immunization') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">immRef</span><span style="color: navy"><b> -&gt; </b></span>obs.focus = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          immRef<span style="color: navy"><b> -&gt; </b></span>ref.reference = <span style="color: maroon">immRef</span> <i>&quot;SetImmReference&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateImmRef&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;ImmAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;CausingImmunization&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Notas adicionales del profesional de salud</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'adverse-event-notes') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>obs.note = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Annotation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">note</span><b> then</b><span style="color: navy"> {
+</span>          val<span style="color: navy"><b> -&gt; </b></span>note.text = <span style="color: maroon">val</span> <i>&quot;SetNoteText&quot;</i><span style="color: navy">;</span>
+          val<span style="color: navy"><b> -&gt; </b></span>note.time = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;SetNoteTime&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateNote&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;NotesAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AdverseEventNotes&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;ObservationEntry&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre></div>
+
+  <!-- insert notes if present -->
+  
+
+
+
+  
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.gob.pe/minsa">MINSA - Ministerio de Salud del Perú</a>.  Package minsa.gob.pe.immunizations#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Mar 16, 2026 12:33-0400">2026-03-16</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="http://minsa.gob.pe/immunizations/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

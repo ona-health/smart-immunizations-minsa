@@ -1,0 +1,187 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/CodeSystem/MINSA> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSA"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: SistemaDeCodigos MINSA</b></p><a name=\"MINSA\"> </a><a name=\"hcMINSA\"> </a><p>This case-insensitive code system <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">VAC-BCG<a name=\"MINSA-VAC-BCG\"> </a></td><td>BCG</td><td>Vacuna Bacilo de Calmette-Guérin contra la tuberculosis</td></tr><tr><td style=\"white-space:nowrap\">VAC-OPV<a name=\"MINSA-VAC-OPV\"> </a></td><td>APO - Antipolio Oral</td><td>Vacuna Antipolio Oral (tipo Sabin)</td></tr><tr><td style=\"white-space:nowrap\">VAC-IPV<a name=\"MINSA-VAC-IPV\"> </a></td><td>APV - Antipolio Inactivada</td><td>Vacuna Antipolio Inactivada (tipo Salk)</td></tr><tr><td style=\"white-space:nowrap\">VAC-PENTA<a name=\"MINSA-VAC-PENTA\"> </a></td><td>Pentavalente</td><td>Vacuna Pentavalente (DPT-HepB-Hib)</td></tr><tr><td style=\"white-space:nowrap\">VAC-ROTA<a name=\"MINSA-VAC-ROTA\"> </a></td><td>Rotavirus</td><td>Vacuna contra Rotavirus</td></tr><tr><td style=\"white-space:nowrap\">VAC-PCV<a name=\"MINSA-VAC-PCV\"> </a></td><td>Neumococo</td><td>Vacuna Antineumocócica Conjugada</td></tr><tr><td style=\"white-space:nowrap\">VAC-SPR<a name=\"MINSA-VAC-SPR\"> </a></td><td>SPR</td><td>Vacuna contra Sarampión, Paperas y Rubéola</td></tr><tr><td style=\"white-space:nowrap\">VAC-HPV<a name=\"MINSA-VAC-HPV\"> </a></td><td>VPH</td><td>Vacuna contra el Virus del Papiloma Humano</td></tr><tr><td style=\"white-space:nowrap\">VAC-DT<a name=\"MINSA-VAC-DT\"> </a></td><td>DT Pediátrico</td><td>Vacuna contra Difteria y Tétanos (refuerzo pediátrico)</td></tr><tr><td style=\"white-space:nowrap\">VAC-INF<a name=\"MINSA-VAC-INF\"> </a></td><td>Influenza</td><td>Vacuna contra la Influenza</td></tr><tr><td style=\"white-space:nowrap\">VAC-HEPB<a name=\"MINSA-VAC-HEPB\"> </a></td><td>Hepatitis B</td><td>Vacuna contra la Hepatitis B (dosis de recién nacido)</td></tr><tr><td style=\"white-space:nowrap\">VAC-AMA<a name=\"MINSA-VAC-AMA\"> </a></td><td>Antiamarílica</td><td>Vacuna Antiamarílica (Fiebre Amarilla)</td></tr><tr><td style=\"white-space:nowrap\">DOSE-BIRTH<a name=\"MINSA-DOSE-BIRTH\"> </a></td><td>Dosis de recién nacido</td><td>Dosis administrada dentro de las 24 horas de nacimiento</td></tr><tr><td style=\"white-space:nowrap\">DOSE-1<a name=\"MINSA-DOSE-1\"> </a></td><td>1ra dosis</td><td>Primera dosis de la serie</td></tr><tr><td style=\"white-space:nowrap\">DOSE-2<a name=\"MINSA-DOSE-2\"> </a></td><td>2da dosis</td><td>Segunda dosis de la serie</td></tr><tr><td style=\"white-space:nowrap\">DOSE-3<a name=\"MINSA-DOSE-3\"> </a></td><td>3ra dosis</td><td>Tercera dosis de la serie</td></tr><tr><td style=\"white-space:nowrap\">DOSE-R1<a name=\"MINSA-DOSE-R1\"> </a></td><td>1er refuerzo</td><td>Primer refuerzo</td></tr><tr><td style=\"white-space:nowrap\">DOSE-R2<a name=\"MINSA-DOSE-R2\"> </a></td><td>2do refuerzo</td><td>Segundo refuerzo</td></tr><tr><td style=\"white-space:nowrap\">ROUTE-ID<a name=\"MINSA-ROUTE-ID\"> </a></td><td>Intradérmica</td><td>Administración por vía intradérmica</td></tr><tr><td style=\"white-space:nowrap\">ROUTE-SC<a name=\"MINSA-ROUTE-SC\"> </a></td><td>Subcutánea</td><td>Administración por vía subcutánea</td></tr><tr><td style=\"white-space:nowrap\">ROUTE-IM<a name=\"MINSA-ROUTE-IM\"> </a></td><td>Intramuscular</td><td>Administración por vía intramuscular</td></tr><tr><td style=\"white-space:nowrap\">ROUTE-VO<a name=\"MINSA-ROUTE-VO\"> </a></td><td>Vía oral</td><td>Administración por vía oral</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-IMMUNITY<a name=\"MINSA-NOREASON-IMMUNITY\"> </a></td><td>Inmunidad</td><td>El paciente ya tiene inmunidad contra la enfermedad</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-STOCKOUT<a name=\"MINSA-NOREASON-STOCKOUT\"> </a></td><td>Desabastecimiento</td><td>No hay disponibilidad del producto vacunal</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-PRECAUTION<a name=\"MINSA-NOREASON-PRECAUTION\"> </a></td><td>Precaución médica</td><td>El paciente tiene una condición médica que contraindica temporalmente la vacunación</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-EXPIRED<a name=\"MINSA-NOREASON-EXPIRED\"> </a></td><td>Producto vencido</td><td>El producto vacunal está vencido</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-CLIENT<a name=\"MINSA-NOREASON-CLIENT\"> </a></td><td>Rechazo del cliente</td><td>El cliente o su representante rechaza la vacunación</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-CAREGIVER<a name=\"MINSA-NOREASON-CAREGIVER\"> </a></td><td>Rechazo del cuidador</td><td>El cuidador del niño rechaza la vacunación</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-ABSENT<a name=\"MINSA-NOREASON-ABSENT\"> </a></td><td>Niño no presente</td><td>El niño no se presentó a la cita de vacunación</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-SICK<a name=\"MINSA-NOREASON-SICK\"> </a></td><td>Niño enfermo</td><td>El niño presenta enfermedad que posterga la vacunación</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-AGE<a name=\"MINSA-NOREASON-AGE\"> </a></td><td>Fuera de rango de edad</td><td>El paciente está fuera del rango de edad indicado para la vacuna</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-CONTRA<a name=\"MINSA-NOREASON-CONTRA\"> </a></td><td>Contraindicado</td><td>La vacuna está contraindicada para el paciente</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-TIME<a name=\"MINSA-NOREASON-TIME\"> </a></td><td>Sin tiempo</td><td>No hubo tiempo disponible para administrar la vacuna</td></tr><tr><td style=\"white-space:nowrap\">NOREASON-OTHER<a name=\"MINSA-NOREASON-OTHER\"> </a></td><td>Otro</td><td>La vacuna no fue administrada por otra razón</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/CodeSystem/MINSA"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/CodeSystem/MINSA>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSA"] ; # 
+  fhir:title [ fhir:v "Sistema de Códigos MINSA para Inmunizaciones"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones"] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:caseSensitive [ fhir:v false] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "34"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "VAC-BCG" ] ;
+     fhir:display [ fhir:v "BCG" ] ;
+     fhir:definition [ fhir:v "Vacuna Bacilo de Calmette-Guérin contra la tuberculosis" ]
+  ] [
+     fhir:code [ fhir:v "VAC-OPV" ] ;
+     fhir:display [ fhir:v "APO - Antipolio Oral" ] ;
+     fhir:definition [ fhir:v "Vacuna Antipolio Oral (tipo Sabin)" ]
+  ] [
+     fhir:code [ fhir:v "VAC-IPV" ] ;
+     fhir:display [ fhir:v "APV - Antipolio Inactivada" ] ;
+     fhir:definition [ fhir:v "Vacuna Antipolio Inactivada (tipo Salk)" ]
+  ] [
+     fhir:code [ fhir:v "VAC-PENTA" ] ;
+     fhir:display [ fhir:v "Pentavalente" ] ;
+     fhir:definition [ fhir:v "Vacuna Pentavalente (DPT-HepB-Hib)" ]
+  ] [
+     fhir:code [ fhir:v "VAC-ROTA" ] ;
+     fhir:display [ fhir:v "Rotavirus" ] ;
+     fhir:definition [ fhir:v "Vacuna contra Rotavirus" ]
+  ] [
+     fhir:code [ fhir:v "VAC-PCV" ] ;
+     fhir:display [ fhir:v "Neumococo" ] ;
+     fhir:definition [ fhir:v "Vacuna Antineumocócica Conjugada" ]
+  ] [
+     fhir:code [ fhir:v "VAC-SPR" ] ;
+     fhir:display [ fhir:v "SPR" ] ;
+     fhir:definition [ fhir:v "Vacuna contra Sarampión, Paperas y Rubéola" ]
+  ] [
+     fhir:code [ fhir:v "VAC-HPV" ] ;
+     fhir:display [ fhir:v "VPH" ] ;
+     fhir:definition [ fhir:v "Vacuna contra el Virus del Papiloma Humano" ]
+  ] [
+     fhir:code [ fhir:v "VAC-DT" ] ;
+     fhir:display [ fhir:v "DT Pediátrico" ] ;
+     fhir:definition [ fhir:v "Vacuna contra Difteria y Tétanos (refuerzo pediátrico)" ]
+  ] [
+     fhir:code [ fhir:v "VAC-INF" ] ;
+     fhir:display [ fhir:v "Influenza" ] ;
+     fhir:definition [ fhir:v "Vacuna contra la Influenza" ]
+  ] [
+     fhir:code [ fhir:v "VAC-HEPB" ] ;
+     fhir:display [ fhir:v "Hepatitis B" ] ;
+     fhir:definition [ fhir:v "Vacuna contra la Hepatitis B (dosis de recién nacido)" ]
+  ] [
+     fhir:code [ fhir:v "VAC-AMA" ] ;
+     fhir:display [ fhir:v "Antiamarílica" ] ;
+     fhir:definition [ fhir:v "Vacuna Antiamarílica (Fiebre Amarilla)" ]
+  ] [
+     fhir:code [ fhir:v "DOSE-BIRTH" ] ;
+     fhir:display [ fhir:v "Dosis de recién nacido" ] ;
+     fhir:definition [ fhir:v "Dosis administrada dentro de las 24 horas de nacimiento" ]
+  ] [
+     fhir:code [ fhir:v "DOSE-1" ] ;
+     fhir:display [ fhir:v "1ra dosis" ] ;
+     fhir:definition [ fhir:v "Primera dosis de la serie" ]
+  ] [
+     fhir:code [ fhir:v "DOSE-2" ] ;
+     fhir:display [ fhir:v "2da dosis" ] ;
+     fhir:definition [ fhir:v "Segunda dosis de la serie" ]
+  ] [
+     fhir:code [ fhir:v "DOSE-3" ] ;
+     fhir:display [ fhir:v "3ra dosis" ] ;
+     fhir:definition [ fhir:v "Tercera dosis de la serie" ]
+  ] [
+     fhir:code [ fhir:v "DOSE-R1" ] ;
+     fhir:display [ fhir:v "1er refuerzo" ] ;
+     fhir:definition [ fhir:v "Primer refuerzo" ]
+  ] [
+     fhir:code [ fhir:v "DOSE-R2" ] ;
+     fhir:display [ fhir:v "2do refuerzo" ] ;
+     fhir:definition [ fhir:v "Segundo refuerzo" ]
+  ] [
+     fhir:code [ fhir:v "ROUTE-ID" ] ;
+     fhir:display [ fhir:v "Intradérmica" ] ;
+     fhir:definition [ fhir:v "Administración por vía intradérmica" ]
+  ] [
+     fhir:code [ fhir:v "ROUTE-SC" ] ;
+     fhir:display [ fhir:v "Subcutánea" ] ;
+     fhir:definition [ fhir:v "Administración por vía subcutánea" ]
+  ] [
+     fhir:code [ fhir:v "ROUTE-IM" ] ;
+     fhir:display [ fhir:v "Intramuscular" ] ;
+     fhir:definition [ fhir:v "Administración por vía intramuscular" ]
+  ] [
+     fhir:code [ fhir:v "ROUTE-VO" ] ;
+     fhir:display [ fhir:v "Vía oral" ] ;
+     fhir:definition [ fhir:v "Administración por vía oral" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-IMMUNITY" ] ;
+     fhir:display [ fhir:v "Inmunidad" ] ;
+     fhir:definition [ fhir:v "El paciente ya tiene inmunidad contra la enfermedad" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-STOCKOUT" ] ;
+     fhir:display [ fhir:v "Desabastecimiento" ] ;
+     fhir:definition [ fhir:v "No hay disponibilidad del producto vacunal" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-PRECAUTION" ] ;
+     fhir:display [ fhir:v "Precaución médica" ] ;
+     fhir:definition [ fhir:v "El paciente tiene una condición médica que contraindica temporalmente la vacunación" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-EXPIRED" ] ;
+     fhir:display [ fhir:v "Producto vencido" ] ;
+     fhir:definition [ fhir:v "El producto vacunal está vencido" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-CLIENT" ] ;
+     fhir:display [ fhir:v "Rechazo del cliente" ] ;
+     fhir:definition [ fhir:v "El cliente o su representante rechaza la vacunación" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-CAREGIVER" ] ;
+     fhir:display [ fhir:v "Rechazo del cuidador" ] ;
+     fhir:definition [ fhir:v "El cuidador del niño rechaza la vacunación" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-ABSENT" ] ;
+     fhir:display [ fhir:v "Niño no presente" ] ;
+     fhir:definition [ fhir:v "El niño no se presentó a la cita de vacunación" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-SICK" ] ;
+     fhir:display [ fhir:v "Niño enfermo" ] ;
+     fhir:definition [ fhir:v "El niño presenta enfermedad que posterga la vacunación" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-AGE" ] ;
+     fhir:display [ fhir:v "Fuera de rango de edad" ] ;
+     fhir:definition [ fhir:v "El paciente está fuera del rango de edad indicado para la vacuna" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-CONTRA" ] ;
+     fhir:display [ fhir:v "Contraindicado" ] ;
+     fhir:definition [ fhir:v "La vacuna está contraindicada para el paciente" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-TIME" ] ;
+     fhir:display [ fhir:v "Sin tiempo" ] ;
+     fhir:definition [ fhir:v "No hubo tiempo disponible para administrar la vacuna" ]
+  ] [
+     fhir:code [ fhir:v "NOREASON-OTHER" ] ;
+     fhir:display [ fhir:v "Otro" ] ;
+     fhir:definition [ fhir:v "La vacuna no fue administrada por otra razón" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

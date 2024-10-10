@@ -1,0 +1,59 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "MINSAIdentifierTypes",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: SistemaDeCodigos MINSAIdentifierTypes</b></p><a name=\"MINSAIdentifierTypes\"> </a><a name=\"hcMINSAIdentifierTypes\"> </a><p>This case-insensitive code system <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">DNI<a name=\"MINSAIdentifierTypes-DNI\"> </a></td><td>Documento Nacional de Identidad</td></tr><tr><td style=\"white-space:nowrap\">CE<a name=\"MINSAIdentifierTypes-CE\"> </a></td><td>Carnet de Extranjería</td></tr><tr><td style=\"white-space:nowrap\">SIS<a name=\"MINSAIdentifierTypes-SIS\"> </a></td><td>Código del Seguro Integral de Salud</td></tr><tr><td style=\"white-space:nowrap\">CNV<a name=\"MINSAIdentifierTypes-CNV\"> </a></td><td>Certificado de Nacido Vivo</td></tr><tr><td style=\"white-space:nowrap\">PTP<a name=\"MINSAIdentifierTypes-PTP\"> </a></td><td>Permiso Temporal de Permanencia</td></tr></table></div>"
+  },
+  "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes",
+  "version" : "1.0.0",
+  "name" : "MINSAIdentifierTypes",
+  "title" : "Tipos de Documento de Identidad - Perú",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-03-16T12:33:41-04:00",
+  "publisher" : "MINSA - Ministerio de Salud del Perú",
+  "contact" : [{
+    "name" : "MINSA - Ministerio de Salud del Perú",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.gob.pe/minsa"
+    }]
+  }],
+  "description" : "Tipos de documento de identidad utilizados en el sistema de salud del Perú",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "PE",
+      "display" : "Peru"
+    }]
+  }],
+  "caseSensitive" : false,
+  "content" : "complete",
+  "count" : 5,
+  "concept" : [{
+    "code" : "DNI",
+    "display" : "DNI",
+    "definition" : "Documento Nacional de Identidad"
+  },
+  {
+    "code" : "CE",
+    "display" : "CE",
+    "definition" : "Carnet de Extranjería"
+  },
+  {
+    "code" : "SIS",
+    "display" : "SIS",
+    "definition" : "Código del Seguro Integral de Salud"
+  },
+  {
+    "code" : "CNV",
+    "display" : "CNV",
+    "definition" : "Certificado de Nacido Vivo"
+  },
+  {
+    "code" : "PTP",
+    "display" : "PTP",
+    "definition" : "Permiso Temporal de Permanencia"
+  }]
+}

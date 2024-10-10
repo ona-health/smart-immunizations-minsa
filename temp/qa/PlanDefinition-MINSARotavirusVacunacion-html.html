@@ -1,0 +1,225 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>PlanDefinition-MINSARotavirusVacunacion-html</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">MINSARotavirusVacunacion</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-MINSARotavirusVacunacion.html">MINSA - Vacunacion contra Rotavirus</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">1.0.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">MINSA - Vacunacion contra Rotavirus</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-03-16 12:33:41-0400</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MINSA - Ministerio de Salud del Perú</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Logica de decision para la vacunacion contra Rotavirus segun el Esquema Nacional de Vacunacion
+del Peru. Se administran 2 dosis a los 2 y 4 meses de edad. La primera dosis no debe
+administrarse despues de las 15 semanas de vida.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                computable 
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">PE</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                <p><b>References</b></p>
+                <ul>
+                    
+                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>
+</div><br/><a href="null"/></li>
+                    
+                </ul>
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                    
+                    <li><a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTRotavirus.html">http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTRotavirus</a></li>
+                    
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la 1ra dosis de Rotavirus:</b> Evaluar si el nino de 2 meses cumple las condiciones para recibir la primera
+    dosis de vacuna contra Rotavirus segun el protocolo nacional.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 2 meses o mas, no supera las 15 semanas de vida, y no ha recibido la 1ra dosis de Rotavirus
+                            
+                            <i>(Paciente necesita 1ra dosis de Rotavirus)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la 2da dosis de Rotavirus:</b> Evaluar si el nino de 4 meses cumple las condiciones para recibir la segunda
+    dosis de vacuna contra Rotavirus segun el protocolo nacional.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 4 meses o mas, ha recibido la 1ra dosis y no ha recibido la 2da dosis de Rotavirus
+                            
+                            <i>(Paciente necesita 2da dosis de Rotavirus)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div></body>
+</html>

@@ -1,0 +1,411 @@
+{% raw %}<div><a name="conv-QuestionnaireResponse-Source"> </a><h3>Maps to QuestionnaireResponse</h3><a name="Source-MINSA.EventoAdverso.QRToObservation"> </a><h4>null (Draft)</h4><p class="res-header-id"></p><pre class="fml">
+<b>map</b><span style="color: navy"> "</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation<span style="color: navy">" = "</span>MINSA.EventoAdverso.QRToObservation<span style="color: navy">"
+
+</span><b>uses</b><span style="color: navy"> "</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">" </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> "</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">" </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> "</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">"
+</span>
+<b>group </b>EventoAdverso<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>"BundleStatic"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">encEntry</span><span style="color: navy">, </span> encEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">encounter</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractEncounter<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>"ExtractEncounter"</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractObservation<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>"ExtractObservation"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"BundleEntries"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el Encounter de la consulta por evento adverso</span>
+<b>group </b>ExtractEncounter<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> encounter.status = <span style="color: blue">'finished'</span><span style="color: navy">, </span> encounter.class = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style="color: navy">, </span><span style="color: blue">'AMB'</span><span style="color: navy">, </span><span style="color: blue">'ambulatory'</span><span style="color: navy">)</span> <i>"EncounterStatic"</i><span style="color: navy">;</span>
+  src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>encounter.subject = <span style="color: maroon">subject</span> <i>"EncounterSubject"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'886921000000105'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Allergies and adverse reactions'</span> <i>"TypeCoding"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"TypeCC"</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: blue">'Evento adverso post-vacunal'</span> <i>"TypeText"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"EncounterType"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.period = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Period'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">period</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>period.start = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>"PeriodStart"</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>period.end = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>"PeriodEnd"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"EncounterPeriod"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae la Observation que representa el evento adverso</span>
+<b>group </b>ExtractObservation<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">obs</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span> obs.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> obs.status = <span style="color: blue">'final'</span><span style="color: navy">, </span> obs.encounter = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>"ObsStatic"</i><span style="color: navy">;</span>
+    src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>obs.subject = <span style="color: maroon">subject</span> <i>"ObsSubject"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Categoria: reaccion adversa</span>
+    src<span style="color: navy"><b> -&gt; </b></span>obs.category = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cat</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span>cat.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/observation-category'</span><span style="color: navy">, </span><span style="color: blue">'survey'</span><span style="color: navy">, </span><span style="color: blue">'Survey'</span><span style="color: navy">)</span> <i>"CatCoding"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"ObsCategory"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Codigo de la observacion: evento adverso post-vacunal (ESAVI)</span>
+    src<span style="color: navy"><b> -&gt; </b></span>obs.code = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">code</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span>code.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>        src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'293104008'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Adverse reaction to vaccine (disorder)'</span> <i>"CodeCoding"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CodeCC"</i><span style="color: navy">;</span>
+      src<span style="color: navy"><b> -&gt; </b></span>code.text = <span style="color: blue">'Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)'</span> <i>"CodeText"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"ObsCode"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Fecha del evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-date'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>obs.effective = <span style="color: maroon">val</span> <i>"SetEffective"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"DateAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"AdverseEventDate"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Tipo de reaccion adversa</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-type'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>obs.value = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>"SetTypeCoding"</i><span style="color: navy">;</span>
+          coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>"SetTypeText"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateTypeCC"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"TypeAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"AdverseEventType"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Severidad del evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'adverse-event-severity'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>obs.component = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation_Component'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">comp</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>comp.code = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compCode</span><b> then</b><span style="color: navy"> {
+</span>            coding<span style="color: navy"><b> -&gt; </b></span>compCode.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compCoding</span><b> then</b><span style="color: navy"> {
+</span>              coding<span style="color: navy"><b> -&gt; </b></span> compCoding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> compCoding.code = <span style="color: blue">'246112005'</span><span style="color: navy">, </span> compCoding.display = <span style="color: blue">'Severity (attribute)'</span> <i>"SeverityCodeCoding"</i><span style="color: navy">;</span>
+            <span style="color: navy">}</span> <i>"SeverityCodeCC"</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>"SeverityCode"</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>comp.value = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">compVal</span><b> then</b><span style="color: navy"> {
+</span>            coding<span style="color: navy"><b> -&gt; </b></span>compVal.coding = <span style="color: maroon">coding</span> <i>"SetSeverityCoding"</i><span style="color: navy">;</span>
+            coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>compVal.text = <span style="color: maroon">display</span> <i>"SetSeverityText"</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>"SeverityValue"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateSeverityComp"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"SeverityAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"AdverseEventSeverity"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Referencia a la inmunizacion que causo el evento adverso</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'causing-immunization') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">immRef</span><span style="color: navy"><b> -&gt; </b></span>obs.focus = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          immRef<span style="color: navy"><b> -&gt; </b></span>ref.reference = <span style="color: maroon">immRef</span> <i>"SetImmReference"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateImmRef"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"ImmAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"CausingImmunization"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Notas adicionales del profesional de salud</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'adverse-event-notes') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>obs.note = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Annotation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">note</span><b> then</b><span style="color: navy"> {
+</span>          val<span style="color: navy"><b> -&gt; </b></span>note.text = <span style="color: maroon">val</span> <i>"SetNoteText"</i><span style="color: navy">;</span>
+          val<span style="color: navy"><b> -&gt; </b></span>note.time = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>"SetNoteTime"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateNote"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"NotesAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"AdverseEventNotes"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"ObservationEntry"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre><a name="Source-MINSA.RegistroPaciente.QRToPatient"> </a><h4>null (Draft)</h4><p class="res-header-id"></p><pre class="fml">
+<b>map</b><span style="color: navy"> "</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroPaciente.QRToPatient<span style="color: navy">" = "</span>MINSA.RegistroPaciente.QRToPatient<span style="color: navy">"
+
+</span><b>uses</b><span style="color: navy"> "</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">" </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> "</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">" </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> "</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">"
+</span>
+<b>group </b>RegistroPaciente<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>"BundleStatic"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Patient'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">patient</span><span style="color: navy">, </span> bundle.entry<b> as </b><span style="color: maroon">rpEntry</span><span style="color: navy">, </span> rpEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'RelatedPerson'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">caregiver</span><span style="color: navy">, </span> bundle.entry<b> as </b><span style="color: maroon">grpEntry</span><span style="color: navy">, </span> grpEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Group'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">group</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractPatient<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>"ExtractPatient"</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractCuidador<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">caregiver</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>"ExtractCuidador"</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractGroup<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">group</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">, </span><span style="color: maroon">caregiver</span><span style="color: navy">)</span> <i>"ExtractGroup"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"BundleEntries"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso Patient (nino) del cuestionario</span>
+<b>group </b>ExtractPatient<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> patient.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> patient.active = <span style="color: blue">true</span> <i>"PatientStatic"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">DNI del nino</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-dni'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>patient.identifier = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Identifier'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span> id.use = <span style="color: blue">'official'</span><span style="color: navy">, </span> id.system = <span style="color: blue">'http://minsa.gob.pe/sid/dni'</span><span style="color: navy">, </span> id.value = <span style="color: maroon">val</span> <i>"SetDNIValues"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateDNI"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"DNIAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PatientDNI"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Nombre del nino</span>
+  src<span style="color: navy"><b> -&gt; </b></span>patient.name = <b>create</b><span style="color: navy">(</span><span style="color: blue">'HumanName'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">name</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>name.use = <span style="color: blue">'official'</span> <i>"NameUse"</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-given-name'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.given = <span style="color: maroon">val</span> <i>"SetGivenName"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"GivenAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"GivenName"</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-second-name'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.given = <span style="color: maroon">val</span> <i>"SetSecondName"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"SecondNameAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"SecondName"</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-paternal-surname'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.family = <span style="color: maroon">val</span> <i>"SetPaternalSurname"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"PaternalAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"PaternalSurname"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PatientName"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Fecha de nacimiento</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-birth-date'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>patient.birthDate = <span style="color: maroon">val</span> <i>"SetBirthDate"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"BirthDateAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PatientBirthDate"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Sexo</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-gender'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>        coding.code<b> as </b><span style="color: maroon">code</span><span style="color: navy"><b> -&gt; </b></span>patient.gender = <span style="color: maroon">code</span> <i>"SetGender"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"GenderCoding"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"GenderAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PatientGender"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Direccion con Departamento, Provincia y Distrito</span>
+  src<b> then </b>ExtractAddress<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>"PatientAddress"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae la direccion con extensiones de division administrativa peruana</span>
+<b>group </b>ExtractAddress<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span>patient.address = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Address'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">address</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span> address.use = <span style="color: blue">'home'</span><span style="color: navy">, </span> address.type = <span style="color: blue">'physical'</span> <i>"AddressStatic"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Texto libre de direccion</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-address-text'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>address.text = <span style="color: maroon">val</span> <i>"SetAddressText"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"AddressTextAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"AddressText"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Departamento</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-departamento'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>address.extension = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Extension'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ext</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>ext.url = <span style="color: blue">'http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento'</span> <i>"SetDeptURL"</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>ext.value = <span style="color: maroon">coding</span> <i>"SetDeptValue"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateDeptExt"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"DeptAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"Departamento"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Provincia</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-provincia'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>address.extension = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Extension'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ext</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>ext.url = <span style="color: blue">'http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia'</span> <i>"SetProvURL"</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>ext.value = <span style="color: maroon">coding</span> <i>"SetProvValue"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateProvExt"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"ProvAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"Provincia"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Distrito</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-distrito'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>address.extension = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Extension'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ext</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>ext.url = <span style="color: blue">'http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito'</span> <i>"SetDistURL"</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>ext.value = <span style="color: maroon">coding</span> <i>"SetDistValue"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateDistExt"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"DistAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"Distrito"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PatientAddress"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso RelatedPerson (cuidador) del cuestionario</span>
+<b>group </b>ExtractCuidador<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">caregiver</span><span style="color: navy"> : </span>RelatedPerson, <b>source</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> caregiver.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> caregiver.active = <span style="color: blue">true</span><span style="color: navy">, </span> caregiver.patient = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>"CaregiverStatic"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">DNI del cuidador</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-dni'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>caregiver.identifier = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Identifier'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span> id.use = <span style="color: blue">'official'</span><span style="color: navy">, </span> id.system = <span style="color: blue">'http://minsa.gob.pe/sid/dni'</span><span style="color: navy">, </span> id.value = <span style="color: maroon">val</span> <i>"SetCaregiverDNIValues"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateCaregiverDNI"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"CaregiverDNIAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"CaregiverDNI"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Nombre del cuidador</span>
+  src<span style="color: navy"><b> -&gt; </b></span>caregiver.name = <b>create</b><span style="color: navy">(</span><span style="color: blue">'HumanName'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">name</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>name.use = <span style="color: blue">'official'</span> <i>"CaregiverNameUse"</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-given-name'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.given = <span style="color: maroon">val</span> <i>"SetCaregiverGivenName"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CaregiverGivenAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"CaregiverGivenName"</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-paternal-surname'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.family = <span style="color: maroon">val</span> <i>"SetCaregiverFamilyName"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CaregiverFamilyAnswer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"CaregiverFamilyName"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"CaregiverName"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Telefono del cuidador</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-phone'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>caregiver.telecom = <b>create</b><span style="color: navy">(</span><span style="color: blue">'ContactPoint'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">phone</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span> phone.system = <span style="color: blue">'phone'</span><span style="color: navy">, </span> phone.use = <span style="color: blue">'mobile'</span><span style="color: navy">, </span> phone.value = <span style="color: maroon">val</span> <i>"SetPhoneValues"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreatePhone"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"PhoneAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"CaregiverPhone"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Relacion de parentesco</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-relationship'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>caregiver.relationship = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>        coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>"SetRelCoding"</i><span style="color: navy">;</span>
+        coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>"SetRelText"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateRelCC"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"RelAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"CaregiverRelationship"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un Group que vincula al cuidador con el paciente</span>
+<b>group </b>ExtractGroup<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">group</span><span style="color: navy"> : </span>Group, <b>source</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient, <b>source</b> <span style="color: maroon">caregiver</span><span style="color: navy"> : </span>RelatedPerson<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> group.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> group.type = <span style="color: blue">'person'</span><span style="color: navy">, </span> group.actual = <span style="color: blue">true</span><span style="color: navy">, </span> group.active = <span style="color: blue">true</span> <i>"GroupStatic"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>group.name = <span style="color: blue">'Familia'</span> <i>"GroupName"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>group.member = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Group_Member'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">memberPatient</span><b> then</b><span style="color: navy"> {
+</span>    patient<span style="color: navy"><b> -&gt; </b></span>memberPatient.entity = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>"SetPatientMember"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PatientMember"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>group.member = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Group_Member'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">memberCaregiver</span><b> then</b><span style="color: navy"> {
+</span>    caregiver<span style="color: navy"><b> -&gt; </b></span>memberCaregiver.entity = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">caregiver</span><span style="color: navy">)</span> <i>"SetCaregiverMember"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"CaregiverMember"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre><a name="Source-MINSA.RegistroVacuna.QRToImmunization"> </a><h4>null (Draft)</h4><p class="res-header-id"></p><pre class="fml">
+<b>map</b><span style="color: navy"> "</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization<span style="color: navy">" = "</span>MINSA.RegistroVacuna.QRToImmunization<span style="color: navy">"
+
+</span><b>uses</b><span style="color: navy"> "</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">" </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> "</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">" </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> "</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">"
+</span>
+<b>group </b>RegistroVacuna<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>"BundleStatic"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span><b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">encounter</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractEncounter<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>"ExtractEncounter"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Solo crear Immunization si la vacuna fue administrada</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))<b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Immunization'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">immunization</span><b> then</b><span style="color: navy"> {
+</span>        src<b> then </b>ExtractImmunization<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">immunization</span><span style="color: navy">)</span> <i>"ExtractImmunization"</i><span style="color: navy">;</span>
+        src<b> then </b>ExtractTaskCompleted<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">immunization</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>"ExtractTask"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"ImmunizationEntry"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"VaccineGiven"</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Si la vacuna no fue administrada, marcar tarea como fallida</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'no'))<b> then</b><span style="color: navy"> {
+</span>      src<b> then </b>ExtractTaskFailed<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>"ExtractTaskFailed"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"VaccineNotGiven"</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <span style="color: maroon">encounter</span> <i>"EncounterEntry"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"CreateEncounter"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso Encounter para la visita de vacunacion</span>
+<b>group </b>ExtractEncounter<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> encounter.status = <span style="color: blue">'finished'</span><span style="color: navy">, </span> encounter.class = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style="color: navy">, </span><span style="color: blue">'AMB'</span><span style="color: navy">, </span><span style="color: blue">'ambulatory'</span><span style="color: navy">)</span> <i>"EncounterStatic"</i><span style="color: navy">;</span>
+  src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>encounter.subject = <span style="color: maroon">subject</span> <i>"EncounterSubject"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'33879002'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Administration of vaccine to produce active immunity (procedure)'</span> <i>"TypeCoding"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"TypeCC"</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: blue">'Vacunacion'</span> <i>"TypeText"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"EncounterType"</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.period = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Period'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">period</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>period.start = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>"PeriodStart"</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>period.end = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>"PeriodEnd"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"EncounterPeriod"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Ubicacion del encuentro (establecimiento de salud)</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'location-id') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">locId</span><span style="color: navy"><b> -&gt; </b></span>encounter.location = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter_Location'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">loc</span><b> then</b><span style="color: navy"> {
+</span>        locId<span style="color: navy"><b> -&gt; </b></span>loc.location = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          locId<span style="color: navy"><b> -&gt; </b></span>ref.reference = evaluate<span style="color: navy">(</span>locId<span style="color: navy">, </span>'Location/' + $this<span style="color: navy">)</span> <i>"LocReference"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"LocRef"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateLoc"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"LocAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"EncounterLocation"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso Immunization con datos de la vacuna administrada</span>
+<b>group </b>ExtractImmunization<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>target</b> <span style="color: maroon">immunization</span><span style="color: navy"> : </span>Immunization<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> immunization.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> immunization.status = <span style="color: blue">'completed'</span><span style="color: navy">, </span> immunization.recorded = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span><span style="color: navy">, </span> immunization.patient = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>subject<span style="color: navy">)</span><span style="color: navy">, </span> immunization.encounter = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>"ImmunizationStatic"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Codigo de vacuna (del esquema nacional MINSA)</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'vaccine-code'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>immunization.vaccineCode = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>        coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>"SetVaccineCoding"</i><span style="color: navy">;</span>
+        coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>"SetVaccineText"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateVaccineCC"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"VaccineCodeAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"VaccineCode"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Fecha de administracion</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'vaccination-date'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span> <b>create</b><span style="color: navy">(</span><span style="color: blue">'dateTime'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">dt</span><span style="color: navy">, </span> dt.value = <span style="color: maroon">val</span><span style="color: navy">, </span> immunization.occurrence = <span style="color: maroon">dt</span> <i>"SetOccurrence"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"VaccineDateAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"VaccinationDate"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Numero de lote</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'lot-number'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>immunization.lotNumber = <span style="color: maroon">val</span> <i>"SetLotNumber"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"LotAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"LotNumber"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Fecha de vencimiento del lote</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'expiration-date'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>immunization.expirationDate = <span style="color: maroon">val</span> <i>"SetExpirationDate"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"ExpirationAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"ExpirationDate"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Numero de dosis y protocolo aplicado</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'dose-number'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>immunization.protocolApplied = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Immunization_AppliedProtocol'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">protocol</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span>protocol.doseNumber = <span style="color: maroon">val</span> <i>"SetDoseNumber"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateProtocol"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"DoseAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"DoseNumber"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Via de administracion</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'route'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>immunization.route = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>        coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>"SetRouteCoding"</i><span style="color: navy">;</span>
+        coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>"SetRouteText"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateRouteCC"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"RouteAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"Route"</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Establecimiento de salud (como performer)</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'performer-organization') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">orgRef</span><span style="color: navy"><b> -&gt; </b></span>immunization.performer = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Immunization_Performer'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">performer</span><b> then</b><span style="color: navy"> {
+</span>        orgRef<span style="color: navy"><b> -&gt; </b></span>performer.actor = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          orgRef<span style="color: navy"><b> -&gt; </b></span>ref.reference = evaluate<span style="color: navy">(</span>orgRef<span style="color: navy">, </span>'Organization/' + $this<span style="color: navy">)</span> <i>"SetOrgRef"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"CreateOrgRef"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreatePerformer"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"OrgAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"PerformerOrg"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un Task con estado completado, vinculado al Encounter e Immunization</span>
+<b>group </b>ExtractTaskCompleted<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>source</b> <span style="color: maroon">immunization</span><span style="color: navy"> : </span>Immunization, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">taskId</span><span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">task</span><b> then</b><span style="color: navy"> {
+</span>        taskId<span style="color: navy"><b> -&gt; </b></span> task.id = <b>create</b><span style="color: navy">(</span><span style="color: blue">'id'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><span style="color: navy">, </span> id.value = <span style="color: maroon">taskId</span> <i>"SetTaskId"</i><span style="color: navy">;</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.status = <span style="color: blue">'completed'</span> <i>"TaskCompleted"</i><span style="color: navy">;</span>
+        <span style="color: navy">// </span><span style="color: green">Referencia al Encounter</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.output = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task_Output'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">outputEnc</span><b> then</b><span style="color: navy"> {
+</span>          taskId<span style="color: navy"><b> -&gt; </b></span>outputEnc.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>            taskId<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span><span style="color: blue">'41000179103'</span><span style="color: navy">, </span><span style="color: blue">'Immunization record (record artifact)'</span><span style="color: navy">)</span> <i>"OutputEncTypeCoding"</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>"OutputEncType"</i><span style="color: navy">;</span>
+          encounter<span style="color: navy"><b> -&gt; </b></span>outputEnc.value = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>"OutputEncValue"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"TaskOutputEnc"</i><span style="color: navy">;</span>
+        <span style="color: navy">// </span><span style="color: green">Referencia al Immunization</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.output = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task_Output'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">outputImm</span><b> then</b><span style="color: navy"> {
+</span>          taskId<span style="color: navy"><b> -&gt; </b></span>outputImm.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>            taskId<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span><span style="color: blue">'41000179103'</span><span style="color: navy">, </span><span style="color: blue">'Immunization record (record artifact)'</span><span style="color: navy">)</span> <i>"OutputImmTypeCoding"</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>"OutputImmType"</i><span style="color: navy">;</span>
+          immunization<span style="color: navy"><b> -&gt; </b></span>outputImm.value = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">immunization</span><span style="color: navy">)</span> <i>"OutputImmValue"</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>"TaskOutputImm"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateTask"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"TaskIdAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"TaskCompleted"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un Task con estado fallido cuando la vacuna no fue administrada</span>
+<b>group </b>ExtractTaskFailed<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">taskId</span><span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">task</span><b> then</b><span style="color: navy"> {
+</span>        taskId<span style="color: navy"><b> -&gt; </b></span> task.id = <b>create</b><span style="color: navy">(</span><span style="color: blue">'id'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><span style="color: navy">, </span> id.value = <span style="color: maroon">taskId</span> <i>"SetFailedTaskId"</i><span style="color: navy">;</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.status = <span style="color: blue">'failed'</span> <i>"TaskFailed"</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>"CreateFailedTask"</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>"FailedTaskIdAnswer"</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>"TaskFailed"</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre></div><div><a name="conv-QuestionnaireResponse-Target"> </a><h3>Maps from QuestionnaireResponse</h3><p>No maps found</p></div>{% endraw %}

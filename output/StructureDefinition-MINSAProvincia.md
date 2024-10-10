@@ -1,0 +1,110 @@
+# Provincia del Perú - Guía de Implementación de Inmunizaciones MINSA Perú v1.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Provincia del Perú**
+
+## Extension: Provincia del Perú 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia | *Version*:1.0.0 |
+| Draft as of 2026-03-16 | *Computable Name*:MINSAProvincia |
+
+División administrativa de segundo nivel del Perú (Provincia) donde reside el paciente.
+
+**Context of Use**
+
+**Usage info**
+
+**Usages:**
+
+* Use this Extension: [Paciente MINSA Perú](StructureDefinition-MINSA.Patient.md)
+
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/minsa.gob.pe.immunizations|current/StructureDefinition/MINSAProvincia)
+
+### Formal Views of Extension Content
+
+ [Description of Profiles, Differentials, Snapshots, and how the XML and JSON presentations work](http://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#structure-definitions). 
+
+ 
+
+Other representations of profile: [CSV](StructureDefinition-MINSAProvincia.csv), [Excel](StructureDefinition-MINSAProvincia.xlsx), [Schematron](StructureDefinition-MINSAProvincia.sch) 
+
+#### Constraints
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "MINSAProvincia",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia",
+  "version" : "1.0.0",
+  "name" : "MINSAProvincia",
+  "title" : "Provincia del Perú",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2026-03-16T12:33:41-04:00",
+  "publisher" : "MINSA - Ministerio de Salud del Perú",
+  "contact" : [{
+    "name" : "MINSA - Ministerio de Salud del Perú",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.gob.pe/minsa"
+    }]
+  }],
+  "description" : "División administrativa de segundo nivel del Perú (Provincia) donde reside el paciente.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "PE",
+      "display" : "Peru"
+    }]
+  }],
+  "fhirVersion" : "4.0.1",
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
+  "kind" : "complex-type",
+  "abstract" : false,
+  "context" : [{
+    "type" : "element",
+    "expression" : "Address"
+  }],
+  "type" : "Extension",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation" : "constraint",
+  "differential" : {
+    "element" : [{
+      "id" : "Extension",
+      "path" : "Extension",
+      "short" : "Provincia del Perú",
+      "definition" : "División administrativa de segundo nivel del Perú (Provincia) donde reside el paciente."
+    },
+    {
+      "id" : "Extension.extension",
+      "path" : "Extension.extension",
+      "max" : "0"
+    },
+    {
+      "id" : "Extension.url",
+      "path" : "Extension.url",
+      "fixedUri" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia"
+    },
+    {
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "min" : 1,
+      "type" : [{
+        "code" : "Coding"
+      }]
+    }]
+  }
+}
+
+```

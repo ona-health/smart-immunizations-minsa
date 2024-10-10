@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="MINSASPRVacunacion"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"/>
+    <profile value="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition"/>
+    <profile value="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition"/>
+  </meta>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">MINSASPRVacunacion</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-MINSASPRVacunacion.html">MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">1.0.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-03-16 12:33:41-0400</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MINSA - Ministerio de Salud del Perú</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Logica de decision para la vacunacion SPR (Sarampion, Paperas, Rubeola) segun el Esquema
+Nacional de Vacunacion del Peru. Se administra la primera dosis a los 12 meses de edad
+y una dosis de refuerzo a los 18 meses.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                computable 
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">PE</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                <p><b>References</b></p>
+                <ul>
+                    
+                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>
+</div><br/><a href="null"/></li>
+                    
+                </ul>
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                    
+                    <li><a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTMeaslesLowTransmission.html">http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTMeaslesLowTransmission</a></li>
+                    
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la 1ra dosis de SPR:</b> Evaluar si el nino de 12 meses cumple las condiciones para recibir la primera
+    dosis de vacuna SPR segun el protocolo nacional de inmunizaciones.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 12 meses o mas y no ha recibido la 1ra dosis de SPR
+                            
+                            <i>(Paciente necesita 1ra dosis de SPR)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la dosis de refuerzo de SPR:</b> Evaluar si el nino de 18 meses cumple las condiciones para recibir la dosis
+    de refuerzo de vacuna SPR segun el protocolo nacional de inmunizaciones.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 18 meses o mas, ha recibido la 1ra dosis y no ha recibido el refuerzo de SPR
+                            
+                            <i>(Paciente necesita refuerzo de SPR)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div>
+  </text>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+    <valueCode value="computable"/>
+  </extension>
+  <url value="http://minsa.gob.pe/immunizations/PlanDefinition/MINSASPRVacunacion"/>
+  <version value="1.0.0"/>
+  <name value="MINSASPRVacunacion"/>
+  <title value="MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+    </coding>
+  </type>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <description value="Logica de decision para la vacunacion SPR (Sarampion, Paperas, Rubeola) segun el Esquema&#xA;Nacional de Vacunacion del Peru. Se administra la primera dosis a los 12 meses de edad&#xA;y una dosis de refuerzo a los 18 meses."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <relatedArtifact>
+    <type value="citation"/>
+    <citation value="NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion"/>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="depends-on"/>
+    <display value="WHO SMART Guidelines - Measles Low Transmission Decision Table"/>
+    <resource value="http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTMeaslesLowTransmission"/>
+  </relatedArtifact>
+  <action>
+    <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale">
+      <valueMarkdown value="La vacuna SPR (triple virica) protege contra sarampion, paperas y&#xA;      rubeola. La primera dosis se administra a los 12 meses de edad, cuando los anticuerpos&#xA;      maternos han disminuido suficientemente para permitir una respuesta inmune adecuada."/>
+    </extension>
+    <title value="Determinar si el nino necesita la 1ra dosis de SPR"/>
+    <description value="Evaluar si el nino de 12 meses cumple las condiciones para recibir la primera&#xA;    dosis de vacuna SPR segun el protocolo nacional de inmunizaciones."/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <description value="El paciente tiene 12 meses o mas y no ha recibido la 1ra dosis de SPR"/>
+        <language value="text/cql-identifier"/>
+        <expression value="Paciente necesita 1ra dosis de SPR"/>
+      </expression>
+    </condition>
+    <dynamicValue>
+      <path value="status"/>
+      <expression>
+        <language value="text/cql-expression"/>
+        <expression value="'draft'"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="intent"/>
+      <expression>
+        <language value="text/cql-expression"/>
+        <expression value="'proposal'"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action>
+    <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale">
+      <valueMarkdown value="La dosis de refuerzo de SPR a los 18 meses asegura la proteccion a&#xA;      largo plazo. Aproximadamente el 5% de los ninos no responden a la primera dosis,&#xA;      por lo que la segunda dosis garantiza la inmunidad de la poblacion."/>
+    </extension>
+    <title value="Determinar si el nino necesita la dosis de refuerzo de SPR"/>
+    <description value="Evaluar si el nino de 18 meses cumple las condiciones para recibir la dosis&#xA;    de refuerzo de vacuna SPR segun el protocolo nacional de inmunizaciones."/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <description value="El paciente tiene 18 meses o mas, ha recibido la 1ra dosis y no ha recibido el refuerzo de SPR"/>
+        <language value="text/cql-identifier"/>
+        <expression value="Paciente necesita refuerzo de SPR"/>
+      </expression>
+    </condition>
+    <dynamicValue>
+      <path value="status"/>
+      <expression>
+        <language value="text/cql-expression"/>
+        <expression value="'draft'"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="intent"/>
+      <expression>
+        <language value="text/cql-expression"/>
+        <expression value="'proposal'"/>
+      </expression>
+    </dynamicValue>
+  </action>
+</PlanDefinition>

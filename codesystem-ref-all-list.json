@@ -1,0 +1,344 @@
+{
+  "codeSystems" : [{
+    "url" : "http://hl7.org/fhir/address-type",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "AddressType",
+    "title" : "AddressType",
+    "description" : "The type of an address (physical / postal).",
+    "oids" : ["2.16.840.1.113883.4.642.4.70"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-address-type.html" : "AddressType"
+  },
+  {
+    "url" : "http://hl7.org/fhir/address-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "AddressUse",
+    "title" : "AddressUse",
+    "description" : "The use of an address.",
+    "oids" : ["2.16.840.1.113883.4.642.4.68"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-address-use.html" : "AddressUse"
+  },
+  {
+    "url" : "http://hl7.org/fhir/administrative-gender",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "AdministrativeGender",
+    "title" : "AdministrativeGender",
+    "description" : "The gender of a person used for administrative purposes.",
+    "oids" : ["2.16.840.1.113883.4.642.4.2"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-administrative-gender.html" : "AdministrativeGender"
+  },
+  {
+    "url" : "http://hl7.org/fhir/contact-point-system",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ContactPointSystem",
+    "title" : "ContactPointSystem",
+    "description" : "Telecommunications form for contact point.",
+    "oids" : ["2.16.840.1.113883.4.642.4.72"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-contact-point-system.html" : "ContactPointSystem"
+  },
+  {
+    "url" : "http://hl7.org/fhir/contact-point-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ContactPointUse",
+    "title" : "ContactPointUse",
+    "description" : "Use of contact point.",
+    "oids" : ["2.16.840.1.113883.4.642.4.74"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-contact-point-use.html" : "ContactPointUse"
+  },
+  {
+    "url" : "http://hl7.org/fhir/event-status",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "EventStatus",
+    "title" : "EventStatus",
+    "description" : "Codes identifying the lifecycle stage of an event.",
+    "oids" : ["2.16.840.1.113883.4.642.4.110"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-status.html" : "Immunization Status Codes"
+  },
+  {
+    "url" : "http://hl7.org/fhir/identifier-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "IdentifierUse",
+    "title" : "IdentifierUse",
+    "description" : "Identifies the purpose for this identifier, if known .",
+    "oids" : ["2.16.840.1.113883.4.642.4.58"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-identifier-use.html" : "IdentifierUse"
+  },
+  {
+    "url" : "http://hl7.org/fhir/link-type",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "LinkType",
+    "title" : "LinkType",
+    "description" : "The type of link between this patient resource and another patient resource.",
+    "oids" : ["2.16.840.1.113883.4.642.4.424"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-link-type.html" : "LinkType"
+  },
+  {
+    "url" : "http://hl7.org/fhir/name-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "NameUse",
+    "title" : "NameUse",
+    "description" : "The use of a human name.",
+    "oids" : ["2.16.840.1.113883.4.642.4.66"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-name-use.html" : "NameUse"
+  },
+  {
+    "url" : "http://hl7.org/fhir/resource-types",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ResourceType",
+    "title" : "ResourceType",
+    "description" : "One of the resource types defined as part of this version of FHIR.",
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-resource-types.html" : "ResourceType"
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSA",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSA",
+    "title" : "Sistema de Códigos MINSA para Inmunizaciones",
+    "description" : "Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones",
+    "uses" : {
+    },
+    "ValueSet-MINSADoseNumberVS.html" : "Números de Dosis del Esquema de Vacunación - MINSA",
+    "ValueSet-MINSAImmunizationReasonNotGivenVS.html" : "Razones de No Administración de Vacuna - MINSA",
+    "ValueSet-MINSAVaccineVS.html" : "Vacunas del Esquema Nacional de Vacunación MINSA"
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAIdentifierTypes",
+    "title" : "Tipos de Documento de Identidad - Perú",
+    "description" : "Tipos de documento de identidad utilizados en el sistema de salud del Perú",
+    "uses" : {
+    },
+    "ValueSet-MINSAIdentifierTypeVS.html" : "Tipos de Documento de Identidad - MINSA"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/CodeSystem/IMMZ.D",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D",
+    "title" : "IMMZ.D CodeSystem for Data Elements",
+    "description" : "CodeSystem for IMMZ.D Data Elements",
+    "uses" : {
+    },
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE254.html" : "IMMZ.D.DE254 ValueSet for Type of hepatitis B dose",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE212.html" : "IMMZ.D.DE212 ValueSet for Type of poliovirus dose",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE237.html" : "IMMZ.D.DE237 ValueSet for Type of hepatitis A dose",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE225.html" : "IMMZ.D.DE225 ValueSet for Type of typhoid dose",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE5.html" : "IMMZ.D.DE5 ValueSet for Reason vaccine was not administered",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE220.html" : "IMMZ.D.DE220 ValueSet for Type of TBE dose",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE216.html" : "IMMZ.D.DE216 ValueSet for Type of JE dose",
+    "https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/ValueSet-IMMZ.D.DE229.html" : "IMMZ.D.DE229 ValueSet for Type of cholera dose"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/CodeSystem/IMMZ.Z",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_Z",
+    "title" : "IMMZ.Z CodeSystem for Data Elements",
+    "description" : "CodeSystem for IMMZ.Z Data Elements",
+    "uses" : {
+    },
+    "ValueSet-MINSAVaccineVS.html" : "Vacunas del Esquema Nacional de Vacunación MINSA"
+  },
+  {
+    "url" : "http://snomed.info/sct",
+    "version" : null,
+    "status" : "active",
+    "name" : "SNOMED_CT",
+    "title" : "SNOMED CT (all versions)",
+    "description" : "SNOMED CT is the most comprehensive and precise clinical health terminology product in the world, owned and distributed around the world by The International Health Terminology Standards Development Organisation (IHTSDO).",
+    "oids" : ["2.16.840.1.113883.6.96"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-target-disease.html" : "Immunization Target Disease Codes",
+    "http://hl7.org/fhir/R4/valueset-immunization-reason.html" : "Immunization Reason Codes"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-funding-source",
+    "version" : "1.0.1",
+    "status" : "active",
+    "name" : "ImmunizationFundingSource",
+    "title" : "Immunization Funding Source",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the source of the vaccine administered. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1100"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-funding-source.html" : "Immunization Funding Source"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-origin",
+    "version" : "1.0.1",
+    "status" : "active",
+    "name" : "ImmunizationOriginCodes",
+    "title" : "Immunization Origin Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the source of the data when the report of the immunization event is not based on information from the person, entity or organization who administered the vaccine. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1101"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-origin.html" : "Immunization Origin Codes"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility",
+    "version" : "1.0.1",
+    "status" : "active",
+    "name" : "ImmunizationProgramEligibility",
+    "title" : "Immunization Program Eligibility",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the patient's eligibility for a vaccination program. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1099"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-program-eligibility.html" : "Immunization Program Eligibility"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason",
+    "version" : "1.0.1",
+    "status" : "active",
+    "name" : "ImmunizationSubpotentReason",
+    "title" : "Immunization Subpotent Reason",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose is considered to be subpotent. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1098"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-subpotent-reason.html" : "Immunization Subpotent Reason"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v2-0131",
+    "version" : "3.0.0",
+    "status" : "active",
+    "name" : "ContactRole2",
+    "title" : "contactRole2",
+    "description" : "Code system of concepts which specify a relationship role that the next of kin/associated parties plays with regard to the patient. Also used in referrals, for example, it may be necessary to identify the contact representative at the clinic that sent a referral. Used in HL7 Version 2 messaging in the NK1 and CTD segments after 2.5, when it replace 2.16.840.1.113883.18.57.",
+    "oids" : ["2.16.840.1.113883.18.58"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html" : "Patient relationship type",
+    "http://hl7.org/fhir/R4/valueset-patient-contactrelationship.html" : "Patient Contact Relationship "
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+    "version" : "5.0.0",
+    "status" : "active",
+    "name" : "IdentifierType",
+    "title" : "identifierType",
+    "description" : "HL7-defined code system of concepts specifying type of identifier. Used in HL7 Version 2.x messaging data types CX, PLN, PPN, XCN and XON.",
+    "oids" : ["2.16.840.1.113883.18.108"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-identifier-type.html" : "IdentifierType"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v2-0443",
+    "version" : "3.0.0",
+    "status" : "active",
+    "name" : "ProviderRole",
+    "title" : "providerRole",
+    "description" : "Code system of concepts specifying the functional involvement with the activity being transmitted (e.g., Case Manager, Evaluator, Transcriber, Nurse Care Practitioner, Midwife, Physician Assistant, etc.).  Used in HL7 Version 2.x messaging in the ROL segment.",
+    "oids" : ["2.16.840.1.113883.18.283"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-function.html" : "Immunization Function Codes"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "ActSite",
+    "title" : "ActSite",
+    "description" : "An anatomical location on an organism which can be the focus of an act.",
+    "oids" : ["2.16.840.1.113883.5.1052"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-site.html" : "Codes for Immunization Site of Administration"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "MaritalStatus",
+    "title" : "MaritalStatus",
+    "description" : "\\* \\* \\* No description supplied \\* \\* \\*\r\n\r\n*Open Issue:* The specific meanings of these codes can vary somewhat by jurisdiction and implementation so caution should be used when determining equivalency.\r\n\r\n*Open Issue:* fixing and completion of the hierarchy and proper good definitions of all the concepts is badly needed.",
+    "oids" : ["2.16.840.1.113883.5.2"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-marital-status.html" : "MaritalStatus"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "NullFlavor",
+    "title" : "NullFlavor",
+    "description" : "A collection of codes specifying why a valid value is not present.",
+    "oids" : ["2.16.840.1.113883.5.1008"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-marital-status.html" : "MaritalStatus"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "RoleCode",
+    "title" : "RoleCode",
+    "description" : "A set of codes further specifying the kind of Role; specific classification codes for further qualifying RoleClass codes.",
+    "oids" : ["2.16.840.1.113883.5.111"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html" : "Patient relationship type"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "RouteOfAdministration",
+    "title" : "RouteOfAdministration",
+    "description" : "The path the administered medication takes to get into the body or into contact with the body.",
+    "oids" : ["2.16.840.1.113883.5.112"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-route.html" : "Immunization Route Codes"
+  },
+  {
+    "url" : "urn:ietf:bcp:47",
+    "version" : "2.0.1",
+    "status" : "active",
+    "name" : "Ietf3066",
+    "title" : "Tags for the Identification of Languages",
+    "description" : "Older value from OID registry.  Superceded; see recommendations in BCP-47.",
+    "oids" : ["2.16.840.1.113883.6.121"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-languages.html" : "Common Languages"
+  }]
+}

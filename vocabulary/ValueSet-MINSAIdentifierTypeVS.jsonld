@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "name": "http://www.w3.org/2000/01/rdf-schema#label",
+    "fhir": "https://smart.who.int/base/DataTypes.jsonld#",
+    "id": "@id",
+    "generatedAt": {
+      "@id": "http://www.w3.org/ns/prov#generatedAtTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+  },
+  "@id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.jsonld",
+  "@type": "http://www.w3.org/ns/prov#Entity",
+  "generatedAt": "2026-03-16T16:34:32.174878Z",
+  "@graph": [
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.jsonld#DNI",
+      "name": "DNI",
+      "fhir:code": "DNI",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSAIdentifierTypes"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.jsonld#CE",
+      "name": "CE",
+      "fhir:code": "CE",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSAIdentifierTypes"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.jsonld#SIS",
+      "name": "SIS",
+      "fhir:code": "SIS",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSAIdentifierTypes"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.jsonld#CNV",
+      "name": "CNV",
+      "fhir:code": "CNV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSAIdentifierTypes"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAIdentifierTypeVS.jsonld#PTP",
+      "name": "PTP",
+      "fhir:code": "PTP",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSAIdentifierTypes"
+    }
+  ]
+}

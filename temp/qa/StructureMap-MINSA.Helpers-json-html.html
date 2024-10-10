@@ -1,0 +1,658 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>StructureMap-MINSA.Helpers-json-html</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<pre class="json" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code style="white-space: pre; text-wrap: nowrap;">{
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap">resourceType</a>" : "StructureMap",
+  "<a href="http://hl7.org/fhir/R4/resource.html#StructureMap.id">id</a>" : "MINSA.Helpers",
+  "<a href="http://hl7.org/fhir/R4/domainresource.html#StructureMap.text">text</a>" : {
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a>" : "generated",
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: MapaDeEstructura MINSA.Helpers&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MINSA.Helpers\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMINSA.Helpers\&quot;&gt; &lt;/a&gt;&lt;pre class=\&quot;fml\&quot;&gt;\r\n&lt;b&gt;map&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; &amp;quot;&lt;/span&gt;http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers&lt;span style=\&quot;color: navy\&quot;&gt;&amp;quot; = &amp;quot;&lt;/span&gt;MINSA.Helpers&lt;span style=\&quot;color: navy\&quot;&gt;&amp;quot;\r\n\r\n&lt;/span&gt;&lt;b&gt;uses&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; &amp;quot;&lt;/span&gt;&lt;a href=\&quot;http://hl7.org/fhir/R4/questionnaireresponse.html\&quot; title=\&quot;QuestionnaireResponse\&quot;&gt;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&lt;/a&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&amp;quot; &lt;/span&gt;&lt;b&gt;alias &lt;/b&gt;QResp &lt;b&gt;as &lt;/b&gt;&lt;b&gt;source&lt;/b&gt;\r\n&lt;b&gt;uses&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; &amp;quot;&lt;/span&gt;&lt;a href=\&quot;http://hl7.org/fhir/R4/bundle.html\&quot; title=\&quot;Bundle\&quot;&gt;http://hl7.org/fhir/StructureDefinition/Bundle&lt;/a&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&amp;quot; &lt;/span&gt;&lt;b&gt;alias &lt;/b&gt;Bundle &lt;b&gt;as &lt;/b&gt;&lt;b&gt;target&lt;/b&gt;\r\n\r\n&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Extrae el valor de la primera respuesta de un item&lt;/span&gt;\r\n&lt;b&gt;group &lt;/b&gt;ItemToValue&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;field&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;  item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;    answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;content&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;field.value = &lt;span style=\&quot;color: maroon\&quot;&gt;content&lt;/span&gt; &lt;i&gt;&amp;quot;SetValue&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;FirstAnswer&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n&lt;span style=\&quot;color: navy\&quot;&gt;}\r\n\r\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Extrae el codigo de una respuesta codificada&lt;/span&gt;\r\n&lt;b&gt;group &lt;/b&gt;ItemToCode&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;field&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;  item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;    answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;      coding.code&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;content&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;field.value = &lt;span style=\&quot;color: maroon\&quot;&gt;content&lt;/span&gt; &lt;i&gt;&amp;quot;SetCode&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;Coding&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;FirstAnswer&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n&lt;span style=\&quot;color: navy\&quot;&gt;}\r\n\r\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Extrae sistema, codigo y display de una respuesta codificada&lt;/span&gt;\r\n&lt;b&gt;group &lt;/b&gt;ItemToCoding&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;field&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;  item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;    answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;coding&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;      coding.code&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;code&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;field.code = &lt;span style=\&quot;color: maroon\&quot;&gt;code&lt;/span&gt; &lt;i&gt;&amp;quot;SetCode&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n      coding.system&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;system&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;field.system = &lt;span style=\&quot;color: maroon\&quot;&gt;system&lt;/span&gt; &lt;i&gt;&amp;quot;SetSystem&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n      coding.display&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;display&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;field.display = &lt;span style=\&quot;color: maroon\&quot;&gt;display&lt;/span&gt; &lt;i&gt;&amp;quot;SetDisplay&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n    &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;Coding&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;FirstAnswer&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n&lt;span style=\&quot;color: navy\&quot;&gt;}\r\n\r\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Crea un identificador DNI con sistema MINSA&lt;/span&gt;\r\n&lt;b&gt;group &lt;/b&gt;SetDNI&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;identifier&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Identifier&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;  item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;    answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; identifier.use = &lt;span style=\&quot;color: blue\&quot;&gt;'official'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; identifier.system = &lt;span style=\&quot;color: blue\&quot;&gt;'http://minsa.gob.pe/sid/dni'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; identifier.value = &lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt; &lt;i&gt;&amp;quot;SetDNIValue&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;DNIAnswer&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n&lt;span style=\&quot;color: navy\&quot;&gt;}\r\n\r\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Crea un ContactPoint de telefono&lt;/span&gt;\r\n&lt;b&gt;group &lt;/b&gt;SetPhone&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;item&lt;/span&gt;, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;telecom&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;ContactPoint&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;  item.answer first&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;answer&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;    answer.value&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; telecom.system = &lt;span style=\&quot;color: blue\&quot;&gt;'phone'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; telecom.use = &lt;span style=\&quot;color: blue\&quot;&gt;'mobile'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; telecom.value = &lt;span style=\&quot;color: maroon\&quot;&gt;val&lt;/span&gt; &lt;i&gt;&amp;quot;SetPhoneValue&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;PhoneAnswer&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n&lt;span style=\&quot;color: navy\&quot;&gt;}\r\n\r\n&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;// &lt;/span&gt;&lt;span style=\&quot;color: green\&quot;&gt;Crea una Observation vinculada a un paciente y encuentro&lt;/span&gt;\r\n&lt;b&gt;group &lt;/b&gt;MakeObservation&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;patient&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Reference, &lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;code&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Coding, &lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;cat&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Coding, &lt;b&gt;source&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;value&lt;/span&gt;, &lt;b&gt;target&lt;/b&gt; &lt;span style=\&quot;color: maroon\&quot;&gt;bundle&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; : &lt;/span&gt;Bundle&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;  value&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt; &lt;b&gt;uuid&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;oid&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; bundle.entry&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;entry&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; entry.fullUrl = &lt;b&gt;append&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'urn:uuid:'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;oid&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; entry.request&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;request&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; request.method = &lt;span style=\&quot;color: blue\&quot;&gt;'PUT'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; request.url = &lt;b&gt;append&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Observation/'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;oid&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;, &lt;/span&gt; entry.resource = &lt;b&gt;create&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt;(&lt;/span&gt;&lt;span style=\&quot;color: blue\&quot;&gt;'Observation'&lt;/span&gt;&lt;span style=\&quot;color: navy\&quot;&gt;)&lt;/span&gt;&lt;b&gt; as &lt;/b&gt;&lt;span style=\&quot;color: maroon\&quot;&gt;obs&lt;/span&gt;&lt;b&gt; then&lt;/b&gt;&lt;span style=\&quot;color: navy\&quot;&gt; {\r\n&lt;/span&gt;    value&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.id = &lt;span style=\&quot;color: maroon\&quot;&gt;oid&lt;/span&gt; &lt;i&gt;&amp;quot;SetId&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n    patient&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.subject = &lt;span style=\&quot;color: maroon\&quot;&gt;patient&lt;/span&gt; &lt;i&gt;&amp;quot;SetSubject&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n    code&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.code = &lt;span style=\&quot;color: maroon\&quot;&gt;code&lt;/span&gt; &lt;i&gt;&amp;quot;SetCode&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n    value&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.value = &lt;span style=\&quot;color: maroon\&quot;&gt;value&lt;/span&gt; &lt;i&gt;&amp;quot;SetValue&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n    cat&lt;span style=\&quot;color: navy\&quot;&gt;&lt;b&gt; -&amp;gt; &lt;/b&gt;&lt;/span&gt;obs.category = &lt;span style=\&quot;color: maroon\&quot;&gt;cat&lt;/span&gt; &lt;i&gt;&amp;quot;SetCategory&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n  &lt;span style=\&quot;color: navy\&quot;&gt;}&lt;/span&gt; &lt;i&gt;&amp;quot;CreateObservation&amp;quot;&lt;/i&gt;&lt;span style=\&quot;color: navy\&quot;&gt;;&lt;/span&gt;\r\n&lt;span style=\&quot;color: navy\&quot;&gt;}\r\n\r\n&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;"
+  },
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.url">url</a>" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers",
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.version">version</a>" : "1.0.0",
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.name">name</a>" : "MINSA.Helpers",
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.status">status</a>" : "draft",
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.date">date</a>" : "2026-03-16T12:33:41-04:00",
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.publisher">publisher</a>" : "MINSA - Ministerio de Salud del Perú",
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.contact">contact</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "MINSA - Ministerio de Salud del Perú",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://www.gob.pe/minsa"
+        }
+      ]
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.jurisdiction">jurisdiction</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "urn:iso:std:iso:3166",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "PE",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Peru"
+        }
+      ]
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure">structure</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.url">url</a>" : "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.mode">mode</a>" : "source",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.alias">alias</a>" : "QResp"
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.url">url</a>" : "http://hl7.org/fhir/StructureDefinition/Bundle",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.mode">mode</a>" : "target",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.structure.alias">alias</a>" : "Bundle"
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group">group</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">name</a>" : "ItemToValue",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">typeMode</a>" : "none",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">documentation</a>" : "Extrae el valor de la primera respuesta de un item",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">input</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "item",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "field",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "target"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">rule</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "FirstAnswer",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "item",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "answer",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">listMode</a>" : "first",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "answer"
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetValue",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "answer",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "content"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "field",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "content"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">name</a>" : "ItemToCode",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">typeMode</a>" : "none",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">documentation</a>" : "Extrae el codigo de una respuesta codificada",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">input</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "item",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "field",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "target"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">rule</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "FirstAnswer",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "item",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "answer",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">listMode</a>" : "first",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "answer"
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "Coding",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "answer",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "coding"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetCode",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "coding",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "code",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "content"
+                    }
+                  ],
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "field",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "value",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                        {
+                          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "content"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">name</a>" : "ItemToCoding",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">typeMode</a>" : "none",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">documentation</a>" : "Extrae sistema, codigo y display de una respuesta codificada",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">input</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "item",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "field",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "target"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">rule</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "FirstAnswer",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "item",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "answer",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">listMode</a>" : "first",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "answer"
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "Coding",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "answer",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "coding"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetCode",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "coding",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "code",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "code"
+                    }
+                  ],
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "field",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "code",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                        {
+                          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "code"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetSystem",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "coding",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "system",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "system"
+                    }
+                  ],
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "field",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "system",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                        {
+                          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "system"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetDisplay",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "coding",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "display",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "display"
+                    }
+                  ],
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "field",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "display",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                        {
+                          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "display"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">name</a>" : "SetDNI",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">typeMode</a>" : "none",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">documentation</a>" : "Crea un identificador DNI con sistema MINSA",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">input</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "item",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "identifier",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">type</a>" : "Identifier",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "target"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">rule</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "DNIAnswer",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "item",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "answer",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">listMode</a>" : "first",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "answer"
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetDNIValue",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "answer",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "val"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "identifier",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "use",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "official"
+                    }
+                  ]
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "identifier",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "system",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "http://minsa.gob.pe/sid/dni"
+                    }
+                  ]
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "identifier",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "val"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">name</a>" : "SetPhone",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">typeMode</a>" : "none",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">documentation</a>" : "Crea un ContactPoint de telefono",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">input</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "item",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "telecom",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">type</a>" : "ContactPoint",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "target"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">rule</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "PhoneAnswer",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "item",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "answer",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.listMode">listMode</a>" : "first",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "answer"
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetPhoneValue",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "answer",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.variable">variable</a>" : "val"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "telecom",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "system",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "phone"
+                    }
+                  ]
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "telecom",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "use",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "mobile"
+                    }
+                  ]
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "telecom",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "val"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.name">name</a>" : "MakeObservation",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.typeMode">typeMode</a>" : "none",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.documentation">documentation</a>" : "Crea una Observation vinculada a un paciente y encuentro",
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input">input</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "patient",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">type</a>" : "Reference",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "code",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">type</a>" : "Coding",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "cat",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">type</a>" : "Coding",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "value",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "source"
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.name">name</a>" : "bundle",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.type">type</a>" : "Bundle",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.input.mode">mode</a>" : "target"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule">rule</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "CreateObservation",
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "value"
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">variable</a>" : "oid",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "uuid"
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "bundle",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "entry",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">variable</a>" : "entry"
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "entry",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "fullUrl",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "append",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "urn:uuid:"
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "oid"
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "entry",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "request",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">variable</a>" : "request"
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "request",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "method",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "PUT"
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "request",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "url",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "append",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "Observation/"
+                },
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "oid"
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "entry",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "resource",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.variable">variable</a>" : "obs",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "create",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueString</a>" : "Observation"
+                }
+              ]
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.rule">rule</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetId",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "value"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "obs",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "id",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "oid"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetSubject",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "patient"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "obs",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "subject",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "patient"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetCode",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "code"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "obs",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "code",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "code"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetValue",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "value"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "obs",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "value",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.name">name</a>" : "SetCategory",
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source">source</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.source.context">context</a>" : "cat"
+                }
+              ],
+              "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target">target</a>" : [
+                {
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.context">context</a>" : "obs",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.contextType">contextType</a>" : "variable",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.element">element</a>" : "category",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.transform">transform</a>" : "copy",
+                  "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter">parameter</a>" : [
+                    {
+                      "<a href="http://hl7.org/fhir/R4/structuremap.html#StructureMap.group.rule.target.parameter.value_x_">valueId</a>" : "cat"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</body>
+</html>

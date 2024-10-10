@@ -1,0 +1,1441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="MINSA.RegistroPaciente.QRToPatient"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: MapaDeEstructura MINSA.RegistroPaciente.QRToPatient</b></p><a name="MINSA.RegistroPaciente.QRToPatient"> </a><a name="hcMINSA.RegistroPaciente.QRToPatient"> </a><pre class="fml">
+<b>map</b><span style="color: navy"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroPaciente.QRToPatient<span style="color: navy">&quot; = &quot;</span>MINSA.RegistroPaciente.QRToPatient<span style="color: navy">&quot;
+
+</span><b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> &quot;</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">&quot;
+</span>
+<b>group </b>RegistroPaciente<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>&quot;BundleStatic&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Patient'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">patient</span><span style="color: navy">, </span> bundle.entry<b> as </b><span style="color: maroon">rpEntry</span><span style="color: navy">, </span> rpEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'RelatedPerson'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">caregiver</span><span style="color: navy">, </span> bundle.entry<b> as </b><span style="color: maroon">grpEntry</span><span style="color: navy">, </span> grpEntry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Group'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">group</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractPatient<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>&quot;ExtractPatient&quot;</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractCuidador<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">caregiver</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>&quot;ExtractCuidador&quot;</i><span style="color: navy">;</span>
+    src<b> then </b>ExtractGroup<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">group</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">, </span><span style="color: maroon">caregiver</span><span style="color: navy">)</span> <i>&quot;ExtractGroup&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;BundleEntries&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso Patient (nino) del cuestionario</span>
+<b>group </b>ExtractPatient<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> patient.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> patient.active = <span style="color: blue">true</span> <i>&quot;PatientStatic&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">DNI del nino</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-dni'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>patient.identifier = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Identifier'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span> id.use = <span style="color: blue">'official'</span><span style="color: navy">, </span> id.system = <span style="color: blue">'http://minsa.gob.pe/sid/dni'</span><span style="color: navy">, </span> id.value = <span style="color: maroon">val</span> <i>&quot;SetDNIValues&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateDNI&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;DNIAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PatientDNI&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Nombre del nino</span>
+  src<span style="color: navy"><b> -&gt; </b></span>patient.name = <b>create</b><span style="color: navy">(</span><span style="color: blue">'HumanName'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">name</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>name.use = <span style="color: blue">'official'</span> <i>&quot;NameUse&quot;</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-given-name'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.given = <span style="color: maroon">val</span> <i>&quot;SetGivenName&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;GivenAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;GivenName&quot;</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-second-name'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.given = <span style="color: maroon">val</span> <i>&quot;SetSecondName&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;SecondNameAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;SecondName&quot;</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-paternal-surname'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.family = <span style="color: maroon">val</span> <i>&quot;SetPaternalSurname&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;PaternalAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;PaternalSurname&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PatientName&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Fecha de nacimiento</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-birth-date'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>patient.birthDate = <span style="color: maroon">val</span> <i>&quot;SetBirthDate&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;BirthDateAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PatientBirthDate&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Sexo</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-gender'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>        coding.code<b> as </b><span style="color: maroon">code</span><span style="color: navy"><b> -&gt; </b></span>patient.gender = <span style="color: maroon">code</span> <i>&quot;SetGender&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;GenderCoding&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;GenderAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PatientGender&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Direccion con Departamento, Provincia y Distrito</span>
+  src<b> then </b>ExtractAddress<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>&quot;PatientAddress&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae la direccion con extensiones de division administrativa peruana</span>
+<b>group </b>ExtractAddress<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span>patient.address = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Address'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">address</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span> address.use = <span style="color: blue">'home'</span><span style="color: navy">, </span> address.type = <span style="color: blue">'physical'</span> <i>&quot;AddressStatic&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Texto libre de direccion</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-address-text'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>address.text = <span style="color: maroon">val</span> <i>&quot;SetAddressText&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;AddressTextAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;AddressText&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Departamento</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-departamento'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>address.extension = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Extension'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ext</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>ext.url = <span style="color: blue">'http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento'</span> <i>&quot;SetDeptURL&quot;</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>ext.value = <span style="color: maroon">coding</span> <i>&quot;SetDeptValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateDeptExt&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;DeptAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;Departamento&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Provincia</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-provincia'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>address.extension = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Extension'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ext</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>ext.url = <span style="color: blue">'http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia'</span> <i>&quot;SetProvURL&quot;</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>ext.value = <span style="color: maroon">coding</span> <i>&quot;SetProvValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateProvExt&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;ProvAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;Provincia&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Distrito</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'patient-distrito'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>address.extension = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Extension'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ext</span><b> then</b><span style="color: navy"> {
+</span>          coding<span style="color: navy"><b> -&gt; </b></span>ext.url = <span style="color: blue">'http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito'</span> <i>&quot;SetDistURL&quot;</i><span style="color: navy">;</span>
+          coding<span style="color: navy"><b> -&gt; </b></span>ext.value = <span style="color: maroon">coding</span> <i>&quot;SetDistValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateDistExt&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;DistAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;Distrito&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PatientAddress&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso RelatedPerson (cuidador) del cuestionario</span>
+<b>group </b>ExtractCuidador<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">caregiver</span><span style="color: navy"> : </span>RelatedPerson, <b>source</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> caregiver.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> caregiver.active = <span style="color: blue">true</span><span style="color: navy">, </span> caregiver.patient = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>&quot;CaregiverStatic&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">DNI del cuidador</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-dni'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>caregiver.identifier = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Identifier'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span> id.use = <span style="color: blue">'official'</span><span style="color: navy">, </span> id.system = <span style="color: blue">'http://minsa.gob.pe/sid/dni'</span><span style="color: navy">, </span> id.value = <span style="color: maroon">val</span> <i>&quot;SetCaregiverDNIValues&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateCaregiverDNI&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;CaregiverDNIAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CaregiverDNI&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Nombre del cuidador</span>
+  src<span style="color: navy"><b> -&gt; </b></span>caregiver.name = <b>create</b><span style="color: navy">(</span><span style="color: blue">'HumanName'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">name</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>name.use = <span style="color: blue">'official'</span> <i>&quot;CaregiverNameUse&quot;</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-given-name'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.given = <span style="color: maroon">val</span> <i>&quot;SetCaregiverGivenName&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CaregiverGivenAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;CaregiverGivenName&quot;</i><span style="color: navy">;</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-paternal-surname'<b> then</b><span style="color: navy"> {
+</span>      item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>        answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>name.family = <span style="color: maroon">val</span> <i>&quot;SetCaregiverFamilyName&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CaregiverFamilyAnswer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;CaregiverFamilyName&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CaregiverName&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Telefono del cuidador</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-phone'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>caregiver.telecom = <b>create</b><span style="color: navy">(</span><span style="color: blue">'ContactPoint'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">phone</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span> phone.system = <span style="color: blue">'phone'</span><span style="color: navy">, </span> phone.use = <span style="color: blue">'mobile'</span><span style="color: navy">, </span> phone.value = <span style="color: maroon">val</span> <i>&quot;SetPhoneValues&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreatePhone&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;PhoneAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CaregiverPhone&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Relacion de parentesco</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'caregiver-relationship'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>caregiver.relationship = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>        coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>&quot;SetRelCoding&quot;</i><span style="color: navy">;</span>
+        coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>&quot;SetRelText&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateRelCC&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;RelAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CaregiverRelationship&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un Group que vincula al cuidador con el paciente</span>
+<b>group </b>ExtractGroup<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">group</span><span style="color: navy"> : </span>Group, <b>source</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Patient, <b>source</b> <span style="color: maroon">caregiver</span><span style="color: navy"> : </span>RelatedPerson<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> group.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> group.type = <span style="color: blue">'person'</span><span style="color: navy">, </span> group.actual = <span style="color: blue">true</span><span style="color: navy">, </span> group.active = <span style="color: blue">true</span> <i>&quot;GroupStatic&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>group.name = <span style="color: blue">'Familia'</span> <i>&quot;GroupName&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>group.member = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Group_Member'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">memberPatient</span><b> then</b><span style="color: navy"> {
+</span>    patient<span style="color: navy"><b> -&gt; </b></span>memberPatient.entity = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">patient</span><span style="color: navy">)</span> <i>&quot;SetPatientMember&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PatientMember&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>group.member = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Group_Member'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">memberCaregiver</span><b> then</b><span style="color: navy"> {
+</span>    caregiver<span style="color: navy"><b> -&gt; </b></span>memberCaregiver.entity = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">caregiver</span><span style="color: navy">)</span> <i>&quot;SetCaregiverMember&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CaregiverMember&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroPaciente.QRToPatient"/>
+  <version value="1.0.0"/>
+  <name value="MINSA.RegistroPaciente.QRToPatient"/>
+  <status value="draft"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+    <mode value="source"/>
+    <alias value="QResp"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="target"/>
+    <alias value="Bundle"/>
+  </structure>
+  <import value="http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"/>
+  <group>
+    <name value="RegistroPaciente"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="BundleStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="type"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="collection"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="BundleEntries"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </target>
+      <target>
+        <context value="entry"/>
+        <contextType value="variable"/>
+        <element value="resource"/>
+        <variable value="patient"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Patient"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="entry"/>
+        <variable value="rpEntry"/>
+      </target>
+      <target>
+        <context value="rpEntry"/>
+        <contextType value="variable"/>
+        <element value="resource"/>
+        <variable value="caregiver"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="RelatedPerson"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="entry"/>
+        <variable value="grpEntry"/>
+      </target>
+      <target>
+        <context value="grpEntry"/>
+        <contextType value="variable"/>
+        <element value="resource"/>
+        <variable value="group"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Group"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="ExtractPatient"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <dependent>
+          <name value="ExtractPatient"/>
+          <variable value="src"/>
+          <variable value="patient"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="ExtractCuidador"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <dependent>
+          <name value="ExtractCuidador"/>
+          <variable value="src"/>
+          <variable value="caregiver"/>
+          <variable value="patient"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="ExtractGroup"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <dependent>
+          <name value="ExtractGroup"/>
+          <variable value="src"/>
+          <variable value="group"/>
+          <variable value="patient"/>
+          <variable value="caregiver"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractPatient"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae el recurso Patient (nino) del cuestionario"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="PatientStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="patient"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="patient"/>
+        <contextType value="variable"/>
+        <element value="active"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueBoolean value="true"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="PatientDNI"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'patient-dni'"/>
+      </source>
+      <rule>
+        <name value="DNIAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateDNI"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="patient"/>
+            <contextType value="variable"/>
+            <element value="identifier"/>
+            <variable value="id"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Identifier"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetDNIValues"/>
+            <source>
+              <context value="val"/>
+            </source>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="use"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="official"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="system"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="http://minsa.gob.pe/sid/dni"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="PatientName"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="patient"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <variable value="name"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="HumanName"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="NameUse"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="name"/>
+          <contextType value="variable"/>
+          <element value="use"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="official"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="GivenName"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-given-name'"/>
+        </source>
+        <rule>
+          <name value="GivenAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="SetGivenName"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="val"/>
+            </source>
+            <target>
+              <context value="name"/>
+              <contextType value="variable"/>
+              <element value="given"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="SecondName"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-second-name'"/>
+        </source>
+        <rule>
+          <name value="SecondNameAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="SetSecondName"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="val"/>
+            </source>
+            <target>
+              <context value="name"/>
+              <contextType value="variable"/>
+              <element value="given"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="PaternalSurname"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-paternal-surname'"/>
+        </source>
+        <rule>
+          <name value="PaternalAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="SetPaternalSurname"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="val"/>
+            </source>
+            <target>
+              <context value="name"/>
+              <contextType value="variable"/>
+              <element value="family"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="PatientBirthDate"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'patient-birth-date'"/>
+      </source>
+      <rule>
+        <name value="BirthDateAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="SetBirthDate"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="patient"/>
+            <contextType value="variable"/>
+            <element value="birthDate"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="val"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="PatientGender"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'patient-gender'"/>
+      </source>
+      <rule>
+        <name value="GenderAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="GenderCoding"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="coding"/>
+          </source>
+          <rule>
+            <name value="SetGender"/>
+            <source>
+              <context value="coding"/>
+              <element value="code"/>
+              <variable value="code"/>
+            </source>
+            <target>
+              <context value="patient"/>
+              <contextType value="variable"/>
+              <element value="gender"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="code"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="PatientAddress"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <dependent>
+        <name value="ExtractAddress"/>
+        <variable value="src"/>
+        <variable value="patient"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractAddress"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae la direccion con extensiones de division administrativa peruana"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="PatientAddress"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="patient"/>
+        <contextType value="variable"/>
+        <element value="address"/>
+        <variable value="address"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Address"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="AddressStatic"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="address"/>
+          <contextType value="variable"/>
+          <element value="use"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="home"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="address"/>
+          <contextType value="variable"/>
+          <element value="type"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="physical"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="AddressText"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-address-text'"/>
+        </source>
+        <rule>
+          <name value="AddressTextAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="SetAddressText"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="val"/>
+            </source>
+            <target>
+              <context value="address"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="Departamento"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-departamento'"/>
+        </source>
+        <rule>
+          <name value="DeptAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="CreateDeptExt"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="coding"/>
+            </source>
+            <target>
+              <context value="address"/>
+              <contextType value="variable"/>
+              <element value="extension"/>
+              <variable value="ext"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Extension"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="SetDeptURL"/>
+              <source>
+                <context value="coding"/>
+              </source>
+              <target>
+                <context value="ext"/>
+                <contextType value="variable"/>
+                <element value="url"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueString value="http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento"/>
+                </parameter>
+              </target>
+            </rule>
+            <rule>
+              <name value="SetDeptValue"/>
+              <source>
+                <context value="coding"/>
+              </source>
+              <target>
+                <context value="ext"/>
+                <contextType value="variable"/>
+                <element value="value"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueId value="coding"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="Provincia"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-provincia'"/>
+        </source>
+        <rule>
+          <name value="ProvAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="CreateProvExt"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="coding"/>
+            </source>
+            <target>
+              <context value="address"/>
+              <contextType value="variable"/>
+              <element value="extension"/>
+              <variable value="ext"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Extension"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="SetProvURL"/>
+              <source>
+                <context value="coding"/>
+              </source>
+              <target>
+                <context value="ext"/>
+                <contextType value="variable"/>
+                <element value="url"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueString value="http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia"/>
+                </parameter>
+              </target>
+            </rule>
+            <rule>
+              <name value="SetProvValue"/>
+              <source>
+                <context value="coding"/>
+              </source>
+              <target>
+                <context value="ext"/>
+                <contextType value="variable"/>
+                <element value="value"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueId value="coding"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="Distrito"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'patient-distrito'"/>
+        </source>
+        <rule>
+          <name value="DistAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="CreateDistExt"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="coding"/>
+            </source>
+            <target>
+              <context value="address"/>
+              <contextType value="variable"/>
+              <element value="extension"/>
+              <variable value="ext"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Extension"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="SetDistURL"/>
+              <source>
+                <context value="coding"/>
+              </source>
+              <target>
+                <context value="ext"/>
+                <contextType value="variable"/>
+                <element value="url"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueString value="http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito"/>
+                </parameter>
+              </target>
+            </rule>
+            <rule>
+              <name value="SetDistValue"/>
+              <source>
+                <context value="coding"/>
+              </source>
+              <target>
+                <context value="ext"/>
+                <contextType value="variable"/>
+                <element value="value"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueId value="coding"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractCuidador"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae el recurso RelatedPerson (cuidador) del cuestionario"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="caregiver"/>
+      <type value="RelatedPerson"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <rule>
+      <name value="CaregiverStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="caregiver"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="caregiver"/>
+        <contextType value="variable"/>
+        <element value="active"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueBoolean value="true"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="caregiver"/>
+        <contextType value="variable"/>
+        <element value="patient"/>
+        <transform value="reference"/>
+        <parameter>
+          <valueId value="patient"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="CaregiverDNI"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'caregiver-dni'"/>
+      </source>
+      <rule>
+        <name value="CaregiverDNIAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateCaregiverDNI"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="caregiver"/>
+            <contextType value="variable"/>
+            <element value="identifier"/>
+            <variable value="id"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Identifier"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetCaregiverDNIValues"/>
+            <source>
+              <context value="val"/>
+            </source>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="use"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="official"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="system"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="http://minsa.gob.pe/sid/dni"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="CaregiverName"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="caregiver"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <variable value="name"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="HumanName"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="CaregiverNameUse"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="name"/>
+          <contextType value="variable"/>
+          <element value="use"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="official"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="CaregiverGivenName"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'caregiver-given-name'"/>
+        </source>
+        <rule>
+          <name value="CaregiverGivenAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="SetCaregiverGivenName"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="val"/>
+            </source>
+            <target>
+              <context value="name"/>
+              <contextType value="variable"/>
+              <element value="given"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="CaregiverFamilyName"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="linkId = 'caregiver-paternal-surname'"/>
+        </source>
+        <rule>
+          <name value="CaregiverFamilyAnswer"/>
+          <source>
+            <context value="item"/>
+            <element value="answer"/>
+            <listMode value="first"/>
+            <variable value="answer"/>
+          </source>
+          <rule>
+            <name value="SetCaregiverFamilyName"/>
+            <source>
+              <context value="answer"/>
+              <element value="value"/>
+              <variable value="val"/>
+            </source>
+            <target>
+              <context value="name"/>
+              <contextType value="variable"/>
+              <element value="family"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="CaregiverPhone"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'caregiver-phone'"/>
+      </source>
+      <rule>
+        <name value="PhoneAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreatePhone"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="caregiver"/>
+            <contextType value="variable"/>
+            <element value="telecom"/>
+            <variable value="phone"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="ContactPoint"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetPhoneValues"/>
+            <source>
+              <context value="val"/>
+            </source>
+            <target>
+              <context value="phone"/>
+              <contextType value="variable"/>
+              <element value="system"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="phone"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="phone"/>
+              <contextType value="variable"/>
+              <element value="use"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="mobile"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="phone"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="CaregiverRelationship"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'caregiver-relationship'"/>
+      </source>
+      <rule>
+        <name value="RelAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateRelCC"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="coding"/>
+          </source>
+          <target>
+            <context value="caregiver"/>
+            <contextType value="variable"/>
+            <element value="relationship"/>
+            <variable value="cc"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="CodeableConcept"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetRelCoding"/>
+            <source>
+              <context value="coding"/>
+            </source>
+            <target>
+              <context value="cc"/>
+              <contextType value="variable"/>
+              <element value="coding"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="coding"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="SetRelText"/>
+            <source>
+              <context value="coding"/>
+              <element value="display"/>
+              <variable value="display"/>
+            </source>
+            <target>
+              <context value="cc"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="display"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractGroup"/>
+    <typeMode value="none"/>
+    <documentation value="Crea un Group que vincula al cuidador con el paciente"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="group"/>
+      <type value="Group"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="caregiver"/>
+      <type value="RelatedPerson"/>
+      <mode value="source"/>
+    </input>
+    <rule>
+      <name value="GroupStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="type"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="person"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="actual"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueBoolean value="true"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="active"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueBoolean value="true"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="GroupName"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="Familia"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="PatientMember"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="member"/>
+        <variable value="memberPatient"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Group_Member"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="SetPatientMember"/>
+        <source>
+          <context value="patient"/>
+        </source>
+        <target>
+          <context value="memberPatient"/>
+          <contextType value="variable"/>
+          <element value="entity"/>
+          <transform value="reference"/>
+          <parameter>
+            <valueId value="patient"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="CaregiverMember"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="group"/>
+        <contextType value="variable"/>
+        <element value="member"/>
+        <variable value="memberCaregiver"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Group_Member"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="SetCaregiverMember"/>
+        <source>
+          <context value="caregiver"/>
+        </source>
+        <target>
+          <context value="memberCaregiver"/>
+          <contextType value="variable"/>
+          <element value="entity"/>
+          <transform value="reference"/>
+          <parameter>
+            <valueId value="caregiver"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+</StructureMap>

@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="4f647925-bfb8-4306-a766-35f5cb2ce76c"/>
+  <meta>
+    <lastUpdated value="2026-03-16T12:33:41.641-04:00"/>
+  </meta>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-MINSA.html">codesystem Sistema de Códigos MINSA para Inmunizaciones v1.0.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://minsa.gob.pe/immunizations/CodeSystem/MINSA|1.0.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 6 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (es)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-DOSE-BIRTH"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-DOSE-BIRTH">DOSE-BIRTH</a>
+                </td>
+                <td/>
+                <td>Dosis administrada dentro de las 24 horas de nacimiento</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DOSE-BIRTH&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DOSE-BIRTH&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-DOSE-1"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-DOSE-1">DOSE-1</a>
+                </td>
+                <td/>
+                <td>Primera dosis de la serie</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DOSE-1&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DOSE-1&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-DOSE-2"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-DOSE-2">DOSE-2</a>
+                </td>
+                <td/>
+                <td>Segunda dosis de la serie</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DOSE-2&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DOSE-2&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-DOSE-3"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-DOSE-3">DOSE-3</a>
+                </td>
+                <td/>
+                <td>Tercera dosis de la serie</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DOSE-3&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DOSE-3&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-DOSE-R1"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-DOSE-R1">DOSE-R1</a>
+                </td>
+                <td/>
+                <td>Primer refuerzo</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DOSE-R1&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DOSE-R1&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-DOSE-R2"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-DOSE-R2">DOSE-R2</a>
+                </td>
+                <td/>
+                <td>Segundo refuerzo</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DOSE-R2&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DOSE-R2&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS"/>
+        <version value="1.0.0"/>
+        <name value="MINSADoseNumberVS"/>
+        <title value="Números de Dosis del Esquema de Vacunación - MINSA"/>
+        <status value="active"/>
+        <date value="2026-03-16T12:33:41-04:00"/>
+        <jurisdiction>
+          <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="PE"/>
+            <display value="Peru"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:6d0d4558-5923-4f2d-86bf-afd9587c639a"/>
+          <timestamp value="2026-03-16T12:34:21-04:00"/>
+          <total value="6"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="es"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA|1.0.0"/>
+          </parameter>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="DOSE-BIRTH"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="DOSE-1"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="DOSE-2"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="DOSE-3"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="DOSE-R1"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="DOSE-R2"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-MINSAIdentifierTypes.html">codesystem Tipos de Documento de Identidad - Perú v1.0.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes|1.0.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 5 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (es)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes-DNI"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSAIdentifierTypes.html#MINSAIdentifierTypes-DNI">DNI</a>
+                </td>
+                <td/>
+                <td>Documento Nacional de Identidad</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;DNI&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;DNI&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes-CE"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSAIdentifierTypes.html#MINSAIdentifierTypes-CE">CE</a>
+                </td>
+                <td/>
+                <td>Carnet de Extranjería</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;CE&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;CE&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes-SIS"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSAIdentifierTypes.html#MINSAIdentifierTypes-SIS">SIS</a>
+                </td>
+                <td/>
+                <td>Código del Seguro Integral de Salud</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;SIS&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;SIS&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes-CNV"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSAIdentifierTypes.html#MINSAIdentifierTypes-CNV">CNV</a>
+                </td>
+                <td/>
+                <td>Certificado de Nacido Vivo</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;CNV&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;CNV&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes-PTP"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSAIdentifierTypes.html#MINSAIdentifierTypes-PTP">PTP</a>
+                </td>
+                <td/>
+                <td>Permiso Temporal de Permanencia</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;PTP&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;PTP&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS"/>
+        <version value="1.0.0"/>
+        <name value="MINSAIdentifierTypeVS"/>
+        <title value="Tipos de Documento de Identidad - MINSA"/>
+        <status value="active"/>
+        <date value="2026-03-16T12:33:41-04:00"/>
+        <jurisdiction>
+          <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="PE"/>
+            <display value="Peru"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:33d0b220-8672-4ad0-9ab7-3f66549c251a"/>
+          <timestamp value="2026-03-16T12:34:22-04:00"/>
+          <total value="5"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="es"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes|1.0.0"/>
+          </parameter>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+            <code value="DNI"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+            <code value="CE"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+            <code value="SIS"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+            <code value="CNV"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"/>
+            <code value="PTP"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-MINSA.html">codesystem Sistema de Códigos MINSA para Inmunizaciones v1.0.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://minsa.gob.pe/immunizations/CodeSystem/MINSA|1.0.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 12 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (es)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-IMMUNITY"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-IMMUNITY">NOREASON-IMMUNITY</a>
+                </td>
+                <td/>
+                <td>El paciente ya tiene inmunidad contra la enfermedad</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-IMMUNITY&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-IMMUNITY&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-STOCKOUT"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-STOCKOUT">NOREASON-STOCKOUT</a>
+                </td>
+                <td/>
+                <td>No hay disponibilidad del producto vacunal</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-STOCKOUT&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-STOCKOUT&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-PRECAUTION"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-PRECAUTION">NOREASON-PRECAUTION</a>
+                </td>
+                <td/>
+                <td>El paciente tiene una condición médica que contraindica temporalmente la vacunación</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-PRECAUTION&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-PRECAUTION&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-EXPIRED"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-EXPIRED">NOREASON-EXPIRED</a>
+                </td>
+                <td/>
+                <td>El producto vacunal está vencido</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-EXPIRED&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-EXPIRED&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-CLIENT"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-CLIENT">NOREASON-CLIENT</a>
+                </td>
+                <td/>
+                <td>El cliente o su representante rechaza la vacunación</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-CLIENT&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-CLIENT&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-CAREGIVER"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-CAREGIVER">NOREASON-CAREGIVER</a>
+                </td>
+                <td/>
+                <td>El cuidador del niño rechaza la vacunación</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-CAREGIVER&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-CAREGIVER&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-ABSENT"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-ABSENT">NOREASON-ABSENT</a>
+                </td>
+                <td/>
+                <td>El niño no se presentó a la cita de vacunación</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-ABSENT&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-ABSENT&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-SICK"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-SICK">NOREASON-SICK</a>
+                </td>
+                <td/>
+                <td>El niño presenta enfermedad que posterga la vacunación</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-SICK&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-SICK&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-AGE"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-AGE">NOREASON-AGE</a>
+                </td>
+                <td/>
+                <td>El paciente está fuera del rango de edad indicado para la vacuna</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-AGE&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-AGE&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-CONTRA"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-CONTRA">NOREASON-CONTRA</a>
+                </td>
+                <td/>
+                <td>La vacuna está contraindicada para el paciente</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-CONTRA&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-CONTRA&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-TIME"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-TIME">NOREASON-TIME</a>
+                </td>
+                <td/>
+                <td>No hubo tiempo disponible para administrar la vacuna</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-TIME&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-TIME&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-NOREASON-OTHER"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-NOREASON-OTHER">NOREASON-OTHER</a>
+                </td>
+                <td/>
+                <td>La vacuna no fue administrada por otra razón</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;NOREASON-OTHER&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;NOREASON-OTHER&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS"/>
+        <version value="1.0.0"/>
+        <name value="MINSAImmunizationReasonNotGivenVS"/>
+        <title value="Razones de No Administración de Vacuna - MINSA"/>
+        <status value="active"/>
+        <date value="2026-03-16T12:33:41-04:00"/>
+        <jurisdiction>
+          <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="PE"/>
+            <display value="Peru"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:60ae3415-d58e-4603-af75-e1a1bf8e9414"/>
+          <timestamp value="2026-03-16T12:34:22-04:00"/>
+          <total value="12"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="es"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA|1.0.0"/>
+          </parameter>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-IMMUNITY"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-STOCKOUT"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-PRECAUTION"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-EXPIRED"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-CLIENT"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-CAREGIVER"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-ABSENT"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-SICK"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-AGE"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-CONTRA"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-TIME"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="NOREASON-OTHER"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://minsa.gob.pe/immunizations/ValueSet/MINSAVaccineVS"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <div style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">
+              <p>Expansion performed internally based on:</p>
+              <ul>
+                <li>
+                  <a href="CodeSystem-MINSA.html">codesystem Sistema de Códigos MINSA para Inmunizaciones v1.0.0 (CodeSystem)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://minsa.gob.pe/immunizations/CodeSystem/MINSA|1.0.0" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html">codesystem IMMZ.Z CodeSystem for Data Elements v0.2.0 (CodeSystem)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z|0.2.0" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <p>This value set contains 24 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (es)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-BCG"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-BCG">VAC-BCG</a>
+                </td>
+                <td/>
+                <td>Vacuna Bacilo de Calmette-Guérin contra la tuberculosis</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-BCG&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-BCG&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-OPV"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-OPV">VAC-OPV</a>
+                </td>
+                <td/>
+                <td>Vacuna Antipolio Oral (tipo Sabin)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-OPV&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-OPV&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-IPV"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-IPV">VAC-IPV</a>
+                </td>
+                <td/>
+                <td>Vacuna Antipolio Inactivada (tipo Salk)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-IPV&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-IPV&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-PENTA"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-PENTA">VAC-PENTA</a>
+                </td>
+                <td/>
+                <td>Vacuna Pentavalente (DPT-HepB-Hib)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-PENTA&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-PENTA&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-ROTA"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-ROTA">VAC-ROTA</a>
+                </td>
+                <td/>
+                <td>Vacuna contra Rotavirus</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-ROTA&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-ROTA&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-PCV"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-PCV">VAC-PCV</a>
+                </td>
+                <td/>
+                <td>Vacuna Antineumocócica Conjugada</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-PCV&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-PCV&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-SPR"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-SPR">VAC-SPR</a>
+                </td>
+                <td/>
+                <td>Vacuna contra Sarampión, Paperas y Rubéola</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-SPR&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-SPR&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-HPV"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-HPV">VAC-HPV</a>
+                </td>
+                <td/>
+                <td>Vacuna contra el Virus del Papiloma Humano</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-HPV&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-HPV&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-DT"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-DT">VAC-DT</a>
+                </td>
+                <td/>
+                <td>Vacuna contra Difteria y Tétanos (refuerzo pediátrico)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-DT&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-DT&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-INF"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-INF">VAC-INF</a>
+                </td>
+                <td/>
+                <td>Vacuna contra la Influenza</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-INF&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-INF&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-HEPB"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-HEPB">VAC-HEPB</a>
+                </td>
+                <td/>
+                <td>Vacuna contra la Hepatitis B (dosis de recién nacido)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-HEPB&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-HEPB&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://minsa.gob.pe/immunizations/CodeSystem/MINSA-VAC-AMA"> </a>
+                  <code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-MINSA.html#MINSA-VAC-AMA">VAC-AMA</a>
+                </td>
+                <td/>
+                <td>Vacuna Antiamarílica (Fiebre Amarilla)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;code&quot;: &quot;VAC-AMA&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://minsa.gob.pe/immunizations/CodeSystem/MINSA&quot;&gt;&lt;version value=&quot;1.0.0&quot;&gt;&lt;code value=&quot;VAC-AMA&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE1"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE1">DE1</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for bacille Calmette–Guérin (BCG)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE1&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE1&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE30"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE30">DE30</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for oral polio vaccines (OPV)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE30&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE30&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE31"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE31">DE31</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for inactivated polio vaccines (IPV)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE31&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE31&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE29"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE29">DE29</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for pentavalent vaccine (a combination vaccine that provides protection from diphtheria, pertussis, tetanus, hepatitis B and Hib)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE29&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE29&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE16"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE16">DE16</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for rotavirus</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE16&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE16&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE13"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE13">DE13</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for pneumococcal</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE13&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE13&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE9"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE9">DE9</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for measles-containing vaccines (MCV)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE9&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE9&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE7"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE7">DE7</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for human papillomavirus (HPV)</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE7&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE7&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE33"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE33">DE33</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for vaccines containing tetanus and diphtheria intended for children</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE33&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE33&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE18"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE18">DE18</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for seasonal influenza</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE18&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE18&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE6"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE6">DE6</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for hepatitis B</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE6&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE6&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://smart.who.int/immunizations/CodeSystem/IMMZ.Z-DE23"> </a>
+                  <code>http://smart.who.int/immunizations/CodeSystem/IMMZ.Z</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/CodeSystem-IMMZ.Z.html#IMMZ.Z-DE23">DE23</a>
+                </td>
+                <td/>
+                <td>Vaccine terminology codes for yellow fever</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;, &quot;version&quot;: &quot;0.2.0&quot;, &quot;code&quot;: &quot;DE23&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://smart.who.int/immunizations/CodeSystem/IMMZ.Z&quot;&gt;&lt;version value=&quot;0.2.0&quot;&gt;&lt;code value=&quot;DE23&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://minsa.gob.pe/immunizations/ValueSet/MINSAVaccineVS"/>
+        <version value="1.0.0"/>
+        <name value="MINSAVaccineVS"/>
+        <title value="Vacunas del Esquema Nacional de Vacunación MINSA"/>
+        <status value="active"/>
+        <date value="2026-03-16T12:33:41-04:00"/>
+        <jurisdiction>
+          <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="PE"/>
+            <display value="Peru"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:19800559-bbf2-4336-b0a6-0ad1875a30eb"/>
+          <timestamp value="2026-03-16T12:34:22-04:00"/>
+          <total value="24"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="es"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA|1.0.0"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z|0.2.0"/>
+          </parameter>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-BCG"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-OPV"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-IPV"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-PENTA"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-ROTA"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-PCV"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-SPR"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-HPV"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-DT"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-INF"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-HEPB"/>
+          </contains>
+          <contains>
+            <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+            <code value="VAC-AMA"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE1"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE30"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE31"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE29"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE16"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE13"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE9"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE7"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE33"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE18"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE6"/>
+          </contains>
+          <contains>
+            <system value="http://smart.who.int/immunizations/CodeSystem/IMMZ.Z"/>
+            <code value="DE23"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+</Bundle>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="MINSADoseNumberVS"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ConjuntoValores / ConjuntoDeValores MINSADoseNumberVS</b></p><a name="MINSADoseNumberVS"> </a><a name="hcMINSADoseNumberVS"> </a><ul><li>Include these codes as defined in <a href="CodeSystem-MINSA.html"><code>http://minsa.gob.pe/immunizations/CodeSystem/MINSA</code></a><span title="Version is not explicitly stated, which means it is fixed to the version provided in this specification"> version &#x1F4E6;1.0.0</span><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href="CodeSystem-MINSA.html#MINSA-DOSE-BIRTH">DOSE-BIRTH</a></td><td>Dosis de recién nacido</td><td>Dosis administrada dentro de las 24 horas de nacimiento</td></tr><tr><td><a href="CodeSystem-MINSA.html#MINSA-DOSE-1">DOSE-1</a></td><td>1ra dosis</td><td>Primera dosis de la serie</td></tr><tr><td><a href="CodeSystem-MINSA.html#MINSA-DOSE-2">DOSE-2</a></td><td>2da dosis</td><td>Segunda dosis de la serie</td></tr><tr><td><a href="CodeSystem-MINSA.html#MINSA-DOSE-3">DOSE-3</a></td><td>3ra dosis</td><td>Tercera dosis de la serie</td></tr><tr><td><a href="CodeSystem-MINSA.html#MINSA-DOSE-R1">DOSE-R1</a></td><td>1er refuerzo</td><td>Primer refuerzo</td></tr><tr><td><a href="CodeSystem-MINSA.html#MINSA-DOSE-R2">DOSE-R2</a></td><td>2do refuerzo</td><td>Segundo refuerzo</td></tr></table></li></ul></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS"/>
+  <version value="1.0.0"/>
+  <name value="MINSADoseNumberVS"/>
+  <title value="Números de Dosis del Esquema de Vacunación - MINSA"/>
+  <status value="active"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <description value="Conjunto de valores para los números de dosis utilizados en el esquema nacional de vacunación del Perú"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="http://minsa.gob.pe/immunizations/CodeSystem/MINSA"/>
+      <concept>
+        <code value="DOSE-BIRTH"/>
+        <display value="Dosis de recién nacido"/>
+      </concept>
+      <concept>
+        <code value="DOSE-1"/>
+        <display value="1ra dosis"/>
+      </concept>
+      <concept>
+        <code value="DOSE-2"/>
+        <display value="2da dosis"/>
+      </concept>
+      <concept>
+        <code value="DOSE-3"/>
+        <display value="3ra dosis"/>
+      </concept>
+      <concept>
+        <code value="DOSE-R1"/>
+        <display value="1er refuerzo"/>
+      </concept>
+      <concept>
+        <code value="DOSE-R2"/>
+        <display value="2do refuerzo"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

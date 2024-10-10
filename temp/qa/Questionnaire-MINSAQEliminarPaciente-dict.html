@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Questionnaire-MINSAQEliminarPaciente-dict</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<div data-fhir="generated"><p class="res-header-id"></p>
+<div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: es</p><p style="margin-bottom: 0px">Profile: <a href="http://hl7.org/fhir/uv/sdc/STU3/StructureDefinition-sdc-questionnaire-extr-smap.html">Extractable Questionnaire - StructureMap</a></p></div>
+<table class="dict" data-fhir="generated"><tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="MINSAQEliminarPaciente"> </a><img src="icon_q_root.gif" alt="icon"/> Questionnaire <b>MINSAQEliminarPaciente</b></span></td></tr>
+<tr><td>URL</td>
+<td>http://minsa.gob.pe/immunizations/Questionnaire/MINSAQEliminarPaciente</td></tr>
+<tr><td>Version</td>
+<td>1.0.0</td></tr>
+<tr><td>Title</td>
+<td>MINSA - Eliminar Paciente</td></tr>
+<tr><td>Status</td>
+<td>draft</td></tr>
+<tr><td>Publication Date</td>
+<td>2024-10-10</td></tr>
+<tr><td>Subject Type</td>
+<td>Patient</td></tr>
+<tr><td>Description</td>
+<td>Cuestionario para eliminar (dar de baja) a un paciente del registro de inmunizaciones. Se utiliza cuando el paciente se ha mudado, ha fallecido, tiene registro duplicado u otra razón.</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.razon-eliminar"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>razon-eliminar</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>razon-eliminar</td></tr>
+<tr><td>Text</td>
+<td>Razón para eliminar al paciente</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Repeats</td>
+<td>false</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: se-mudo (Se mudó)</li><li>[not stated]: fallecido (Falleció)</li><li>[not stated]: registro-duplicado (Registro duplicado)</li><li>[not stated]: otro (Otro)</li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.otra-razon-eliminar"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>otra-razon-eliminar</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>otra-razon-eliminar</td></tr>
+<tr><td>Text</td>
+<td>Especifique la razón</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Repeats</td>
+<td>false</td></tr>
+<tr><td>Enable When</td>
+<td><a href="#item.razon-eliminar">razon-eliminar</a> = </td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.fecha-fallecimiento"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>fecha-fallecimiento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>fecha-fallecimiento</td></tr>
+<tr><td>Text</td>
+<td>Fecha de fallecimiento</td></tr>
+<tr><td>Type</td>
+<td>date</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Repeats</td>
+<td>false</td></tr>
+<tr><td>Enable When</td>
+<td><a href="#item.razon-eliminar">razon-eliminar</a> = </td></tr></table></div></body>
+</html>

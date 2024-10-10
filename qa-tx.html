@@ -1,0 +1,49 @@
+<hr/><a name="l1"> </a>
+<p>#1</p>
+<pre>
+GET https://tx.fhir.org/r4/metadata HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+User-Agent: fhir/publisher
+</pre>
+<pre>
+200
+access-control-allow-headers:Origin, X-Requested-With, Content-Type, Accept
+access-control-allow-methods:GET, POST, OPTIONS
+access-control-allow-origin:*
+connection:keep-alive
+content-length:3918
+content-type:application/fhir+json; charset=utf-8
+date:Mon, 16 Mar 2026 16:33:55 GMT
+etag:W/&quot;f4e-jGOBXkTHKEqRRylzBN9S7z5qnb8&quot;
+server:nginx
+x-powered-by:Express
+x-request-id:tx-135534
+
+{&quot;resourceType&quot;:&quot;CapabilityStatement&quot;,&quot;id&quot;:&quot;FhirServer&quot;,&quot;extension&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;definition&quot;,&quot;valueCanonical&quot;:&quot;http://hl7.org/fhir/uv/tx-tests/FeatureDefinition/test-version&quot;},{&quot;url&quot;:&quot;value&quot;,&quot;valueCode&quot;:&quot;1.8.0&quot;},{&quot;extension&quot;:[{&quot;url&quot;:&quot;name&quot;,&quot;valueCode&quot;:&quot;mode&quot;},{&quot;url&quot;:&quot;value&quot;,&quot;valueCode&quot;:&quot;tx.fhir.org&quot;}],&quot;url&quot;:&quot;qualifier&quot;}],&quot;url&quot;:&quot;http://hl7.org/fhir/uv/application-feature/StructureDefinition/feature&quot;},{&quot;extension&quot;:[{&quot;url&quot;:&quot;definition&quot;,&quot;valueCanonical&quot;:&quot;http://hl7.org/fhir/uv/tx-ecosystem/FeatureDefinition/CodeSystemAsParameter&quot;},{&quot;url&quot;:&quot;value&quot;,&quot;valueBoolean&quot;:true}],&quot;url&quot;:&quot;http://hl7.org/fhir/uv/application-feature/StructureDefinition/feature&quot;}],&quot;url&quot;:&quot;https://tx.fhir.org/r4/CapabilityStatement/tx&quot;,&quot;version&quot;:&quot;4.0.1-0.7.1&quot;,&quot;name&quot;:&quot;FHIRTerminologyServer&quot;,&quot;title&quot;:&quot;FHIR Terminology Server&quot;,&quot;status&quot;:&quot;active&quot;,&quot;date&quot;:&quot;2026-03-16T16:33:55.298Z&quot;,&quot;contact&quot;:[{&quot;telecom&quot;:[{&quot;system&quot;:&quot;other&quot;,&quot;value&quot;:&quot;http://example.org/&quot;}]}],&quot;description&quot;:&quot;FHIR Terminology Server&quot;,&quot;kind&quot;:&quot;instance&quot;,&quot;instantiates&quot;:[&quot;http://hl7.org/fhir/CapabilityStatement/terminology-server&quot;],&quot;software&quot;:{&quot;name&quot;:&quot;FHIRsmith&quot;,&quot;version&quot;:&quot;0.7.1&quot;,&quot;releaseDate&quot;:&quot;2026-03-16T16:33:55.298Z&quot;},&quot;implementation&quot;:{&quot;description&quot;:&quot;FHIR Server running at https://tx.fhir.org/r4&quot;,&quot;url&quot;:&quot;https://tx.fhir.org/r4&quot;},&quot;fhirVersion&quot;:&quot;4.0.1&quot;,&quot;format&quot;:[&quot;application/fhir+xml&quot;,&quot;application/fhir+json&quot;],&quot;rest&quot;:[{&quot;mode&quot;:&quot;server&quot;,&quot;security&quot;:{&quot;cors&quot;:true},&quot;resource&quot;:[{&quot;type&quot;:&quot;CodeSystem&quot;,&quot;interaction&quot;:[{&quot;code&quot;:&quot;read&quot;,&quot;documentation&quot;:&quot;Read a code system&quot;},{&quot;code&quot;:&quot;search-type&quot;,&quot;documentation&quot;:&quot;Search the code systems&quot;}],&quot;searchParam&quot;:[{&quot;name&quot;:&quot;url&quot;,&quot;type&quot;:&quot;uri&quot;},{&quot;name&quot;:&quot;version&quot;,&quot;type&quot;:&quot;token&quot;},{&quot;name&quot;:&quot;name&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;status&quot;,&quot;type&quot;:&quot;token&quot;},{&quot;name&quot;:&quot;_id&quot;,&quot;type&quot;:&quot;token&quot;}],&quot;operation&quot;:[{&quot;name&quot;:&quot;lookup&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup&quot;},{&quot;name&quot;:&quot;validate-code&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/CodeSystem-validate-code&quot;},{&quot;name&quot;:&quot;subsumes&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/CodeSystem-subsumes&quot;}]},{&quot;type&quot;:&quot;ValueSet&quot;,&quot;interaction&quot;:[{&quot;code&quot;:&quot;read&quot;,&quot;documentation&quot;:&quot;Read a ValueSet&quot;},{&quot;code&quot;:&quot;search-type&quot;,&quot;documentation&quot;:&quot;Search the value sets&quot;}],&quot;searchParam&quot;:[{&quot;name&quot;:&quot;url&quot;,&quot;type&quot;:&quot;uri&quot;},{&quot;name&quot;:&quot;version&quot;,&quot;type&quot;:&quot;token&quot;},{&quot;name&quot;:&quot;name&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;status&quot;,&quot;type&quot;:&quot;token&quot;},{&quot;name&quot;:&quot;_id&quot;,&quot;type&quot;:&quot;token&quot;}],&quot;operation&quot;:[{&quot;name&quot;:&quot;expand&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ValueSet-expand&quot;},{&quot;name&quot;:&quot;validate-code&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ValueSet-validate-code&quot;}]},{&quot;type&quot;:&quot;ConceptMap&quot;,&quot;interaction&quot;:[{&quot;code&quot;:&quot;read&quot;,&quot;documentation&quot;:&quot;Read a ConceptMap&quot;},{&quot;code&quot;:&quot;search-type&quot;,&quot;documentation&quot;:&quot;Search the concept maps&quot;}],&quot;searchParam&quot;:[{&quot;name&quot;:&quot;url&quot;,&quot;type&quot;:&quot;uri&quot;},{&quot;name&quot;:&quot;version&quot;,&quot;type&quot;:&quot;token&quot;},{&quot;name&quot;:&quot;name&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;status&quot;,&quot;type&quot;:&quot;token&quot;},{&quot;name&quot;:&quot;_id&quot;,&quot;type&quot;:&quot;token&quot;}],&quot;operation&quot;:[{&quot;name&quot;:&quot;translate&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ConceptMap-translate&quot;},{&quot;name&quot;:&quot;closure&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ConceptMap-closure&quot;}]}],&quot;interaction&quot;:[{&quot;code&quot;:&quot;transaction&quot;}],&quot;operation&quot;:[{&quot;name&quot;:&quot;expand&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ValueSet-expand&quot;},{&quot;name&quot;:&quot;lookup&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup&quot;},{&quot;name&quot;:&quot;subsumes&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/CodeSystem-subsumes&quot;},{&quot;name&quot;:&quot;validate-code&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/Resource-validate-code&quot;},{&quot;name&quot;:&quot;translate&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ConceptMap-translate&quot;},{&quot;name&quot;:&quot;closure&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/ConceptMap-closure&quot;},{&quot;name&quot;:&quot;versions&quot;,&quot;definition&quot;:&quot;http://hl7.org/fhir/OperationDefinition/fhir-versions&quot;}]}]}
+</pre>
+<hr/><a name="l2"> </a>
+<p>#2</p>
+<pre>
+POST https://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html","code":"CAREGIVER"}},{"name":"displayLanguage","valueString":"es-PE"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"ddd42d20-e63d-4ee4-b7eb-df3423f18e28"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+</pre>
+<pre>
+200
+access-control-allow-headers:Origin, X-Requested-With, Content-Type, Accept
+access-control-allow-methods:GET, POST, OPTIONS
+access-control-allow-origin:*
+connection:keep-alive
+content-length:1045
+content-type:application/fhir+json; charset=utf-8
+date:Mon, 16 Mar 2026 16:34:10 GMT
+etag:W/&quot;415-Tc8f77rfV/SBn/4ODz7KW7Yvldo&quot;
+server:nginx
+x-powered-by:Express
+x-request-id:tx-135566
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;issues&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;OperationOutcome&quot;,&quot;issue&quot;:[{&quot;severity&quot;:&quot;error&quot;,&quot;code&quot;:&quot;not-found&quot;,&quot;details&quot;:{&quot;text&quot;:&quot;A definition for CodeSystem 'http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html' could not be found, so the code cannot be validated&quot;,&quot;coding&quot;:[{&quot;system&quot;:&quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot;:&quot;not-found&quot;}]},&quot;expression&quot;:[&quot;Coding.system&quot;],&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id&quot;,&quot;valueString&quot;:&quot;UNKNOWN_CODESYSTEM&quot;}]}]}},{&quot;name&quot;:&quot;result&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;message&quot;,&quot;valueString&quot;:&quot;A definition for CodeSystem 'http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html' could not be found, so the code cannot be validated&quot;},{&quot;name&quot;:&quot;system&quot;,&quot;valueUri&quot;:&quot;http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html&quot;},{&quot;name&quot;:&quot;code&quot;,&quot;valueCode&quot;:&quot;CAREGIVER&quot;},{&quot;name&quot;:&quot;x-caused-by-unknown-system&quot;,&quot;valueCanonical&quot;:&quot;http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html&quot;}]}
+</pre>

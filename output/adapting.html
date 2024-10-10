@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Adaptación para Perú - Guía de Implementación de Inmunizaciones MINSA Perú v1.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"1.4"}
+    h3,h4,h5,h6{--heading-prefix:"1.4"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Inicio
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="index.html">Resumen</a>
+      </li>
+      <li>
+        <a href="changes.html">Cambios</a>
+      </li>
+      <li>
+        <a href="dependencies.html">Dependencias</a>
+      </li>
+      <li>
+        <a href="references.html">Referencias</a>
+      </li>
+      <li>
+        <a href="adapting.html">Adaptación para Perú</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Requisitos de Negocio
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="concepts.html">Conceptos</a>
+      </li>
+      <li>
+        <a href="personas.html">Personas</a>
+      </li>
+      <li>
+        <a href="scenarios.html">Escenarios de Uso</a>
+      </li>
+      <li>
+        <a href="business-processes.html">Procesos de Negocio</a>
+      </li>
+      <li>
+        <a href="dictionary.html">Diccionario de Datos</a>
+      </li>
+      <li>
+        <a href="decision-logic.html">Lógica de Decisión</a>
+      </li>
+      <li>
+        <a href="indicators.html">Indicadores y Métricas</a>
+      </li>
+      <li>
+        <a href="functional-requirements.html">Requisitos Funcionales</a>
+      </li>
+      <li>
+        <a href="non-functional-requirements.html">Requisitos No Funcionales</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Modelos de Datos
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="system-actors.html">Actores del Sistema</a>
+      </li>
+      <li>
+        <a href="sequence-diagrams.html">Diagramas de Secuencia</a>
+      </li>
+      <li>
+        <a href="transactions.html">Transacciones</a>
+      </li>
+      <li>
+        <a href="indicators-measures.html">Indicadores y Medidas</a>
+      </li>
+      <li>
+        <a href="codings.html">Codificaciones</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Despliegue
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="security-privacy.html">Seguridad y Privacidad</a>
+      </li>
+      <li>
+        <a href="testing.html">Pruebas</a>
+      </li>
+      <li>
+        <a href="test-data.html">Datos de Prueba</a>
+      </li>
+      <li>
+        <a href="downloads.html">Descargas</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Guía de Implementación de Inmunizaciones MINSA Perú</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0 - ci-build
+
+
+
+  <img alt="Peru flag" src="assets/images/per.svg" height="16" title="Peru"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='index.html'><b>Inicio</b></a></li><li><b>Adaptación para Perú</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Guía de Implementación de Inmunizaciones MINSA Perú - Local Development build (v1.0.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://minsa.gob.pe/immunizations/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Adaptación para Perú</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#proceso-de-adaptación-l2-a-l3" id="markdown-toc-proceso-de-adaptación-l2-a-l3">Proceso de adaptación L2 a L3</a></li>
+  <li><a href="#adaptaciones-específicas-para-el-perú" id="markdown-toc-adaptaciones-específicas-para-el-perú">Adaptaciones específicas para el Perú</a></li>
+  <li><a href="#guía-para-futuras-adaptaciones" id="markdown-toc-guía-para-futuras-adaptaciones">Guía para futuras adaptaciones</a></li>
+</ul>
+
+</div>
+<p>La siguiente página proporciona una referencia sobre cómo esta guía de implementación fue adaptada desde las directrices genéricas de la OMS para el contexto del Perú.</p>
+
+<h3 id="proceso-de-adaptación-l2-a-l3">Proceso de adaptación L2 a L3</h3>
+
+<p>La OMS articula y respalda recomendaciones rigurosamente probadas para intervenciones de salud que deben ser adoptadas dentro de los programas de cada país. Para asegurar que los países puedan beneficiarse efectivamente de las inversiones en salud digital, el enfoque SMART Guidelines está diseñado para facilitar la reflexión precisa de las guías clínicas, de salud pública y de uso de datos de la OMS en los sistemas digitales que los países están adoptando.</p>
+
+<p>Para más información sobre las capas de representación del conocimiento y cómo se utilizan en el enfoque SMART Guidelines de la OMS, consulte <a href="https://www.who.int/teams/digital-health-and-innovation/smart-guidelines">WHO SMART Guidelines</a> y este <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00038-8/fulltext">artículo en The Lancet</a>.</p>
+
+<p>Los artefactos técnicos basados en estándares en esta guía de implementación se encuentran en la tercera capa de representación del conocimiento (L3: Recomendaciones legibles por máquina). Proporcionan el código necesario para que los desarrolladores de software incorporen la lógica estandarizada de las guías de la OMS en los sistemas digitales, verificable para la conformidad con estándares incluyendo la fidelidad a las recomendaciones.</p>
+
+<h3 id="adaptaciones-específicas-para-el-perú">Adaptaciones específicas para el Perú</h3>
+
+<p>La adaptación de las guías genéricas de la OMS al contexto peruano incluyó los siguientes aspectos:</p>
+
+<h4 id="esquema-de-vacunación">Esquema de vacunación</h4>
+
+<ul>
+  <li>
+    <p><strong>Calendario ajustado</strong>: El esquema nacional de vacunación del Perú, establecido por la NTS vigente del MINSA, difiere en algunos aspectos del esquema genérico de la OMS. Las tablas de decisión y la lógica de programación fueron ajustadas para reflejar las edades, intervalos y dosis específicas del esquema peruano.</p>
+  </li>
+  <li>
+    <p><strong>Antígenos específicos</strong>: Se priorizaron los antígenos incluidos en el esquema regular peruano: BCG, Hepatitis B (dosis neonatal), Pentavalente (DPT-HB-Hib), IPV/bOPV, Rotavirus, Neumococo conjugada, SPR, Varicela, Fiebre Amarilla, Hepatitis A, DPT (refuerzos), VPH, Influenza estacional y dT.</p>
+  </li>
+  <li>
+    <p><strong>Vacunas combinadas</strong>: El Perú utiliza la vacuna Pentavalente (DPT-HB-Hib) como vacuna combinada principal en el esquema infantil, lo cual requirió ajustes en la lógica de decisión para manejar los múltiples antígenos contenidos en una sola administración.</p>
+  </li>
+</ul>
+
+<h4 id="modelo-de-datos">Modelo de datos</h4>
+
+<ul>
+  <li>
+    <p><strong>Identificación del paciente</strong>: Se incorporó el uso del Documento Nacional de Identidad (DNI) emitido por RENIEC como identificador principal, así como el Código Único de Identidad (CUI) para recién nacidos.</p>
+  </li>
+  <li>
+    <p><strong>Estructura organizacional</strong>: Los perfiles de organización fueron adaptados para reflejar la estructura del sistema de salud peruano: MINSA, DIRESA/GERESA, Redes de Salud, Microrredes y Establecimientos de Salud, según el Registro Nacional de Establecimientos de Salud (RENAES).</p>
+  </li>
+  <li>
+    <p><strong>Aseguramiento</strong>: Se incluyó la referencia al Seguro Integral de Salud (SIS) y otros seguros (EsSalud, privados) como parte de la información del paciente.</p>
+  </li>
+</ul>
+
+<h4 id="terminología">Terminología</h4>
+
+<ul>
+  <li>Se mantuvieron los códigos internacionales (SNOMED CT GPS, ATC, ICD-11) del DAK genérico de la OMS como vocabulario de referencia.</li>
+  <li>Se crearon mapeos hacia códigos utilizados en los sistemas nacionales del MINSA (HIS, SIEN).</li>
+</ul>
+
+<h4 id="indicadores">Indicadores</h4>
+
+<ul>
+  <li>Los indicadores fueron adaptados para alinearse con los requerimientos de reporte del MINSA, incluyendo los indicadores del HIS-MINSA y los reportes de cobertura de la ESNI.</li>
+  <li>Se incluyeron desagregaciones por departamento, provincia, distrito, grupo etario y tipo de establecimiento, conforme a las necesidades de monitoreo regional.</li>
+</ul>
+
+<h4 id="flujos-de-trabajo">Flujos de trabajo</h4>
+
+<ul>
+  <li>Los procesos de negocio fueron adaptados para reflejar el flujo de trabajo típico en los establecimientos de salud del primer nivel de atención en el Perú, incluyendo la captación de niños en el ámbito comunitario por parte de los agentes comunitarios de salud (ACS).</li>
+</ul>
+
+<h3 id="guía-para-futuras-adaptaciones">Guía para futuras adaptaciones</h3>
+
+<p>Los gobiernos regionales y locales que deseen adaptar esta guía para contextos subnacionales deben considerar:</p>
+
+<ol>
+  <li><strong>Revisar el esquema de vacunación</strong>: Verificar que el esquema implementado corresponde a la NTS vigente y a cualquier disposición regional complementaria.</li>
+  <li><strong>Adaptar las personas</strong>: Ajustar los roles y competencias de las personas según la realidad del recurso humano en su jurisdicción.</li>
+  <li><strong>Personalizar terminología</strong>: Agregar códigos locales si los sistemas de información regionales utilizan catálogos propios.</li>
+  <li><strong>Ajustar indicadores</strong>: Incorporar indicadores adicionales requeridos por la DIRESA/GERESA local.</li>
+</ol>
+
+
+
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.gob.pe/minsa">MINSA - Ministerio de Salud del Perú</a>.  Package minsa.gob.pe.immunizations#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Mar 16, 2026 12:33-0400">2026-03-16</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="http://minsa.gob.pe/immunizations/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

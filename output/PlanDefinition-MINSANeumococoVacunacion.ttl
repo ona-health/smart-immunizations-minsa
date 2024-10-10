@@ -1,0 +1,192 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/PlanDefinition/MINSANeumococoVacunacion> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSANeumococoVacunacion"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition>
+     ] [
+       fhir:v "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition>
+     ] [
+       fhir:v "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<div>\n    <table class=\"grid dict\">\n        \n        <tr>\n            <th scope=\"row\"><b>Id: </b></th>\n            <td style=\"padding-left: 4px;\">MINSANeumococoVacunacion</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Url: </b></th>\n            <td style=\"padding-left: 4px;\"><a href=\"PlanDefinition-MINSANeumococoVacunacion.html\">MINSA - Vacunacion contra Neumococo (PCV)</a></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Version: </b></th>\n            <td style=\"padding-left: 4px;\">1.0.0</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Title: </b></th>\n            <td style=\"padding-left: 4px;\">MINSA - Vacunacion contra Neumococo (PCV)</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Type: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                    \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>system: </b> <span><a href=\"http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html\">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>\n                        </p>\n                        \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>code: </b> <span>eca-rule</span>\n                        </p>\n                        \n                        \n                    \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Date: </b></th>\n            <td style=\"padding-left: 4px;\">2026-03-16 12:33:41-0400</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Publisher: </b></th>\n            <td style=\"padding-left: 4px;\">MINSA - Ministerio de Salud del Perú</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Description: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>Logica de decision para la vacunacion antineumococica conjugada segun el Esquema Nacional de\nVacunacion del Peru. Esquema 2+1: dos dosis primarias a los 2 y 4 meses de edad, con una\ndosis de refuerzo a los 12 meses.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Capability: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                computable \n            </td>\n        </tr>\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Jurisdiction: </b></th>\n            <td style=\"padding-left: 4px;\">PE</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Related Artifacts: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                \n                <p><b>References</b></p>\n                <ul>\n                    \n                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>\n</div><br/><a href=\"null\"/></li>\n                    \n                </ul>\n                \n                \n                <p><b>Dependencies</b></p>\n                <ul>\n                    \n                    <li><a href=\"https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTPneumococcal2DosesWithBoosterDose.html\">http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTPneumococcal2DosesWithBoosterDose</a></li>\n                    \n                </ul>\n                \n                \n                \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Actions: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Determinar si el nino necesita la 1ra dosis de Neumococo:</b> Evaluar si el nino de 2 meses cumple las condiciones para recibir la primera\n    dosis de vacuna antineumococica conjugada segun el protocolo nacional.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            El paciente tiene 2 meses o mas y no ha recibido la 1ra dosis de Neumococo\n                            \n                            <i>(Paciente necesita 1ra dosis de Neumococo)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Determinar si el nino necesita la 2da dosis de Neumococo:</b> Evaluar si el nino de 4 meses cumple las condiciones para recibir la segunda\n    dosis de vacuna antineumococica conjugada segun el protocolo nacional.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            El paciente tiene 4 meses o mas, ha recibido la 1ra dosis y no ha recibido la 2da dosis de Neumococo\n                            \n                            <i>(Paciente necesita 2da dosis de Neumococo)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Determinar si el nino necesita la dosis de refuerzo de Neumococo:</b> Evaluar si el nino de 12 meses cumple las condiciones para recibir la dosis\n    de refuerzo de vacuna antineumococica conjugada segun el protocolo nacional.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            El paciente tiene 12 meses o mas, ha recibido 2 dosis primarias y no ha recibido el refuerzo de Neumococo\n                            \n                            <i>(Paciente necesita refuerzo de Neumococo)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n    </table>\n</div>\n</div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability>
+     ] ;
+     fhir:value [
+       a fhir:Code ;
+       fhir:v "computable"
+     ]
+  ] ) ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/PlanDefinition/MINSANeumococoVacunacion"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/PlanDefinition/MINSANeumococoVacunacion>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSANeumococoVacunacion"] ; # 
+  fhir:title [ fhir:v "MINSA - Vacunacion contra Neumococo (PCV)"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Logica de decision para la vacunacion antineumococica conjugada segun el Esquema Nacional de\nVacunacion del Peru. Esquema 2+1: dos dosis primarias a los 2 y 4 meses de edad, con una\ndosis de refuerzo a los 12 meses."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:citation [ fhir:v "NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion" ]
+  ] [
+     fhir:type [ fhir:v "depends-on" ] ;
+     fhir:display [ fhir:v "WHO SMART Guidelines - Pneumococcal 2 Doses with Booster Decision Table" ] ;
+     fhir:resource [
+       fhir:v "http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTPneumococcal2DosesWithBoosterDose"^^xsd:anyURI ;
+       fhir:l <http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTPneumococcal2DosesWithBoosterDose>
+     ]
+  ] ) ; # 
+  fhir:action ( [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale>
+       ] ;
+       fhir:value [
+         a fhir:Markdown ;
+         fhir:v "La vacuna antineumococica conjugada protege contra la enfermedad\n      invasiva por Streptococcus pneumoniae (meningitis, neumonia, sepsis). Peru utiliza\n      el esquema 2+1 recomendado por la OMS: 2 dosis primarias con 1 dosis de refuerzo."
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Determinar si el nino necesita la 1ra dosis de Neumococo" ] ;
+     fhir:description [ fhir:v "Evaluar si el nino de 2 meses cumple las condiciones para recibir la primera\n    dosis de vacuna antineumococica conjugada segun el protocolo nacional." ] ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:description [ fhir:v "El paciente tiene 2 meses o mas y no ha recibido la 1ra dosis de Neumococo" ] ;
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Paciente necesita 1ra dosis de Neumococo" ]
+       ]
+     ] ) ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "status" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'draft'" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "intent" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'proposal'" ]
+       ]
+     ] )
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale>
+       ] ;
+       fhir:value [
+         a fhir:Markdown ;
+         fhir:v "Segunda dosis primaria de la vacuna antineumococica conjugada a los\n      4 meses de edad. Intervalo minimo de 8 semanas desde la primera dosis."
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Determinar si el nino necesita la 2da dosis de Neumococo" ] ;
+     fhir:description [ fhir:v "Evaluar si el nino de 4 meses cumple las condiciones para recibir la segunda\n    dosis de vacuna antineumococica conjugada segun el protocolo nacional." ] ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:description [ fhir:v "El paciente tiene 4 meses o mas, ha recibido la 1ra dosis y no ha recibido la 2da dosis de Neumococo" ] ;
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Paciente necesita 2da dosis de Neumococo" ]
+       ]
+     ] ) ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "status" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'draft'" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "intent" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'proposal'" ]
+       ]
+     ] )
+  ] [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale>
+       ] ;
+       fhir:value [
+         a fhir:Markdown ;
+         fhir:v "Dosis de refuerzo de la vacuna antineumococica conjugada a los 12 meses\n      de edad. Esta dosis es esencial para mantener la proteccion a largo plazo. Los lactantes\n      con VIH y prematuros pueden beneficiarse especialmente de esta dosis de refuerzo."
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Determinar si el nino necesita la dosis de refuerzo de Neumococo" ] ;
+     fhir:description [ fhir:v "Evaluar si el nino de 12 meses cumple las condiciones para recibir la dosis\n    de refuerzo de vacuna antineumococica conjugada segun el protocolo nacional." ] ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:description [ fhir:v "El paciente tiene 12 meses o mas, ha recibido 2 dosis primarias y no ha recibido el refuerzo de Neumococo" ] ;
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Paciente necesita refuerzo de Neumococo" ]
+       ]
+     ] ) ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "status" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'draft'" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "intent" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'proposal'" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

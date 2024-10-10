@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="MINSA.Helpers"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: MapaDeEstructura MINSA.Helpers</b></p><a name="MINSA.Helpers"> </a><a name="hcMINSA.Helpers"> </a><pre class="fml">
+<b>map</b><span style="color: navy"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers<span style="color: navy">&quot; = &quot;</span>MINSA.Helpers<span style="color: navy">&quot;
+
+</span><b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<span style="color: navy">// </span><span style="color: green">Extrae el valor de la primera respuesta de un item</span>
+<b>group </b>ItemToValue<span style="color: navy">(</span><b>source</b> <span style="color: maroon">item</span>, <b>target</b> <span style="color: maroon">field</span><span style="color: navy">)</span><span style="color: navy"> {
+</span>  item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>    answer.value<b> as </b><span style="color: maroon">content</span><span style="color: navy"><b> -&gt; </b></span>field.value = <span style="color: maroon">content</span> <i>&quot;SetValue&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;FirstAnswer&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el codigo de una respuesta codificada</span>
+<b>group </b>ItemToCode<span style="color: navy">(</span><b>source</b> <span style="color: maroon">item</span>, <b>target</b> <span style="color: maroon">field</span><span style="color: navy">)</span><span style="color: navy"> {
+</span>  item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>    answer.value<b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      coding.code<b> as </b><span style="color: maroon">content</span><span style="color: navy"><b> -&gt; </b></span>field.value = <span style="color: maroon">content</span> <i>&quot;SetCode&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;Coding&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;FirstAnswer&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae sistema, codigo y display de una respuesta codificada</span>
+<b>group </b>ItemToCoding<span style="color: navy">(</span><b>source</b> <span style="color: maroon">item</span>, <b>target</b> <span style="color: maroon">field</span><span style="color: navy">)</span><span style="color: navy"> {
+</span>  item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>    answer.value<b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      coding.code<b> as </b><span style="color: maroon">code</span><span style="color: navy"><b> -&gt; </b></span>field.code = <span style="color: maroon">code</span> <i>&quot;SetCode&quot;</i><span style="color: navy">;</span>
+      coding.system<b> as </b><span style="color: maroon">system</span><span style="color: navy"><b> -&gt; </b></span>field.system = <span style="color: maroon">system</span> <i>&quot;SetSystem&quot;</i><span style="color: navy">;</span>
+      coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>field.display = <span style="color: maroon">display</span> <i>&quot;SetDisplay&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;Coding&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;FirstAnswer&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un identificador DNI con sistema MINSA</span>
+<b>group </b>SetDNI<span style="color: navy">(</span><b>source</b> <span style="color: maroon">item</span>, <b>target</b> <span style="color: maroon">identifier</span><span style="color: navy"> : </span>Identifier<span style="color: navy">)</span><span style="color: navy"> {
+</span>  item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>    answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span> identifier.use = <span style="color: blue">'official'</span><span style="color: navy">, </span> identifier.system = <span style="color: blue">'http://minsa.gob.pe/sid/dni'</span><span style="color: navy">, </span> identifier.value = <span style="color: maroon">val</span> <i>&quot;SetDNIValue&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;DNIAnswer&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un ContactPoint de telefono</span>
+<b>group </b>SetPhone<span style="color: navy">(</span><b>source</b> <span style="color: maroon">item</span>, <b>target</b> <span style="color: maroon">telecom</span><span style="color: navy"> : </span>ContactPoint<span style="color: navy">)</span><span style="color: navy"> {
+</span>  item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>    answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span> telecom.system = <span style="color: blue">'phone'</span><span style="color: navy">, </span> telecom.use = <span style="color: blue">'mobile'</span><span style="color: navy">, </span> telecom.value = <span style="color: maroon">val</span> <i>&quot;SetPhoneValue&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PhoneAnswer&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea una Observation vinculada a un paciente y encuentro</span>
+<b>group </b>MakeObservation<span style="color: navy">(</span><b>source</b> <span style="color: maroon">patient</span><span style="color: navy"> : </span>Reference, <b>source</b> <span style="color: maroon">code</span><span style="color: navy"> : </span>Coding, <b>source</b> <span style="color: maroon">cat</span><span style="color: navy"> : </span>Coding, <b>source</b> <span style="color: maroon">value</span>, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  value<span style="color: navy"><b> -&gt; </b></span> <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">oid</span><span style="color: navy">, </span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.fullUrl = <b>append</b><span style="color: navy">(</span><span style="color: blue">'urn:uuid:'</span><span style="color: navy">, </span><span style="color: maroon">oid</span><span style="color: navy">)</span><span style="color: navy">, </span> entry.request<b> as </b><span style="color: maroon">request</span><span style="color: navy">, </span> request.method = <span style="color: blue">'PUT'</span><span style="color: navy">, </span> request.url = <b>append</b><span style="color: navy">(</span><span style="color: blue">'Observation/'</span><span style="color: navy">, </span><span style="color: maroon">oid</span><span style="color: navy">)</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Observation'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">obs</span><b> then</b><span style="color: navy"> {
+</span>    value<span style="color: navy"><b> -&gt; </b></span>obs.id = <span style="color: maroon">oid</span> <i>&quot;SetId&quot;</i><span style="color: navy">;</span>
+    patient<span style="color: navy"><b> -&gt; </b></span>obs.subject = <span style="color: maroon">patient</span> <i>&quot;SetSubject&quot;</i><span style="color: navy">;</span>
+    code<span style="color: navy"><b> -&gt; </b></span>obs.code = <span style="color: maroon">code</span> <i>&quot;SetCode&quot;</i><span style="color: navy">;</span>
+    value<span style="color: navy"><b> -&gt; </b></span>obs.value = <span style="color: maroon">value</span> <i>&quot;SetValue&quot;</i><span style="color: navy">;</span>
+    cat<span style="color: navy"><b> -&gt; </b></span>obs.category = <span style="color: maroon">cat</span> <i>&quot;SetCategory&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CreateObservation&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"/>
+  <version value="1.0.0"/>
+  <name value="MINSA.Helpers"/>
+  <status value="draft"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+    <mode value="source"/>
+    <alias value="QResp"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="target"/>
+    <alias value="Bundle"/>
+  </structure>
+  <group>
+    <name value="ItemToValue"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae el valor de la primera respuesta de un item"/>
+    <input>
+      <name value="item"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="field"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="FirstAnswer"/>
+      <source>
+        <context value="item"/>
+        <element value="answer"/>
+        <listMode value="first"/>
+        <variable value="answer"/>
+      </source>
+      <rule>
+        <name value="SetValue"/>
+        <source>
+          <context value="answer"/>
+          <element value="value"/>
+          <variable value="content"/>
+        </source>
+        <target>
+          <context value="field"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="content"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ItemToCode"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae el codigo de una respuesta codificada"/>
+    <input>
+      <name value="item"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="field"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="FirstAnswer"/>
+      <source>
+        <context value="item"/>
+        <element value="answer"/>
+        <listMode value="first"/>
+        <variable value="answer"/>
+      </source>
+      <rule>
+        <name value="Coding"/>
+        <source>
+          <context value="answer"/>
+          <element value="value"/>
+          <variable value="coding"/>
+        </source>
+        <rule>
+          <name value="SetCode"/>
+          <source>
+            <context value="coding"/>
+            <element value="code"/>
+            <variable value="content"/>
+          </source>
+          <target>
+            <context value="field"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="content"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ItemToCoding"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae sistema, codigo y display de una respuesta codificada"/>
+    <input>
+      <name value="item"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="field"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="FirstAnswer"/>
+      <source>
+        <context value="item"/>
+        <element value="answer"/>
+        <listMode value="first"/>
+        <variable value="answer"/>
+      </source>
+      <rule>
+        <name value="Coding"/>
+        <source>
+          <context value="answer"/>
+          <element value="value"/>
+          <variable value="coding"/>
+        </source>
+        <rule>
+          <name value="SetCode"/>
+          <source>
+            <context value="coding"/>
+            <element value="code"/>
+            <variable value="code"/>
+          </source>
+          <target>
+            <context value="field"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="code"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="SetSystem"/>
+          <source>
+            <context value="coding"/>
+            <element value="system"/>
+            <variable value="system"/>
+          </source>
+          <target>
+            <context value="field"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="system"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="SetDisplay"/>
+          <source>
+            <context value="coding"/>
+            <element value="display"/>
+            <variable value="display"/>
+          </source>
+          <target>
+            <context value="field"/>
+            <contextType value="variable"/>
+            <element value="display"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="display"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="SetDNI"/>
+    <typeMode value="none"/>
+    <documentation value="Crea un identificador DNI con sistema MINSA"/>
+    <input>
+      <name value="item"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="identifier"/>
+      <type value="Identifier"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="DNIAnswer"/>
+      <source>
+        <context value="item"/>
+        <element value="answer"/>
+        <listMode value="first"/>
+        <variable value="answer"/>
+      </source>
+      <rule>
+        <name value="SetDNIValue"/>
+        <source>
+          <context value="answer"/>
+          <element value="value"/>
+          <variable value="val"/>
+        </source>
+        <target>
+          <context value="identifier"/>
+          <contextType value="variable"/>
+          <element value="use"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="official"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="identifier"/>
+          <contextType value="variable"/>
+          <element value="system"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="http://minsa.gob.pe/sid/dni"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="identifier"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="val"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="SetPhone"/>
+    <typeMode value="none"/>
+    <documentation value="Crea un ContactPoint de telefono"/>
+    <input>
+      <name value="item"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="telecom"/>
+      <type value="ContactPoint"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="PhoneAnswer"/>
+      <source>
+        <context value="item"/>
+        <element value="answer"/>
+        <listMode value="first"/>
+        <variable value="answer"/>
+      </source>
+      <rule>
+        <name value="SetPhoneValue"/>
+        <source>
+          <context value="answer"/>
+          <element value="value"/>
+          <variable value="val"/>
+        </source>
+        <target>
+          <context value="telecom"/>
+          <contextType value="variable"/>
+          <element value="system"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="phone"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="telecom"/>
+          <contextType value="variable"/>
+          <element value="use"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="mobile"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="telecom"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="val"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="MakeObservation"/>
+    <typeMode value="none"/>
+    <documentation value="Crea una Observation vinculada a un paciente y encuentro"/>
+    <input>
+      <name value="patient"/>
+      <type value="Reference"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="code"/>
+      <type value="Coding"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="cat"/>
+      <type value="Coding"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="value"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="CreateObservation"/>
+      <source>
+        <context value="value"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="oid"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </target>
+      <target>
+        <context value="entry"/>
+        <contextType value="variable"/>
+        <element value="fullUrl"/>
+        <transform value="append"/>
+        <parameter>
+          <valueString value="urn:uuid:"/>
+        </parameter>
+        <parameter>
+          <valueId value="oid"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="entry"/>
+        <contextType value="variable"/>
+        <element value="request"/>
+        <variable value="request"/>
+      </target>
+      <target>
+        <context value="request"/>
+        <contextType value="variable"/>
+        <element value="method"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="PUT"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="request"/>
+        <contextType value="variable"/>
+        <element value="url"/>
+        <transform value="append"/>
+        <parameter>
+          <valueString value="Observation/"/>
+        </parameter>
+        <parameter>
+          <valueId value="oid"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="entry"/>
+        <contextType value="variable"/>
+        <element value="resource"/>
+        <variable value="obs"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Observation"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="SetId"/>
+        <source>
+          <context value="value"/>
+        </source>
+        <target>
+          <context value="obs"/>
+          <contextType value="variable"/>
+          <element value="id"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="oid"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetSubject"/>
+        <source>
+          <context value="patient"/>
+        </source>
+        <target>
+          <context value="obs"/>
+          <contextType value="variable"/>
+          <element value="subject"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="patient"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetCode"/>
+        <source>
+          <context value="code"/>
+        </source>
+        <target>
+          <context value="obs"/>
+          <contextType value="variable"/>
+          <element value="code"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="code"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetValue"/>
+        <source>
+          <context value="value"/>
+        </source>
+        <target>
+          <context value="obs"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="value"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetCategory"/>
+        <source>
+          <context value="cat"/>
+        </source>
+        <target>
+          <context value="obs"/>
+          <contextType value="variable"/>
+          <element value="category"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="cat"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+</StructureMap>

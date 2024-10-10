@@ -1,0 +1,106 @@
+{% raw %}<pre class="rdf" data-fhir="generated" style="white-space: pre; overflow: hidden"><code class="language-turtle">
+@prefix fhir: &lt;http://hl7.org/fhir/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# - resource -------------------------------------------------------------------
+
+ a fhir:PlanDefinition ;
+  <a href="http://hl7.org/fhir/R4/rdf.html#tree-root">fhir:nodeRole</a> fhir:treeRoot ;
+  <a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSABCGVacunacion&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.meta">fhir:meta</a> [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">fhir:profile</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition&gt;     ] [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition&gt;     ] [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition&gt;     ] )
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.text">fhir:text</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;extensions&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">fhir:div</a> [ <a href="http://hl7.org/fhir/R4/narrative.html#xhtml">fhir:v</a> &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;div&gt;\n    &lt;table class=\&quot;grid dict\&quot;&gt;\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Id: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;MINSABCGVacunacion&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Url: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;&lt;a href=\&quot;PlanDefinition-MINSABCGVacunacion.html\&quot;&gt;MINSA - Vacunacion BCG&lt;/a&gt;&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Version: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;1.0.0&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Title: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;MINSA - Vacunacion BCG&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Type: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                \n                    \n                        \n                        &lt;p style=\&quot;margin-bottom: 5px;\&quot;&gt;\n                            &lt;b&gt;system: &lt;/b&gt; &lt;span&gt;&lt;a href=\&quot;http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html\&quot;&gt;http://terminology.hl7.org/CodeSystem/plan-definition-type&lt;/a&gt;&lt;/span&gt;\n                        &lt;/p&gt;\n                        \n                        \n                        &lt;p style=\&quot;margin-bottom: 5px;\&quot;&gt;\n                            &lt;b&gt;code: &lt;/b&gt; &lt;span&gt;eca-rule&lt;/span&gt;\n                        &lt;/p&gt;\n                        \n                        \n                    \n                \n                \n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Date: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;2026-03-16 12:33:41-0400&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Publisher: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;MINSA - Ministerio de Salud del Perú&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Description: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;&lt;div&gt;&lt;p&gt;Logica de decision para la vacunacion BCG segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna BCG se administra en dosis unica al recien nacido, preferiblemente dentro de las\nprimeras 24 horas de vida.&lt;/p&gt;\n&lt;/div&gt;&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Knowledge Capability: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                \n                computable \n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Jurisdiction: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;PE&lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Related Artifacts: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                \n                \n                &lt;p&gt;&lt;b&gt;References&lt;/b&gt;&lt;/p&gt;\n                &lt;ul&gt;\n                    \n                    &lt;li&gt;&lt;div&gt;&lt;p&gt;NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion&lt;/p&gt;\n&lt;/div&gt;&lt;br/&gt;&lt;a href=\&quot;null\&quot;/&gt;&lt;/li&gt;\n                    \n                &lt;/ul&gt;\n                \n                \n                &lt;p&gt;&lt;b&gt;Dependencies&lt;/b&gt;&lt;/p&gt;\n                &lt;ul&gt;\n                    \n                    &lt;li&gt;&lt;a href=\&quot;https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTBCG.html\&quot;&gt;http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTBCG&lt;/a&gt;&lt;/li&gt;\n                    \n                &lt;/ul&gt;\n                \n                \n                \n                \n                \n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n\n        \n\n        \n        &lt;tr&gt;\n            &lt;th scope=\&quot;row\&quot;&gt;&lt;b&gt;Actions: &lt;/b&gt;&lt;/th&gt;\n            &lt;td style=\&quot;padding-left: 4px;\&quot;&gt;\n                &lt;table class=\&quot;grid-dict\&quot;&gt;\n                    \n                    &lt;tr&gt;\n                        &lt;td&gt;\n                            \n                            &lt;b&gt; Determinar si el recien nacido necesita vacunacion BCG:&lt;/b&gt; Evaluar si el recien nacido cumple las condiciones para recibir la vacuna BCG\n    segun el protocolo nacional de inmunizaciones.\n                            \n                            &lt;br/&gt;\n                            \n                            \n                            &lt;b&gt;If:&lt;/b&gt;\n                            \n                            &lt;i&gt;Applicability:&lt;/i&gt;\n                            \n                            El paciente es recien nacido y no ha recibido vacuna BCG\n                            \n                            &lt;i&gt;(Paciente necesita vacuna BCG)&lt;/i&gt;\n                            &lt;br/&gt;\n                            \n                            \n                            \n                            \n                            \n                        &lt;/td&gt;\n                    &lt;/tr&gt;\n                    \n                &lt;/table&gt;\n            &lt;/td&gt;\n        &lt;/tr&gt;\n        \n    &lt;/table&gt;\n&lt;/div&gt;\n&lt;/div&gt;&quot;^^rdf:XMLLiteral ]
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.extension">fhir:extension</a> ( [
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#code">a</a> fhir:Code ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;computable&quot;     ]
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion&gt;
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.version">fhir:version</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;1.0.0&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSABCGVacunacion&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA - Vacunacion BCG&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.type">fhir:type</a> [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/plan-definition-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/plan-definition-type&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;eca-rule&quot; ]     ] )
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;active&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.experimental">fhir:experimental</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> false] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.date">fhir:date</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">fhir:v</a> &quot;2026-03-16T12:33:41-04:00&quot;^^xsd:dateTime] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">fhir:publisher</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA - Ministerio de Salud del Perú&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">fhir:contact</a> ( [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MINSA - Ministerio de Salud del Perú&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">fhir:telecom</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;url&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;https://www.gob.pe/minsa&quot; ]     ] )
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;Logica de decision para la vacunacion BCG segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna BCG se administra en dosis unica al recien nacido, preferiblemente dentro de las\nprimeras 24 horas de vida.&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.jurisdiction">fhir:jurisdiction</a> ( [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:iso:std:iso:3166&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:iso:std:iso:3166&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;PE&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Peru&quot; ]     ] )
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">fhir:relatedArtifact</a> ( [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;citation&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.citation">fhir:citation</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion&quot; ]
+  ] [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;depends-on&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;WHO SMART Guidelines - BCG Decision Table&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.resource">fhir:resource</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTBCG&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTBCG&gt;     ]
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action">fhir:action</a> ( [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.extension">fhir:extension</a> [
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#markdown">a</a> fhir:Markdown ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;La vacuna BCG protege contra las formas graves de tuberculosis\n      (meningitis tuberculosa y tuberculosis miliar). Se administra en dosis unica al recien\n      nacido. En recien nacidos de madres con VIH, se debe evaluar el estado clinico antes\n      de la vacunacion.&quot;       ]     ] ) ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Determinar si el recien nacido necesita vacunacion BCG&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Evaluar si el recien nacido cumple las condiciones para recibir la vacuna BCG\n    segun el protocolo nacional de inmunizaciones.&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">fhir:condition</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">fhir:kind</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;applicability&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;El paciente es recien nacido y no ha recibido vacuna BCG&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Paciente necesita vacuna BCG&quot; ]       ]     ] ) ;
+    ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">fhir:dynamicValue</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">fhir:path</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;status&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-expression&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;'draft'&quot; ]       ]     ] [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">fhir:path</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;intent&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-expression&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;'proposal'&quot; ]       ]     ] )
+  ] ) . # 
+
+</code></pre>
+
+{% endraw %}

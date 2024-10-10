@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://minsa.gob.pe/immunizations/ValueSet-MINSADoseNumberVS.displays.json",
+  "title": "Números de Dosis del Esquema de Vacunación - MINSA Display Values",
+  "description": "Display values for Números de Dosis del Esquema de Vacunación - MINSA ValueSet codes. Generated from FHIR expansions.",
+  "type": "object",
+  "properties": {
+    "fhir:displays": {
+      "type": "object",
+      "description": "Multilingual display values for ValueSet codes using IRI format to match JSON schema enum values",
+      "patternProperties": {
+        "^https?://.*": {
+          "type": "object",
+          "description": "Display values for a specific IRI-formatted code by language",
+          "properties": {
+            "en": {
+              "type": "string",
+              "description": "English display value"
+            }
+          },
+          "patternProperties": {
+            "^[a-z]{2}(-[A-Z]{2})?$": {
+              "type": "string",
+              "description": "Display value in the specified language (ISO 639-1 code)"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "fhir:displays"
+  ],
+  "additionalProperties": true,
+  "fhir:displays": {
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-BCG": {
+      "en": "BCG"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-OPV": {
+      "en": "APO - Antipolio Oral"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-IPV": {
+      "en": "APV - Antipolio Inactivada"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-PENTA": {
+      "en": "Pentavalente"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-ROTA": {
+      "en": "Rotavirus"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-PCV": {
+      "en": "Neumococo"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-SPR": {
+      "en": "SPR"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-HPV": {
+      "en": "VPH"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-DT": {
+      "en": "DT Pediátrico"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-INF": {
+      "en": "Influenza"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-HEPB": {
+      "en": "Hepatitis B"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#VAC-AMA": {
+      "en": "Antiamarílica"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#DOSE-BIRTH": {
+      "en": "Dosis de recién nacido"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#DOSE-1": {
+      "en": "1ra dosis"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#DOSE-2": {
+      "en": "2da dosis"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#DOSE-3": {
+      "en": "3ra dosis"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#DOSE-R1": {
+      "en": "1er refuerzo"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#DOSE-R2": {
+      "en": "2do refuerzo"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#ROUTE-ID": {
+      "en": "Intradérmica"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#ROUTE-SC": {
+      "en": "Subcutánea"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#ROUTE-IM": {
+      "en": "Intramuscular"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#ROUTE-VO": {
+      "en": "Vía oral"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-IMMUNITY": {
+      "en": "Inmunidad"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-STOCKOUT": {
+      "en": "Desabastecimiento"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-PRECAUTION": {
+      "en": "Precaución médica"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-EXPIRED": {
+      "en": "Producto vencido"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-CLIENT": {
+      "en": "Rechazo del cliente"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-CAREGIVER": {
+      "en": "Rechazo del cuidador"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-ABSENT": {
+      "en": "Niño no presente"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-SICK": {
+      "en": "Niño enfermo"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-AGE": {
+      "en": "Fuera de rango de edad"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-CONTRA": {
+      "en": "Contraindicado"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-TIME": {
+      "en": "Sin tiempo"
+    },
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA#NOREASON-OTHER": {
+      "en": "Otro"
+    }
+  },
+  "fhir:valueSet": "http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS",
+  "fhir:version": "1.0.0",
+  "fhir:expansionTimestamp": "2026-03-16T12:34:32.084176"
+}

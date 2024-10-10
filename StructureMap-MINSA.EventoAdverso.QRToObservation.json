@@ -1,0 +1,897 @@
+{
+  "resourceType" : "StructureMap",
+  "id" : "MINSA.EventoAdverso.QRToObservation",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MapaDeEstructura MINSA.EventoAdverso.QRToObservation</b></p><a name=\"MINSA.EventoAdverso.QRToObservation\"> </a><a name=\"hcMINSA.EventoAdverso.QRToObservation\"> </a><pre class=\"fml\">\r\n<b>map</b><span style=\"color: navy\"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation<span style=\"color: navy\">&quot; = &quot;</span>MINSA.EventoAdverso.QRToObservation<span style=\"color: navy\">&quot;\r\n\r\n</span><b>uses</b><span style=\"color: navy\"> &quot;</span><a href=\"http://hl7.org/fhir/R4/questionnaireresponse.html\" title=\"QuestionnaireResponse\">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style=\"color: navy\">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>\r\n<b>uses</b><span style=\"color: navy\"> &quot;</span><a href=\"http://hl7.org/fhir/R4/bundle.html\" title=\"Bundle\">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style=\"color: navy\">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>\r\n\r\n<b>imports</b><span style=\"color: navy\"> &quot;</span><a href=\"StructureMap-MINSA.Helpers.html\" title=\"MINSA.Helpers\">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style=\"color: navy\">&quot;\r\n</span>\r\n<b>group </b>EventoAdverso<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> bundle.type = <span style=\"color: blue\">'collection'</span> <i>&quot;BundleStatic&quot;</i><span style=\"color: navy\">;</span>\r\n  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">encEntry</span><span style=\"color: navy\">, </span> encEntry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Encounter'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">encounter</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<b> then </b>ExtractEncounter<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>&quot;ExtractEncounter&quot;</i><span style=\"color: navy\">;</span>\r\n    src<b> then </b>ExtractObservation<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">bundle</span><span style=\"color: navy\">)</span> <i>&quot;ExtractObservation&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;BundleEntries&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el Encounter de la consulta por evento adverso</span>\r\n<b>group </b>ExtractEncounter<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> encounter.status = <span style=\"color: blue\">'finished'</span><span style=\"color: navy\">, </span> encounter.class = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'AMB'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'ambulatory'</span><span style=\"color: navy\">)</span> <i>&quot;EncounterStatic&quot;</i><span style=\"color: navy\">;</span>\r\n  src.subject<b> as </b><span style=\"color: maroon\">subject</span><span style=\"color: navy\"><b> -&gt; </b></span>encounter.subject = <span style=\"color: maroon\">subject</span> <i>&quot;EncounterSubject&quot;</i><span style=\"color: navy\">;</span>\r\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span> coding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> coding.code = <span style=\"color: blue\">'886921000000105'</span><span style=\"color: navy\">, </span> coding.display = <span style=\"color: blue\">'Allergies and adverse reactions'</span> <i>&quot;TypeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;TypeCC&quot;</i><span style=\"color: navy\">;</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: blue\">'Evento adverso post-vacunal'</span> <i>&quot;TypeText&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;EncounterType&quot;</i><span style=\"color: navy\">;</span>\r\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.period = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Period'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">period</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>period.start = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>&quot;PeriodStart&quot;</i><span style=\"color: navy\">;</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span>period.end = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>&quot;PeriodEnd&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;EncounterPeriod&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae la Observation que representa el evento adverso</span>\r\n<b>group </b>ExtractObservation<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>source</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Observation'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">obs</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span> obs.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> obs.status = <span style=\"color: blue\">'final'</span><span style=\"color: navy\">, </span> obs.encounter = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>&quot;ObsStatic&quot;</i><span style=\"color: navy\">;</span>\r\n    src.subject<b> as </b><span style=\"color: maroon\">subject</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.subject = <span style=\"color: maroon\">subject</span> <i>&quot;ObsSubject&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Categoria: reaccion adversa</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span>obs.category = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cat</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span>cat.coding = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://terminology.hl7.org/CodeSystem/observation-category'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'survey'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'Survey'</span><span style=\"color: navy\">)</span> <i>&quot;CatCoding&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;ObsCategory&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Codigo de la observacion: evento adverso post-vacunal (ESAVI)</span>\r\n    src<span style=\"color: navy\"><b> -&gt; </b></span>obs.code = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">code</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span>code.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        src<span style=\"color: navy\"><b> -&gt; </b></span> coding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> coding.code = <span style=\"color: blue\">'293104008'</span><span style=\"color: navy\">, </span> coding.display = <span style=\"color: blue\">'Adverse reaction to vaccine (disorder)'</span> <i>&quot;CodeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;CodeCC&quot;</i><span style=\"color: navy\">;</span>\r\n      src<span style=\"color: navy\"><b> -&gt; </b></span>code.text = <span style=\"color: blue\">'Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)'</span> <i>&quot;CodeText&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;ObsCode&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Fecha del evento adverso</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'adverse-event-date'<b> then</b><span style=\"color: navy\"> {\r\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.effective = <span style=\"color: maroon\">val</span> <i>&quot;SetEffective&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;DateAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;AdverseEventDate&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Tipo de reaccion adversa</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'adverse-event-type'<b> then</b><span style=\"color: navy\"> {\r\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.value = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          coding<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <span style=\"color: maroon\">coding</span> <i>&quot;SetTypeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n          coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: maroon\">display</span> <i>&quot;SetTypeText&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;CreateTypeCC&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;TypeAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;AdverseEventType&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Severidad del evento adverso</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'adverse-event-severity'<b> then</b><span style=\"color: navy\"> {\r\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.component = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Observation_Component'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">comp</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          coding<span style=\"color: navy\"><b> -&gt; </b></span>comp.code = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">compCode</span><b> then</b><span style=\"color: navy\"> {\r\n</span>            coding<span style=\"color: navy\"><b> -&gt; </b></span>compCode.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">compCoding</span><b> then</b><span style=\"color: navy\"> {\r\n</span>              coding<span style=\"color: navy\"><b> -&gt; </b></span> compCoding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> compCoding.code = <span style=\"color: blue\">'246112005'</span><span style=\"color: navy\">, </span> compCoding.display = <span style=\"color: blue\">'Severity (attribute)'</span> <i>&quot;SeverityCodeCoding&quot;</i><span style=\"color: navy\">;</span>\r\n            <span style=\"color: navy\">}</span> <i>&quot;SeverityCodeCC&quot;</i><span style=\"color: navy\">;</span>\r\n          <span style=\"color: navy\">}</span> <i>&quot;SeverityCode&quot;</i><span style=\"color: navy\">;</span>\r\n          coding<span style=\"color: navy\"><b> -&gt; </b></span>comp.value = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">compVal</span><b> then</b><span style=\"color: navy\"> {\r\n</span>            coding<span style=\"color: navy\"><b> -&gt; </b></span>compVal.coding = <span style=\"color: maroon\">coding</span> <i>&quot;SetSeverityCoding&quot;</i><span style=\"color: navy\">;</span>\r\n            coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>compVal.text = <span style=\"color: maroon\">display</span> <i>&quot;SetSeverityText&quot;</i><span style=\"color: navy\">;</span>\r\n          <span style=\"color: navy\">}</span> <i>&quot;SeverityValue&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;CreateSeverityComp&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;SeverityAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;AdverseEventSeverity&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Referencia a la inmunizacion que causo el evento adverso</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'causing-immunization') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {\r\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        answer.value<b> as </b><span style=\"color: maroon\">immRef</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.focus = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Reference'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">ref</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          immRef<span style=\"color: navy\"><b> -&gt; </b></span>ref.reference = <span style=\"color: maroon\">immRef</span> <i>&quot;SetImmReference&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;CreateImmRef&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;ImmAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;CausingImmunization&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Notas adicionales del profesional de salud</span>\r\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'adverse-event-notes') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {\r\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.note = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Annotation'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">note</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          val<span style=\"color: navy\"><b> -&gt; </b></span>note.text = <span style=\"color: maroon\">val</span> <i>&quot;SetNoteText&quot;</i><span style=\"color: navy\">;</span>\r\n          val<span style=\"color: navy\"><b> -&gt; </b></span>note.time = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>&quot;SetNoteTime&quot;</i><span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span> <i>&quot;CreateNote&quot;</i><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span> <i>&quot;NotesAnswer&quot;</i><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span> <i>&quot;AdverseEventNotes&quot;</i><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span> <i>&quot;ObservationEntry&quot;</i><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span></pre></div>"
+  },
+  "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation",
+  "version" : "1.0.0",
+  "name" : "MINSA.EventoAdverso.QRToObservation",
+  "status" : "draft",
+  "date" : "2026-03-16T12:33:41-04:00",
+  "publisher" : "MINSA - Ministerio de Salud del Perú",
+  "contact" : [{
+    "name" : "MINSA - Ministerio de Salud del Perú",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.gob.pe/minsa"
+    }]
+  }],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "PE",
+      "display" : "Peru"
+    }]
+  }],
+  "structure" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+    "mode" : "source",
+    "alias" : "QResp"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/Bundle",
+    "mode" : "target",
+    "alias" : "Bundle"
+  }],
+  "import" : ["http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"],
+  "group" : [{
+    "name" : "EventoAdverso",
+    "typeMode" : "none",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "bundle",
+      "type" : "Bundle",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "BundleStatic",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "bundle",
+        "contextType" : "variable",
+        "element" : "id",
+        "transform" : "uuid"
+      },
+      {
+        "context" : "bundle",
+        "contextType" : "variable",
+        "element" : "type",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueString" : "collection"
+        }]
+      }]
+    },
+    {
+      "name" : "BundleEntries",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "bundle",
+        "contextType" : "variable",
+        "element" : "entry",
+        "variable" : "encEntry"
+      },
+      {
+        "context" : "encEntry",
+        "contextType" : "variable",
+        "element" : "resource",
+        "variable" : "encounter",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "Encounter"
+        }]
+      }],
+      "rule" : [{
+        "name" : "ExtractEncounter",
+        "source" : [{
+          "context" : "src"
+        }],
+        "dependent" : [{
+          "name" : "ExtractEncounter",
+          "variable" : ["src",
+          "encounter"]
+        }]
+      },
+      {
+        "name" : "ExtractObservation",
+        "source" : [{
+          "context" : "src"
+        }],
+        "dependent" : [{
+          "name" : "ExtractObservation",
+          "variable" : ["src",
+          "encounter",
+          "bundle"]
+        }]
+      }]
+    }]
+  },
+  {
+    "name" : "ExtractEncounter",
+    "typeMode" : "none",
+    "documentation" : "Extrae el Encounter de la consulta por evento adverso",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "encounter",
+      "type" : "Encounter",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "EncounterStatic",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "id",
+        "transform" : "uuid"
+      },
+      {
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "status",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueString" : "finished"
+        }]
+      },
+      {
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "class",
+        "transform" : "c",
+        "parameter" : [{
+          "valueString" : "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        },
+        {
+          "valueString" : "AMB"
+        },
+        {
+          "valueString" : "ambulatory"
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterSubject",
+      "source" : [{
+        "context" : "src",
+        "element" : "subject",
+        "variable" : "subject"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "subject",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueId" : "subject"
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterType",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "type",
+        "variable" : "cc",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "CodeableConcept"
+        }]
+      }],
+      "rule" : [{
+        "name" : "TypeCC",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "cc",
+          "contextType" : "variable",
+          "element" : "coding",
+          "variable" : "coding",
+          "transform" : "create",
+          "parameter" : [{
+            "valueString" : "Coding"
+          }]
+        }],
+        "rule" : [{
+          "name" : "TypeCoding",
+          "source" : [{
+            "context" : "src"
+          }],
+          "target" : [{
+            "context" : "coding",
+            "contextType" : "variable",
+            "element" : "system",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "http://snomed.info/sct"
+            }]
+          },
+          {
+            "context" : "coding",
+            "contextType" : "variable",
+            "element" : "code",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "886921000000105"
+            }]
+          },
+          {
+            "context" : "coding",
+            "contextType" : "variable",
+            "element" : "display",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "Allergies and adverse reactions"
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "TypeText",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "cc",
+          "contextType" : "variable",
+          "element" : "text",
+          "transform" : "copy",
+          "parameter" : [{
+            "valueString" : "Evento adverso post-vacunal"
+          }]
+        }]
+      }]
+    },
+    {
+      "name" : "EncounterPeriod",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "encounter",
+        "contextType" : "variable",
+        "element" : "period",
+        "variable" : "period",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "Period"
+        }]
+      }],
+      "rule" : [{
+        "name" : "PeriodStart",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "period",
+          "contextType" : "variable",
+          "element" : "start",
+          "transform" : "evaluate",
+          "parameter" : [{
+            "valueId" : "src"
+          },
+          {
+            "valueString" : "now()"
+          }]
+        }]
+      },
+      {
+        "name" : "PeriodEnd",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "period",
+          "contextType" : "variable",
+          "element" : "end",
+          "transform" : "evaluate",
+          "parameter" : [{
+            "valueId" : "src"
+          },
+          {
+            "valueString" : "now()"
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name" : "ExtractObservation",
+    "typeMode" : "none",
+    "documentation" : "Extrae la Observation que representa el evento adverso",
+    "input" : [{
+      "name" : "src",
+      "type" : "QResp",
+      "mode" : "source"
+    },
+    {
+      "name" : "encounter",
+      "type" : "Encounter",
+      "mode" : "source"
+    },
+    {
+      "name" : "bundle",
+      "type" : "Bundle",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "ObservationEntry",
+      "source" : [{
+        "context" : "src"
+      }],
+      "target" : [{
+        "context" : "bundle",
+        "contextType" : "variable",
+        "element" : "entry",
+        "variable" : "entry"
+      },
+      {
+        "context" : "entry",
+        "contextType" : "variable",
+        "element" : "resource",
+        "variable" : "obs",
+        "transform" : "create",
+        "parameter" : [{
+          "valueString" : "Observation"
+        }]
+      }],
+      "rule" : [{
+        "name" : "ObsStatic",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "obs",
+          "contextType" : "variable",
+          "element" : "id",
+          "transform" : "uuid"
+        },
+        {
+          "context" : "obs",
+          "contextType" : "variable",
+          "element" : "status",
+          "transform" : "copy",
+          "parameter" : [{
+            "valueString" : "final"
+          }]
+        },
+        {
+          "context" : "obs",
+          "contextType" : "variable",
+          "element" : "encounter",
+          "transform" : "reference",
+          "parameter" : [{
+            "valueId" : "encounter"
+          }]
+        }]
+      },
+      {
+        "name" : "ObsSubject",
+        "source" : [{
+          "context" : "src",
+          "element" : "subject",
+          "variable" : "subject"
+        }],
+        "target" : [{
+          "context" : "obs",
+          "contextType" : "variable",
+          "element" : "subject",
+          "transform" : "copy",
+          "parameter" : [{
+            "valueId" : "subject"
+          }]
+        }]
+      },
+      {
+        "name" : "ObsCategory",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "obs",
+          "contextType" : "variable",
+          "element" : "category",
+          "variable" : "cat",
+          "transform" : "create",
+          "parameter" : [{
+            "valueString" : "CodeableConcept"
+          }]
+        }],
+        "rule" : [{
+          "name" : "CatCoding",
+          "source" : [{
+            "context" : "src"
+          }],
+          "target" : [{
+            "context" : "cat",
+            "contextType" : "variable",
+            "element" : "coding",
+            "transform" : "c",
+            "parameter" : [{
+              "valueString" : "http://terminology.hl7.org/CodeSystem/observation-category"
+            },
+            {
+              "valueString" : "survey"
+            },
+            {
+              "valueString" : "Survey"
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "ObsCode",
+        "source" : [{
+          "context" : "src"
+        }],
+        "target" : [{
+          "context" : "obs",
+          "contextType" : "variable",
+          "element" : "code",
+          "variable" : "code",
+          "transform" : "create",
+          "parameter" : [{
+            "valueString" : "CodeableConcept"
+          }]
+        }],
+        "rule" : [{
+          "name" : "CodeCC",
+          "source" : [{
+            "context" : "src"
+          }],
+          "target" : [{
+            "context" : "code",
+            "contextType" : "variable",
+            "element" : "coding",
+            "variable" : "coding",
+            "transform" : "create",
+            "parameter" : [{
+              "valueString" : "Coding"
+            }]
+          }],
+          "rule" : [{
+            "name" : "CodeCoding",
+            "source" : [{
+              "context" : "src"
+            }],
+            "target" : [{
+              "context" : "coding",
+              "contextType" : "variable",
+              "element" : "system",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueString" : "http://snomed.info/sct"
+              }]
+            },
+            {
+              "context" : "coding",
+              "contextType" : "variable",
+              "element" : "code",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueString" : "293104008"
+              }]
+            },
+            {
+              "context" : "coding",
+              "contextType" : "variable",
+              "element" : "display",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueString" : "Adverse reaction to vaccine (disorder)"
+              }]
+            }]
+          }]
+        },
+        {
+          "name" : "CodeText",
+          "source" : [{
+            "context" : "src"
+          }],
+          "target" : [{
+            "context" : "code",
+            "contextType" : "variable",
+            "element" : "text",
+            "transform" : "copy",
+            "parameter" : [{
+              "valueString" : "Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)"
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "AdverseEventDate",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "linkId = 'adverse-event-date'"
+        }],
+        "rule" : [{
+          "name" : "DateAnswer",
+          "source" : [{
+            "context" : "item",
+            "element" : "answer",
+            "listMode" : "first",
+            "variable" : "answer"
+          }],
+          "rule" : [{
+            "name" : "SetEffective",
+            "source" : [{
+              "context" : "answer",
+              "element" : "value",
+              "variable" : "val"
+            }],
+            "target" : [{
+              "context" : "obs",
+              "contextType" : "variable",
+              "element" : "effective",
+              "transform" : "copy",
+              "parameter" : [{
+                "valueId" : "val"
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "AdverseEventType",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "linkId = 'adverse-event-type'"
+        }],
+        "rule" : [{
+          "name" : "TypeAnswer",
+          "source" : [{
+            "context" : "item",
+            "element" : "answer",
+            "listMode" : "first",
+            "variable" : "answer"
+          }],
+          "rule" : [{
+            "name" : "CreateTypeCC",
+            "source" : [{
+              "context" : "answer",
+              "element" : "value",
+              "variable" : "coding"
+            }],
+            "target" : [{
+              "context" : "obs",
+              "contextType" : "variable",
+              "element" : "value",
+              "variable" : "cc",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "CodeableConcept"
+              }]
+            }],
+            "rule" : [{
+              "name" : "SetTypeCoding",
+              "source" : [{
+                "context" : "coding"
+              }],
+              "target" : [{
+                "context" : "cc",
+                "contextType" : "variable",
+                "element" : "coding",
+                "transform" : "copy",
+                "parameter" : [{
+                  "valueId" : "coding"
+                }]
+              }]
+            },
+            {
+              "name" : "SetTypeText",
+              "source" : [{
+                "context" : "coding",
+                "element" : "display",
+                "variable" : "display"
+              }],
+              "target" : [{
+                "context" : "cc",
+                "contextType" : "variable",
+                "element" : "text",
+                "transform" : "copy",
+                "parameter" : [{
+                  "valueId" : "display"
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "AdverseEventSeverity",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "linkId = 'adverse-event-severity'"
+        }],
+        "rule" : [{
+          "name" : "SeverityAnswer",
+          "source" : [{
+            "context" : "item",
+            "element" : "answer",
+            "listMode" : "first",
+            "variable" : "answer"
+          }],
+          "rule" : [{
+            "name" : "CreateSeverityComp",
+            "source" : [{
+              "context" : "answer",
+              "element" : "value",
+              "variable" : "coding"
+            }],
+            "target" : [{
+              "context" : "obs",
+              "contextType" : "variable",
+              "element" : "component",
+              "variable" : "comp",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Observation_Component"
+              }]
+            }],
+            "rule" : [{
+              "name" : "SeverityCode",
+              "source" : [{
+                "context" : "coding"
+              }],
+              "target" : [{
+                "context" : "comp",
+                "contextType" : "variable",
+                "element" : "code",
+                "variable" : "compCode",
+                "transform" : "create",
+                "parameter" : [{
+                  "valueString" : "CodeableConcept"
+                }]
+              }],
+              "rule" : [{
+                "name" : "SeverityCodeCC",
+                "source" : [{
+                  "context" : "coding"
+                }],
+                "target" : [{
+                  "context" : "compCode",
+                  "contextType" : "variable",
+                  "element" : "coding",
+                  "variable" : "compCoding",
+                  "transform" : "create",
+                  "parameter" : [{
+                    "valueString" : "Coding"
+                  }]
+                }],
+                "rule" : [{
+                  "name" : "SeverityCodeCoding",
+                  "source" : [{
+                    "context" : "coding"
+                  }],
+                  "target" : [{
+                    "context" : "compCoding",
+                    "contextType" : "variable",
+                    "element" : "system",
+                    "transform" : "copy",
+                    "parameter" : [{
+                      "valueString" : "http://snomed.info/sct"
+                    }]
+                  },
+                  {
+                    "context" : "compCoding",
+                    "contextType" : "variable",
+                    "element" : "code",
+                    "transform" : "copy",
+                    "parameter" : [{
+                      "valueString" : "246112005"
+                    }]
+                  },
+                  {
+                    "context" : "compCoding",
+                    "contextType" : "variable",
+                    "element" : "display",
+                    "transform" : "copy",
+                    "parameter" : [{
+                      "valueString" : "Severity (attribute)"
+                    }]
+                  }]
+                }]
+              }]
+            },
+            {
+              "name" : "SeverityValue",
+              "source" : [{
+                "context" : "coding"
+              }],
+              "target" : [{
+                "context" : "comp",
+                "contextType" : "variable",
+                "element" : "value",
+                "variable" : "compVal",
+                "transform" : "create",
+                "parameter" : [{
+                  "valueString" : "CodeableConcept"
+                }]
+              }],
+              "rule" : [{
+                "name" : "SetSeverityCoding",
+                "source" : [{
+                  "context" : "coding"
+                }],
+                "target" : [{
+                  "context" : "compVal",
+                  "contextType" : "variable",
+                  "element" : "coding",
+                  "transform" : "copy",
+                  "parameter" : [{
+                    "valueId" : "coding"
+                  }]
+                }]
+              },
+              {
+                "name" : "SetSeverityText",
+                "source" : [{
+                  "context" : "coding",
+                  "element" : "display",
+                  "variable" : "display"
+                }],
+                "target" : [{
+                  "context" : "compVal",
+                  "contextType" : "variable",
+                  "element" : "text",
+                  "transform" : "copy",
+                  "parameter" : [{
+                    "valueId" : "display"
+                  }]
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "CausingImmunization",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "((linkId = 'causing-immunization') and answer.value.exists())"
+        }],
+        "rule" : [{
+          "name" : "ImmAnswer",
+          "source" : [{
+            "context" : "item",
+            "element" : "answer",
+            "listMode" : "first",
+            "variable" : "answer"
+          }],
+          "rule" : [{
+            "name" : "CreateImmRef",
+            "source" : [{
+              "context" : "answer",
+              "element" : "value",
+              "variable" : "immRef"
+            }],
+            "target" : [{
+              "context" : "obs",
+              "contextType" : "variable",
+              "element" : "focus",
+              "variable" : "ref",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Reference"
+              }]
+            }],
+            "rule" : [{
+              "name" : "SetImmReference",
+              "source" : [{
+                "context" : "immRef"
+              }],
+              "target" : [{
+                "context" : "ref",
+                "contextType" : "variable",
+                "element" : "reference",
+                "transform" : "copy",
+                "parameter" : [{
+                  "valueId" : "immRef"
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name" : "AdverseEventNotes",
+        "source" : [{
+          "context" : "src",
+          "element" : "item",
+          "variable" : "item",
+          "condition" : "((linkId = 'adverse-event-notes') and answer.value.exists())"
+        }],
+        "rule" : [{
+          "name" : "NotesAnswer",
+          "source" : [{
+            "context" : "item",
+            "element" : "answer",
+            "listMode" : "first",
+            "variable" : "answer"
+          }],
+          "rule" : [{
+            "name" : "CreateNote",
+            "source" : [{
+              "context" : "answer",
+              "element" : "value",
+              "variable" : "val"
+            }],
+            "target" : [{
+              "context" : "obs",
+              "contextType" : "variable",
+              "element" : "note",
+              "variable" : "note",
+              "transform" : "create",
+              "parameter" : [{
+                "valueString" : "Annotation"
+              }]
+            }],
+            "rule" : [{
+              "name" : "SetNoteText",
+              "source" : [{
+                "context" : "val"
+              }],
+              "target" : [{
+                "context" : "note",
+                "contextType" : "variable",
+                "element" : "text",
+                "transform" : "copy",
+                "parameter" : [{
+                  "valueId" : "val"
+                }]
+              }]
+            },
+            {
+              "name" : "SetNoteTime",
+              "source" : [{
+                "context" : "val"
+              }],
+              "target" : [{
+                "context" : "note",
+                "contextType" : "variable",
+                "element" : "time",
+                "transform" : "evaluate",
+                "parameter" : [{
+                  "valueId" : "src"
+                },
+                {
+                  "valueString" : "now()"
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  }]
+}

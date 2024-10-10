@@ -1,0 +1,21 @@
+---
+---
+<!-- get modelType -->
+{% include fragment-modelType.html id='MINSA.Immunization' %}
+
+{% include fragment-pagebegin.html %}
+
+<div style="counter-reset: section 10" class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Publish Box goes here</p><!--EndReleaseHeader-->
+  {% include fragment-profile-navtabs.html type='StructureDefinition' id='MINSA.Immunization' active='history' %}
+
+  <a name="root"> </a>
+  <h2 id="root">{{modelType}}: MINSAImmunization - Change History</h2>
+{% include fragment-simpletable.html %}
+  <p>Changes in the MINSA.Immunization {{modelType | downcase}}.</p>
+
+  {%include StructureDefinition-MINSA.Immunization-history.xhtml%}
+
+</div>
+{% assign includetabscripts = 'true' %}
+{% include fragment-pageend.html %}

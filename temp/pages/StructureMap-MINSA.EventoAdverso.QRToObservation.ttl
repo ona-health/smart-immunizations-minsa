@@ -1,0 +1,1025 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation> a fhir:StructureMap ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSA.EventoAdverso.QRToObservation"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MapaDeEstructura MINSA.EventoAdverso.QRToObservation</b></p><a name=\"MINSA.EventoAdverso.QRToObservation\"> </a><a name=\"hcMINSA.EventoAdverso.QRToObservation\"> </a><pre class=\"fml\">#xD;\n<b>map</b><span style=\"color: navy\"> \"</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation<span style=\"color: navy\">\" = \"</span>MINSA.EventoAdverso.QRToObservation<span style=\"color: navy\">\"#xD;\n#xD;\n</span><b>uses</b><span style=\"color: navy\"> \"</span><a href=\"http://hl7.org/fhir/R4/questionnaireresponse.html\" title=\"QuestionnaireResponse\">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style=\"color: navy\">\" </span><b>alias </b>QResp <b>as </b><b>source</b>#xD;\n<b>uses</b><span style=\"color: navy\"> \"</span><a href=\"http://hl7.org/fhir/R4/bundle.html\" title=\"Bundle\">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style=\"color: navy\">\" </span><b>alias </b>Bundle <b>as </b><b>target</b>#xD;\n#xD;\n<b>imports</b><span style=\"color: navy\"> \"</span><a href=\"StructureMap-MINSA.Helpers.html\" title=\"MINSA.Helpers\">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style=\"color: navy\">\"#xD;\n</span>#xD;\n<b>group </b>EventoAdverso<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> bundle.type = <span style=\"color: blue\">'collection'</span> <i>\"BundleStatic\"</i><span style=\"color: navy\">;</span>#xD;\n  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">encEntry</span><span style=\"color: navy\">, </span> encEntry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Encounter'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">encounter</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<b> then </b>ExtractEncounter<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>\"ExtractEncounter\"</i><span style=\"color: navy\">;</span>#xD;\n    src<b> then </b>ExtractObservation<span style=\"color: navy\">(</span><span style=\"color: maroon\">src</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">, </span><span style=\"color: maroon\">bundle</span><span style=\"color: navy\">)</span> <i>\"ExtractObservation\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"BundleEntries\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae el Encounter de la consulta por evento adverso</span>#xD;\n<b>group </b>ExtractEncounter<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>target</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> encounter.status = <span style=\"color: blue\">'finished'</span><span style=\"color: navy\">, </span> encounter.class = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'AMB'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'ambulatory'</span><span style=\"color: navy\">)</span> <i>\"EncounterStatic\"</i><span style=\"color: navy\">;</span>#xD;\n  src.subject<b> as </b><span style=\"color: maroon\">subject</span><span style=\"color: navy\"><b> -&gt; </b></span>encounter.subject = <span style=\"color: maroon\">subject</span> <i>\"EncounterSubject\"</i><span style=\"color: navy\">;</span>#xD;\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.type = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span> coding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> coding.code = <span style=\"color: blue\">'886921000000105'</span><span style=\"color: navy\">, </span> coding.display = <span style=\"color: blue\">'Allergies and adverse reactions'</span> <i>\"TypeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"TypeCC\"</i><span style=\"color: navy\">;</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: blue\">'Evento adverso post-vacunal'</span> <i>\"TypeText\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"EncounterType\"</i><span style=\"color: navy\">;</span>#xD;\n  src<span style=\"color: navy\"><b> -&gt; </b></span>encounter.period = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Period'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">period</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span>period.start = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>\"PeriodStart\"</i><span style=\"color: navy\">;</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span>period.end = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>\"PeriodEnd\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"EncounterPeriod\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span><span style=\"color: navy\">// </span><span style=\"color: green\">Extrae la Observation que representa el evento adverso</span>#xD;\n<b>group </b>ExtractObservation<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>QResp, <b>source</b> <span style=\"color: maroon\">encounter</span><span style=\"color: navy\"> : </span>Encounter, <b>target</b> <span style=\"color: maroon\">bundle</span><span style=\"color: navy\"> : </span>Bundle<span style=\"color: navy\">)</span><span style=\"color: navy\"> {#xD;\n</span>  src<span style=\"color: navy\"><b> -&gt; </b></span> bundle.entry<b> as </b><span style=\"color: maroon\">entry</span><span style=\"color: navy\">, </span> entry.resource = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Observation'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">obs</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>    src<span style=\"color: navy\"><b> -&gt; </b></span> obs.id = <b>uuid</b><span style=\"color: navy\">(</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> obs.status = <span style=\"color: blue\">'final'</span><span style=\"color: navy\">, </span> obs.encounter = <b>reference</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">encounter</span><span style=\"color: navy\">)</span> <i>\"ObsStatic\"</i><span style=\"color: navy\">;</span>#xD;\n    src.subject<b> as </b><span style=\"color: maroon\">subject</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.subject = <span style=\"color: maroon\">subject</span> <i>\"ObsSubject\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Categoria: reaccion adversa</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span>obs.category = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cat</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span>cat.coding = <b>c</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'http://terminology.hl7.org/CodeSystem/observation-category'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'survey'</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'Survey'</span><span style=\"color: navy\">)</span> <i>\"CatCoding\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"ObsCategory\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Codigo de la observacion: evento adverso post-vacunal (ESAVI)</span>#xD;\n    src<span style=\"color: navy\"><b> -&gt; </b></span>obs.code = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">code</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>      src<span style=\"color: navy\"><b> -&gt; </b></span>code.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">coding</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        src<span style=\"color: navy\"><b> -&gt; </b></span> coding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> coding.code = <span style=\"color: blue\">'293104008'</span><span style=\"color: navy\">, </span> coding.display = <span style=\"color: blue\">'Adverse reaction to vaccine (disorder)'</span> <i>\"CodeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"CodeCC\"</i><span style=\"color: navy\">;</span>#xD;\n      src<span style=\"color: navy\"><b> -&gt; </b></span>code.text = <span style=\"color: blue\">'Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)'</span> <i>\"CodeText\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"ObsCode\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Fecha del evento adverso</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'adverse-event-date'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.effective = <span style=\"color: maroon\">val</span> <i>\"SetEffective\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"DateAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"AdverseEventDate\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Tipo de reaccion adversa</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'adverse-event-type'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.value = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">cc</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          coding<span style=\"color: navy\"><b> -&gt; </b></span>cc.coding = <span style=\"color: maroon\">coding</span> <i>\"SetTypeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n          coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>cc.text = <span style=\"color: maroon\">display</span> <i>\"SetTypeText\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"CreateTypeCC\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"TypeAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"AdverseEventType\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Severidad del evento adverso</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>linkId = 'adverse-event-severity'<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        answer.value<b> as </b><span style=\"color: maroon\">coding</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.component = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Observation_Component'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">comp</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          coding<span style=\"color: navy\"><b> -&gt; </b></span>comp.code = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">compCode</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>            coding<span style=\"color: navy\"><b> -&gt; </b></span>compCode.coding = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Coding'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">compCoding</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>              coding<span style=\"color: navy\"><b> -&gt; </b></span> compCoding.system = <span style=\"color: blue\">'http://snomed.info/sct'</span><span style=\"color: navy\">, </span> compCoding.code = <span style=\"color: blue\">'246112005'</span><span style=\"color: navy\">, </span> compCoding.display = <span style=\"color: blue\">'Severity (attribute)'</span> <i>\"SeverityCodeCoding\"</i><span style=\"color: navy\">;</span>#xD;\n            <span style=\"color: navy\">}</span> <i>\"SeverityCodeCC\"</i><span style=\"color: navy\">;</span>#xD;\n          <span style=\"color: navy\">}</span> <i>\"SeverityCode\"</i><span style=\"color: navy\">;</span>#xD;\n          coding<span style=\"color: navy\"><b> -&gt; </b></span>comp.value = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'CodeableConcept'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">compVal</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>            coding<span style=\"color: navy\"><b> -&gt; </b></span>compVal.coding = <span style=\"color: maroon\">coding</span> <i>\"SetSeverityCoding\"</i><span style=\"color: navy\">;</span>#xD;\n            coding.display<b> as </b><span style=\"color: maroon\">display</span><span style=\"color: navy\"><b> -&gt; </b></span>compVal.text = <span style=\"color: maroon\">display</span> <i>\"SetSeverityText\"</i><span style=\"color: navy\">;</span>#xD;\n          <span style=\"color: navy\">}</span> <i>\"SeverityValue\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"CreateSeverityComp\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"SeverityAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"AdverseEventSeverity\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Referencia a la inmunizacion que causo el evento adverso</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'causing-immunization') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        answer.value<b> as </b><span style=\"color: maroon\">immRef</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.focus = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Reference'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">ref</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          immRef<span style=\"color: navy\"><b> -&gt; </b></span>ref.reference = <span style=\"color: maroon\">immRef</span> <i>\"SetImmReference\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"CreateImmRef\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"ImmAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"CausingImmunization\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">// </span><span style=\"color: green\">Notas adicionales del profesional de salud</span>#xD;\n    src.item<b> as </b><span style=\"color: maroon\">item</span><b> where </b>((linkId = 'adverse-event-notes') and answer.value.exists())<b> then</b><span style=\"color: navy\"> {#xD;\n</span>      item.answer first<b> as </b><span style=\"color: maroon\">answer</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>        answer.value<b> as </b><span style=\"color: maroon\">val</span><span style=\"color: navy\"><b> -&gt; </b></span>obs.note = <b>create</b><span style=\"color: navy\">(</span><span style=\"color: blue\">'Annotation'</span><span style=\"color: navy\">)</span><b> as </b><span style=\"color: maroon\">note</span><b> then</b><span style=\"color: navy\"> {#xD;\n</span>          val<span style=\"color: navy\"><b> -&gt; </b></span>note.text = <span style=\"color: maroon\">val</span> <i>\"SetNoteText\"</i><span style=\"color: navy\">;</span>#xD;\n          val<span style=\"color: navy\"><b> -&gt; </b></span>note.time = evaluate<span style=\"color: navy\">(</span>src<span style=\"color: navy\">, </span>now()<span style=\"color: navy\">)</span> <i>\"SetNoteTime\"</i><span style=\"color: navy\">;</span>#xD;\n        <span style=\"color: navy\">}</span> <i>\"CreateNote\"</i><span style=\"color: navy\">;</span>#xD;\n      <span style=\"color: navy\">}</span> <i>\"NotesAnswer\"</i><span style=\"color: navy\">;</span>#xD;\n    <span style=\"color: navy\">}</span> <i>\"AdverseEventNotes\"</i><span style=\"color: navy\">;</span>#xD;\n  <span style=\"color: navy\">}</span> <i>\"ObservationEntry\"</i><span style=\"color: navy\">;</span>#xD;\n<span style=\"color: navy\">}#xD;\n#xD;\n</span></pre></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSA.EventoAdverso.QRToObservation"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:structure ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse>
+     ] ;
+     fhir:mode [ fhir:v "source" ] ;
+     fhir:alias [ fhir:v "QResp" ]
+  ] [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/Bundle"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/StructureDefinition/Bundle>
+     ] ;
+     fhir:mode [ fhir:v "target" ] ;
+     fhir:alias [ fhir:v "Bundle" ]
+  ] ) ; # 
+  fhir:import ( [
+     fhir:v "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers>
+  ] ) ; # 
+  fhir:group ( [
+     fhir:name [ fhir:v "EventoAdverso" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "bundle" ] ;
+       fhir:type [ fhir:v "Bundle" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "BundleStatic" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "id" ] ;
+         fhir:transform [ fhir:v "uuid" ]
+       ] [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "type" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "collection"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "BundleEntries" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "entry" ] ;
+         fhir:variable [ fhir:v "encEntry" ]
+       ] [
+         fhir:context [ fhir:v "encEntry" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "resource" ] ;
+         fhir:variable [ fhir:v "encounter" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Encounter"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "ExtractEncounter" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:dependent ( [
+           fhir:name [ fhir:v "ExtractEncounter" ] ;
+           fhir:variable ( [ fhir:v "src" ] [ fhir:v "encounter" ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "ExtractObservation" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:dependent ( [
+           fhir:name [ fhir:v "ExtractObservation" ] ;
+           fhir:variable ( [ fhir:v "src" ] [ fhir:v "encounter" ] [ fhir:v "bundle" ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ExtractEncounter" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae el Encounter de la consulta por evento adverso" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "encounter" ] ;
+       fhir:type [ fhir:v "Encounter" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "EncounterStatic" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "id" ] ;
+         fhir:transform [ fhir:v "uuid" ]
+       ] [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "status" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "finished"
+           ]
+         ] )
+       ] [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "class" ] ;
+         fhir:transform [ fhir:v "c" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+           ]
+         ] [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "AMB"
+           ]
+         ] [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "ambulatory"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterSubject" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ] ;
+         fhir:element [ fhir:v "subject" ] ;
+         fhir:variable [ fhir:v "subject" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "subject" ] ;
+         fhir:transform [ fhir:v "copy" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:Id ;
+             fhir:v "subject"
+           ]
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterType" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "type" ] ;
+         fhir:variable [ fhir:v "cc" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "CodeableConcept"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "TypeCC" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "cc" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "coding" ] ;
+           fhir:variable [ fhir:v "coding" ] ;
+           fhir:transform [ fhir:v "create" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "Coding"
+             ]
+           ] )
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "TypeCoding" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "system" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "http://snomed.info/sct"
+               ]
+             ] )
+           ] [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "code" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "886921000000105"
+               ]
+             ] )
+           ] [
+             fhir:context [ fhir:v "coding" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "display" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Allergies and adverse reactions"
+               ]
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "TypeText" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "cc" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "text" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "Evento adverso post-vacunal"
+             ]
+           ] )
+         ] )
+       ] )
+     ] [
+       fhir:name [ fhir:v "EncounterPeriod" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "encounter" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "period" ] ;
+         fhir:variable [ fhir:v "period" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Period"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "PeriodStart" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "period" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "start" ] ;
+           fhir:transform [ fhir:v "evaluate" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "src"
+             ]
+           ] [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "now()"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "PeriodEnd" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "period" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "end" ] ;
+           fhir:transform [ fhir:v "evaluate" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "src"
+             ]
+           ] [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "now()"
+             ]
+           ] )
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:name [ fhir:v "ExtractObservation" ] ;
+     fhir:typeMode [ fhir:v "none" ] ;
+     fhir:documentation [ fhir:v "Extrae la Observation que representa el evento adverso" ] ;
+     fhir:input ( [
+       fhir:name [ fhir:v "src" ] ;
+       fhir:type [ fhir:v "QResp" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "encounter" ] ;
+       fhir:type [ fhir:v "Encounter" ] ;
+       fhir:mode [ fhir:v "source" ]
+     ] [
+       fhir:name [ fhir:v "bundle" ] ;
+       fhir:type [ fhir:v "Bundle" ] ;
+       fhir:mode [ fhir:v "target" ]
+     ] ) ;
+     fhir:rule ( [
+       fhir:name [ fhir:v "ObservationEntry" ] ;
+       fhir:source ( [
+         fhir:context [ fhir:v "src" ]
+       ] ) ;
+       fhir:target ( [
+         fhir:context [ fhir:v "bundle" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "entry" ] ;
+         fhir:variable [ fhir:v "entry" ]
+       ] [
+         fhir:context [ fhir:v "entry" ] ;
+         fhir:contextType [ fhir:v "variable" ] ;
+         fhir:element [ fhir:v "resource" ] ;
+         fhir:variable [ fhir:v "obs" ] ;
+         fhir:transform [ fhir:v "create" ] ;
+         fhir:parameter ( [
+           fhir:value [
+             a fhir:String ;
+             fhir:v "Observation"
+           ]
+         ] )
+       ] ) ;
+       fhir:rule ( [
+         fhir:name [ fhir:v "ObsStatic" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "id" ] ;
+           fhir:transform [ fhir:v "uuid" ]
+         ] [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "status" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "final"
+             ]
+           ] )
+         ] [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "encounter" ] ;
+           fhir:transform [ fhir:v "reference" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "encounter"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "ObsSubject" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "subject" ] ;
+           fhir:variable [ fhir:v "subject" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "subject" ] ;
+           fhir:transform [ fhir:v "copy" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:Id ;
+               fhir:v "subject"
+             ]
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "ObsCategory" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "category" ] ;
+           fhir:variable [ fhir:v "cat" ] ;
+           fhir:transform [ fhir:v "create" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "CodeableConcept"
+             ]
+           ] )
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CatCoding" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "cat" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "coding" ] ;
+             fhir:transform [ fhir:v "c" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "http://terminology.hl7.org/CodeSystem/observation-category"
+               ]
+             ] [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "survey"
+               ]
+             ] [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Survey"
+               ]
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "ObsCode" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ]
+         ] ) ;
+         fhir:target ( [
+           fhir:context [ fhir:v "obs" ] ;
+           fhir:contextType [ fhir:v "variable" ] ;
+           fhir:element [ fhir:v "code" ] ;
+           fhir:variable [ fhir:v "code" ] ;
+           fhir:transform [ fhir:v "create" ] ;
+           fhir:parameter ( [
+             fhir:value [
+               a fhir:String ;
+               fhir:v "CodeableConcept"
+             ]
+           ] )
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "CodeCC" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "code" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "coding" ] ;
+             fhir:variable [ fhir:v "coding" ] ;
+             fhir:transform [ fhir:v "create" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Coding"
+               ]
+             ] )
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "CodeCoding" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "src" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "coding" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "system" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "http://snomed.info/sct"
+                 ]
+               ] )
+             ] [
+               fhir:context [ fhir:v "coding" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "code" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "293104008"
+                 ]
+               ] )
+             ] [
+               fhir:context [ fhir:v "coding" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "display" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Adverse reaction to vaccine (disorder)"
+                 ]
+               ] )
+             ] )
+           ] )
+         ] [
+           fhir:name [ fhir:v "CodeText" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "src" ]
+           ] ) ;
+           fhir:target ( [
+             fhir:context [ fhir:v "code" ] ;
+             fhir:contextType [ fhir:v "variable" ] ;
+             fhir:element [ fhir:v "text" ] ;
+             fhir:transform [ fhir:v "copy" ] ;
+             fhir:parameter ( [
+               fhir:value [
+                 a fhir:String ;
+                 fhir:v "Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)"
+               ]
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "AdverseEventDate" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "linkId = 'adverse-event-date'" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "DateAnswer" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "item" ] ;
+             fhir:element [ fhir:v "answer" ] ;
+             fhir:listMode [ fhir:v "first" ] ;
+             fhir:variable [ fhir:v "answer" ]
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "SetEffective" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "answer" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:variable [ fhir:v "val" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "obs" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "effective" ] ;
+               fhir:transform [ fhir:v "copy" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:Id ;
+                   fhir:v "val"
+                 ]
+               ] )
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "AdverseEventType" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "linkId = 'adverse-event-type'" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "TypeAnswer" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "item" ] ;
+             fhir:element [ fhir:v "answer" ] ;
+             fhir:listMode [ fhir:v "first" ] ;
+             fhir:variable [ fhir:v "answer" ]
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "CreateTypeCC" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "answer" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:variable [ fhir:v "coding" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "obs" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:variable [ fhir:v "cc" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "CodeableConcept"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "SetTypeCoding" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "coding" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "cc" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "coding" ] ;
+                 fhir:transform [ fhir:v "copy" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "coding"
+                   ]
+                 ] )
+               ] )
+             ] [
+               fhir:name [ fhir:v "SetTypeText" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "coding" ] ;
+                 fhir:element [ fhir:v "display" ] ;
+                 fhir:variable [ fhir:v "display" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "cc" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "text" ] ;
+                 fhir:transform [ fhir:v "copy" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "display"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "AdverseEventSeverity" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "linkId = 'adverse-event-severity'" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "SeverityAnswer" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "item" ] ;
+             fhir:element [ fhir:v "answer" ] ;
+             fhir:listMode [ fhir:v "first" ] ;
+             fhir:variable [ fhir:v "answer" ]
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "CreateSeverityComp" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "answer" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:variable [ fhir:v "coding" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "obs" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "component" ] ;
+               fhir:variable [ fhir:v "comp" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Observation_Component"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "SeverityCode" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "coding" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "comp" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "code" ] ;
+                 fhir:variable [ fhir:v "compCode" ] ;
+                 fhir:transform [ fhir:v "create" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "CodeableConcept"
+                   ]
+                 ] )
+               ] ) ;
+               fhir:rule ( [
+                 fhir:name [ fhir:v "SeverityCodeCC" ] ;
+                 fhir:source ( [
+                   fhir:context [ fhir:v "coding" ]
+                 ] ) ;
+                 fhir:target ( [
+                   fhir:context [ fhir:v "compCode" ] ;
+                   fhir:contextType [ fhir:v "variable" ] ;
+                   fhir:element [ fhir:v "coding" ] ;
+                   fhir:variable [ fhir:v "compCoding" ] ;
+                   fhir:transform [ fhir:v "create" ] ;
+                   fhir:parameter ( [
+                     fhir:value [
+                       a fhir:String ;
+                       fhir:v "Coding"
+                     ]
+                   ] )
+                 ] ) ;
+                 fhir:rule ( [
+                   fhir:name [ fhir:v "SeverityCodeCoding" ] ;
+                   fhir:source ( [
+                     fhir:context [ fhir:v "coding" ]
+                   ] ) ;
+                   fhir:target ( [
+                     fhir:context [ fhir:v "compCoding" ] ;
+                     fhir:contextType [ fhir:v "variable" ] ;
+                     fhir:element [ fhir:v "system" ] ;
+                     fhir:transform [ fhir:v "copy" ] ;
+                     fhir:parameter ( [
+                       fhir:value [
+                         a fhir:String ;
+                         fhir:v "http://snomed.info/sct"
+                       ]
+                     ] )
+                   ] [
+                     fhir:context [ fhir:v "compCoding" ] ;
+                     fhir:contextType [ fhir:v "variable" ] ;
+                     fhir:element [ fhir:v "code" ] ;
+                     fhir:transform [ fhir:v "copy" ] ;
+                     fhir:parameter ( [
+                       fhir:value [
+                         a fhir:String ;
+                         fhir:v "246112005"
+                       ]
+                     ] )
+                   ] [
+                     fhir:context [ fhir:v "compCoding" ] ;
+                     fhir:contextType [ fhir:v "variable" ] ;
+                     fhir:element [ fhir:v "display" ] ;
+                     fhir:transform [ fhir:v "copy" ] ;
+                     fhir:parameter ( [
+                       fhir:value [
+                         a fhir:String ;
+                         fhir:v "Severity (attribute)"
+                       ]
+                     ] )
+                   ] )
+                 ] )
+               ] )
+             ] [
+               fhir:name [ fhir:v "SeverityValue" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "coding" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "comp" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "value" ] ;
+                 fhir:variable [ fhir:v "compVal" ] ;
+                 fhir:transform [ fhir:v "create" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "CodeableConcept"
+                   ]
+                 ] )
+               ] ) ;
+               fhir:rule ( [
+                 fhir:name [ fhir:v "SetSeverityCoding" ] ;
+                 fhir:source ( [
+                   fhir:context [ fhir:v "coding" ]
+                 ] ) ;
+                 fhir:target ( [
+                   fhir:context [ fhir:v "compVal" ] ;
+                   fhir:contextType [ fhir:v "variable" ] ;
+                   fhir:element [ fhir:v "coding" ] ;
+                   fhir:transform [ fhir:v "copy" ] ;
+                   fhir:parameter ( [
+                     fhir:value [
+                       a fhir:Id ;
+                       fhir:v "coding"
+                     ]
+                   ] )
+                 ] )
+               ] [
+                 fhir:name [ fhir:v "SetSeverityText" ] ;
+                 fhir:source ( [
+                   fhir:context [ fhir:v "coding" ] ;
+                   fhir:element [ fhir:v "display" ] ;
+                   fhir:variable [ fhir:v "display" ]
+                 ] ) ;
+                 fhir:target ( [
+                   fhir:context [ fhir:v "compVal" ] ;
+                   fhir:contextType [ fhir:v "variable" ] ;
+                   fhir:element [ fhir:v "text" ] ;
+                   fhir:transform [ fhir:v "copy" ] ;
+                   fhir:parameter ( [
+                     fhir:value [
+                       a fhir:Id ;
+                       fhir:v "display"
+                     ]
+                   ] )
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "CausingImmunization" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "((linkId = 'causing-immunization') and answer.value.exists())" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "ImmAnswer" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "item" ] ;
+             fhir:element [ fhir:v "answer" ] ;
+             fhir:listMode [ fhir:v "first" ] ;
+             fhir:variable [ fhir:v "answer" ]
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "CreateImmRef" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "answer" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:variable [ fhir:v "immRef" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "obs" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "focus" ] ;
+               fhir:variable [ fhir:v "ref" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Reference"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "SetImmReference" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "immRef" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "ref" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "reference" ] ;
+                 fhir:transform [ fhir:v "copy" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "immRef"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] [
+         fhir:name [ fhir:v "AdverseEventNotes" ] ;
+         fhir:source ( [
+           fhir:context [ fhir:v "src" ] ;
+           fhir:element [ fhir:v "item" ] ;
+           fhir:variable [ fhir:v "item" ] ;
+           fhir:condition [ fhir:v "((linkId = 'adverse-event-notes') and answer.value.exists())" ]
+         ] ) ;
+         fhir:rule ( [
+           fhir:name [ fhir:v "NotesAnswer" ] ;
+           fhir:source ( [
+             fhir:context [ fhir:v "item" ] ;
+             fhir:element [ fhir:v "answer" ] ;
+             fhir:listMode [ fhir:v "first" ] ;
+             fhir:variable [ fhir:v "answer" ]
+           ] ) ;
+           fhir:rule ( [
+             fhir:name [ fhir:v "CreateNote" ] ;
+             fhir:source ( [
+               fhir:context [ fhir:v "answer" ] ;
+               fhir:element [ fhir:v "value" ] ;
+               fhir:variable [ fhir:v "val" ]
+             ] ) ;
+             fhir:target ( [
+               fhir:context [ fhir:v "obs" ] ;
+               fhir:contextType [ fhir:v "variable" ] ;
+               fhir:element [ fhir:v "note" ] ;
+               fhir:variable [ fhir:v "note" ] ;
+               fhir:transform [ fhir:v "create" ] ;
+               fhir:parameter ( [
+                 fhir:value [
+                   a fhir:String ;
+                   fhir:v "Annotation"
+                 ]
+               ] )
+             ] ) ;
+             fhir:rule ( [
+               fhir:name [ fhir:v "SetNoteText" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "val" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "note" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "text" ] ;
+                 fhir:transform [ fhir:v "copy" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "val"
+                   ]
+                 ] )
+               ] )
+             ] [
+               fhir:name [ fhir:v "SetNoteTime" ] ;
+               fhir:source ( [
+                 fhir:context [ fhir:v "val" ]
+               ] ) ;
+               fhir:target ( [
+                 fhir:context [ fhir:v "note" ] ;
+                 fhir:contextType [ fhir:v "variable" ] ;
+                 fhir:element [ fhir:v "time" ] ;
+                 fhir:transform [ fhir:v "evaluate" ] ;
+                 fhir:parameter ( [
+                   fhir:value [
+                     a fhir:Id ;
+                     fhir:v "src"
+                   ]
+                 ] [
+                   fhir:value [
+                     a fhir:String ;
+                     fhir:v "now()"
+                   ]
+                 ] )
+               ] )
+             ] )
+           ] )
+         ] )
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,88 @@
+# minsa.gob.pe.immunizations#1.0.0: Guía de Implementación de Inmunizaciones MINSA Perú
+
+## Pages
+
+* [Inicio](index.md)
+* [Artifacts Summary](artifacts.md)
+* [Escenarios de Uso](scenarios.md)
+* [Procesos de Negocio](business-processes.md)
+* [Requisitos No Funcionales](non-functional-requirements.md)
+* [Lógica de Decisión](decision-logic.md)
+* [Indicadores y Medidas](indicators-measures.md)
+* [Cambios](changes.md)
+* [Licencia](license.md)
+* [Transacciones](transactions.md)
+* [Requisitos Funcionales](functional-requirements.md)
+* [Personas](personas.md)
+* [Diagramas de Secuencia](sequence-diagrams.md)
+* [Adaptación para Perú](adapting.md)
+* [Descargas](downloads.md)
+* [Indicadores y Métricas](indicators.md)
+* [Conceptos](concepts.md)
+* [Actores del Sistema](system-actors.md)
+* [Diccionario de Datos](dictionary.md)
+* [Requisitos de Negocio](business-requirements.md)
+* [Despliegue](deployment.md)
+* [Pruebas](testing.md)
+* [Datos de Prueba](test-data.md)
+* [Referencias](references.md)
+* [Seguridad y Privacidad](security-privacy.md)
+* [Dependencias](dependencies.md)
+* [Codificaciones](codings.md)
+* [Modelos de Datos e Intercambio](data-models-and-exchange.md)
+
+## Resources
+
+### CodeSystems
+
+* [Sistema de Códigos MINSA para Inmunizaciones](CodeSystem-MINSA.md)
+* [Tipos de Documento de Identidad - Perú](CodeSystem-MINSAIdentifierTypes.md)
+
+### ValueSets
+
+* [Números de Dosis del Esquema de Vacunación - MINSA](ValueSet-MINSADoseNumberVS.md)
+* [Tipos de Documento de Identidad - MINSA](ValueSet-MINSAIdentifierTypeVS.md)
+* [Razones de No Administración de Vacuna - MINSA](ValueSet-MINSAImmunizationReasonNotGivenVS.md)
+* [Vacunas del Esquema Nacional de Vacunación MINSA](ValueSet-MINSAVaccineVS.md)
+
+### Resource Profiles
+
+* [Inmunización MINSA Perú](StructureDefinition-MINSA.Immunization.md)
+* [Paciente MINSA Perú](StructureDefinition-MINSA.Patient.md)
+* [Cuidador MINSA Perú](StructureDefinition-MINSA.RelatedPerson.md)
+
+### Extensions
+
+* [Departamento del Perú](StructureDefinition-MINSADepartamento.md)
+* [Distrito del Perú](StructureDefinition-MINSADistrito.md)
+* [Provincia del Perú](StructureDefinition-MINSAProvincia.md)
+
+### ImplementationGuides
+
+* [Guía de Implementación de Inmunizaciones MINSA Perú](index.md)
+
+### PlanDefinitions
+
+* [MINSA - Vacunacion BCG](PlanDefinition-MINSABCGVacunacion.md)
+* [Esquema Nacional de Vacunacion - MINSA Peru](PlanDefinition-MINSAEsquemaVacunacion.md)
+* [MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)](PlanDefinition-MINSAHPVVacunacion.md)
+* [MINSA - Vacunacion contra Neumococo (PCV)](PlanDefinition-MINSANeumococoVacunacion.md)
+* [MINSA - Vacunacion Pentavalente (DPT-HepB-Hib)](PlanDefinition-MINSAPentavalenteVacunacion.md)
+* [MINSA - Vacunacion contra Poliomielitis (IPV/APO)](PlanDefinition-MINSAPolioVacunacion.md)
+* [MINSA - Vacunacion contra Rotavirus](PlanDefinition-MINSARotavirusVacunacion.md)
+* [MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)](PlanDefinition-MINSASPRVacunacion.md)
+
+### Questionnaires
+
+* [MINSA - Eliminar Paciente](Questionnaire-MINSAQEliminarPaciente.md)
+* [MINSA - Registro de Evento Adverso](Questionnaire-MINSAQRegistroEventoAdverso.md)
+* [MINSA - Registro de Paciente](Questionnaire-MINSAQRegistroPaciente.md)
+* [MINSA - Registro de Vacunación](Questionnaire-MINSAQRegistroVacuna.md)
+* [MINSA - Silenciar Paciente](Questionnaire-MINSAQSilenciarPaciente.md)
+
+### StructureMaps
+
+* [MINSA.EventoAdverso.QRToObservation](StructureMap-MINSA.EventoAdverso.QRToObservation.md)
+* [MINSA.Helpers](StructureMap-MINSA.Helpers.md)
+* [MINSA.RegistroPaciente.QRToPatient](StructureMap-MINSA.RegistroPaciente.QRToPatient.md)
+* [MINSA.RegistroVacuna.QRToImmunization](StructureMap-MINSA.RegistroVacuna.QRToImmunization.md)

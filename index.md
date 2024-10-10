@@ -1,0 +1,1456 @@
+# Inicio - Guía de Implementación de Inmunizaciones MINSA Perú v1.0.0
+
+* [**Table of Contents**](toc.md)
+* **Inicio**
+
+## Inicio
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://minsa.gob.pe/immunizations/ImplementationGuide/minsa.gob.pe.immunizations | *Version*:1.0.0 |
+| Draft as of 2024-10-10 | *Computable Name*:InmunizacionesMINSA |
+
+Esta Guía de Implementación (GI) del MINSA Perú para Inmunizaciones detalla cómo utilizar Health Level 7 (HL7) Fast Healthcare Interoperability Resources (FHIR) para la representación digital consistente de los servicios de inmunización en el Perú.
+
+ Esta guía de implementación y conjunto de artefactos se encuentran en desarrollo activo. 
+
+ El contenido es para fines de demostración. 
+
+### Resumen
+
+Esta guía de implementación es una adaptación país de la [Guía de Implementación SMART de la OMS para Inmunizaciones](https://smart.who.int/ig/smart-immunizations/) para el contexto del Perú, alineada con la Estrategia Sanitaria Nacional de Inmunizaciones (ESNI) del Ministerio de Salud (MINSA).
+
+Incluye una representación legible por máquina de las normas peruanas de inmunización, basada en la Norma Técnica de Salud (NTS) que establece el Esquema Nacional de Vacunación, y codifica de manera explícita la lógica computacional, incluyendo modelos de datos, terminologías y expresiones lógicas en un lenguaje computable para apoyar la implementación de los casos de uso de inmunización por parte del MINSA y las Direcciones Regionales de Salud (DIRESA/GERESA).
+
+La guía forma parte del enfoque [SMART Guidelines de la OMS](https://www.who.int/teams/digital-health-and-innovation/smart-guidelines) para apoyar a los países en la integración de las recomendaciones globales de salud y datos en los sistemas digitales de manera precisa y consistente. Define una serie de Recursos FHIR, Perfiles, Extensiones y Terminología basados en el [Kit de Adaptación Digital (DAK) de la OMS para Inmunizaciones](https://www.who.int/publications/i/item/9789240099456), adaptados al esquema de vacunación peruano.
+
+### Antígenos cubiertos
+
+El esquema nacional de vacunación del Perú incluye los siguientes antígenos, los cuales son abordados en esta guía de implementación:
+
+| | | |
+| :--- | :--- | :--- |
+| Tuberculosis | BCG | Recién nacido |
+| Hepatitis B | HvB (dosis neonatal) | Recién nacido (primeras 24 horas) |
+| Poliomielitis | IPV / bOPV | 2, 4, 6 meses y refuerzos |
+| Difteria, Tétanos, Pertussis | Pentavalente (DPT-HB-Hib) | 2, 4, 6 meses |
+| Haemophilus influenzae tipo b | Pentavalente | 2, 4, 6 meses |
+| Rotavirus | Rotavirus | 2 y 4 meses |
+| Neumococo | PCV | 2, 4 meses y refuerzo 12 meses |
+| Sarampión, Paperas, Rubéola | SPR | 12 meses y 18 meses |
+| Varicela | Varicela | 12 meses |
+| Fiebre Amarilla | FA | 15 meses |
+| Hepatitis A | HA | 15 meses |
+| Difteria, Pertussis, Tétanos (refuerzo) | DPT | 18 meses y 4 años |
+| Virus del Papiloma Humano | VPH | Niñas de 9 a 13 años |
+| Influenza | Influenza estacional | 6 meses a 2 años, gestantes, adultos mayores |
+| Difteria, Tétanos (adulto) | dT | Gestantes, MEF, adultos |
+
+### Acerca de esta guía de implementación
+
+Esta guía de implementación está organizada en los siguientes niveles de [representación del conocimiento](https://hl7.org/fhir/uv/cpg/documentation-approach-06-01-levels-of-knowledge-representation.html):
+
+* [Inicio](index.md) - contiene referencias a la normativa, directrices, políticas y recomendaciones que sustentan esta guía de implementación.
+* [Requisitos del Negocio](business-requirements.md) - contiene los requisitos de esta guía incluyendo la definición de conceptos clave, casos de uso y diccionario de datos.
+* [Modelos de Datos e Intercambio](data-models-and-exchange.md) - contiene los modelos de datos y protocolos de intercambio con actores y transacciones definidas.
+* [Guía de Despliegue](deployment.md) - contiene las especificaciones técnicas relevantes, recursos de prueba, materiales de implementación de referencia y orientación para la adaptación a contextos locales.
+
+### Instituciones clave
+
+| | |
+| :--- | :--- |
+| MINSA | Ministerio de Salud - Ente rector de la política nacional de salud |
+| ESNI | Estrategia Sanitaria Nacional de Inmunizaciones - Coordinación del programa de vacunación |
+| DIRESA/GERESA | Direcciones/Gerencias Regionales de Salud - Implementación regional |
+| RENIEC | Registro Nacional de Identificación y Estado Civil - Identificación del paciente |
+| SIS | Seguro Integral de Salud - Aseguramiento en salud |
+| INS | Instituto Nacional de Salud - Vigilancia epidemiológica |
+| DIGEMID | Dirección General de Medicamentos, Insumos y Drogas - Regulación de vacunas |
+
+### Descargo de responsabilidad
+
+La especificación aquí documentada es una especificación de trabajo en desarrollo y no debe ser utilizada para propósitos de implementación en producción sin la validación correspondiente. Este borrador se proporciona sin garantía de completitud o consistencia y la publicación oficial reemplaza a este borrador.
+
+This publication includes IP covered under the following statements.
+
+* ISO maintains the copyright on the country codes, and controls its use carefully. For further details see the ISO 3166 web page: [https://www.iso.org/iso-3166-country-codes.html](https://www.iso.org/iso-3166-country-codes.html)
+
+* [ISO 3166-1 Codes for the representation of names of countries and their subdivisions — Part 1: Country code](http://terminology.hl7.org/6.1.0/CodeSystem-ISO3166Part1.html): [InmunizacionesMINSA](index.md), [MINSA](CodeSystem-MINSA.md)... Show 28 more, [MINSA.EventoAdverso.QRToObservation](StructureMap-MINSA.EventoAdverso.QRToObservation.md), [MINSA.Helpers](StructureMap-MINSA.Helpers.md), [MINSA.RegistroPaciente.QRToPatient](StructureMap-MINSA.RegistroPaciente.QRToPatient.md), [MINSA.RegistroVacuna.QRToImmunization](StructureMap-MINSA.RegistroVacuna.QRToImmunization.md), [MINSABCGVacunacion](PlanDefinition-MINSABCGVacunacion.md), [MINSADepartamento](StructureDefinition-MINSADepartamento.md), [MINSADistrito](StructureDefinition-MINSADistrito.md), [MINSADoseNumberVS](ValueSet-MINSADoseNumberVS.md), [MINSAEsquemaVacunacion](PlanDefinition-MINSAEsquemaVacunacion.md), [MINSAHPVVacunacion](PlanDefinition-MINSAHPVVacunacion.md), [MINSAIdentifierTypeVS](ValueSet-MINSAIdentifierTypeVS.md), [MINSAIdentifierTypes](CodeSystem-MINSAIdentifierTypes.md), [MINSAImmunization](StructureDefinition-MINSA.Immunization.md), [MINSAImmunizationReasonNotGivenVS](ValueSet-MINSAImmunizationReasonNotGivenVS.md), [MINSANeumococoVacunacion](PlanDefinition-MINSANeumococoVacunacion.md), [MINSAPatient](StructureDefinition-MINSA.Patient.md), [MINSAPentavalenteVacunacion](PlanDefinition-MINSAPentavalenteVacunacion.md), [MINSAPolioVacunacion](PlanDefinition-MINSAPolioVacunacion.md), [MINSAProvincia](StructureDefinition-MINSAProvincia.md), [MINSARelatedPerson](StructureDefinition-MINSA.RelatedPerson.md), [MINSARotavirusVacunacion](PlanDefinition-MINSARotavirusVacunacion.md), [MINSASPRVacunacion](PlanDefinition-MINSASPRVacunacion.md), [MINSAVaccineVS](ValueSet-MINSAVaccineVS.md), [Questionnaire/MINSAQEliminarPaciente](Questionnaire-MINSAQEliminarPaciente.md), [Questionnaire/MINSAQRegistroEventoAdverso](Questionnaire-MINSAQRegistroEventoAdverso.md), [Questionnaire/MINSAQRegistroPaciente](Questionnaire-MINSAQRegistroPaciente.md), [Questionnaire/MINSAQRegistroVacuna](Questionnaire-MINSAQRegistroVacuna.md) and [Questionnaire/MINSAQSilenciarPaciente](Questionnaire-MINSAQSilenciarPaciente.md)
+
+
+* This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
+
+* [PlanDefinitionType](http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html): [MINSABCGVacunacion](PlanDefinition-MINSABCGVacunacion.md), [MINSAEsquemaVacunacion](PlanDefinition-MINSAEsquemaVacunacion.md)... Show 6 more, [MINSAHPVVacunacion](PlanDefinition-MINSAHPVVacunacion.md), [MINSANeumococoVacunacion](PlanDefinition-MINSANeumococoVacunacion.md), [MINSAPentavalenteVacunacion](PlanDefinition-MINSAPentavalenteVacunacion.md), [MINSAPolioVacunacion](PlanDefinition-MINSAPolioVacunacion.md), [MINSARotavirusVacunacion](PlanDefinition-MINSARotavirusVacunacion.md) and [MINSASPRVacunacion](PlanDefinition-MINSASPRVacunacion.md)
+* [contactRole2](http://terminology.hl7.org/7.1.0/CodeSystem-v2-0131.html): [MINSARelatedPerson](StructureDefinition-MINSA.RelatedPerson.md)
+* [RoleCode](http://terminology.hl7.org/7.1.0/CodeSystem-v3-RoleCode.html): [MINSARelatedPerson](StructureDefinition-MINSA.RelatedPerson.md)
+
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "ImplementationGuide",
+  "id" : "minsa.gob.pe.immunizations",
+  "meta" : {
+    "profile" : ["SMARTImplementationGuide"]
+  },
+  "url" : "http://minsa.gob.pe/immunizations/ImplementationGuide/minsa.gob.pe.immunizations",
+  "version" : "1.0.0",
+  "name" : "InmunizacionesMINSA",
+  "title" : "Guía de Implementación de Inmunizaciones MINSA Perú",
+  "status" : "draft",
+  "date" : "2024-10-10",
+  "publisher" : "MINSA - Ministerio de Salud del Perú",
+  "contact" : [{
+    "name" : "MINSA - Ministerio de Salud del Perú",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.gob.pe/minsa"
+    }]
+  }],
+  "description" : "Guía de Implementación de Inmunizaciones para el Ministerio de Salud del Perú (MINSA), adaptada de las Directrices SMART de la OMS.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "PE",
+      "display" : "Peru"
+    }]
+  }],
+  "packageId" : "minsa.gob.pe.immunizations",
+  "license" : "CC0-1.0",
+  "fhirVersion" : ["4.0.1"],
+  "dependsOn" : [{
+    "id" : "hl7tx",
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
+    }],
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology.r4",
+    "version" : "7.1.0"
+  },
+  {
+    "id" : "smart_who_int_immunizations",
+    "uri" : "http://smart.who.int/immunizations/ImplementationGuide/smart.who.int.immunizations",
+    "packageId" : "smart.who.int.immunizations",
+    "version" : "current"
+  },
+  {
+    "id" : "smart_who_int_base",
+    "uri" : "http://smart.who.int/base/ImplementationGuide/smart.who.int.base",
+    "packageId" : "smart.who.int.base",
+    "version" : "current"
+  },
+  {
+    "id" : "hl7_fhir_uv_extensions_r4",
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "5.1.0"
+  },
+  {
+    "id" : "hl7_fhir_uv_cql",
+    "uri" : "http://hl7.org/fhir/uv/cql/ImplementationGuide/hl7.fhir.uv.cql",
+    "packageId" : "hl7.fhir.uv.cql",
+    "version" : "1.0.0"
+  },
+  {
+    "id" : "hl7_fhir_uv_crmi",
+    "uri" : "http://hl7.org/fhir/uv/crmi/ImplementationGuide/hl7.fhir.uv.crmi",
+    "packageId" : "hl7.fhir.uv.crmi",
+    "version" : "1.0.0"
+  },
+  {
+    "id" : "hl7_fhir_uv_sdc",
+    "uri" : "http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc",
+    "packageId" : "hl7.fhir.uv.sdc",
+    "version" : "3.0.0"
+  },
+  {
+    "id" : "hl7_fhir_uv_cpg",
+    "uri" : "http://hl7.org/fhir/uv/cpg/ImplementationGuide/hl7.fhir.uv.cpg",
+    "packageId" : "hl7.fhir.uv.cpg",
+    "version" : "current"
+  }],
+  "definition" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "copyrightyear"
+      },
+      {
+        "url" : "value",
+        "valueString" : "2024+"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "produce-jekyll-data"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-binary"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/cql"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://smart.who.int/immunizations"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-qa"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/qa"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-temp"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/pages"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-output"
+      },
+      {
+        "url" : "value",
+        "valueString" : "output"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-history"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://minsa.gob.pe/immunizations/history.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "template-html"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "template-md"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page-md.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-contact"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-context"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-copyright"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-jurisdiction"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-license"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-publisher"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "active-tables"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "fmm-definition"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "propagate-status"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "excludelogbinaryformat"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "tabbed-snapshots"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+      "valueCode" : "hl7.fhir.uv.tools.r4#0.9.0"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "copyrightyear"
+      },
+      {
+        "url" : "value",
+        "valueString" : "2024+"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "produce-jekyll-data"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-binary"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/cql"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://smart.who.int/immunizations"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-qa"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/qa"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-temp"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/pages"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-output"
+      },
+      {
+        "url" : "value",
+        "valueString" : "output"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-history"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://minsa.gob.pe/immunizations/history.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "template-html"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "template-md"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page-md.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-contact"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-context"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-copyright"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-jurisdiction"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-license"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-publisher"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "active-tables"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "fmm-definition"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "propagate-status"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "excludelogbinaryformat"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "tabbed-snapshots"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    }],
+    "resource" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/MINSA.RelatedPerson"
+      },
+      "name" : "Cuidador MINSA Perú",
+      "description" : "Perfil de Persona Relacionada (cuidador) para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZCaregiver de las Directrices SMART de la OMS con identificación peruana.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/MINSADepartamento"
+      },
+      "name" : "Departamento del Perú",
+      "description" : "División administrativa de primer nivel del Perú (Departamento) donde reside el paciente.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/MINSADistrito"
+      },
+      "name" : "Distrito del Perú",
+      "description" : "División administrativa de tercer nivel del Perú (Distrito) donde reside el paciente.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSAEsquemaVacunacion"
+      },
+      "name" : "Esquema Nacional de Vacunacion - MINSA Peru",
+      "description" : "Esquema Nacional de Vacunacion del Ministerio de Salud del Peru (MINSA).\nDefine el calendario de inmunizaciones para ninos desde el nacimiento hasta los 13 anos\nsegun la Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/MINSA.Immunization"
+      },
+      "name" : "Inmunización MINSA Perú",
+      "description" : "Perfil de Inmunización para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZImmunization de las Directrices SMART de la OMS con el esquema nacional de vacunación.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Questionnaire"
+      }],
+      "reference" : {
+        "reference" : "Questionnaire/MINSAQEliminarPaciente"
+      },
+      "name" : "MINSA - Eliminar Paciente",
+      "description" : "Cuestionario para eliminar (dar de baja) a un paciente del registro de inmunizaciones. Se utiliza cuando el paciente se ha mudado, ha fallecido, tiene registro duplicado u otra razón.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Questionnaire"
+      }],
+      "reference" : {
+        "reference" : "Questionnaire/MINSAQRegistroEventoAdverso"
+      },
+      "name" : "MINSA - Registro de Evento Adverso",
+      "description" : "Cuestionario para registrar un evento adverso supuestamente atribuible a la vacunación o inmunización (ESAVI). Adaptado del cuestionario MINSA EIR record_adverse_event.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Questionnaire"
+      }],
+      "reference" : {
+        "reference" : "Questionnaire/MINSAQRegistroPaciente"
+      },
+      "name" : "MINSA - Registro de Paciente",
+      "description" : "Cuestionario para el registro de pacientes (niños) en el programa de inmunizaciones del MINSA Perú. Incluye datos del cuidador, datos del niño, ubicación geográfica y seguro SIS.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Questionnaire"
+      }],
+      "reference" : {
+        "reference" : "Questionnaire/MINSAQRegistroVacuna"
+      },
+      "name" : "MINSA - Registro de Vacunación",
+      "description" : "Cuestionario para registrar la administración de una vacuna individual. Adaptado del cuestionario MINSA EIR record_child_immunization.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Questionnaire"
+      }],
+      "reference" : {
+        "reference" : "Questionnaire/MINSAQSilenciarPaciente"
+      },
+      "name" : "MINSA - Silenciar Paciente",
+      "description" : "Cuestionario para silenciar un paciente, desactivando los recordatorios de vacunación. Se utiliza cuando el paciente se ha mudado, fue transferido o se perdió el seguimiento.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSABCGVacunacion"
+      },
+      "name" : "MINSA - Vacunacion BCG",
+      "description" : "Logica de decision para la vacunacion BCG segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna BCG se administra en dosis unica al recien nacido, preferiblemente dentro de las\nprimeras 24 horas de vida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSANeumococoVacunacion"
+      },
+      "name" : "MINSA - Vacunacion contra Neumococo (PCV)",
+      "description" : "Logica de decision para la vacunacion antineumococica conjugada segun el Esquema Nacional de\nVacunacion del Peru. Esquema 2+1: dos dosis primarias a los 2 y 4 meses de edad, con una\ndosis de refuerzo a los 12 meses.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSAPolioVacunacion"
+      },
+      "name" : "MINSA - Vacunacion contra Poliomielitis (IPV/APO)",
+      "description" : "Logica de decision para la vacunacion contra Poliomielitis segun el Esquema Nacional de Vacunacion\ndel Peru. Esquema secuencial: IPV (inyectable) a los 2 y 4 meses, APO (oral) a los 6 y 18 meses,\ny refuerzo con APO a los 4 anos de edad.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSARotavirusVacunacion"
+      },
+      "name" : "MINSA - Vacunacion contra Rotavirus",
+      "description" : "Logica de decision para la vacunacion contra Rotavirus segun el Esquema Nacional de Vacunacion\ndel Peru. Se administran 2 dosis a los 2 y 4 meses de edad. La primera dosis no debe\nadministrarse despues de las 15 semanas de vida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSAHPVVacunacion"
+      },
+      "name" : "MINSA - Vacunacion contra VPH (Virus del Papiloma Humano)",
+      "description" : "Logica de decision para la vacunacion contra el Virus del Papiloma Humano (VPH) segun el\nEsquema Nacional de Vacunacion del Peru. Se administran 2 dosis a ninas de 9 a 13 anos\nde edad, con un intervalo de 6 meses entre dosis.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSAPentavalenteVacunacion"
+      },
+      "name" : "MINSA - Vacunacion Pentavalente (DPT-HepB-Hib)",
+      "description" : "Logica de decision para la vacunacion Pentavalente segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna Pentavalente (DPT-HepB-Hib) se administra en 3 dosis a los 2, 4 y 6 meses de edad,\ncon un intervalo minimo de 8 semanas entre dosis.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/MINSASPRVacunacion"
+      },
+      "name" : "MINSA - Vacunacion SPR (Sarampion-Paperas-Rubeola)",
+      "description" : "Logica de decision para la vacunacion SPR (Sarampion, Paperas, Rubeola) segun el Esquema\nNacional de Vacunacion del Peru. Se administra la primera dosis a los 12 meses de edad\ny una dosis de refuerzo a los 18 meses.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/MINSADoseNumberVS"
+      },
+      "name" : "Números de Dosis del Esquema de Vacunación - MINSA",
+      "description" : "Conjunto de valores para los números de dosis utilizados en el esquema nacional de vacunación del Perú",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/MINSA.Patient"
+      },
+      "name" : "Paciente MINSA Perú",
+      "description" : "Perfil de Paciente para el programa de inmunizaciones del Ministerio de Salud del Perú (MINSA). Extiende el perfil IMMZPatient de las Directrices SMART de la OMS con identificadores y divisiones administrativas peruanas.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/MINSAProvincia"
+      },
+      "name" : "Provincia del Perú",
+      "description" : "División administrativa de segundo nivel del Perú (Provincia) donde reside el paciente.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/MINSAImmunizationReasonNotGivenVS"
+      },
+      "name" : "Razones de No Administración de Vacuna - MINSA",
+      "description" : "Conjunto de valores para las razones por las cuales una vacuna no fue administrada, según el Registro Electrónico de Inmunizaciones de MINSA",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/MINSA"
+      },
+      "name" : "Sistema de Códigos MINSA para Inmunizaciones",
+      "description" : "Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/MINSAIdentifierTypeVS"
+      },
+      "name" : "Tipos de Documento de Identidad - MINSA",
+      "description" : "Conjunto de valores para los tipos de documento de identidad utilizados en el sistema de inmunizaciones del Perú",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/MINSAIdentifierTypes"
+      },
+      "name" : "Tipos de Documento de Identidad - Perú",
+      "description" : "Tipos de documento de identidad utilizados en el sistema de salud del Perú",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/MINSAVaccineVS"
+      },
+      "name" : "Vacunas del Esquema Nacional de Vacunación MINSA",
+      "description" : "Conjunto de valores para las vacunas utilizadas en el esquema nacional de vacunación del Perú, incluyendo códigos MINSA y referencias a códigos WHO",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureMap"
+      }],
+      "reference" : {
+        "reference" : "StructureMap/MINSA.EventoAdverso.QRToObservation"
+      },
+      "name" : "MINSA.EventoAdverso.QRToObservation"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureMap"
+      }],
+      "reference" : {
+        "reference" : "StructureMap/MINSA.Helpers"
+      },
+      "name" : "MINSA.Helpers"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureMap"
+      }],
+      "reference" : {
+        "reference" : "StructureMap/MINSA.RegistroPaciente.QRToPatient"
+      },
+      "name" : "MINSA.RegistroPaciente.QRToPatient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureMap"
+      }],
+      "reference" : {
+        "reference" : "StructureMap/MINSA.RegistroVacuna.QRToImmunization"
+      },
+      "name" : "MINSA.RegistroVacuna.QRToImmunization"
+    }],
+    "page" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+        "valueUrl" : "toc.html"
+      }],
+      "nameUrl" : "toc.html",
+      "title" : "Table of Contents",
+      "generation" : "html",
+      "page" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "index.html"
+        }],
+        "nameUrl" : "index.html",
+        "title" : "Inicio",
+        "generation" : "markdown",
+        "page" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "changes.html"
+          }],
+          "nameUrl" : "changes.html",
+          "title" : "Cambios",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "dependencies.html"
+          }],
+          "nameUrl" : "dependencies.html",
+          "title" : "Dependencias",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "references.html"
+          }],
+          "nameUrl" : "references.html",
+          "title" : "Referencias",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "adapting.html"
+          }],
+          "nameUrl" : "adapting.html",
+          "title" : "Adaptación para Perú",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "license.html"
+          }],
+          "nameUrl" : "license.html",
+          "title" : "Licencia",
+          "generation" : "markdown"
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "business-requirements.html"
+        }],
+        "nameUrl" : "business-requirements.html",
+        "title" : "Requisitos de Negocio",
+        "generation" : "markdown",
+        "page" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "concepts.html"
+          }],
+          "nameUrl" : "concepts.html",
+          "title" : "Conceptos",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "personas.html"
+          }],
+          "nameUrl" : "personas.html",
+          "title" : "Personas",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "scenarios.html"
+          }],
+          "nameUrl" : "scenarios.html",
+          "title" : "Escenarios de Uso",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "business-processes.html"
+          }],
+          "nameUrl" : "business-processes.html",
+          "title" : "Procesos de Negocio",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "dictionary.html"
+          }],
+          "nameUrl" : "dictionary.html",
+          "title" : "Diccionario de Datos",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "decision-logic.html"
+          }],
+          "nameUrl" : "decision-logic.html",
+          "title" : "Lógica de Decisión",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "indicators.html"
+          }],
+          "nameUrl" : "indicators.html",
+          "title" : "Indicadores y Métricas",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "functional-requirements.html"
+          }],
+          "nameUrl" : "functional-requirements.html",
+          "title" : "Requisitos Funcionales",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "non-functional-requirements.html"
+          }],
+          "nameUrl" : "non-functional-requirements.html",
+          "title" : "Requisitos No Funcionales",
+          "generation" : "markdown"
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "data-models-and-exchange.html"
+        }],
+        "nameUrl" : "data-models-and-exchange.html",
+        "title" : "Modelos de Datos e Intercambio",
+        "generation" : "markdown",
+        "page" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "system-actors.html"
+          }],
+          "nameUrl" : "system-actors.html",
+          "title" : "Actores del Sistema",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "sequence-diagrams.html"
+          }],
+          "nameUrl" : "sequence-diagrams.html",
+          "title" : "Diagramas de Secuencia",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "transactions.html"
+          }],
+          "nameUrl" : "transactions.html",
+          "title" : "Transacciones",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "indicators-measures.html"
+          }],
+          "nameUrl" : "indicators-measures.html",
+          "title" : "Indicadores y Medidas",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "codings.html"
+          }],
+          "nameUrl" : "codings.html",
+          "title" : "Codificaciones",
+          "generation" : "markdown"
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "deployment.html"
+        }],
+        "nameUrl" : "deployment.html",
+        "title" : "Despliegue",
+        "generation" : "markdown",
+        "page" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "security-privacy.html"
+          }],
+          "nameUrl" : "security-privacy.html",
+          "title" : "Seguridad y Privacidad",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "testing.html"
+          }],
+          "nameUrl" : "testing.html",
+          "title" : "Pruebas",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "test-data.html"
+          }],
+          "nameUrl" : "test-data.html",
+          "title" : "Datos de Prueba",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "downloads.html"
+          }],
+          "nameUrl" : "downloads.html",
+          "title" : "Descargas",
+          "generation" : "markdown"
+        }]
+      }]
+    },
+    "parameter" : [{
+      "code" : "path-resource",
+      "value" : "input/maps"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "input/cql"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/capabilities"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/examples"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/extensions"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/models"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/operations"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/profiles"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/resources"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/vocabulary"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/testing"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/history"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "fsh-generated/resources"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "template/config"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "input/images"
+    },
+    {
+      "code" : "path-tx-cache",
+      "value" : "input-cache/txcache"
+    }]
+  }
+}
+
+```

@@ -1,0 +1,205 @@
+[{
+  "id" : "MINSA",
+  "type" : "CodeSystem",
+  "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSA",
+  "version" : "1.0.0",
+  "name" : "MINSA"
+},
+{
+  "id" : "MINSAIdentifierTypes",
+  "type" : "CodeSystem",
+  "url" : "http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes",
+  "version" : "1.0.0",
+  "name" : "MINSAIdentifierTypes"
+},
+{
+  "id" : "minsa.gob.pe.immunizations",
+  "type" : "ImplementationGuide",
+  "url" : "http://minsa.gob.pe/immunizations/ImplementationGuide/minsa.gob.pe.immunizations",
+  "version" : "1.0.0",
+  "name" : "InmunizacionesMINSA"
+},
+{
+  "id" : "MINSABCGVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSABCGVacunacion"
+},
+{
+  "id" : "MINSAEsquemaVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAEsquemaVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSAEsquemaVacunacion"
+},
+{
+  "id" : "MINSAHPVVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAHPVVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSAHPVVacunacion"
+},
+{
+  "id" : "MINSANeumococoVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSANeumococoVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSANeumococoVacunacion"
+},
+{
+  "id" : "MINSAPentavalenteVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAPentavalenteVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSAPentavalenteVacunacion"
+},
+{
+  "id" : "MINSAPolioVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSAPolioVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSAPolioVacunacion"
+},
+{
+  "id" : "MINSARotavirusVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSARotavirusVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSARotavirusVacunacion"
+},
+{
+  "id" : "MINSASPRVacunacion",
+  "type" : "PlanDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/PlanDefinition/MINSASPRVacunacion",
+  "version" : "1.0.0",
+  "name" : "MINSASPRVacunacion"
+},
+{
+  "id" : "MINSAQEliminarPaciente",
+  "type" : "Questionnaire",
+  "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQEliminarPaciente",
+  "version" : "1.0.0"
+},
+{
+  "id" : "MINSAQRegistroEventoAdverso",
+  "type" : "Questionnaire",
+  "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroEventoAdverso",
+  "version" : "1.0.0"
+},
+{
+  "id" : "MINSAQRegistroPaciente",
+  "type" : "Questionnaire",
+  "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroPaciente",
+  "version" : "1.0.0"
+},
+{
+  "id" : "MINSAQRegistroVacuna",
+  "type" : "Questionnaire",
+  "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroVacuna",
+  "version" : "1.0.0"
+},
+{
+  "id" : "MINSAQSilenciarPaciente",
+  "type" : "Questionnaire",
+  "url" : "http://minsa.gob.pe/immunizations/Questionnaire/MINSAQSilenciarPaciente",
+  "version" : "1.0.0"
+},
+{
+  "id" : "MINSA.Immunization",
+  "type" : "StructureDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.Immunization",
+  "version" : "1.0.0",
+  "name" : "MINSAImmunization"
+},
+{
+  "id" : "MINSA.Patient",
+  "type" : "StructureDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.Patient",
+  "version" : "1.0.0",
+  "name" : "MINSAPatient"
+},
+{
+  "id" : "MINSA.RelatedPerson",
+  "type" : "StructureDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSA.RelatedPerson",
+  "version" : "1.0.0",
+  "name" : "MINSARelatedPerson"
+},
+{
+  "id" : "MINSADepartamento",
+  "type" : "StructureDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento",
+  "version" : "1.0.0",
+  "name" : "MINSADepartamento"
+},
+{
+  "id" : "MINSADistrito",
+  "type" : "StructureDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito",
+  "version" : "1.0.0",
+  "name" : "MINSADistrito"
+},
+{
+  "id" : "MINSAProvincia",
+  "type" : "StructureDefinition",
+  "url" : "http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia",
+  "version" : "1.0.0",
+  "name" : "MINSAProvincia"
+},
+{
+  "id" : "MINSA.EventoAdverso.QRToObservation",
+  "type" : "StructureMap",
+  "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation",
+  "version" : "1.0.0",
+  "name" : "MINSA.EventoAdverso.QRToObservation"
+},
+{
+  "id" : "MINSA.Helpers",
+  "type" : "StructureMap",
+  "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers",
+  "version" : "1.0.0",
+  "name" : "MINSA.Helpers"
+},
+{
+  "id" : "MINSA.RegistroPaciente.QRToPatient",
+  "type" : "StructureMap",
+  "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroPaciente.QRToPatient",
+  "version" : "1.0.0",
+  "name" : "MINSA.RegistroPaciente.QRToPatient"
+},
+{
+  "id" : "MINSA.RegistroVacuna.QRToImmunization",
+  "type" : "StructureMap",
+  "url" : "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization",
+  "version" : "1.0.0",
+  "name" : "MINSA.RegistroVacuna.QRToImmunization"
+},
+{
+  "id" : "MINSADoseNumberVS",
+  "type" : "ValueSet",
+  "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS",
+  "version" : "1.0.0",
+  "name" : "MINSADoseNumberVS"
+},
+{
+  "id" : "MINSAIdentifierTypeVS",
+  "type" : "ValueSet",
+  "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS",
+  "version" : "1.0.0",
+  "name" : "MINSAIdentifierTypeVS"
+},
+{
+  "id" : "MINSAImmunizationReasonNotGivenVS",
+  "type" : "ValueSet",
+  "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS",
+  "version" : "1.0.0",
+  "name" : "MINSAImmunizationReasonNotGivenVS"
+},
+{
+  "id" : "MINSAVaccineVS",
+  "type" : "ValueSet",
+  "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAVaccineVS",
+  "version" : "1.0.0",
+  "name" : "MINSAVaccineVS"
+}]

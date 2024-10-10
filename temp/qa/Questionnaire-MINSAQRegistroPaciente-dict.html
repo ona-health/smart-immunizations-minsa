@@ -1,0 +1,234 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Questionnaire-MINSAQRegistroPaciente-dict</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+<div data-fhir="generated"><p class="res-header-id"></p>
+<div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: es</p><p style="margin-bottom: 0px">Profile: <a href="http://hl7.org/fhir/uv/sdc/STU3/StructureDefinition-sdc-questionnaire-extr-smap.html">Extractable Questionnaire - StructureMap</a></p></div>
+<table class="dict" data-fhir="generated"><tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="MINSAQRegistroPaciente"> </a><img src="icon_q_root.gif" alt="icon"/> Questionnaire <b>MINSAQRegistroPaciente</b></span></td></tr>
+<tr><td>URL</td>
+<td>http://minsa.gob.pe/immunizations/Questionnaire/MINSAQRegistroPaciente</td></tr>
+<tr><td>Version</td>
+<td>1.0.0</td></tr>
+<tr><td>Title</td>
+<td>MINSA - Registro de Paciente</td></tr>
+<tr><td>Status</td>
+<td>draft</td></tr>
+<tr><td>Publication Date</td>
+<td>2024-10-10</td></tr>
+<tr><td>Subject Type</td>
+<td>Patient</td></tr>
+<tr><td>Description</td>
+<td>Cuestionario para el registro de pacientes (niños) en el programa de inmunizaciones del MINSA Perú. Incluye datos del cuidador, datos del niño, ubicación geográfica y seguro SIS.</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.es-edicion-perfil"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>es-edicion-perfil</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>es-edicion-perfil</td></tr>
+<tr><td>Text</td>
+<td>Es edición de perfil</td></tr>
+<tr><td>Type</td>
+<td>boolean</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Read Only</td>
+<td>true</td></tr>
+<tr><td><a href="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">Hidden Item</a></td>
+<td>This item is a hidden question</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.grupo-cuidador"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>grupo-cuidador</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>grupo-cuidador</td></tr>
+<tr><td>Text</td>
+<td>Datos del cuidador</td></tr>
+<tr><td>Type</td>
+<td>group</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Repeats</td>
+<td>false</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.cuidador-nombre"> </a><a href="#item.grupo-cuidador"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>cuidador-nombre</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>cuidador-nombre</td></tr>
+<tr><td>Text</td>
+<td>Nombre del cuidador</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.cuidador-apellido"> </a><a href="#item.grupo-cuidador"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>cuidador-apellido</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>cuidador-apellido</td></tr>
+<tr><td>Text</td>
+<td>Apellido del cuidador</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.cuidador-dni"> </a><a href="#item.grupo-cuidador"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>cuidador-dni</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>cuidador-dni</td></tr>
+<tr><td>Text</td>
+<td>DNI del cuidador</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.cuidador-telefono"> </a><a href="#item.grupo-cuidador"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>cuidador-telefono</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>cuidador-telefono</td></tr>
+<tr><td>Text</td>
+<td>Teléfono del cuidador</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.cuidador-relacion"> </a><a href="#item.grupo-cuidador"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>cuidador-relacion</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>cuidador-relacion</td></tr>
+<tr><td>Text</td>
+<td>Relación con el niño</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: madre (Madre)</li><li>[not stated]: padre (Padre)</li><li>[not stated]: abuelo-a (Abuelo/a)</li><li>[not stated]: hermano-a (Hermano/a)</li><li>[not stated]: tio-a (Tío/a)</li><li>[not stated]: otro (Otro)</li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.grupo-nino"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>grupo-nino</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>grupo-nino</td></tr>
+<tr><td>Text</td>
+<td>Datos del niño</td></tr>
+<tr><td>Type</td>
+<td>group</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Repeats</td>
+<td>false</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-nombre"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-nombre</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-nombre</td></tr>
+<tr><td>Text</td>
+<td>Nombre del niño</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-apellido"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-apellido</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-apellido</td></tr>
+<tr><td>Text</td>
+<td>Apellido del niño</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-fecha-nacimiento"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-fecha-nacimiento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-fecha-nacimiento</td></tr>
+<tr><td>Text</td>
+<td>Fecha de nacimiento</td></tr>
+<tr><td>Type</td>
+<td>date</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-sexo"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-sexo</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-sexo</td></tr>
+<tr><td>Text</td>
+<td>Sexo</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li><a href="http://hl7.org/fhir/R4/codesystem-administrative-gender.html#administrative-gender-male">AdministrativeGender: male</a> (Masculino)</li><li><a href="http://hl7.org/fhir/R4/codesystem-administrative-gender.html#administrative-gender-female">AdministrativeGender: female</a> (Femenino)</li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-tipo-documento"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-tipo-documento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-tipo-documento</td></tr>
+<tr><td>Text</td>
+<td>Tipo de documento</td></tr>
+<tr><td>Type</td>
+<td>coding</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Allowed Answers</td>
+<td><ul><li>[not stated]: dni (DNI)</li><li>[not stated]: cnv (Certificado de Nacido Vivo (CNV))</li></ul></td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-numero-documento"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-numero-documento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-numero-documento</td></tr>
+<tr><td>Text</td>
+<td>Número de documento (DNI o CNV)</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.nino-edad-calculada"> </a><a href="#item.grupo-nino"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>nino-edad-calculada</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>nino-edad-calculada</td></tr>
+<tr><td>Text</td>
+<td>Edad calculada</td></tr>
+<tr><td>Type</td>
+<td>integer</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr>
+<tr><td>Read Only</td>
+<td>true</td></tr>
+<tr><td><a href="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">Hidden Item</a></td>
+<td>This item is a hidden question</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.grupo-ubicacion"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>grupo-ubicacion</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>grupo-ubicacion</td></tr>
+<tr><td>Text</td>
+<td>Ubicación geográfica</td></tr>
+<tr><td>Type</td>
+<td>group</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td>Repeats</td>
+<td>false</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.ubicacion-departamento"> </a><a href="#item.grupo-ubicacion"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>ubicacion-departamento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>ubicacion-departamento</td></tr>
+<tr><td>Text</td>
+<td>Departamento</td></tr>
+<tr><td>Type</td>
+<td>reference</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.ubicacion-provincia"> </a><a href="#item.grupo-ubicacion"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>ubicacion-provincia</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>ubicacion-provincia</td></tr>
+<tr><td>Text</td>
+<td>Provincia</td></tr>
+<tr><td>Type</td>
+<td>reference</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.ubicacion-distrito"> </a><a href="#item.grupo-ubicacion"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>ubicacion-distrito</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>ubicacion-distrito</td></tr>
+<tr><td>Text</td>
+<td>Distrito</td></tr>
+<tr><td>Type</td>
+<td>reference</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.ubicacion-establecimiento"> </a><a href="#item.grupo-ubicacion"><img src="icon_q_item.png" alt="icon"/></a> &gt; <img src="icon_q_item.png" alt="icon"/> Item <b>ubicacion-establecimiento</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>ubicacion-establecimiento</td></tr>
+<tr><td>Text</td>
+<td>Establecimiento de salud</td></tr>
+<tr><td>Type</td>
+<td>reference</td></tr>
+<tr><td>Required</td>
+<td>true</td></tr>
+<tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="item.numero-sis"> </a><img src="icon_q_item.png" alt="icon"/> Item <b>numero-sis</b></span></td></tr>
+<tr><td>Link Id</td>
+<td>numero-sis</td></tr>
+<tr><td>Text</td>
+<td>Número del Seguro Integral de Salud (SIS)</td></tr>
+<tr><td>Type</td>
+<td>string</td></tr>
+<tr><td>Required</td>
+<td>false</td></tr></table></div></body>
+</html>

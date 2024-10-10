@@ -1,0 +1,365 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "name": "http://www.w3.org/2000/01/rdf-schema#label",
+    "fhir": "https://smart.who.int/base/DataTypes.jsonld#",
+    "id": "@id",
+    "generatedAt": {
+      "@id": "http://www.w3.org/ns/prov#generatedAtTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+  },
+  "@id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld",
+  "@type": "http://www.w3.org/ns/prov#Entity",
+  "generatedAt": "2026-03-16T16:34:32.174066Z",
+  "@graph": [
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-BCG",
+      "name": "BCG",
+      "fhir:code": "VAC-BCG",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-OPV",
+      "name": "APO - Antipolio Oral",
+      "fhir:code": "VAC-OPV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-IPV",
+      "name": "APV - Antipolio Inactivada",
+      "fhir:code": "VAC-IPV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-PENTA",
+      "name": "Pentavalente",
+      "fhir:code": "VAC-PENTA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-ROTA",
+      "name": "Rotavirus",
+      "fhir:code": "VAC-ROTA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-PCV",
+      "name": "Neumococo",
+      "fhir:code": "VAC-PCV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-SPR",
+      "name": "SPR",
+      "fhir:code": "VAC-SPR",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-HPV",
+      "name": "VPH",
+      "fhir:code": "VAC-HPV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-DT",
+      "name": "DT Pediátrico",
+      "fhir:code": "VAC-DT",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-INF",
+      "name": "Influenza",
+      "fhir:code": "VAC-INF",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-HEPB",
+      "name": "Hepatitis B",
+      "fhir:code": "VAC-HEPB",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-AMA",
+      "name": "Antiamarílica",
+      "fhir:code": "VAC-AMA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DOSE-BIRTH",
+      "name": "Dosis de recién nacido",
+      "fhir:code": "DOSE-BIRTH",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DOSE-1",
+      "name": "1ra dosis",
+      "fhir:code": "DOSE-1",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DOSE-2",
+      "name": "2da dosis",
+      "fhir:code": "DOSE-2",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DOSE-3",
+      "name": "3ra dosis",
+      "fhir:code": "DOSE-3",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DOSE-R1",
+      "name": "1er refuerzo",
+      "fhir:code": "DOSE-R1",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DOSE-R2",
+      "name": "2do refuerzo",
+      "fhir:code": "DOSE-R2",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#ROUTE-ID",
+      "name": "Intradérmica",
+      "fhir:code": "ROUTE-ID",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#ROUTE-SC",
+      "name": "Subcutánea",
+      "fhir:code": "ROUTE-SC",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#ROUTE-IM",
+      "name": "Intramuscular",
+      "fhir:code": "ROUTE-IM",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#ROUTE-VO",
+      "name": "Vía oral",
+      "fhir:code": "ROUTE-VO",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-IMMUNITY",
+      "name": "Inmunidad",
+      "fhir:code": "NOREASON-IMMUNITY",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-STOCKOUT",
+      "name": "Desabastecimiento",
+      "fhir:code": "NOREASON-STOCKOUT",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-PRECAUTION",
+      "name": "Precaución médica",
+      "fhir:code": "NOREASON-PRECAUTION",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-EXPIRED",
+      "name": "Producto vencido",
+      "fhir:code": "NOREASON-EXPIRED",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-CLIENT",
+      "name": "Rechazo del cliente",
+      "fhir:code": "NOREASON-CLIENT",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-CAREGIVER",
+      "name": "Rechazo del cuidador",
+      "fhir:code": "NOREASON-CAREGIVER",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-ABSENT",
+      "name": "Niño no presente",
+      "fhir:code": "NOREASON-ABSENT",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-SICK",
+      "name": "Niño enfermo",
+      "fhir:code": "NOREASON-SICK",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-AGE",
+      "name": "Fuera de rango de edad",
+      "fhir:code": "NOREASON-AGE",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-CONTRA",
+      "name": "Contraindicado",
+      "fhir:code": "NOREASON-CONTRA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-TIME",
+      "name": "Sin tiempo",
+      "fhir:code": "NOREASON-TIME",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#NOREASON-OTHER",
+      "name": "Otro",
+      "fhir:code": "NOREASON-OTHER",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-BCG",
+      "name": "BCG",
+      "fhir:code": "VAC-BCG",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-OPV",
+      "name": "APO - Antipolio Oral",
+      "fhir:code": "VAC-OPV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-IPV",
+      "name": "APV - Antipolio Inactivada",
+      "fhir:code": "VAC-IPV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-PENTA",
+      "name": "Pentavalente",
+      "fhir:code": "VAC-PENTA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-ROTA",
+      "name": "Rotavirus",
+      "fhir:code": "VAC-ROTA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-PCV",
+      "name": "Neumococo",
+      "fhir:code": "VAC-PCV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-SPR",
+      "name": "SPR",
+      "fhir:code": "VAC-SPR",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-HPV",
+      "name": "VPH",
+      "fhir:code": "VAC-HPV",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-DT",
+      "name": "DT Pediátrico",
+      "fhir:code": "VAC-DT",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-INF",
+      "name": "Influenza",
+      "fhir:code": "VAC-INF",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-HEPB",
+      "name": "Hepatitis B",
+      "fhir:code": "VAC-HEPB",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#VAC-AMA",
+      "name": "Antiamarílica",
+      "fhir:code": "VAC-AMA",
+      "fhir:CodeSystem": "http://minsa.gob.pe/immunizations/CodeSystem-MINSA"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE1",
+      "name": "BCG vaccines",
+      "fhir:code": "DE1",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE30",
+      "name": "Oral polio vaccines",
+      "fhir:code": "DE30",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE31",
+      "name": "Inactivated polio vaccines",
+      "fhir:code": "DE31",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE29",
+      "name": "Pentavalent vaccines",
+      "fhir:code": "DE29",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE16",
+      "name": "Rotavirus vaccines",
+      "fhir:code": "DE16",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE13",
+      "name": "Pneumococcal vaccines",
+      "fhir:code": "DE13",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE9",
+      "name": "Measles-containing vaccines",
+      "fhir:code": "DE9",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE7",
+      "name": "HPV vaccines",
+      "fhir:code": "DE7",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE33",
+      "name": "Tetanus and diphtheria-containing vaccines (DT)",
+      "fhir:code": "DE33",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE18",
+      "name": "Seasonal influenza vaccines",
+      "fhir:code": "DE18",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE6",
+      "name": "Hepatitis B-containing vaccines",
+      "fhir:code": "DE6",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    },
+    {
+      "id": "http://minsa.gob.pe/immunizations/ValueSet-MINSAVaccineVS.jsonld#DE23",
+      "name": "Yellow fever vaccines",
+      "fhir:code": "DE23",
+      "fhir:CodeSystem": "http://smart.who.int/immunizations/CodeSystem-IMMZ.Z"
+    }
+  ]
+}

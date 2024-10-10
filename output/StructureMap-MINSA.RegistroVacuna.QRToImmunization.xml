@@ -1,0 +1,1409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="MINSA.RegistroVacuna.QRToImmunization"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: MapaDeEstructura MINSA.RegistroVacuna.QRToImmunization</b></p><a name="MINSA.RegistroVacuna.QRToImmunization"> </a><a name="hcMINSA.RegistroVacuna.QRToImmunization"> </a><pre class="fml">
+<b>map</b><span style="color: navy"> &quot;</span>http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization<span style="color: navy">&quot; = &quot;</span>MINSA.RegistroVacuna.QRToImmunization<span style="color: navy">&quot;
+
+</span><b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="QuestionnaireResponse">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a><span style="color: navy">&quot; </span><b>alias </b>QResp <b>as </b><b>source</b>
+<b>uses</b><span style="color: navy"> &quot;</span><a href="http://hl7.org/fhir/R4/bundle.html" title="Bundle">http://hl7.org/fhir/StructureDefinition/Bundle</a><span style="color: navy">&quot; </span><b>alias </b>Bundle <b>as </b><b>target</b>
+
+<b>imports</b><span style="color: navy"> &quot;</span><a href="StructureMap-MINSA.Helpers.html" title="MINSA.Helpers">http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers</a><span style="color: navy">&quot;
+</span>
+<b>group </b>RegistroVacuna<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> bundle.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> bundle.type = <span style="color: blue">'collection'</span> <i>&quot;BundleStatic&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span><b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">encounter</span><b> then</b><span style="color: navy"> {
+</span>    src<b> then </b>ExtractEncounter<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;ExtractEncounter&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Solo crear Immunization si la vacuna fue administrada</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))<b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Immunization'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">immunization</span><b> then</b><span style="color: navy"> {
+</span>        src<b> then </b>ExtractImmunization<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">immunization</span><span style="color: navy">)</span> <i>&quot;ExtractImmunization&quot;</i><span style="color: navy">;</span>
+        src<b> then </b>ExtractTaskCompleted<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">encounter</span><span style="color: navy">, </span><span style="color: maroon">immunization</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>&quot;ExtractTask&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;ImmunizationEntry&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;VaccineGiven&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">// </span><span style="color: green">Si la vacuna no fue administrada, marcar tarea como fallida</span>
+    src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'vaccine-administered') and (answer.value.code = 'no'))<b> then</b><span style="color: navy"> {
+</span>      src<b> then </b>ExtractTaskFailed<span style="color: navy">(</span><span style="color: maroon">src</span><span style="color: navy">, </span><span style="color: maroon">bundle</span><span style="color: navy">)</span> <i>&quot;ExtractTaskFailed&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;VaccineNotGiven&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <span style="color: maroon">encounter</span> <i>&quot;EncounterEntry&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;CreateEncounter&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso Encounter para la visita de vacunacion</span>
+<b>group </b>ExtractEncounter<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> encounter.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> encounter.status = <span style="color: blue">'finished'</span><span style="color: navy">, </span> encounter.class = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://terminology.hl7.org/CodeSystem/v3-ActCode'</span><span style="color: navy">, </span><span style="color: blue">'AMB'</span><span style="color: navy">, </span><span style="color: blue">'ambulatory'</span><span style="color: navy">)</span> <i>&quot;EncounterStatic&quot;</i><span style="color: navy">;</span>
+  src.subject<b> as </b><span style="color: maroon">subject</span><span style="color: navy"><b> -&gt; </b></span>encounter.subject = <span style="color: maroon">subject</span> <i>&quot;EncounterSubject&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Coding'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">coding</span><b> then</b><span style="color: navy"> {
+</span>      src<span style="color: navy"><b> -&gt; </b></span> coding.system = <span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span> coding.code = <span style="color: blue">'33879002'</span><span style="color: navy">, </span> coding.display = <span style="color: blue">'Administration of vaccine to produce active immunity (procedure)'</span> <i>&quot;TypeCoding&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;TypeCC&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: blue">'Vacunacion'</span> <i>&quot;TypeText&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterType&quot;</i><span style="color: navy">;</span>
+  src<span style="color: navy"><b> -&gt; </b></span>encounter.period = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Period'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">period</span><b> then</b><span style="color: navy"> {
+</span>    src<span style="color: navy"><b> -&gt; </b></span>period.start = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;PeriodStart&quot;</i><span style="color: navy">;</span>
+    src<span style="color: navy"><b> -&gt; </b></span>period.end = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span> <i>&quot;PeriodEnd&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterPeriod&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Ubicacion del encuentro (establecimiento de salud)</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'location-id') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">locId</span><span style="color: navy"><b> -&gt; </b></span>encounter.location = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Encounter_Location'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">loc</span><b> then</b><span style="color: navy"> {
+</span>        locId<span style="color: navy"><b> -&gt; </b></span>loc.location = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          locId<span style="color: navy"><b> -&gt; </b></span>ref.reference = evaluate<span style="color: navy">(</span>locId<span style="color: navy">, </span>'Location/' + $this<span style="color: navy">)</span> <i>&quot;LocReference&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;LocRef&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateLoc&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;LocAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;EncounterLocation&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Extrae el recurso Immunization con datos de la vacuna administrada</span>
+<b>group </b>ExtractImmunization<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>target</b> <span style="color: maroon">immunization</span><span style="color: navy"> : </span>Immunization<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src<span style="color: navy"><b> -&gt; </b></span> immunization.id = <b>uuid</b><span style="color: navy">(</span><span style="color: navy">)</span><span style="color: navy">, </span> immunization.status = <span style="color: blue">'completed'</span><span style="color: navy">, </span> immunization.recorded = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>now()<span style="color: navy">)</span><span style="color: navy">, </span> immunization.patient = evaluate<span style="color: navy">(</span>src<span style="color: navy">, </span>subject<span style="color: navy">)</span><span style="color: navy">, </span> immunization.encounter = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;ImmunizationStatic&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Codigo de vacuna (del esquema nacional MINSA)</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'vaccine-code'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>immunization.vaccineCode = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>        coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>&quot;SetVaccineCoding&quot;</i><span style="color: navy">;</span>
+        coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>&quot;SetVaccineText&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateVaccineCC&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;VaccineCodeAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;VaccineCode&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Fecha de administracion</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'vaccination-date'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span> <b>create</b><span style="color: navy">(</span><span style="color: blue">'dateTime'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">dt</span><span style="color: navy">, </span> dt.value = <span style="color: maroon">val</span><span style="color: navy">, </span> immunization.occurrence = <span style="color: maroon">dt</span> <i>&quot;SetOccurrence&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;VaccineDateAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;VaccinationDate&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Numero de lote</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'lot-number'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>immunization.lotNumber = <span style="color: maroon">val</span> <i>&quot;SetLotNumber&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;LotAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;LotNumber&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Fecha de vencimiento del lote</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'expiration-date'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>immunization.expirationDate = <span style="color: maroon">val</span> <i>&quot;SetExpirationDate&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;ExpirationAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;ExpirationDate&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Numero de dosis y protocolo aplicado</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'dose-number'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">val</span><span style="color: navy"><b> -&gt; </b></span>immunization.protocolApplied = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Immunization_AppliedProtocol'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">protocol</span><b> then</b><span style="color: navy"> {
+</span>        val<span style="color: navy"><b> -&gt; </b></span>protocol.doseNumber = <span style="color: maroon">val</span> <i>&quot;SetDoseNumber&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateProtocol&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;DoseAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;DoseNumber&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Via de administracion</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>linkId = 'route'<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">coding</span><span style="color: navy"><b> -&gt; </b></span>immunization.route = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>        coding<span style="color: navy"><b> -&gt; </b></span>cc.coding = <span style="color: maroon">coding</span> <i>&quot;SetRouteCoding&quot;</i><span style="color: navy">;</span>
+        coding.display<b> as </b><span style="color: maroon">display</span><span style="color: navy"><b> -&gt; </b></span>cc.text = <span style="color: maroon">display</span> <i>&quot;SetRouteText&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateRouteCC&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;RouteAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;Route&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">// </span><span style="color: green">Establecimiento de salud (como performer)</span>
+  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'performer-organization') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">orgRef</span><span style="color: navy"><b> -&gt; </b></span>immunization.performer = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Immunization_Performer'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">performer</span><b> then</b><span style="color: navy"> {
+</span>        orgRef<span style="color: navy"><b> -&gt; </b></span>performer.actor = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Reference'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">ref</span><b> then</b><span style="color: navy"> {
+</span>          orgRef<span style="color: navy"><b> -&gt; </b></span>ref.reference = evaluate<span style="color: navy">(</span>orgRef<span style="color: navy">, </span>'Organization/' + $this<span style="color: navy">)</span> <i>&quot;SetOrgRef&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;CreateOrgRef&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreatePerformer&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;OrgAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;PerformerOrg&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un Task con estado completado, vinculado al Encounter e Immunization</span>
+<b>group </b>ExtractTaskCompleted<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>source</b> <span style="color: maroon">encounter</span><span style="color: navy"> : </span>Encounter, <b>source</b> <span style="color: maroon">immunization</span><span style="color: navy"> : </span>Immunization, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">taskId</span><span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">task</span><b> then</b><span style="color: navy"> {
+</span>        taskId<span style="color: navy"><b> -&gt; </b></span> task.id = <b>create</b><span style="color: navy">(</span><span style="color: blue">'id'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><span style="color: navy">, </span> id.value = <span style="color: maroon">taskId</span> <i>&quot;SetTaskId&quot;</i><span style="color: navy">;</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.status = <span style="color: blue">'completed'</span> <i>&quot;TaskCompleted&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">// </span><span style="color: green">Referencia al Encounter</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.output = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task_Output'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">outputEnc</span><b> then</b><span style="color: navy"> {
+</span>          taskId<span style="color: navy"><b> -&gt; </b></span>outputEnc.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>            taskId<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span><span style="color: blue">'41000179103'</span><span style="color: navy">, </span><span style="color: blue">'Immunization record (record artifact)'</span><span style="color: navy">)</span> <i>&quot;OutputEncTypeCoding&quot;</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>&quot;OutputEncType&quot;</i><span style="color: navy">;</span>
+          encounter<span style="color: navy"><b> -&gt; </b></span>outputEnc.value = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">encounter</span><span style="color: navy">)</span> <i>&quot;OutputEncValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;TaskOutputEnc&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">// </span><span style="color: green">Referencia al Immunization</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.output = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task_Output'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">outputImm</span><b> then</b><span style="color: navy"> {
+</span>          taskId<span style="color: navy"><b> -&gt; </b></span>outputImm.type = <b>create</b><span style="color: navy">(</span><span style="color: blue">'CodeableConcept'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">cc</span><b> then</b><span style="color: navy"> {
+</span>            taskId<span style="color: navy"><b> -&gt; </b></span>cc.coding = <b>c</b><span style="color: navy">(</span><span style="color: blue">'http://snomed.info/sct'</span><span style="color: navy">, </span><span style="color: blue">'41000179103'</span><span style="color: navy">, </span><span style="color: blue">'Immunization record (record artifact)'</span><span style="color: navy">)</span> <i>&quot;OutputImmTypeCoding&quot;</i><span style="color: navy">;</span>
+          <span style="color: navy">}</span> <i>&quot;OutputImmType&quot;</i><span style="color: navy">;</span>
+          immunization<span style="color: navy"><b> -&gt; </b></span>outputImm.value = <b>reference</b><span style="color: navy">(</span><span style="color: maroon">immunization</span><span style="color: navy">)</span> <i>&quot;OutputImmValue&quot;</i><span style="color: navy">;</span>
+        <span style="color: navy">}</span> <i>&quot;TaskOutputImm&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateTask&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;TaskIdAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;TaskCompleted&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span><span style="color: navy">// </span><span style="color: green">Crea un Task con estado fallido cuando la vacuna no fue administrada</span>
+<b>group </b>ExtractTaskFailed<span style="color: navy">(</span><b>source</b> <span style="color: maroon">src</span><span style="color: navy"> : </span>QResp, <b>target</b> <span style="color: maroon">bundle</span><span style="color: navy"> : </span>Bundle<span style="color: navy">)</span><span style="color: navy"> {
+</span>  src.item<b> as </b><span style="color: maroon">item</span><b> where </b>((linkId = 'task-id') and answer.value.exists())<b> then</b><span style="color: navy"> {
+</span>    item.answer first<b> as </b><span style="color: maroon">answer</span><b> then</b><span style="color: navy"> {
+</span>      answer.value<b> as </b><span style="color: maroon">taskId</span><span style="color: navy"><b> -&gt; </b></span> bundle.entry<b> as </b><span style="color: maroon">entry</span><span style="color: navy">, </span> entry.resource = <b>create</b><span style="color: navy">(</span><span style="color: blue">'Task'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">task</span><b> then</b><span style="color: navy"> {
+</span>        taskId<span style="color: navy"><b> -&gt; </b></span> task.id = <b>create</b><span style="color: navy">(</span><span style="color: blue">'id'</span><span style="color: navy">)</span><b> as </b><span style="color: maroon">id</span><span style="color: navy">, </span> id.value = <span style="color: maroon">taskId</span> <i>&quot;SetFailedTaskId&quot;</i><span style="color: navy">;</span>
+        taskId<span style="color: navy"><b> -&gt; </b></span>task.status = <span style="color: blue">'failed'</span> <i>&quot;TaskFailed&quot;</i><span style="color: navy">;</span>
+      <span style="color: navy">}</span> <i>&quot;CreateFailedTask&quot;</i><span style="color: navy">;</span>
+    <span style="color: navy">}</span> <i>&quot;FailedTaskIdAnswer&quot;</i><span style="color: navy">;</span>
+  <span style="color: navy">}</span> <i>&quot;TaskFailed&quot;</i><span style="color: navy">;</span>
+<span style="color: navy">}
+
+</span></pre></div>
+  </text>
+  <url value="http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroVacuna.QRToImmunization"/>
+  <version value="1.0.0"/>
+  <name value="MINSA.RegistroVacuna.QRToImmunization"/>
+  <status value="draft"/>
+  <date value="2026-03-16T12:33:41-04:00"/>
+  <publisher value="MINSA - Ministerio de Salud del Perú"/>
+  <contact>
+    <name value="MINSA - Ministerio de Salud del Perú"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.gob.pe/minsa"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="PE"/>
+      <display value="Peru"/>
+    </coding>
+  </jurisdiction>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+    <mode value="source"/>
+    <alias value="QResp"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="target"/>
+    <alias value="Bundle"/>
+  </structure>
+  <import value="http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"/>
+  <group>
+    <name value="RegistroVacuna"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="BundleStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="type"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="collection"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="CreateEncounter"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="encounter"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Encounter"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="ExtractEncounter"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <dependent>
+          <name value="ExtractEncounter"/>
+          <variable value="src"/>
+          <variable value="encounter"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="VaccineGiven"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="((linkId = 'vaccine-administered') and (answer.value.code = 'yes'))"/>
+        </source>
+        <rule>
+          <name value="ImmunizationEntry"/>
+          <source>
+            <context value="src"/>
+          </source>
+          <target>
+            <context value="bundle"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <context value="entry"/>
+            <contextType value="variable"/>
+            <element value="resource"/>
+            <variable value="immunization"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Immunization"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="ExtractImmunization"/>
+            <source>
+              <context value="src"/>
+            </source>
+            <dependent>
+              <name value="ExtractImmunization"/>
+              <variable value="src"/>
+              <variable value="encounter"/>
+              <variable value="immunization"/>
+            </dependent>
+          </rule>
+          <rule>
+            <name value="ExtractTask"/>
+            <source>
+              <context value="src"/>
+            </source>
+            <dependent>
+              <name value="ExtractTaskCompleted"/>
+              <variable value="src"/>
+              <variable value="encounter"/>
+              <variable value="immunization"/>
+              <variable value="bundle"/>
+            </dependent>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="VaccineNotGiven"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="item"/>
+          <condition value="((linkId = 'vaccine-administered') and (answer.value.code = 'no'))"/>
+        </source>
+        <rule>
+          <name value="ExtractTaskFailed"/>
+          <source>
+            <context value="src"/>
+          </source>
+          <dependent>
+            <name value="ExtractTaskFailed"/>
+            <variable value="src"/>
+            <variable value="bundle"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="EncounterEntry"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="bundle"/>
+          <contextType value="variable"/>
+          <element value="entry"/>
+          <variable value="entry"/>
+        </target>
+        <target>
+          <context value="entry"/>
+          <contextType value="variable"/>
+          <element value="resource"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="encounter"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractEncounter"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae el recurso Encounter para la visita de vacunacion"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="encounter"/>
+      <type value="Encounter"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="EncounterStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="encounter"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="encounter"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="finished"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="encounter"/>
+        <contextType value="variable"/>
+        <element value="class"/>
+        <transform value="c"/>
+        <parameter>
+          <valueString value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+        </parameter>
+        <parameter>
+          <valueString value="AMB"/>
+        </parameter>
+        <parameter>
+          <valueString value="ambulatory"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="EncounterSubject"/>
+      <source>
+        <context value="src"/>
+        <element value="subject"/>
+        <variable value="subject"/>
+      </source>
+      <target>
+        <context value="encounter"/>
+        <contextType value="variable"/>
+        <element value="subject"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="subject"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="EncounterType"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="encounter"/>
+        <contextType value="variable"/>
+        <element value="type"/>
+        <variable value="cc"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="CodeableConcept"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="TypeCC"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="cc"/>
+          <contextType value="variable"/>
+          <element value="coding"/>
+          <variable value="coding"/>
+          <transform value="create"/>
+          <parameter>
+            <valueString value="Coding"/>
+          </parameter>
+        </target>
+        <rule>
+          <name value="TypeCoding"/>
+          <source>
+            <context value="src"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="http://snomed.info/sct"/>
+            </parameter>
+          </target>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="33879002"/>
+            </parameter>
+          </target>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="display"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="Administration of vaccine to produce active immunity (procedure)"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+      <rule>
+        <name value="TypeText"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="cc"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="Vacunacion"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="EncounterPeriod"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="encounter"/>
+        <contextType value="variable"/>
+        <element value="period"/>
+        <variable value="period"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Period"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="PeriodStart"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="period"/>
+          <contextType value="variable"/>
+          <element value="start"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueId value="src"/>
+          </parameter>
+          <parameter>
+            <valueString value="now()"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="PeriodEnd"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="period"/>
+          <contextType value="variable"/>
+          <element value="end"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueId value="src"/>
+          </parameter>
+          <parameter>
+            <valueString value="now()"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="EncounterLocation"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="((linkId = 'location-id') and answer.value.exists())"/>
+      </source>
+      <rule>
+        <name value="LocAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateLoc"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="locId"/>
+          </source>
+          <target>
+            <context value="encounter"/>
+            <contextType value="variable"/>
+            <element value="location"/>
+            <variable value="loc"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Encounter_Location"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="LocRef"/>
+            <source>
+              <context value="locId"/>
+            </source>
+            <target>
+              <context value="loc"/>
+              <contextType value="variable"/>
+              <element value="location"/>
+              <variable value="ref"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Reference"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="LocReference"/>
+              <source>
+                <context value="locId"/>
+              </source>
+              <target>
+                <context value="ref"/>
+                <contextType value="variable"/>
+                <element value="reference"/>
+                <transform value="evaluate"/>
+                <parameter>
+                  <valueId value="locId"/>
+                </parameter>
+                <parameter>
+                  <valueString value="'Location/' + $this"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractImmunization"/>
+    <typeMode value="none"/>
+    <documentation value="Extrae el recurso Immunization con datos de la vacuna administrada"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="encounter"/>
+      <type value="Encounter"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="immunization"/>
+      <type value="Immunization"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="ImmunizationStatic"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="immunization"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="immunization"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="completed"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="immunization"/>
+        <contextType value="variable"/>
+        <element value="recorded"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueId value="src"/>
+        </parameter>
+        <parameter>
+          <valueString value="now()"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="immunization"/>
+        <contextType value="variable"/>
+        <element value="patient"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueId value="src"/>
+        </parameter>
+        <parameter>
+          <valueString value="subject"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="immunization"/>
+        <contextType value="variable"/>
+        <element value="encounter"/>
+        <transform value="reference"/>
+        <parameter>
+          <valueId value="encounter"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="VaccineCode"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'vaccine-code'"/>
+      </source>
+      <rule>
+        <name value="VaccineCodeAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateVaccineCC"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="coding"/>
+          </source>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="vaccineCode"/>
+            <variable value="cc"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="CodeableConcept"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetVaccineCoding"/>
+            <source>
+              <context value="coding"/>
+            </source>
+            <target>
+              <context value="cc"/>
+              <contextType value="variable"/>
+              <element value="coding"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="coding"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="SetVaccineText"/>
+            <source>
+              <context value="coding"/>
+              <element value="display"/>
+              <variable value="display"/>
+            </source>
+            <target>
+              <context value="cc"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="display"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="VaccinationDate"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'vaccination-date'"/>
+      </source>
+      <rule>
+        <name value="VaccineDateAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="SetOccurrence"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <contextType value="variable"/>
+            <variable value="dt"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="dateTime"/>
+            </parameter>
+          </target>
+          <target>
+            <context value="dt"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="val"/>
+            </parameter>
+          </target>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="occurrence"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="dt"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="LotNumber"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'lot-number'"/>
+      </source>
+      <rule>
+        <name value="LotAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="SetLotNumber"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="lotNumber"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="val"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="ExpirationDate"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'expiration-date'"/>
+      </source>
+      <rule>
+        <name value="ExpirationAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="SetExpirationDate"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="expirationDate"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="val"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="DoseNumber"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'dose-number'"/>
+      </source>
+      <rule>
+        <name value="DoseAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateProtocol"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="val"/>
+          </source>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="protocolApplied"/>
+            <variable value="protocol"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Immunization_AppliedProtocol"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetDoseNumber"/>
+            <source>
+              <context value="val"/>
+            </source>
+            <target>
+              <context value="protocol"/>
+              <contextType value="variable"/>
+              <element value="doseNumber"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="val"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="Route"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="linkId = 'route'"/>
+      </source>
+      <rule>
+        <name value="RouteAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateRouteCC"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="coding"/>
+          </source>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="route"/>
+            <variable value="cc"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="CodeableConcept"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetRouteCoding"/>
+            <source>
+              <context value="coding"/>
+            </source>
+            <target>
+              <context value="cc"/>
+              <contextType value="variable"/>
+              <element value="coding"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="coding"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="SetRouteText"/>
+            <source>
+              <context value="coding"/>
+              <element value="display"/>
+              <variable value="display"/>
+            </source>
+            <target>
+              <context value="cc"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="display"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="PerformerOrg"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="((linkId = 'performer-organization') and answer.value.exists())"/>
+      </source>
+      <rule>
+        <name value="OrgAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreatePerformer"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="orgRef"/>
+          </source>
+          <target>
+            <context value="immunization"/>
+            <contextType value="variable"/>
+            <element value="performer"/>
+            <variable value="performer"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Immunization_Performer"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="CreateOrgRef"/>
+            <source>
+              <context value="orgRef"/>
+            </source>
+            <target>
+              <context value="performer"/>
+              <contextType value="variable"/>
+              <element value="actor"/>
+              <variable value="ref"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Reference"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="SetOrgRef"/>
+              <source>
+                <context value="orgRef"/>
+              </source>
+              <target>
+                <context value="ref"/>
+                <contextType value="variable"/>
+                <element value="reference"/>
+                <transform value="evaluate"/>
+                <parameter>
+                  <valueId value="orgRef"/>
+                </parameter>
+                <parameter>
+                  <valueString value="'Organization/' + $this"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractTaskCompleted"/>
+    <typeMode value="none"/>
+    <documentation value="Crea un Task con estado completado, vinculado al Encounter e Immunization"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="encounter"/>
+      <type value="Encounter"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="immunization"/>
+      <type value="Immunization"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="TaskCompleted"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="((linkId = 'task-id') and answer.value.exists())"/>
+      </source>
+      <rule>
+        <name value="TaskIdAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateTask"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="taskId"/>
+          </source>
+          <target>
+            <context value="bundle"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <context value="entry"/>
+            <contextType value="variable"/>
+            <element value="resource"/>
+            <variable value="task"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Task"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetTaskId"/>
+            <source>
+              <context value="taskId"/>
+            </source>
+            <target>
+              <context value="task"/>
+              <contextType value="variable"/>
+              <element value="id"/>
+              <variable value="id"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="id"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="taskId"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="TaskCompleted"/>
+            <source>
+              <context value="taskId"/>
+            </source>
+            <target>
+              <context value="task"/>
+              <contextType value="variable"/>
+              <element value="status"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="completed"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="TaskOutputEnc"/>
+            <source>
+              <context value="taskId"/>
+            </source>
+            <target>
+              <context value="task"/>
+              <contextType value="variable"/>
+              <element value="output"/>
+              <variable value="outputEnc"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Task_Output"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="OutputEncType"/>
+              <source>
+                <context value="taskId"/>
+              </source>
+              <target>
+                <context value="outputEnc"/>
+                <contextType value="variable"/>
+                <element value="type"/>
+                <variable value="cc"/>
+                <transform value="create"/>
+                <parameter>
+                  <valueString value="CodeableConcept"/>
+                </parameter>
+              </target>
+              <rule>
+                <name value="OutputEncTypeCoding"/>
+                <source>
+                  <context value="taskId"/>
+                </source>
+                <target>
+                  <context value="cc"/>
+                  <contextType value="variable"/>
+                  <element value="coding"/>
+                  <transform value="c"/>
+                  <parameter>
+                    <valueString value="http://snomed.info/sct"/>
+                  </parameter>
+                  <parameter>
+                    <valueString value="41000179103"/>
+                  </parameter>
+                  <parameter>
+                    <valueString value="Immunization record (record artifact)"/>
+                  </parameter>
+                </target>
+              </rule>
+            </rule>
+            <rule>
+              <name value="OutputEncValue"/>
+              <source>
+                <context value="encounter"/>
+              </source>
+              <target>
+                <context value="outputEnc"/>
+                <contextType value="variable"/>
+                <element value="value"/>
+                <transform value="reference"/>
+                <parameter>
+                  <valueId value="encounter"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+          <rule>
+            <name value="TaskOutputImm"/>
+            <source>
+              <context value="taskId"/>
+            </source>
+            <target>
+              <context value="task"/>
+              <contextType value="variable"/>
+              <element value="output"/>
+              <variable value="outputImm"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Task_Output"/>
+              </parameter>
+            </target>
+            <rule>
+              <name value="OutputImmType"/>
+              <source>
+                <context value="taskId"/>
+              </source>
+              <target>
+                <context value="outputImm"/>
+                <contextType value="variable"/>
+                <element value="type"/>
+                <variable value="cc"/>
+                <transform value="create"/>
+                <parameter>
+                  <valueString value="CodeableConcept"/>
+                </parameter>
+              </target>
+              <rule>
+                <name value="OutputImmTypeCoding"/>
+                <source>
+                  <context value="taskId"/>
+                </source>
+                <target>
+                  <context value="cc"/>
+                  <contextType value="variable"/>
+                  <element value="coding"/>
+                  <transform value="c"/>
+                  <parameter>
+                    <valueString value="http://snomed.info/sct"/>
+                  </parameter>
+                  <parameter>
+                    <valueString value="41000179103"/>
+                  </parameter>
+                  <parameter>
+                    <valueString value="Immunization record (record artifact)"/>
+                  </parameter>
+                </target>
+              </rule>
+            </rule>
+            <rule>
+              <name value="OutputImmValue"/>
+              <source>
+                <context value="immunization"/>
+              </source>
+              <target>
+                <context value="outputImm"/>
+                <contextType value="variable"/>
+                <element value="value"/>
+                <transform value="reference"/>
+                <parameter>
+                  <valueId value="immunization"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ExtractTaskFailed"/>
+    <typeMode value="none"/>
+    <documentation value="Crea un Task con estado fallido cuando la vacuna no fue administrada"/>
+    <input>
+      <name value="src"/>
+      <type value="QResp"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="TaskFailed"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="item"/>
+        <condition value="((linkId = 'task-id') and answer.value.exists())"/>
+      </source>
+      <rule>
+        <name value="FailedTaskIdAnswer"/>
+        <source>
+          <context value="item"/>
+          <element value="answer"/>
+          <listMode value="first"/>
+          <variable value="answer"/>
+        </source>
+        <rule>
+          <name value="CreateFailedTask"/>
+          <source>
+            <context value="answer"/>
+            <element value="value"/>
+            <variable value="taskId"/>
+          </source>
+          <target>
+            <context value="bundle"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <context value="entry"/>
+            <contextType value="variable"/>
+            <element value="resource"/>
+            <variable value="task"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Task"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="SetFailedTaskId"/>
+            <source>
+              <context value="taskId"/>
+            </source>
+            <target>
+              <context value="task"/>
+              <contextType value="variable"/>
+              <element value="id"/>
+              <variable value="id"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="id"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="id"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="taskId"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="TaskFailed"/>
+            <source>
+              <context value="taskId"/>
+            </source>
+            <target>
+              <context value="task"/>
+              <contextType value="variable"/>
+              <element value="status"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="failed"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+</StructureMap>

@@ -1,0 +1,76 @@
+{
+  "component": "logical_model_schemas",
+  "timestamp": "2026-03-16T12:34:32.121829",
+  "status": "completed",
+  "summary": {
+    "total_successes": 5,
+    "total_warnings": 1,
+    "total_errors": 0,
+    "files_processed_count": 0,
+    "files_expected_count": 6,
+    "files_missing_count": 0,
+    "schemas_generated_count": 0,
+    "completion_timestamp": "2026-03-16T12:34:32.133291"
+  },
+  "details": {
+    "successes": [
+      {
+        "message": "Script started",
+        "timestamp": "2026-03-16T12:34:32.121860",
+        "details": {
+          "input_directory": "output",
+          "output_directory": "output"
+        }
+      },
+      {
+        "message": "Input directory found",
+        "timestamp": "2026-03-16T12:34:32.121865",
+        "details": {
+          "directory": "output"
+        }
+      },
+      {
+        "message": "Found 6 StructureDefinition files",
+        "timestamp": "2026-03-16T12:34:32.122544",
+        "details": {
+          "directory": "output",
+          "file_count": 6
+        }
+      },
+      {
+        "message": "Found 0 logical models",
+        "timestamp": "2026-03-16T12:34:32.124830",
+        "details": {
+          "models_found": 0,
+          "model_names": []
+        }
+      },
+      {
+        "message": "Generated 0 Logical Model schemas",
+        "timestamp": "2026-03-16T12:34:32.124848",
+        "details": {
+          "schemas_generated": 0,
+          "schema_files": []
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "message": "No logical model schemas were generated (no logical models found)",
+        "timestamp": "2026-03-16T12:34:32.124870"
+      }
+    ],
+    "errors": [],
+    "files_processed": [],
+    "files_expected": [
+      "output/StructureDefinition-MINSADistrito.json",
+      "output/StructureDefinition-MINSA.RelatedPerson.json",
+      "output/StructureDefinition-MINSAProvincia.json",
+      "output/StructureDefinition-MINSA.Patient.json",
+      "output/StructureDefinition-MINSA.Immunization.json",
+      "output/StructureDefinition-MINSADepartamento.json"
+    ],
+    "files_missing": [],
+    "schemas_generated": []
+  }
+}

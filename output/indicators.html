@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Indicadores y Métricas - Guía de Implementación de Inmunizaciones MINSA Perú v1.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"2.7"}
+    h3,h4,h5,h6{--heading-prefix:"2.7"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Inicio
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="index.html">Resumen</a>
+      </li>
+      <li>
+        <a href="changes.html">Cambios</a>
+      </li>
+      <li>
+        <a href="dependencies.html">Dependencias</a>
+      </li>
+      <li>
+        <a href="references.html">Referencias</a>
+      </li>
+      <li>
+        <a href="adapting.html">Adaptación para Perú</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Requisitos de Negocio
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="concepts.html">Conceptos</a>
+      </li>
+      <li>
+        <a href="personas.html">Personas</a>
+      </li>
+      <li>
+        <a href="scenarios.html">Escenarios de Uso</a>
+      </li>
+      <li>
+        <a href="business-processes.html">Procesos de Negocio</a>
+      </li>
+      <li>
+        <a href="dictionary.html">Diccionario de Datos</a>
+      </li>
+      <li>
+        <a href="decision-logic.html">Lógica de Decisión</a>
+      </li>
+      <li>
+        <a href="indicators.html">Indicadores y Métricas</a>
+      </li>
+      <li>
+        <a href="functional-requirements.html">Requisitos Funcionales</a>
+      </li>
+      <li>
+        <a href="non-functional-requirements.html">Requisitos No Funcionales</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Modelos de Datos
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="system-actors.html">Actores del Sistema</a>
+      </li>
+      <li>
+        <a href="sequence-diagrams.html">Diagramas de Secuencia</a>
+      </li>
+      <li>
+        <a href="transactions.html">Transacciones</a>
+      </li>
+      <li>
+        <a href="indicators-measures.html">Indicadores y Medidas</a>
+      </li>
+      <li>
+        <a href="codings.html">Codificaciones</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Despliegue
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="security-privacy.html">Seguridad y Privacidad</a>
+      </li>
+      <li>
+        <a href="testing.html">Pruebas</a>
+      </li>
+      <li>
+        <a href="test-data.html">Datos de Prueba</a>
+      </li>
+      <li>
+        <a href="downloads.html">Descargas</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Guía de Implementación de Inmunizaciones MINSA Perú</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0 - ci-build
+
+
+
+  <img alt="Peru flag" src="assets/images/per.svg" height="16" title="Peru"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='business-requirements.html'><b>Requisitos de Negocio</b></a></li><li><b>Indicadores y Métricas</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Guía de Implementación de Inmunizaciones MINSA Perú - Local Development build (v1.0.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://minsa.gob.pe/immunizations/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Indicadores y Métricas</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#descripción-de-columnas-de-la-tabla-de-indicadores" id="markdown-toc-descripción-de-columnas-de-la-tabla-de-indicadores">Descripción de columnas de la tabla de indicadores</a></li>
+  <li><a href="#indicadores-de-cobertura-vacunal" id="markdown-toc-indicadores-de-cobertura-vacunal">Indicadores de cobertura vacunal</a></li>
+  <li><a href="#indicadores-de-proceso" id="markdown-toc-indicadores-de-proceso">Indicadores de proceso</a></li>
+</ul>
+
+</div>
+<p>Esta página incluye los indicadores y métricas de desempeño que serían agregados a partir de los elementos de datos base, adaptados del <a href="https://iris.who.int/handle/10665/380303">Kit de Adaptación Digital de la OMS para Inmunizaciones</a> al contexto del programa de inmunizaciones del Perú.</p>
+
+<p>Para representaciones computables, consulte la página de <a href="indicators-measures.html">Indicadores y Medidas</a>.</p>
+
+<p>Estos indicadores pueden ser agregados automáticamente desde la herramienta de seguimiento digital para alimentar el sistema de información de gestión en salud (HIS-MINSA).</p>
+
+<h3 id="descripción-de-columnas-de-la-tabla-de-indicadores">Descripción de columnas de la tabla de indicadores</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Elemento</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Código del indicador</td>
+      <td>Identificador del indicador</td>
+    </tr>
+    <tr>
+      <td>Nombre del indicador</td>
+      <td>Nombre corto del indicador</td>
+    </tr>
+    <tr>
+      <td>Descripción</td>
+      <td>Descripción del indicador</td>
+    </tr>
+    <tr>
+      <td>Definición del numerador</td>
+      <td>Descripción del numerador utilizado para calcular el indicador</td>
+    </tr>
+    <tr>
+      <td>Cálculo del numerador</td>
+      <td>Fórmula o método para derivar el numerador</td>
+    </tr>
+    <tr>
+      <td>Definición del denominador</td>
+      <td>Descripción del denominador utilizado para calcular el indicador</td>
+    </tr>
+    <tr>
+      <td>Cálculo del denominador</td>
+      <td>Fórmula o método para derivar el denominador</td>
+    </tr>
+    <tr>
+      <td>Desagregaciones</td>
+      <td>Desagregaciones disponibles para el análisis</td>
+    </tr>
+    <tr>
+      <td>Referencias</td>
+      <td>Fuentes de referencia del indicador</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="indicadores-de-cobertura-vacunal">Indicadores de cobertura vacunal</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Numerador</th>
+      <th>Denominador</th>
+      <th>Desagregaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IMMZ.IND.01</td>
+      <td>Cobertura de BCG en recién nacidos</td>
+      <td>Porcentaje de recién nacidos que recibieron la vacuna BCG</td>
+      <td>Número de recién nacidos vacunados con BCG</td>
+      <td>Número total de nacidos vivos</td>
+      <td>Departamento, provincia, distrito, tipo de establecimiento</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.02</td>
+      <td>Cobertura de tercera dosis de Pentavalente</td>
+      <td>Porcentaje de niños menores de 1 año que completaron las 3 dosis de Pentavalente</td>
+      <td>Niños &lt;1 año con 3 dosis de Pentavalente</td>
+      <td>Población &lt;1 año estimada</td>
+      <td>Departamento, provincia, distrito, sexo</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.03</td>
+      <td>Cobertura de tercera dosis de Polio</td>
+      <td>Porcentaje de niños menores de 1 año que completaron las 3 dosis de vacuna contra Polio</td>
+      <td>Niños &lt;1 año con 3 dosis de Polio</td>
+      <td>Población &lt;1 año estimada</td>
+      <td>Departamento, provincia, distrito, sexo</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.04</td>
+      <td>Cobertura de segunda dosis de Rotavirus</td>
+      <td>Porcentaje de niños menores de 1 año que completaron las 2 dosis de Rotavirus</td>
+      <td>Niños &lt;1 año con 2 dosis de Rotavirus</td>
+      <td>Población &lt;1 año estimada</td>
+      <td>Departamento, provincia, distrito, sexo</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.05</td>
+      <td>Cobertura de Neumococo (3ra dosis/refuerzo)</td>
+      <td>Porcentaje de niños de 1 año que completaron el esquema de Neumococo conjugada</td>
+      <td>Niños de 1 año con esquema completo de PCV</td>
+      <td>Población de 1 año estimada</td>
+      <td>Departamento, provincia, distrito</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.06</td>
+      <td>Cobertura de primera dosis de SPR</td>
+      <td>Porcentaje de niños de 1 año que recibieron la primera dosis de SPR</td>
+      <td>Niños de 1 año con 1ra dosis de SPR</td>
+      <td>Población de 1 año estimada</td>
+      <td>Departamento, provincia, distrito, sexo</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.07</td>
+      <td>Cobertura de segunda dosis de SPR</td>
+      <td>Porcentaje de niños de 18 meses que recibieron la segunda dosis de SPR</td>
+      <td>Niños de 18 meses con 2da dosis de SPR</td>
+      <td>Población de 18 meses estimada</td>
+      <td>Departamento, provincia, distrito</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.08</td>
+      <td>Cobertura de Varicela</td>
+      <td>Porcentaje de niños de 1 año que recibieron la vacuna contra Varicela</td>
+      <td>Niños de 1 año vacunados contra Varicela</td>
+      <td>Población de 1 año estimada</td>
+      <td>Departamento, provincia, distrito</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.09</td>
+      <td>Cobertura de Fiebre Amarilla</td>
+      <td>Porcentaje de niños de 15 meses que recibieron la vacuna contra Fiebre Amarilla</td>
+      <td>Niños de 15 meses vacunados contra FA</td>
+      <td>Población de 15 meses estimada</td>
+      <td>Departamento, provincia, distrito</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.10</td>
+      <td>Cobertura de VPH en niñas</td>
+      <td>Porcentaje de niñas de 9 a 13 años que completaron el esquema de VPH</td>
+      <td>Niñas de 9-13 años con esquema completo de VPH</td>
+      <td>Población femenina de 9-13 años</td>
+      <td>Departamento, provincia, distrito</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="indicadores-de-proceso">Indicadores de proceso</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IMMZ.IND.20</td>
+      <td>Tasa de deserción Penta1-Penta3</td>
+      <td>Porcentaje de niños que recibieron la primera dosis de Pentavalente pero no completaron la tercera dosis. Fórmula: (Penta1 - Penta3) / Penta1 x 100</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.21</td>
+      <td>Tasa de oportunidades perdidas</td>
+      <td>Porcentaje de visitas a establecimientos de salud donde un niño elegible para vacunación no recibió las vacunas correspondientes</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.22</td>
+      <td>Tasa de ESAFI notificados</td>
+      <td>Número de ESAFI notificados por cada 100,000 dosis administradas</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.23</td>
+      <td>Porcentaje de establecimientos con ruptura de stock</td>
+      <td>Porcentaje de establecimientos que reportaron desabastecimiento de al menos una vacuna del esquema durante el período</td>
+    </tr>
+    <tr>
+      <td>IMMZ.IND.24</td>
+      <td>Completitud de registro</td>
+      <td>Porcentaje de registros de vacunación con todos los campos obligatorios completos en el sistema</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.gob.pe/minsa">MINSA - Ministerio de Salud del Perú</a>.  Package minsa.gob.pe.immunizations#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Mar 16, 2026 12:33-0400">2026-03-16</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="http://minsa.gob.pe/immunizations/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

@@ -1,0 +1,124 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MINSABCGVacunacion"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition>
+     ] [
+       fhir:v "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareableplandefinition>
+     ] [
+       fhir:v "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishableplandefinition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<div>\n    <table class=\"grid dict\">\n        \n        <tr>\n            <th scope=\"row\"><b>Id: </b></th>\n            <td style=\"padding-left: 4px;\">MINSABCGVacunacion</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Url: </b></th>\n            <td style=\"padding-left: 4px;\"><a href=\"PlanDefinition-MINSABCGVacunacion.html\">MINSA - Vacunacion BCG</a></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Version: </b></th>\n            <td style=\"padding-left: 4px;\">1.0.0</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Title: </b></th>\n            <td style=\"padding-left: 4px;\">MINSA - Vacunacion BCG</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Type: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                    \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>system: </b> <span><a href=\"http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html\">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>\n                        </p>\n                        \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>code: </b> <span>eca-rule</span>\n                        </p>\n                        \n                        \n                    \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Date: </b></th>\n            <td style=\"padding-left: 4px;\">2026-03-16 12:33:41-0400</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Publisher: </b></th>\n            <td style=\"padding-left: 4px;\">MINSA - Ministerio de Salud del Perú</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Description: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>Logica de decision para la vacunacion BCG segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna BCG se administra en dosis unica al recien nacido, preferiblemente dentro de las\nprimeras 24 horas de vida.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Capability: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                computable \n            </td>\n        </tr>\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Jurisdiction: </b></th>\n            <td style=\"padding-left: 4px;\">PE</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Related Artifacts: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                \n                <p><b>References</b></p>\n                <ul>\n                    \n                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>\n</div><br/><a href=\"null\"/></li>\n                    \n                </ul>\n                \n                \n                <p><b>Dependencies</b></p>\n                <ul>\n                    \n                    <li><a href=\"https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTBCG.html\">http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTBCG</a></li>\n                    \n                </ul>\n                \n                \n                \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Actions: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Determinar si el recien nacido necesita vacunacion BCG:</b> Evaluar si el recien nacido cumple las condiciones para recibir la vacuna BCG\n    segun el protocolo nacional de inmunizaciones.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            El paciente es recien nacido y no ha recibido vacuna BCG\n                            \n                            <i>(Paciente necesita vacuna BCG)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n    </table>\n</div>\n</div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability>
+     ] ;
+     fhir:value [
+       a fhir:Code ;
+       fhir:v "computable"
+     ]
+  ] ) ; # 
+  fhir:url [
+     fhir:v "http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion"^^xsd:anyURI ;
+     fhir:l <http://minsa.gob.pe/immunizations/PlanDefinition/MINSABCGVacunacion>
+  ] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "MINSABCGVacunacion"] ; # 
+  fhir:title [ fhir:v "MINSA - Vacunacion BCG"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-03-16T12:33:41-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "MINSA - Ministerio de Salud del Perú"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MINSA - Ministerio de Salud del Perú" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.gob.pe/minsa" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Logica de decision para la vacunacion BCG segun el Esquema Nacional de Vacunacion del Peru.\nLa vacuna BCG se administra en dosis unica al recien nacido, preferiblemente dentro de las\nprimeras 24 horas de vida."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "PE" ] ;
+       fhir:display [ fhir:v "Peru" ]
+     ] )
+  ] ) ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:citation [ fhir:v "NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion" ]
+  ] [
+     fhir:type [ fhir:v "depends-on" ] ;
+     fhir:display [ fhir:v "WHO SMART Guidelines - BCG Decision Table" ] ;
+     fhir:resource [
+       fhir:v "http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTBCG"^^xsd:anyURI ;
+       fhir:l <http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTBCG>
+     ]
+  ] ) ; # 
+  fhir:action ( [
+     fhir:extension ( [
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale>
+       ] ;
+       fhir:value [
+         a fhir:Markdown ;
+         fhir:v "La vacuna BCG protege contra las formas graves de tuberculosis\n      (meningitis tuberculosa y tuberculosis miliar). Se administra en dosis unica al recien\n      nacido. En recien nacidos de madres con VIH, se debe evaluar el estado clinico antes\n      de la vacunacion."
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Determinar si el recien nacido necesita vacunacion BCG" ] ;
+     fhir:description [ fhir:v "Evaluar si el recien nacido cumple las condiciones para recibir la vacuna BCG\n    segun el protocolo nacional de inmunizaciones." ] ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:description [ fhir:v "El paciente es recien nacido y no ha recibido vacuna BCG" ] ;
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Paciente necesita vacuna BCG" ]
+       ]
+     ] ) ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "status" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'draft'" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "intent" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-expression" ] ;
+         fhir:expression [ fhir:v "'proposal'" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

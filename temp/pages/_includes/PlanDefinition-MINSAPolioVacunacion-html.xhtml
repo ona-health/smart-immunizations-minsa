@@ -1,0 +1,292 @@
+{% raw %}<div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">MINSAPolioVacunacion</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-MINSAPolioVacunacion.html">MINSA - Vacunacion contra Poliomielitis (IPV/APO)</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">1.0.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">MINSA - Vacunacion contra Poliomielitis (IPV/APO)</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-03-16 12:33:41-0400</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MINSA - Ministerio de Salud del Perú</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Logica de decision para la vacunacion contra Poliomielitis segun el Esquema Nacional de Vacunacion
+del Peru. Esquema secuencial: IPV (inyectable) a los 2 y 4 meses, APO (oral) a los 6 y 18 meses,
+y refuerzo con APO a los 4 anos de edad.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                computable 
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">PE</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                <p><b>References</b></p>
+                <ul>
+                    
+                    <li><div><p>NTS N 196-MINSA/DGIESP-2022: Norma Tecnica de Salud que establece el Esquema Nacional de Vacunacion</p>
+</div><br/><a href="null"/></li>
+                    
+                </ul>
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                    
+                    <li><a href="https://build.fhir.org/ig/WorldHealthOrganization/smart-immunizations/PlanDefinition-IMMZD2DTPolioBOPVPlusIPV.html">http://smart.who.int/immunizations/PlanDefinition/IMMZD2DTPolioBOPVPlusIPV</a></li>
+                    
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la 1ra dosis de IPV:</b> Evaluar si el nino de 2 meses cumple las condiciones para recibir la primera
+    dosis de vacuna IPV (inactivada) contra Poliomielitis.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 2 meses o mas y no ha recibido la 1ra dosis de IPV
+                            
+                            <i>(Paciente necesita 1ra dosis de IPV)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la 2da dosis de IPV:</b> Evaluar si el nino de 4 meses cumple las condiciones para recibir la segunda
+    dosis de vacuna IPV (inactivada) contra Poliomielitis.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 4 meses o mas, ha recibido la 1ra dosis de IPV y no ha recibido la 2da dosis
+                            
+                            <i>(Paciente necesita 2da dosis de IPV)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita la 3ra dosis de Polio (APO):</b> Evaluar si el nino de 6 meses cumple las condiciones para recibir la tercera
+    dosis de vacuna contra Poliomielitis (APO oral).
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 6 meses o mas, ha recibido 2 dosis de IPV y no ha recibido la 3ra dosis (APO)
+                            
+                            <i>(Paciente necesita 3ra dosis de Polio APO)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita el 1er refuerzo de Polio (APO):</b> Evaluar si el nino de 18 meses cumple las condiciones para recibir el primer
+    refuerzo de vacuna APO contra Poliomielitis.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 18 meses o mas, ha completado la serie primaria y no ha recibido el 1er refuerzo
+                            
+                            <i>(Paciente necesita 1er refuerzo de Polio APO)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Determinar si el nino necesita el 2do refuerzo de Polio (APO):</b> Evaluar si el nino de 4 anos cumple las condiciones para recibir el segundo
+    refuerzo de vacuna APO contra Poliomielitis.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            El paciente tiene 4 anos o mas, ha recibido el 1er refuerzo y no ha recibido el 2do refuerzo
+                            
+                            <i>(Paciente necesita 2do refuerzo de Polio APO)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div>{% endraw %}

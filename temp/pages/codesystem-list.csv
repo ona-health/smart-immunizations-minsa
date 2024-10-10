@@ -1,0 +1,3 @@
+URL,Version,Status,OIDs,Name,Title,Description,Used
+http://minsa.gob.pe/immunizations/CodeSystem/MINSA,1.0.0,active,,MINSA,Sistema de Códigos MINSA para Inmunizaciones,"Códigos utilizados por el Ministerio de Salud del Perú (MINSA) para el registro electrónico de inmunizaciones",
+http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes,1.0.0,active,,MINSAIdentifierTypes,Tipos de Documento de Identidad - Perú,"Tipos de documento de identidad utilizados en el sistema de salud del Perú",

@@ -1,0 +1,172 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>StructureMap-MINSA.RegistroPaciente.QRToPatient-script-plain</title>
+  <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+/// url = "http://minsa.gob.pe/immunizations/StructureMap/MINSA.RegistroPaciente.QRToPatient"
+/// name = "MINSA.RegistroPaciente.QRToPatient"
+/// title = "null"
+/// status = "draft"
+
+uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" alias QResp as source
+uses "http://hl7.org/fhir/StructureDefinition/Bundle" alias Bundle as target
+
+imports "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"
+
+group RegistroPaciente(source src : QResp, target bundle : Bundle) {
+  src ->  bundle.id = uuid(),  bundle.type = 'collection' "BundleStatic";
+  src ->  bundle.entry as entry,  entry.resource = create('Patient') as patient,  bundle.entry as rpEntry,  rpEntry.resource = create('RelatedPerson') as caregiver,  bundle.entry as grpEntry,  grpEntry.resource = create('Group') as group then {
+    src then ExtractPatient(src, patient) "ExtractPatient";
+    src then ExtractCuidador(src, caregiver, patient) "ExtractCuidador";
+    src then ExtractGroup(src, group, patient, caregiver) "ExtractGroup";
+  } "BundleEntries";
+}
+
+// Extrae el recurso Patient (nino) del cuestionario
+group ExtractPatient(source src : QResp, target patient : Patient) {
+  src ->  patient.id = uuid(),  patient.active = true "PatientStatic";
+  // DNI del nino
+  src.item as item where linkId = 'patient-dni' then {
+    item.answer first as answer then {
+      answer.value as val -> patient.identifier = create('Identifier') as id then {
+        val ->  id.use = 'official',  id.system = 'http://minsa.gob.pe/sid/dni',  id.value = val "SetDNIValues";
+      } "CreateDNI";
+    } "DNIAnswer";
+  } "PatientDNI";
+  // Nombre del nino
+  src -> patient.name = create('HumanName') as name then {
+    src -> name.use = 'official' "NameUse";
+    src.item as item where linkId = 'patient-given-name' then {
+      item.answer first as answer then {
+        answer.value as val -> name.given = val "SetGivenName";
+      } "GivenAnswer";
+    } "GivenName";
+    src.item as item where linkId = 'patient-second-name' then {
+      item.answer first as answer then {
+        answer.value as val -> name.given = val "SetSecondName";
+      } "SecondNameAnswer";
+    } "SecondName";
+    src.item as item where linkId = 'patient-paternal-surname' then {
+      item.answer first as answer then {
+        answer.value as val -> name.family = val "SetPaternalSurname";
+      } "PaternalAnswer";
+    } "PaternalSurname";
+  } "PatientName";
+  // Fecha de nacimiento
+  src.item as item where linkId = 'patient-birth-date' then {
+    item.answer first as answer then {
+      answer.value as val -> patient.birthDate = val "SetBirthDate";
+    } "BirthDateAnswer";
+  } "PatientBirthDate";
+  // Sexo
+  src.item as item where linkId = 'patient-gender' then {
+    item.answer first as answer then {
+      answer.value as coding then {
+        coding.code as code -> patient.gender = code "SetGender";
+      } "GenderCoding";
+    } "GenderAnswer";
+  } "PatientGender";
+  // Direccion con Departamento, Provincia y Distrito
+  src then ExtractAddress(src, patient) "PatientAddress";
+}
+
+// Extrae la direccion con extensiones de division administrativa peruana
+group ExtractAddress(source src : QResp, target patient : Patient) {
+  src -> patient.address = create('Address') as address then {
+    src ->  address.use = 'home',  address.type = 'physical' "AddressStatic";
+    // Texto libre de direccion
+    src.item as item where linkId = 'patient-address-text' then {
+      item.answer first as answer then {
+        answer.value as val -> address.text = val "SetAddressText";
+      } "AddressTextAnswer";
+    } "AddressText";
+    // Departamento
+    src.item as item where linkId = 'patient-departamento' then {
+      item.answer first as answer then {
+        answer.value as coding -> address.extension = create('Extension') as ext then {
+          coding -> ext.url = 'http://minsa.gob.pe/immunizations/StructureDefinition/MINSADepartamento' "SetDeptURL";
+          coding -> ext.value = coding "SetDeptValue";
+        } "CreateDeptExt";
+      } "DeptAnswer";
+    } "Departamento";
+    // Provincia
+    src.item as item where linkId = 'patient-provincia' then {
+      item.answer first as answer then {
+        answer.value as coding -> address.extension = create('Extension') as ext then {
+          coding -> ext.url = 'http://minsa.gob.pe/immunizations/StructureDefinition/MINSAProvincia' "SetProvURL";
+          coding -> ext.value = coding "SetProvValue";
+        } "CreateProvExt";
+      } "ProvAnswer";
+    } "Provincia";
+    // Distrito
+    src.item as item where linkId = 'patient-distrito' then {
+      item.answer first as answer then {
+        answer.value as coding -> address.extension = create('Extension') as ext then {
+          coding -> ext.url = 'http://minsa.gob.pe/immunizations/StructureDefinition/MINSADistrito' "SetDistURL";
+          coding -> ext.value = coding "SetDistValue";
+        } "CreateDistExt";
+      } "DistAnswer";
+    } "Distrito";
+  } "PatientAddress";
+}
+
+// Extrae el recurso RelatedPerson (cuidador) del cuestionario
+group ExtractCuidador(source src : QResp, target caregiver : RelatedPerson, source patient : Patient) {
+  src ->  caregiver.id = uuid(),  caregiver.active = true,  caregiver.patient = reference(patient) "CaregiverStatic";
+  // DNI del cuidador
+  src.item as item where linkId = 'caregiver-dni' then {
+    item.answer first as answer then {
+      answer.value as val -> caregiver.identifier = create('Identifier') as id then {
+        val ->  id.use = 'official',  id.system = 'http://minsa.gob.pe/sid/dni',  id.value = val "SetCaregiverDNIValues";
+      } "CreateCaregiverDNI";
+    } "CaregiverDNIAnswer";
+  } "CaregiverDNI";
+  // Nombre del cuidador
+  src -> caregiver.name = create('HumanName') as name then {
+    src -> name.use = 'official' "CaregiverNameUse";
+    src.item as item where linkId = 'caregiver-given-name' then {
+      item.answer first as answer then {
+        answer.value as val -> name.given = val "SetCaregiverGivenName";
+      } "CaregiverGivenAnswer";
+    } "CaregiverGivenName";
+    src.item as item where linkId = 'caregiver-paternal-surname' then {
+      item.answer first as answer then {
+        answer.value as val -> name.family = val "SetCaregiverFamilyName";
+      } "CaregiverFamilyAnswer";
+    } "CaregiverFamilyName";
+  } "CaregiverName";
+  // Telefono del cuidador
+  src.item as item where linkId = 'caregiver-phone' then {
+    item.answer first as answer then {
+      answer.value as val -> caregiver.telecom = create('ContactPoint') as phone then {
+        val ->  phone.system = 'phone',  phone.use = 'mobile',  phone.value = val "SetPhoneValues";
+      } "CreatePhone";
+    } "PhoneAnswer";
+  } "CaregiverPhone";
+  // Relacion de parentesco
+  src.item as item where linkId = 'caregiver-relationship' then {
+    item.answer first as answer then {
+      answer.value as coding -> caregiver.relationship = create('CodeableConcept') as cc then {
+        coding -> cc.coding = coding "SetRelCoding";
+        coding.display as display -> cc.text = display "SetRelText";
+      } "CreateRelCC";
+    } "RelAnswer";
+  } "CaregiverRelationship";
+}
+
+// Crea un Group que vincula al cuidador con el paciente
+group ExtractGroup(source src : QResp, target group : Group, source patient : Patient, source caregiver : RelatedPerson) {
+  src ->  group.id = uuid(),  group.type = 'person',  group.actual = true,  group.active = true "GroupStatic";
+  src -> group.name = 'Familia' "GroupName";
+  src -> group.member = create('Group_Member') as memberPatient then {
+    patient -> memberPatient.entity = reference(patient) "SetPatientMember";
+  } "PatientMember";
+  src -> group.member = create('Group_Member') as memberCaregiver then {
+    caregiver -> memberCaregiver.entity = reference(caregiver) "SetCaregiverMember";
+  } "CaregiverMember";
+}
+
+</body>
+</html>

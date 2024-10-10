@@ -1,0 +1,482 @@
+{
+  "codeSystems" : [{
+    "url" : "http://hl7.org/fhir/ValueSet/address-type",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "AddressType",
+    "title" : "AddressType",
+    "description" : "The type of an address (physical / postal).",
+    "systems" : ["http://hl7.org/fhir/address-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.69"],
+    "sources" : ["2.16.840.1.113883.4.642.3.69"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/address-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "AddressUse",
+    "title" : "AddressUse",
+    "description" : "The use of an address.",
+    "systems" : ["http://hl7.org/fhir/address-use"],
+    "oids" : ["2.16.840.1.113883.4.642.3.67"],
+    "sources" : ["2.16.840.1.113883.4.642.3.67"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/administrative-gender",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "AdministrativeGender",
+    "title" : "AdministrativeGender",
+    "description" : "The gender of a person used for administrative purposes.",
+    "systems" : ["http://hl7.org/fhir/administrative-gender"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.RelatedPerson.html" : "Cuidador MINSA Perú",
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/contact-point-system",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ContactPointSystem",
+    "title" : "ContactPointSystem",
+    "description" : "Telecommunications form for contact point.",
+    "systems" : ["http://hl7.org/fhir/contact-point-system"],
+    "oids" : ["2.16.840.1.113883.4.642.3.71"],
+    "sources" : ["2.16.840.1.113883.4.642.3.71"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/contact-point-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ContactPointUse",
+    "title" : "ContactPointUse",
+    "description" : "Use of contact point.",
+    "systems" : ["http://hl7.org/fhir/contact-point-use"],
+    "oids" : ["2.16.840.1.113883.4.642.3.73"],
+    "sources" : ["2.16.840.1.113883.4.642.3.73"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/identifier-type",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "Identifier Type Codes",
+    "title" : "IdentifierType",
+    "description" : "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v2-0203"],
+    "oids" : ["2.16.840.1.113883.4.642.3.45"],
+    "sources" : ["2.16.840.1.113883.4.642.3.45"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.RelatedPerson.html" : "Cuidador MINSA Perú",
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/identifier-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "IdentifierUse",
+    "title" : "IdentifierUse",
+    "description" : "Identifies the purpose for this identifier, if known .",
+    "systems" : ["http://hl7.org/fhir/identifier-use"],
+    "oids" : ["2.16.840.1.113883.4.642.3.57"],
+    "sources" : ["2.16.840.1.113883.4.642.3.57"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.RelatedPerson.html" : "Cuidador MINSA Perú",
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-function",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationFunctionCodes",
+    "title" : "Immunization Function Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the function a practitioner or organization may play in the immunization event. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v2-0443"],
+    "oids" : ["2.16.840.1.113883.4.642.3.995"],
+    "sources" : ["2.16.840.1.113883.4.642.3.995"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-funding-source",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationFundingSource",
+    "title" : "Immunization Funding Source",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the source of the vaccine administered. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/immunization-funding-source"],
+    "oids" : ["2.16.840.1.113883.4.642.3.293"],
+    "sources" : ["2.16.840.1.113883.4.642.3.293"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-origin",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationOriginCodes",
+    "title" : "Immunization Origin Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the source of the data when the report of the immunization event is not based on information from the person, entity or organization who administered the vaccine. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/immunization-origin"],
+    "oids" : ["2.16.840.1.113883.4.642.3.296"],
+    "sources" : ["2.16.840.1.113883.4.642.3.296"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-program-eligibility",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationProgramEligibility",
+    "title" : "Immunization Program Eligibility",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the patient's eligibility for a vaccination program. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/immunization-program-eligibility"],
+    "oids" : ["2.16.840.1.113883.4.642.3.291"],
+    "sources" : ["2.16.840.1.113883.4.642.3.291"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-reason",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationReasonCodes",
+    "title" : "Immunization Reason Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose of vaccine was administered. This value set is provided as a suggestive example.",
+    "systems" : ["http://snomed.info/sct"],
+    "oids" : ["2.16.840.1.113883.4.642.3.290"],
+    "sources" : ["2.16.840.1.113883.4.642.3.290"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-route",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationRouteCodes",
+    "title" : "Immunization Route Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the administrative routes used during vaccination. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"],
+    "oids" : ["2.16.840.1.113883.4.642.3.289"],
+    "sources" : ["2.16.840.1.113883.4.642.3.289"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-site",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "CodesForImmunizationSiteOfAdministration",
+    "title" : "Codes for Immunization Site of Administration",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the body site where the vaccination occurred. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v3-ActSite"],
+    "oids" : ["2.16.840.1.113883.4.642.3.288"],
+    "sources" : ["2.16.840.1.113883.4.642.3.288"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-status",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationStatusCodes",
+    "title" : "Immunization Status Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the current status of the administered dose of vaccine.",
+    "systems" : ["http://hl7.org/fhir/event-status"],
+    "oids" : ["2.16.840.1.113883.4.642.3.295"],
+    "sources" : ["2.16.840.1.113883.4.642.3.295"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-subpotent-reason",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationSubpotentReason",
+    "title" : "Immunization Subpotent Reason",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose is considered to be subpotent. This value set is provided as a suggestive example.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"],
+    "oids" : ["2.16.840.1.113883.4.642.3.993"],
+    "sources" : ["2.16.840.1.113883.4.642.3.993"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/immunization-target-disease",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ImmunizationTargetDiseaseCodes",
+    "title" : "Immunization Target Disease Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the disease that the dose is being administered against. This value set is provided as a suggestive example and includes the SNOMED CT concepts from the 64572001 (Disease) hierarchy.",
+    "systems" : ["http://snomed.info/sct"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1047"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1047"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/languages",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "CommonLanguages",
+    "title" : "Common Languages",
+    "description" : "This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47)",
+    "systems" : ["urn:ietf:bcp:47"],
+    "oids" : ["2.16.840.1.113883.4.642.3.20"],
+    "sources" : ["2.16.840.1.113883.4.642.3.20"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.RelatedPerson.html" : "Cuidador MINSA Perú",
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú",
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/link-type",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "LinkType",
+    "title" : "LinkType",
+    "description" : "The type of link between this patient resource and another patient resource.",
+    "systems" : ["http://hl7.org/fhir/link-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.423"],
+    "sources" : ["2.16.840.1.113883.4.642.3.423"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/marital-status",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "Marital Status Codes",
+    "title" : "MaritalStatus",
+    "description" : "This value set defines the set of codes that can be used to indicate the marital status of a person.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+    "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"],
+    "oids" : ["2.16.840.1.113883.4.642.3.29"],
+    "sources" : ["2.16.840.1.113883.4.642.3.29"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/name-use",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "NameUse",
+    "title" : "NameUse",
+    "description" : "The use of a human name.",
+    "systems" : ["http://hl7.org/fhir/name-use"],
+    "oids" : ["2.16.840.1.113883.4.642.3.65"],
+    "sources" : ["2.16.840.1.113883.4.642.3.65"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.RelatedPerson.html" : "Cuidador MINSA Perú",
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "PatientContactRelationship",
+    "title" : "Patient Contact Relationship ",
+    "description" : "The nature of the relationship between the patient and the contact person.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v2-0131"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1130"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1130"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Patient.html" : "Paciente MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "PatientRelationshipType",
+    "title" : "Patient relationship type",
+    "description" : "A set of codes that can be used to indicate the relationship between a Patient and a Related Person.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+    "http://terminology.hl7.org/CodeSystem/v2-0131"],
+    "oids" : ["2.16.840.1.113883.4.642.3.449"],
+    "sources" : ["2.16.840.1.113883.4.642.3.449"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.RelatedPerson.html" : "Cuidador MINSA Perú"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/resource-types",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ResourceType",
+    "title" : "ResourceType",
+    "description" : "One of the resource types defined as part of this version of FHIR.",
+    "systems" : ["http://hl7.org/fhir/resource-types"],
+    "oids" : ["2.16.840.1.113883.4.642.3.27"],
+    "sources" : ["2.16.840.1.113883.4.642.3.27"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSADoseNumberVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSADoseNumberVS",
+    "title" : "Números de Dosis del Esquema de Vacunación - MINSA",
+    "description" : "Conjunto de valores para los números de dosis utilizados en el esquema nacional de vacunación del Perú",
+    "systems" : ["http://minsa.gob.pe/immunizations/CodeSystem/MINSA"]
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAIdentifierTypeVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAIdentifierTypeVS",
+    "title" : "Tipos de Documento de Identidad - MINSA",
+    "description" : "Conjunto de valores para los tipos de documento de identidad utilizados en el sistema de inmunizaciones del Perú",
+    "systems" : ["http://minsa.gob.pe/immunizations/CodeSystem/MINSAIdentifierTypes"]
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAImmunizationReasonNotGivenVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAImmunizationReasonNotGivenVS",
+    "title" : "Razones de No Administración de Vacuna - MINSA",
+    "description" : "Conjunto de valores para las razones por las cuales una vacuna no fue administrada, según el Registro Electrónico de Inmunizaciones de MINSA",
+    "systems" : ["http://minsa.gob.pe/immunizations/CodeSystem/MINSA"]
+  },
+  {
+    "url" : "http://minsa.gob.pe/immunizations/ValueSet/MINSAVaccineVS",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "MINSAVaccineVS",
+    "title" : "Vacunas del Esquema Nacional de Vacunación MINSA",
+    "description" : "Conjunto de valores para las vacunas utilizadas en el esquema nacional de vacunación del Perú, incluyendo códigos MINSA y referencias a códigos WHO",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.Z",
+    "http://minsa.gob.pe/immunizations/CodeSystem/MINSA"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE212",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE212",
+    "title" : "IMMZ.D.DE212 ValueSet for Type of poliovirus dose",
+    "description" : "ValueSet for Type of poliovirus dose for IMMZ.D.DE212",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE216",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE216",
+    "title" : "IMMZ.D.DE216 ValueSet for Type of JE dose",
+    "description" : "ValueSet for Type of JE dose for IMMZ.D.DE216",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE220",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE220",
+    "title" : "IMMZ.D.DE220 ValueSet for Type of TBE dose",
+    "description" : "ValueSet for Type of TBE dose for IMMZ.D.DE220",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE225",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE225",
+    "title" : "IMMZ.D.DE225 ValueSet for Type of typhoid dose",
+    "description" : "ValueSet for Type of typhoid dose for IMMZ.D.DE225",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE229",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE229",
+    "title" : "IMMZ.D.DE229 ValueSet for Type of cholera dose",
+    "description" : "ValueSet for Type of cholera dose for IMMZ.D.DE229",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE237",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE237",
+    "title" : "IMMZ.D.DE237 ValueSet for Type of hepatitis A dose",
+    "description" : "ValueSet for Type of hepatitis A dose for IMMZ.D.DE237",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE254",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE254",
+    "title" : "IMMZ.D.DE254 ValueSet for Type of hepatitis B dose",
+    "description" : "ValueSet for Type of hepatitis B dose for IMMZ.D.DE254",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  },
+  {
+    "url" : "http://smart.who.int/immunizations/ValueSet/IMMZ.D.DE5",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "IMMZ_D_DE5",
+    "title" : "IMMZ.D.DE5 ValueSet for Reason vaccine was not administered",
+    "description" : "ValueSet for Reason vaccine was not administered for IMMZ.D.DE5",
+    "systems" : ["http://smart.who.int/immunizations/CodeSystem/IMMZ.D"],
+    "uses" : {
+    },
+    "StructureDefinition-MINSA.Immunization.html" : "Inmunización MINSA Perú"
+  }]
+}
