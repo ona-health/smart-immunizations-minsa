@@ -11,7 +11,7 @@ Description: "Perfil de Inmunización para el programa de inmunizaciones del Min
 * ^publisher = "MINSA - Ministerio de Salud del Perú"
 
 // Código de vacuna vinculado al conjunto de valores MINSA
-* vaccineCode from MINSAVacunaVS (required)
+* vaccineCode from MINSAVaccineVS (required)
 * vaccineCode ^short = "Código de vacuna según el esquema nacional de vacunación"
 
 // Profesional de salud que administró la vacuna

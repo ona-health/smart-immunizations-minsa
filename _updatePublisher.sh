@@ -1,5 +1,3 @@
-# ABOUTME: Downloads the latest FHIR IG Publisher jar and optionally updates build scripts.
-# ABOUTME: Supports --force and --yes flags to skip interactive prompts.
 #!/bin/bash
 pubsource=https://github.com/HL7/fhir-ig-publisher/releases/latest/download/
 publisher_jar=publisher.jar

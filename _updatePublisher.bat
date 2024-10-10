@@ -1,5 +1,3 @@
-@REM ABOUTME: Downloads the latest FHIR IG Publisher jar and optionally updates build scripts on Windows.
-@REM ABOUTME: Supports /f flag to skip interactive prompts.
 @ECHO OFF
 
 SETLOCAL

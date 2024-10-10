@@ -1,5 +1,3 @@
-@REM ABOUTME: Runs the FHIR IG Publisher to generate the implementation guide on Windows.
-@REM ABOUTME: Checks for internet connectivity and locates the publisher jar in input-cache or parent folder.
 @ECHO OFF
 SET publisher_jar=publisher.jar
 SET input_cache_path=%CD%\input-cache

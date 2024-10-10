@@ -1,5 +1,3 @@
-# ABOUTME: Runs the FHIR IG Publisher to generate the implementation guide.
-# ABOUTME: Checks for internet connectivity and locates the publisher jar in input-cache or parent folder.
 #!/bin/bash
 publisher_jar=publisher.jar
 input_cache_path=./input-cache/
