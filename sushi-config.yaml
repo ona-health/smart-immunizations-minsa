@@ -18,6 +18,10 @@ publisher:
   url: https://www.gob.pe/minsa
 
 author:
+  - name: Jose Enrique Perez Lu
+    telecom:
+      - system: email
+        value: jperez@minsa.gob.pe
   - name: Matt Berg
     telecom:
       - system: email
