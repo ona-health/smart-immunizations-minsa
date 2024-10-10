@@ -1,0 +1,127 @@
+# ABOUTME: Configuración principal de SUSHI para la Guía de Implementación de Inmunizaciones MINSA Perú.
+# ABOUTME: Define metadatos del IG, dependencias, páginas y menú de navegación.
+id: minsa.gob.pe.immunizations
+canonical: http://minsa.gob.pe/immunizations
+name: InmunizacionesMINSA
+title: "Guía de Implementación de Inmunizaciones MINSA Perú"
+description: Guía de Implementación de Inmunizaciones para el Ministerio de Salud del Perú (MINSA), adaptada de las Directrices SMART de la OMS.
+status: draft
+version: 1.0.0
+fhirVersion: 4.0.1
+copyrightYear: 2024+
+releaseLabel: ci-build
+license: CC0-1.0
+date: 2024-10-10
+jurisdiction: urn:iso:std:iso:3166#PE "Peru"
+publisher:
+  name: MINSA - Ministerio de Salud del Perú
+  url: https://www.gob.pe/minsa
+
+meta:
+  profile:
+    - SMARTImplementationGuide
+
+dependencies:
+  smart.who.int.immunizations: current
+  smart.who.int.base: current
+  hl7.fhir.uv.extensions.r4: 5.1.0
+  hl7.fhir.uv.cql: 1.0.0
+  hl7.fhir.uv.crmi: 1.0.0
+  hl7.fhir.uv.sdc: 3.0.0
+  hl7.fhir.uv.cpg: current
+
+pages:
+  index.md:
+    title: Inicio
+    changes.md:
+      title: Cambios
+    dependencies.md:
+      title: Dependencias
+    references.md:
+      title: Referencias
+    adapting.md:
+      title: Adaptación para Perú
+    license.md:
+      title: Licencia
+  business-requirements.md:
+    title: Requisitos de Negocio
+    concepts.md:
+      title: Conceptos
+    personas.md:
+      title: Personas
+    scenarios.md:
+      title: Escenarios de Uso
+    business-processes.md:
+      title: Procesos de Negocio
+    dictionary.md:
+      title: Diccionario de Datos
+    decision-logic.md:
+      title: Lógica de Decisión
+    indicators.md:
+      title: Indicadores y Métricas
+    functional-requirements.md:
+      title: Requisitos Funcionales
+    non-functional-requirements.md:
+      title: Requisitos No Funcionales
+  data-models-and-exchange.md:
+    title: Modelos de Datos e Intercambio
+    system-actors.md:
+      title: Actores del Sistema
+    sequence-diagrams.md:
+      title: Diagramas de Secuencia
+    transactions.md:
+      title: Transacciones
+    indicators-measures.md:
+      title: Indicadores y Medidas
+    codings.md:
+      title: Codificaciones
+  deployment.md:
+    title: Despliegue
+    security-privacy.md:
+      title: Seguridad y Privacidad
+    testing.md:
+      title: Pruebas
+    test-data.md:
+      title: Datos de Prueba
+    downloads.md:
+      title: Descargas
+
+menu:
+  Inicio:
+    Resumen: index.html
+    Cambios: changes.html
+    Dependencias: dependencies.html
+    Referencias: references.html
+    Adaptación para Perú: adapting.html
+  Requisitos de Negocio:
+    Conceptos: concepts.html
+    Personas: personas.html
+    Escenarios de Uso: scenarios.html
+    Procesos de Negocio: business-processes.html
+    Diccionario de Datos: dictionary.html
+    Lógica de Decisión: decision-logic.html
+    Indicadores y Métricas: indicators.html
+    Requisitos Funcionales: functional-requirements.html
+    Requisitos No Funcionales: non-functional-requirements.html
+  Modelos de Datos:
+    Actores del Sistema: system-actors.html
+    Diagramas de Secuencia: sequence-diagrams.html
+    Transacciones: transactions.html
+    Indicadores y Medidas: indicators-measures.html
+    Codificaciones: codings.html
+  Despliegue:
+    Seguridad y Privacidad: security-privacy.html
+    Pruebas: testing.html
+    Datos de Prueba: test-data.html
+    Descargas: downloads.html
+
+parameters:
+  produce-jekyll-data: true
+  path-resource:
+    - input/maps
+  path-binary:
+    - input/cql
+  path-pages:
+    - input/cql
+  special-url:
+    - http://smart.who.int/immunizations

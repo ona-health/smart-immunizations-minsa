@@ -1,0 +1,10 @@
+# ABOUTME: Git ignore rules for the FHIR Implementation Guide project.
+# ABOUTME: Excludes generated output, caches, and build artifacts.
+fsh-generated/
+output/
+temp/
+template/
+input-cache/
+.fhir/
+node_modules/
+*.jar

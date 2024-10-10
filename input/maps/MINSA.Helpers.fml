@@ -1,0 +1,77 @@
+// ABOUTME: Funciones auxiliares reutilizables para los mapas de transformacion MINSA Peru.
+// ABOUTME: Incluye extraccion de valores, codigos e identificadores desde QuestionnaireResponse.
+map "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers" = "MINSA.Helpers"
+
+uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" alias QResp as source
+uses "http://hl7.org/fhir/StructureDefinition/Bundle" alias Bundle as target
+
+// Extrae el valor de la primera respuesta de un item
+group ItemToValue(source item, target field) {
+  item.answer first as answer then {
+    answer.value as content -> field.value = content "SetValue";
+  } "FirstAnswer";
+}
+
+// Extrae el codigo de una respuesta codificada
+group ItemToCode(source item, target field) {
+  item.answer first as answer then {
+    answer.value as coding then {
+      coding.code as content -> field.value = content "SetCode";
+    } "Coding";
+  } "FirstAnswer";
+}
+
+// Extrae sistema, codigo y display de una respuesta codificada
+group ItemToCoding(source item, target field) {
+  item.answer first as answer then {
+    answer.value as coding then {
+      coding.code as code -> field.code = code "SetCode";
+      coding.system as system -> field.system = system "SetSystem";
+      coding.display as display -> field.display = display "SetDisplay";
+    } "Coding";
+  } "FirstAnswer";
+}
+
+// Crea un identificador DNI con sistema MINSA
+group SetDNI(source item, target identifier: Identifier) {
+  item.answer first as answer then {
+    answer.value as val ->
+      identifier.use = "official",
+      identifier.system = "http://minsa.gob.pe/sid/dni",
+      identifier.value = val "SetDNIValue";
+  } "DNIAnswer";
+}
+
+// Crea un ContactPoint de telefono
+group SetPhone(source item, target telecom: ContactPoint) {
+  item.answer first as answer then {
+    answer.value as val ->
+      telecom.system = "phone",
+      telecom.use = "mobile",
+      telecom.value = val "SetPhoneValue";
+  } "PhoneAnswer";
+}
+
+// Crea una Observation vinculada a un paciente y encuentro
+group MakeObservation(
+  source patient: Reference,
+  source code: Coding,
+  source cat: Coding,
+  source value,
+  target bundle: Bundle
+) {
+  value -> uuid() as oid,
+    bundle.entry as entry,
+    entry.fullUrl = append("urn:uuid:", oid),
+    entry.request as request,
+    request.method = "PUT",
+    request.url = append("Observation/", oid),
+    entry.resource = create("Observation") as obs
+  then {
+    value -> obs.id = oid "SetId";
+    patient -> obs.subject = patient "SetSubject";
+    code -> obs.code = code "SetCode";
+    value -> obs.value = value "SetValue";
+    cat -> obs.category = cat "SetCategory";
+  } "CreateObservation";
+}

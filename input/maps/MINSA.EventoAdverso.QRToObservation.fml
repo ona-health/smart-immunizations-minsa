@@ -1,0 +1,124 @@
+// ABOUTME: Transforma un QuestionnaireResponse de evento adverso post-vacunal en un recurso Observation.
+// ABOUTME: Captura el tipo de reaccion adversa, severidad, fecha y vinculo con la inmunizacion que la causo.
+map "http://minsa.gob.pe/immunizations/StructureMap/MINSA.EventoAdverso.QRToObservation" = "MINSA.EventoAdverso.QRToObservation"
+
+uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" alias QResp as source
+uses "http://hl7.org/fhir/StructureDefinition/Bundle" alias Bundle as target
+
+imports "http://minsa.gob.pe/immunizations/StructureMap/MINSA.Helpers"
+
+group EventoAdverso(source src: QResp, target bundle: Bundle) {
+  src -> bundle.id = uuid(),
+    bundle.type = "collection" "BundleStatic";
+
+  src -> bundle.entry as encEntry,
+    encEntry.resource = create("Encounter") as encounter
+  then {
+    src then ExtractEncounter(src, encounter) "ExtractEncounter";
+    src then ExtractObservation(src, encounter, bundle) "ExtractObservation";
+  } "BundleEntries";
+}
+
+// Extrae el Encounter de la consulta por evento adverso
+group ExtractEncounter(source src: QResp, target encounter: Encounter) {
+  src -> encounter.id = uuid(),
+    encounter.status = "finished",
+    encounter.class = c("http://terminology.hl7.org/CodeSystem/v3-ActCode", "AMB", "ambulatory") "EncounterStatic";
+
+  src.subject as subject -> encounter.subject = subject "EncounterSubject";
+
+  src -> encounter.type = create("CodeableConcept") as cc then {
+    src -> cc.coding = create("Coding") as coding then {
+      src -> coding.system = "http://snomed.info/sct",
+        coding.code = "886921000000105",
+        coding.display = "Allergies and adverse reactions" "TypeCoding";
+    } "TypeCC";
+    src -> cc.text = "Evento adverso post-vacunal" "TypeText";
+  } "EncounterType";
+
+  src -> encounter.period = create("Period") as period then {
+    src -> period.start = evaluate(src, now()) "PeriodStart";
+    src -> period.end = evaluate(src, now()) "PeriodEnd";
+  } "EncounterPeriod";
+}
+
+// Extrae la Observation que representa el evento adverso
+group ExtractObservation(source src: QResp, source encounter: Encounter, target bundle: Bundle) {
+  src -> bundle.entry as entry, entry.resource = create("Observation") as obs then {
+    src -> obs.id = uuid(),
+      obs.status = "final",
+      obs.encounter = reference(encounter) "ObsStatic";
+
+    src.subject as subject -> obs.subject = subject "ObsSubject";
+
+    // Categoria: reaccion adversa
+    src -> obs.category = create("CodeableConcept") as cat then {
+      src -> cat.coding = c("http://terminology.hl7.org/CodeSystem/observation-category", "survey", "Survey") "CatCoding";
+    } "ObsCategory";
+
+    // Codigo de la observacion: evento adverso post-vacunal (ESAVI)
+    src -> obs.code = create("CodeableConcept") as code then {
+      src -> code.coding = create("Coding") as coding then {
+        src -> coding.system = "http://snomed.info/sct",
+          coding.code = "293104008",
+          coding.display = "Adverse reaction to vaccine (disorder)" "CodeCoding";
+      } "CodeCC";
+      src -> code.text = "Evento Supuestamente Atribuido a Vacunacion o Inmunizacion (ESAVI)" "CodeText";
+    } "ObsCode";
+
+    // Fecha del evento adverso
+    src.item as item where linkId = "adverse-event-date" then {
+      item.answer first as answer then {
+        answer.value as val -> obs.effective = val "SetEffective";
+      } "DateAnswer";
+    } "AdverseEventDate";
+
+    // Tipo de reaccion adversa
+    src.item as item where linkId = "adverse-event-type" then {
+      item.answer first as answer then {
+        answer.value as coding -> obs.value = create("CodeableConcept") as cc then {
+          coding -> cc.coding = coding "SetTypeCoding";
+          coding.display as display -> cc.text = display "SetTypeText";
+        } "CreateTypeCC";
+      } "TypeAnswer";
+    } "AdverseEventType";
+
+    // Severidad del evento adverso
+    src.item as item where linkId = "adverse-event-severity" then {
+      item.answer first as answer then {
+        answer.value as coding -> obs.component = create("Observation_Component") as comp then {
+          coding -> comp.code = create("CodeableConcept") as compCode then {
+            coding -> compCode.coding = create("Coding") as compCoding then {
+              coding -> compCoding.system = "http://snomed.info/sct",
+                compCoding.code = "246112005",
+                compCoding.display = "Severity (attribute)" "SeverityCodeCoding";
+            } "SeverityCodeCC";
+          } "SeverityCode";
+          coding -> comp.value = create("CodeableConcept") as compVal then {
+            coding -> compVal.coding = coding "SetSeverityCoding";
+            coding.display as display -> compVal.text = display "SetSeverityText";
+          } "SeverityValue";
+        } "CreateSeverityComp";
+      } "SeverityAnswer";
+    } "AdverseEventSeverity";
+
+    // Referencia a la inmunizacion que causo el evento adverso
+    src.item as item where (linkId = "causing-immunization" and answer.value.exists()) then {
+      item.answer first as answer then {
+        answer.value as immRef -> obs.focus = create("Reference") as ref then {
+          immRef -> ref.reference = immRef "SetImmReference";
+        } "CreateImmRef";
+      } "ImmAnswer";
+    } "CausingImmunization";
+
+    // Notas adicionales del profesional de salud
+    src.item as item where (linkId = "adverse-event-notes" and answer.value.exists()) then {
+      item.answer first as answer then {
+        answer.value as val -> obs.note = create("Annotation") as note then {
+          val -> note.text = val "SetNoteText";
+          val -> note.time = evaluate(src, now()) "SetNoteTime";
+        } "CreateNote";
+      } "NotesAnswer";
+    } "AdverseEventNotes";
+  } "ObservationEntry";
+}
