@@ -17,6 +17,12 @@ publisher:
   name: MINSA - Ministerio de Salud del Perú
   url: https://www.gob.pe/minsa
 
+author:
+  - name: Matt Berg
+    telecom:
+      - system: email
+        value: mberg@ona.io
+
 meta:
   profile:
     - SMARTImplementationGuide
