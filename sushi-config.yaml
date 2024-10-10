@@ -22,6 +22,10 @@ author:
     telecom:
       - system: email
         value: mberg@ona.io
+  - name: Peter Lubell-Doughtie
+    telecom:
+      - system: email
+        value: peter@ona.io
 
 meta:
   profile:
